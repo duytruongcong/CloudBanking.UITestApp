@@ -130,62 +130,6 @@
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="..\CloudBanking.DroidApp\Resources\drawable\window_background.xml">
-      <Link>Resources\drawable\window_background.xml</Link>
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="..\CloudBanking.DroidApp\Resources\drawable-v23\window_background.xml">
-      <Link>Resources\drawable-v23\window_background.xml</Link>
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="..\CloudBanking.DroidApp\Resources\mipmap\logo.png">
-      <Link>Resources\mipmap\logo.png</Link>
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="..\CloudBanking.DroidApp\Resources\mipmap-hdpi\logo.png">
-      <Link>Resources\mipmap-hdpi\logo.png</Link>
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="..\CloudBanking.DroidApp\Resources\mipmap-mdpi\logo.png">
-      <Link>Resources\mipmap-mdpi\logo.png</Link>
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="..\CloudBanking.DroidApp\Resources\mipmap-xhdpi\logo.png">
-      <Link>Resources\mipmap-xhdpi\logo.png</Link>
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="..\CloudBanking.DroidApp\Resources\mipmap-xxhdpi\logo.png">
-      <Link>Resources\mipmap-xxhdpi\logo.png</Link>
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="..\CloudBanking.DroidApp\Resources\mipmap-xxxhdpi\logo.png">
-      <Link>Resources\mipmap-xxxhdpi\logo.png</Link>
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\xml\file_paths.xml">
       <SubType>
       </SubType>
@@ -399,7 +343,12 @@
     <Folder Include="Resources\mipmap-xhdpi\" />
     <Folder Include="Resources\mipmap-xxhdpi\" />
     <Folder Include="Resources\mipmap-xxxhdpi\" />
-    <Folder Include="Resources\mipmap\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\window_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap\logo.png" />
   </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>

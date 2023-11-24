@@ -2047,5 +2047,31 @@ namespace CloudBanking.UITestApp
 
             }, true, false, merchants);
         }
+
+        void ShowSelectDonationDialog()
+        {
+            var data = new CusDisplaySelectDonationDlgData();
+            data.DonationImgName = "don_1_select";
+            var listValue = new List<long>() { 1, 2, 5, 10, 50 };
+            data.DonationValues = listValue;
+
+            var dialog = new SelectDonationDialog(StringIds.STRING_STARTAPP, null, data);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
+        }
+
+        void ShowAdjustDonationDialog()
+        {
+            long amount = 38000;
+
+            List<long> donation = new List<long> { 50, 200, 500, 1000 };
+            string iconId = "donation_port_demo.png";
+            string noBtnTitleId = "STRING_NO_DONATION";
+            int noBtnCommand = 5016;
+
+            var dialog = new AdjustDonationDialog(StringIds.STRING_DONATION, null, amount, donation, iconId, noBtnTitleId, noBtnCommand);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
+        }
     }
 }

@@ -128,6 +128,26 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"AdjustDonationDialog",
+                RightIconResName = "AdjustDonationDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowAdjustDonationDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectDonationDialog",
+                RightIconResName = "select_donation",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectDonationDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"SelectMerchantDialog",
                 RightIconResName = "SelectMerchantDialog",
                 ItemAction = new Action(() =>

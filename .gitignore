@@ -1,0 +1,5 @@
+obj/
+bin/
+Resources/AboutResources.txt
+Resources/Resource.designer.cs
+custom.aprof

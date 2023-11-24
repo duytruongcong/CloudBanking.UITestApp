@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CloudBanking.BaseControl.CustomRelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/bg"
+	android:layout_width="match_parent"
+	android:background="@drawable/white_radius_background"
+	android:padding="@dimen/base_margin_double"
+	android:layout_height="@dimen/test_item_height">
+
+	<CloudBanking.BaseControl.FixedSizeLabel
+		android:id="@+id/tv_title"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_alignParentLeft="true"
+		android:layout_toLeftOf="@+id/iv_icon"
+		android:layout_marginRight="@dimen/base_margin_double"
+		android:layout_centerVertical="true"
+		android:maxLines="1"
+		android:ellipsize="end"
+		android:textColor="@color/black_color"
+		android:textSize="@dimen/base_text_size"/>
+
+
+	<CloudBanking.BaseControl.CustomImageView
+		android:id="@+id/iv_icon"
+		android:layout_width="@dimen/test_item_icon_width"
+		android:layout_height="match_parent"
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignWithParentIfMissing="true"
+		android:scaleType="fitEnd"
+		android:visibility="visible"/>
+
+
+</CloudBanking.BaseControl.CustomRelativeLayout>

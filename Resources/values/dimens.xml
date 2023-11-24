@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<dimen name="base_margin_scale">@dimen/_7_75sdp</dimen>
+	<dimen name="splashactivitylayout_imageview_layout_marginleft_60">@dimen/_46_25sdp</dimen>
+	<dimen name="splashactivitylayout_imageview_layout_marginright_60">@dimen/_46_25sdp</dimen>
+	<dimen name="splashactivitylayout_tvlabel_textsize_14">@dimen/_10_75ssp</dimen>
+    <dimen name="splash_progress_size">@dimen/_12_5sdp</dimen>
+	<dimen name="test_item_height">@dimen/_83_5sdp</dimen>
+	<dimen name="test_item_icon_width">@dimen/_41_75sdp</dimen>
+	
+</resources>

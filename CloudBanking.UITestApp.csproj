@@ -98,16 +98,16 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors" />
     <Reference Include="AutoFitTextView-Xamarin.Android">
-      <HintPath>..\..\..\BaseDLL\General\AutoFitTextView-Xamarin.Android.dll</HintPath>
+      <HintPath>..\xcrpos-android\BaseDLL\General\AutoFitTextView-Xamarin.Android.dll</HintPath>
     </Reference>
     <Reference Include="Dp.Lib">
-      <HintPath>..\..\..\BaseDLL\General\Dp.Lib.dll</HintPath>
+      <HintPath>..\xcrpos-android\BaseDLL\General\Dp.Lib.dll</HintPath>
     </Reference>
     <Reference Include="VihtarbTooltip">
-      <HintPath>..\..\..\BaseDLL\General\VihtarbTooltip.dll</HintPath>
+      <HintPath>..\xcrpos-android\BaseDLL\General\VihtarbTooltip.dll</HintPath>
     </Reference>
     <Reference Include="ChangeColorImageSDK">
-      <HintPath>..\..\..\BaseDLL\General\ChangeColorImageSDK.dll</HintPath>
+      <HintPath>..\xcrpos-android\BaseDLL\General\ChangeColorImageSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -117,7 +117,7 @@
     <Compile Include="Activities\TestActivity.cs" />
     <Compile Include="Adapters\TestItemAdapter.cs" />
     <Compile Include="Activities\MainApplication.cs" />
-    <Compile Include="..\CloudBanking.SinglePaymentApp\Services\PaymentAppUtilityService.cs">
+    <Compile Include="..\xcrpos-android\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Services\PaymentAppUtilityService.cs">
       <Link>PaymentAppUtilityService.cs</Link>
     </Compile>
   </ItemGroup>
@@ -274,88 +274,91 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CloudBanking.Languages\CloudBanking.Language\CloudBanking.Language.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Languages\CloudBanking.Language\CloudBanking.Language.csproj">
       <Project>{18960CD8-1D90-45A4-83A6-37ABB03484AF}</Project>
       <Name>CloudBanking.Language</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Core\CloudBanking.Utilities\CloudBanking.Utilities.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Core\CloudBanking.Utilities\CloudBanking.Utilities.csproj">
       <Project>{FF83F117-98F1-4965-9037-88AF7C55AF4F}</Project>
       <Name>CloudBanking.Utilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Shell\CloudBanking.BaseHardware\CloudBanking.BaseHardware.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.BaseHardware\CloudBanking.BaseHardware.csproj">
       <Project>{11E62D69-78C8-45D6-B00C-02E6E8D24152}</Project>
       <Name>CloudBanking.BaseHardware</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.UI\CloudBanking.BaseControl\CloudBanking.BaseControl.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Standard\CloudBanking.Entities\CloudBanking.Entities.csproj">
+      <Project>{2e30abf3-2123-43eb-bb4b-20beb18801e3}</Project>
+      <Name>CloudBanking.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Standard\CloudBanking.Printing\CloudBanking.Printing.csproj">
+      <Project>{65c8d4e9-b743-412b-90d3-d38a2142780d}</Project>
+      <Name>CloudBanking.Printing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Standard\CloudBanking.Repositories\CloudBanking.Repositories.csproj">
+      <Project>{cc6abd0f-0b4b-42aa-8e2e-904bba9fa1fb}</Project>
+      <Name>CloudBanking.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.UI\CloudBanking.BaseControl\CloudBanking.BaseControl.csproj">
       <Name>CloudBanking.BaseControl</Name>
       <Project>{9C3B940E-7247-496A-906B-AB1DA56FB7E5}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Standard\CloudBanking.Repositories\CloudBanking.Repositories.csproj">
-      <Name>CloudBanking.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.UI\CloudBanking.ShellUI\CloudBanking.ShellUI.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.UI\CloudBanking.ShellUI\CloudBanking.ShellUI.csproj">
       <Name>CloudBanking.ShellUI</Name>
       <Project>{F9B77DF4-AE4F-4079-BCB9-5022F143554F}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Standard\CloudBanking.Entities\CloudBanking.Entities.csproj">
-      <Name>CloudBanking.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Standard\CloudBanking.Printing\CloudBanking.Printing.csproj">
-      <Name>CloudBanking.Printing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Core\CloudBanking.ServiceLocators\CloudBanking.ServiceLocators.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Core\CloudBanking.ServiceLocators\CloudBanking.ServiceLocators.csproj">
       <Project>{E3C9000F-C3FE-4E01-B547-FAF2BA0BEE78}</Project>
       <Name>CloudBanking.ServiceLocators</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PhoneSdk\CloudBanking.PhoneSdk.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PhoneSdk\CloudBanking.PhoneSdk.csproj">
       <Project>{F7207D33-A71B-42C5-866A-E2EFE81A5854}</Project>
       <Name>CloudBanking.PhoneSdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PaxSdk\CloudBanking.PaxSdk.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PaxSdk\CloudBanking.PaxSdk.csproj">
       <Project>{6C42557C-BA63-473A-9247-61E2E6CF6CD4}</Project>
       <Name>CloudBanking.PaxSdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Core\CloudBanking.Common\CloudBanking.Common.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Core\CloudBanking.Common\CloudBanking.Common.csproj">
       <Project>{74736BB9-E38B-4967-92F2-0146B991AC30}</Project>
       <Name>CloudBanking.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Shell\CloudBanking.ShellContainer\CloudBanking.ShellContainers.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.ShellContainer\CloudBanking.ShellContainers.csproj">
       <Project>{5B77B43B-5EC9-4DCF-8084-5E0BDD282CBF}</Project>
       <Name>CloudBanking.ShellContainers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Shell\CloudBanking.ShellModels\CloudBanking.ShellModels.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.ShellModels\CloudBanking.ShellModels.csproj">
       <Project>{28E004EA-0077-4C21-BA9E-94C8EFB0EBA8}</Project>
       <Name>CloudBanking.ShellModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.UI\CloudBanking.DroidCommon\CloudBanking.DroidCommon.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.UI\CloudBanking.DroidCommon\CloudBanking.DroidCommon.csproj">
       <Project>{0AAB9223-A243-4747-9DE9-3EB64C3F880F}</Project>
       <Name>CloudBanking.DroidCommon</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Flow\CloudBanking.Flow.Base\CloudBanking.Flow.Base.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Base\CloudBanking.Flow.Base.csproj">
       <Project>{5D692013-C029-4CDE-BC0D-4F3724346CC2}</Project>
       <Name>CloudBanking.Flow.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Flow\CloudBanking.Flow.Setup\CloudBanking.Flow.Setup.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Setup\CloudBanking.Flow.Setup.csproj">
       <Project>{A4945252-5915-4E00-81CD-DDBDA3AF2916}</Project>
       <Name>CloudBanking.Flow.Setup</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Flow\CloudBanking.Flow.Standalone\CloudBanking.Flow.Standalone.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Standalone\CloudBanking.Flow.Standalone.csproj">
       <Project>{5CCF45A4-0C36-43B9-A11C-2589BB54B5C6}</Project>
       <Name>CloudBanking.Flow.Standalone</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Flow\CloudBanking.Flow.Application\CloudBanking.Flow.Application.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Application\CloudBanking.Flow.Application.csproj">
       <Project>{867BCF9F-506C-4194-8B9A-08572EB955DC}</Project>
       <Name>CloudBanking.Flow.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.UI\CloudBanking.DroidUI\CloudBanking.DroidUI.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.UI\CloudBanking.DroidUI\CloudBanking.DroidUI.csproj">
       <Project>{F7C68F3B-50A7-49A7-B8ED-30F320D01AF4}</Project>
       <Name>CloudBanking.DroidUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.ShellContainerClient\CloudBanking.ShellContainerClient.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.ShellContainerClient\CloudBanking.ShellContainerClient.csproj">
       <Project>{E346E3A8-4FE5-4D9B-9CD8-B181D499735C}</Project>
       <Name>CloudBanking.ShellContainerClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.BaseShellClient\CloudBanking.BaseShellClient.csproj">
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.BaseShellClient\CloudBanking.BaseShellClient.csproj">
       <Project>{B5A8F226-DA1C-4529-ABAE-B9C9E5F9C470}</Project>
       <Name>CloudBanking.BaseShellClient</Name>
     </ProjectReference>
@@ -386,6 +389,17 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\setupimages\icon_default_merchant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-v23\window_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\mipmap-hdpi\" />
+    <Folder Include="Resources\mipmap-mdpi\" />
+    <Folder Include="Resources\mipmap-xhdpi\" />
+    <Folder Include="Resources\mipmap-xxhdpi\" />
+    <Folder Include="Resources\mipmap-xxxhdpi\" />
+    <Folder Include="Resources\mipmap\" />
   </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>

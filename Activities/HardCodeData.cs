@@ -2065,7 +2065,7 @@ namespace CloudBanking.UITestApp
             long amount = 38000;
 
             List<long> donation = new List<long> { 50, 200, 500, 1000 };
-            string iconId = "donation_port_demo.png";
+            string iconId = "donation_port_demo_02.png";
             string noBtnTitleId = "STRING_NO_DONATION";
             int noBtnCommand = 5016;
 

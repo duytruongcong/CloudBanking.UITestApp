@@ -350,6 +350,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\donation_port_demo_02.png" />
+  </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>

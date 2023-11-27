@@ -353,6 +353,12 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\setupimages\donation_port_demo_02.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\ads_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\ads_1.png" />
+  </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>

@@ -273,7 +273,7 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fShowCardFees = false;
+            RequestDlgData.fShowCardFees = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -2072,6 +2072,58 @@ namespace CloudBanking.UITestApp
             var dialog = new AdjustDonationDialog(StringIds.STRING_DONATION, null, amount, donation, iconId, noBtnTitleId, noBtnCommand);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
+        }
+
+        void ShowAdvertisingDialog()
+        {
+            IList<string> imagePaths = new List<string>();
+
+            imagePaths.Add("ads_1.png");
+            imagePaths.Add("ads_2.png");
+
+            int ellapseSeconds = 2;
+
+            var dialog = new AdvertisingDialog(StringIds.STRING_ANDROID_PAYMENTS, null, imagePaths, ellapseSeconds, GlobalResource.NEXT_BUTTON, true);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
+        }
+
+        void ShowReceiptOptionDialog()
+        {
+            var data = new ReceiptOptionsDlgData();
+
+            data.QRReceiptResult = "ReceiptOptionsDialog";
+            data.fShowQrCode = true;
+
+            data.FunctionButtons = new List<SelectButton>();
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
+                idImage = IconIds.VECTOR_EMAIL_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_TEXT_RECEIPT,
+                idImage = IconIds.VECTOR_TEXT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_PRINT_CUSTOMER,
+                idImage = IconIds.VECTOR_PRINT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            var dialog4 = new ReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
         }
     }
 }

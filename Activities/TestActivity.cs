@@ -94,7 +94,7 @@ namespace CloudBanking.UITestApp
 
             _lData = new List<ScreenViewModel>();
 
-            InitializeData();
+            InitializeCusViewData();
 
             _adapter = new TestItemAdapter(this, _lData);
             list_view.Adapter = _adapter;
@@ -121,7 +121,95 @@ namespace CloudBanking.UITestApp
             ActivityCompat.RequestPermissions(this, permission, code);
         }
 
-        private void InitializeData()
+        private void InitializeCusViewData()
+        {
+            #region CusViewRequestCardDialog
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE1",
+                RightIconResName = "RequestCardDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewRequestCardDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE2",
+                RightIconResName = "RequestCardDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewRequestCardDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE3",
+                RightIconResName = "RequestCardDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewRequestCardDialog(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE4",
+                RightIconResName = "RequestCardDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewRequestCardDialog(CaseDialog.CASE4);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE5",
+                RightIconResName = "RequestCardDialog_CASE5",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewRequestCardDialog(CaseDialog.CASE5);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE6",
+                RightIconResName = "RequestCardDialog_CASE6",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewRequestCardDialog(CaseDialog.CASE6);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE7",
+                RightIconResName = "RequestCardDialog_CASE7",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewRequestCardDialog(CaseDialog.CASE7);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE8",
+                RightIconResName = "RequestCardDialog_CASE8",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewRequestCardDialog(CaseDialog.CASE8);
+                })
+            });
+
+            #endregion
+        }
+
+
+        private void InitializeCommonData()
         {
 
             #region AddNew

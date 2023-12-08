@@ -360,6 +360,75 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\setupimages\ads_1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\ads_1_land_cus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\ads_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\ads_1_land.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\ads_3_land.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\ads_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\ads_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_1_fixed_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_1_land_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_1_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_1_port_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_2_fixed_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_2_land_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_2_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_2_port_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_3_fixed_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_3_land_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_3_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_3_port_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_4_fixed_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_4_land_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_4_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\don_4_port_poster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\land_avertising_1.png" />
+  </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>

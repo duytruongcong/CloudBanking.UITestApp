@@ -19,6 +19,9 @@ namespace CloudBanking.UITestApp
         ListView list_view;
         TestItemAdapter _adapter;
         IList<ScreenViewModel> _lData;
+
+        BaseDialog _baseDialog;
+
         IDialogBuilder DialogBuilder => ServiceLocator.Instance.Get<IDialogBuilder>();
 
         string[] PERMISSIONS = new string[]{
@@ -123,6 +126,266 @@ namespace CloudBanking.UITestApp
 
         private void InitializeCusViewData()
         {
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewSelectCharityDialog",
+                RightIconResName = "CusViewSelectCharityDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewSelectCharityDialog();
+                })
+            });
+            
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewBasketItemReviewDialog",
+                RightIconResName = "CusViewBasketItemReviewDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewBasketItemReviewDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"BasketItemSelectOfferDialog",
+                RightIconResName = "BasketItemSelectOfferDialog",
+                ItemAction = new Action(() =>
+                {
+                    BasketItemSelectOffer();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewConfirmSurveyDialog",
+                RightIconResName = "CusViewConfirmSurveyDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewConfirmSurveyDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewConfirmServiceDialog",
+                RightIconResName = "CusViewConfirmServiceDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewConfirmServiceDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewStandardSetupDialog",
+                RightIconResName = "CusViewStandardSetupDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewStandardSetupDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewEntryCVVDialog",
+                RightIconResName = "CusViewEntryCVVDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewEntryCVVDialog();
+                })
+            });
+
+            #region MessageDialog
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ShowCusViewMessageDialog CASE1",
+                RightIconResName = "ShowCusViewMessageDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewMessageDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ShowCusViewMessageDialog CASE2",
+                RightIconResName = "ShowCusViewMessageDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewMessageDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ShowCusViewMessageDialog CASE3",
+                RightIconResName = "ShowCusViewMessageDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewMessageDialog(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ShowCusViewMessageDialog CASE4",
+                RightIconResName = "ShowCusViewMessageDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewMessageDialog(CaseDialog.CASE4);
+                })
+            });
+
+            #endregion
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewAdjustDonationDialog",
+                RightIconResName = "CusViewAdjustDonationDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewAdjustDonationDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewSelectTipDialog",
+                RightIconResName = "CusViewSelectTipDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewSelectTipDialog();
+                })
+            });
+
+            #region ApprovalDialog
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ApprovalDialog CASE1",
+                RightIconResName = "ApprovalDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewApprovalDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ApprovalDialog CASE2",
+                RightIconResName = "ApprovalDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewApprovalDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ApprovalDialog CASE3",
+                RightIconResName = "ApprovalDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewApprovalDialog(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ApprovalDialog CASE4",
+                RightIconResName = "ApprovalDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewApprovalDialog(CaseDialog.CASE4);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ApprovalDialog CASE5",
+                RightIconResName = "ApprovalDialog_CASE5",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewApprovalDialog(CaseDialog.CASE5);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ApprovalDialog CASE6",
+                RightIconResName = "ApprovalDialog_CASE6",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewApprovalDialog(CaseDialog.CASE6);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ApprovalDialog CASE7",
+                RightIconResName = "ApprovalDialog_CASE7",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewApprovalDialog(CaseDialog.CASE7);
+                })
+            });
+            #endregion
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CusViewEntryCVVDialog",
+                RightIconResName = "CusViewEntryCVVDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewEntryCVVDialog();
+                })
+            });
+
+            #region EnterPinDialog
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterPinDialog CASE1",
+                RightIconResName = "EnterPinDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewEnterPinDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterPinDialog CASE2",
+                RightIconResName = "EnterPinDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewEnterPinDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterPinDialog CASE3",
+                RightIconResName = "EnterPinDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewEnterPinDialog(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterPinDialog CASE4",
+                RightIconResName = "EnterPinDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusViewEnterPinDialog(CaseDialog.CASE4);
+                })
+            });
+
+            #endregion
+
             #region CusViewRequestCardDialog
 
             _lData.Add(new ScreenViewModel()

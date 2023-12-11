@@ -856,5 +856,74 @@ namespace CloudBanking.UITestApp
             {
             }, true, false, dlgData, amount);
         }
+
+        void ShowCusViewReceiptOptionDialog()
+        {
+            var data = new ReceiptOptionsDlgData();
+
+            data.QRReceiptResult = "ReceiptOptionsDialog";
+            data.fShowQrCode = true;
+
+            data.FunctionButtons = new List<SelectButton>();
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
+                idImage = IconIds.VECTOR_EMAIL_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_TEXT_RECEIPT,
+                idImage = IconIds.VECTOR_TEXT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_PRINT_CUSTOMER,
+                idImage = IconIds.VECTOR_PRINT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            var dialog4 = new CusViewReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
+        }
+
+        void ShowCusViewListPaymentRecordDialog()
+        {
+            //Hardcode for UI testing 
+            var item1 = new TransactionInfoModel();
+            item1.Amount = 10000;
+            item1.AuthNumber = "87654";
+            item1.CardType = "Visa Debit";
+            item1.CardInfo = "****7654";
+            var date = new XDateTime();
+            date.Year = 2023;
+            date.Month = 6;
+            date.Day = 30;
+            date.Hours = 11;
+            date.Minutes = 30;
+            item1.CreatedDate = date;
+            item1.CustomerName = "David";
+            item1.ReferenceTypeStringIds = "Table 10";
+            var item2 = new TransactionInfoModel();
+            var item3 = new TransactionInfoModel();
+            item2 = item1;
+            item3 = item1;
+            item1.IsSelected = true;
+            item2.IsSelected = false;
+            item3.IsSelected = false;
+            var data = new ListPaymentRecordsDlgData();
+            data.Items.Add(item1);
+            data.Items.Add(item2);
+            data.Items.Add(item3);
+            DialogBuilder.Show(IPayDialog.CUS_VIEW_LIST_ITEM_RECORDS_DIALOG, StringIds.STRING_REFUND_PURCHASE, null, true, false, data);
+        }
     }
 }

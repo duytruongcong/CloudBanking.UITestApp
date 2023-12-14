@@ -56,7 +56,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
             RequestDlgData.fAliPay = false;
             RequestDlgData.fWePay = false;
-            RequestDlgData.IsEmulator = false;
+            RequestDlgData.IsEmulator = true;
             RequestDlgData.fShowMenu = false;
             RequestDlgData.fMultiTender = false;
 
@@ -68,6 +68,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fUnionPay = true;
             RequestDlgData.fTroy = true;
             RequestDlgData.fDiscover = true;
+            RequestDlgData.fOtherPay = false;
 
             switch (caseDialog)
             {
@@ -220,7 +221,7 @@ namespace CloudBanking.UITestApp
             }
 
             //fix tmp, handle later
-            var requestCardDialog = new RequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            var requestCardDialog = new CusViewRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             {
             }, RequestDlgData);
 

@@ -126,15 +126,17 @@ namespace CloudBanking.UITestApp
 
         private void InitializeCusViewData()
         {
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CusViewListPaymentDialog",
-                RightIconResName = "CusViewListPaymentDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowCusViewListPaymentRecordDialog();
-                })
-            });
+
+            //handle later
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CusViewListPaymentDialog",
+            //    RightIconResName = "CusViewListPaymentDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCusViewListPaymentRecordDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {

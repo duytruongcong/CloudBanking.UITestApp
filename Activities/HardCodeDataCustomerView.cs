@@ -220,7 +220,6 @@ namespace CloudBanking.UITestApp
                 RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
             }
 
-            //fix tmp, handle later
             var requestCardDialog = new CusViewRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             {
             }, RequestDlgData);
@@ -626,11 +625,10 @@ namespace CloudBanking.UITestApp
                 RatingScore = 3
 
             });
-
-            DialogBuilder.Show(IPayDialog.CUS_VIEW_CONFIRM_SERVICE_DIALOG, StringIds.STRING_CUSTOMER_RATING, (iResult, args) =>
-            {
-
-            }, true, false, data, true);
+          
+            var dialog4 = new CusViewConfirmServiceDialog(StringIds.STRING_CUSTOMER_RATING, null, data, true);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
         }
 
         void ShowCusViewConfirmSurveyDialog()
@@ -642,9 +640,9 @@ namespace CloudBanking.UITestApp
             var item5 = new SurveyItem() { Title = "Rated to Competitors", Icon = "vector_rated_to_competitors", StarMaxRating = 5 };
             var data = new List<SurveyItem>() { item1, item2, item3, item4, item5 };
 
-            DialogBuilder.Show(IPayDialog.CUS_VIEW_CONFIRM_SURVEY_DIALOG, StringIds.STRING_CUSTOMER_SURVEY, (iResult, args) =>
-            {
-            }, true, false, data);
+            var dialog4 = new CusViewConfirmSurveyDialog(StringIds.STRING_CUSTOMER_SURVEY, null, data);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
         }
 
         void ShowCusViewBasketItemReviewDialog()
@@ -708,10 +706,9 @@ namespace CloudBanking.UITestApp
                 }
             };
 
-            DialogBuilder.Show(IPayDialog.CUS_VIEW_BASKET_ITEM_REVIEW_DIALOG, string.Empty, (result, args) =>
-            {
-
-            }, true, false, baskets, false);
+            var dialog4 = new CusViewBasketItemReviewDialog(string.Empty, null, baskets, false);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
         }
 
         void ShowCusViewSelectCharityDialog()
@@ -853,9 +850,9 @@ namespace CloudBanking.UITestApp
 
             long amount = 13800;
 
-            DialogBuilder.Show(IPayDialog.CUS_VIEW_DONATION_SELECT_FIRST_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
-            {
-            }, true, false, dlgData, amount);
+            var dialog4 = new CusViewSelectCharitiyDialog(StringIds.STRING_DONATION, null, dlgData, amount);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
         }
 
         void ShowCusViewReceiptOptionDialog()
@@ -924,7 +921,7 @@ namespace CloudBanking.UITestApp
             data.Items.Add(item1);
             data.Items.Add(item2);
             data.Items.Add(item3);
-            DialogBuilder.Show(IPayDialog.CUS_VIEW_LIST_ITEM_RECORDS_DIALOG, StringIds.STRING_REFUND_PURCHASE, null, true, false, data);
+            //DialogBuilder.Show(IPayDialog.CUS_VIEW_LIST_ITEM_RECORDS_DIALOG, StringIds.STRING_REFUND_PURCHASE, null, true, false, data);
         }
     }
 }

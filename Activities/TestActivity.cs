@@ -97,7 +97,7 @@ namespace CloudBanking.UITestApp
 
             _lData = new List<ScreenViewModel>();
 
-            InitializeCusViewData();
+            InitializeCommonData();
 
             _adapter = new TestItemAdapter(this, _lData);
             list_view.Adapter = _adapter;
@@ -496,8 +496,28 @@ namespace CloudBanking.UITestApp
 
         private void InitializeCommonData()
         {
-
+#if true
             #region AddNew
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog1",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("", true);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog2",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true);
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -859,7 +879,7 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
-
+#endif
             #region RequestCardDialog
             _lData.Add(new ScreenViewModel()
             {

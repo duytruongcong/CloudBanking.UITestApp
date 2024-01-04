@@ -43,7 +43,7 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fShowCardFees = true;
+            //RequestDlgData.fShowCardFees = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -220,12 +220,12 @@ namespace CloudBanking.UITestApp
                 RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
             }
 
-            var requestCardDialog = new CusViewRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
-            {
-            }, RequestDlgData);
+            //var requestCardDialog = new CusViewRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            //{
+            //}, RequestDlgData);
 
-            requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            requestCardDialog.Show(this);
+            //requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //requestCardDialog.Show(this);
         }
 
         private void ShowCusViewEnterPinDialog(CaseDialog caseDialog)
@@ -269,18 +269,18 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            var enterPinDialog = new CusViewEnterPinDialog(null, data);
-            enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            enterPinDialog.Show(this);
+            //var enterPinDialog = new CusViewEnterPinDialog(null, data);
+            //enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //enterPinDialog.Show(this);
         }
 
         private void ShowCusViewEntryCVVDialog()
         {
             var entrySecurityData = new EntryCVVDlgData();
 
-            var entryCVVDialog = new ShellUI.CusViewEntryCVVDialog(StringIds.STRING_CSC_CODE, null, entrySecurityData);
-            entryCVVDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            entryCVVDialog.Show(this);
+            //var entryCVVDialog = new ShellUI.CusViewEntryCVVDialog(StringIds.STRING_CSC_CODE, null, entrySecurityData);
+            //entryCVVDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //entryCVVDialog.Show(this);
         }
 
         private void ShowCusViewApprovalDialog(CaseDialog caseDialog)
@@ -431,14 +431,14 @@ namespace CloudBanking.UITestApp
 
             DlgData.TransactionTypeStringId = GetStringId(DlgData.FunctionType);
 
-            var approvalDialog = new ShellUI.CusViewApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
-            _baseDialog = approvalDialog;
-            approvalDialog.OnResult += (iResult, args) =>
-            {
-                approvalDialog.Dismiss();
-            };
-            approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            approvalDialog.Show(this);
+            //var approvalDialog = new ShellUI.CusViewApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
+            //_baseDialog = approvalDialog;
+            //approvalDialog.OnResult += (iResult, args) =>
+            //{
+            //    approvalDialog.Dismiss();
+            //};
+            //approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //approvalDialog.Show(this);
         }
 
         void ShowCusViewSelectTipDialog()
@@ -449,9 +449,9 @@ namespace CloudBanking.UITestApp
             var keyValue = new KeyValuePair<double, long>(x, y);
             var data = new List<KeyValuePair<double, long>>() { keyValue, keyValue, keyValue, keyValue };
 
-            var dialog = new CusViewSelectTipDialog(StringIds.STRING_STARTAPP, null, data, true, amount);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
+            //var dialog = new CusViewSelectTipDialog(StringIds.STRING_STARTAPP, null, data, true, amount);
+            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog.Show(this);
         }
 
         void ShowCusViewAdjustDonationDialog()
@@ -463,9 +463,9 @@ namespace CloudBanking.UITestApp
             string noBtnTitleId = "STRING_NO_DONATION";
             int noBtnCommand = 5016;
 
-            var dialog = new CusViewAdjustDonationDialog(StringIds.STRING_DONATION, null, amount, donation, iconId, noBtnTitleId, noBtnCommand);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
+            //var dialog = new CusViewAdjustDonationDialog(StringIds.STRING_DONATION, null, amount, donation, iconId, noBtnTitleId, noBtnCommand);
+            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog.Show(this);
         }
 
         private void ShowCusViewMessageDialog(CaseDialog caseDialog)
@@ -548,9 +548,9 @@ namespace CloudBanking.UITestApp
 
             data.Evt = Evt;
 
-            var messageDialog = new CusViewMessageDialog(IdDlgTitleText, null, data);
-            messageDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            messageDialog.Show(this);
+            //var messageDialog = new CusViewMessageDialog(IdDlgTitleText, null, data);
+            //messageDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //messageDialog.Show(this);
         }
 
         private void ShowCusViewStandardSetupDialog()
@@ -585,9 +585,9 @@ namespace CloudBanking.UITestApp
                     }
             };
 
-            var standardSetupDialog = new ShellUI.CusViewStandardSetupDialog(StringIds.STRING_NO_CVV, null, noCVVStatusDlgData);
-            standardSetupDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            standardSetupDialog.Show(this);
+            //var standardSetupDialog = new ShellUI.CusViewStandardSetupDialog(StringIds.STRING_NO_CVV, null, noCVVStatusDlgData);
+            //standardSetupDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //standardSetupDialog.Show(this);
         }
 
         void ShowCusViewConfirmServiceDialog()
@@ -626,9 +626,9 @@ namespace CloudBanking.UITestApp
 
             });
           
-            var dialog4 = new CusViewConfirmServiceDialog(StringIds.STRING_CUSTOMER_RATING, null, data, true);
-            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog4.Show(this);
+            //var dialog4 = new CusViewConfirmServiceDialog(StringIds.STRING_CUSTOMER_RATING, null, data, true);
+            //dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog4.Show(this);
         }
 
         void ShowCusViewConfirmSurveyDialog()
@@ -640,9 +640,9 @@ namespace CloudBanking.UITestApp
             var item5 = new SurveyItem() { Title = "Rated to Competitors", Icon = "vector_rated_to_competitors", StarMaxRating = 5 };
             var data = new List<SurveyItem>() { item1, item2, item3, item4, item5 };
 
-            var dialog4 = new CusViewConfirmSurveyDialog(StringIds.STRING_CUSTOMER_SURVEY, null, data);
-            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog4.Show(this);
+            //var dialog4 = new CusViewConfirmSurveyDialog(StringIds.STRING_CUSTOMER_SURVEY, null, data);
+            //dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog4.Show(this);
         }
 
         void ShowCusViewBasketItemReviewDialog()
@@ -706,9 +706,9 @@ namespace CloudBanking.UITestApp
                 }
             };
 
-            var dialog4 = new CusViewBasketItemReviewDialog(string.Empty, null, baskets, false);
-            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog4.Show(this);
+            //var dialog4 = new CusViewBasketItemReviewDialog(string.Empty, null, baskets, false);
+            //dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog4.Show(this);
         }
 
         void ShowCusViewSelectCharityDialog()
@@ -850,9 +850,9 @@ namespace CloudBanking.UITestApp
 
             long amount = 13800;
 
-            var dialog4 = new CusViewSelectCharitiyDialog(StringIds.STRING_DONATION, null, dlgData, amount);
-            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog4.Show(this);
+            //var dialog4 = new CusViewSelectCharitiyDialog(StringIds.STRING_DONATION, null, dlgData, amount);
+            //dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog4.Show(this);
         }
 
         void ShowCusViewReceiptOptionDialog()
@@ -888,9 +888,9 @@ namespace CloudBanking.UITestApp
                 IsVectorDrawble = true
             });
 
-            var dialog4 = new CusViewReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
-            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog4.Show(this);
+            //var dialog4 = new CusViewReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
+            //dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog4.Show(this);
         }
 
         void ShowCusViewListPaymentRecordDialog()

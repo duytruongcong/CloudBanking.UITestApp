@@ -30,11 +30,13 @@ namespace CloudBanking.UITestApp
         void RegisterServices()
         {
             ServiceLocator.Instance.Register<IUtilityService, CloudBanking.SinglePaymentApp.PaymentAppUtilityService>(this);
+            ServiceLocator.Instance.Register<IUtilityService, CloudBanking.SinglePaymentApp.PaymentAppUtilityService>(this, CrossDeviceInfo.Current.IsLargeScreen());
             ServiceLocator.Instance.Register<IFileService, DroidFileService>(this, ServiceLocator.Instance.Get<IUtilityService>(), GlobalConstants.FOLDER_SINGLEAPP);
             ServiceLocator.Instance.Register<ILoggerService, DroidLoggerService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>());
             ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>());
             //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
             ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(), !CrossDeviceInfo.Current.IsTerminalNotFullScreen());
+
         }
     }
 }

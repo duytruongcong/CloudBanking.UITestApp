@@ -273,7 +273,8 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fShowCardFees = true;
+            RequestDlgData.fOtherPay = false;
+            //RequestDlgData.fShowCardFees = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -284,8 +285,8 @@ namespace CloudBanking.UITestApp
                                     + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
 
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
-            RequestDlgData.fAliPay = false;
-            RequestDlgData.fWePay = false;
+            RequestDlgData.fAliPay = true;
+            RequestDlgData.fWePay = true;
             RequestDlgData.IsEmulator = false;
             RequestDlgData.fShowMenu = false;
             RequestDlgData.fMultiTender = false;
@@ -307,7 +308,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -339,7 +340,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
 
                     break;
 
@@ -360,7 +361,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = false;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
 
                     break;
 
@@ -380,7 +381,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_CARD_STATUS_CHECK_UPCASE;
 
                     break;
@@ -482,7 +483,7 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fShowCardFees = false;
+            //RequestDlgData.fShowCardFees = false;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -2124,6 +2125,55 @@ namespace CloudBanking.UITestApp
             var dialog4 = new ReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
             dialog4.DialogStyle = DialogStyle.FULLSCREEN;
             dialog4.Show(this);
+        }
+
+        void ShowRequestAliPayWechat(string szQRCode, bool fAliPay = true, bool blockUI = false)
+        {
+            QrCodeAlipayWeChatDlgData dlgData = new QrCodeAlipayWeChatDlgData();
+
+            FunctionType iFunctionButton;
+
+            iFunctionButton = FunctionType.Purchase;
+
+            var titleId = string.Empty;
+
+            dlgData.lAmount = 13800;
+
+            dlgData.fAliPay = fAliPay;
+
+            dlgData.szQRCode = szQRCode;
+
+            if (string.IsNullOrEmpty(szQRCode))
+            {
+                dlgData.status = ResultStatus.Running;
+            }
+            else
+            {
+                dlgData.status = ResultStatus.None;
+            }
+            switch (iFunctionButton)
+            {
+                case FunctionType.Refund: titleId = StringIds.STRING_FUNCTIONTYPES_REFUND; break;
+                case FunctionType.Purchase: titleId = StringIds.STRING_PURCHASE; break;
+                case FunctionType.PurchaseCash: titleId = StringIds.STRING_PURCHASE_AND_CASH; break;
+                case FunctionType.Deposit: titleId = StringIds.STRING_DEPOSIT; break;
+                case FunctionType.CardAuthentication: titleId = StringIds.STRING_CARD_AUTH; break;
+                case FunctionType.TestComm: titleId = StringIds.STRING_TESTCOMM; break;
+                case FunctionType.CardStatusCheck: titleId = StringIds.STRING_CARD_CHECK_OPTIONS; break;
+                case FunctionType.PreAuth: titleId = StringIds.STRING_PRE_AUTH; break;
+                case FunctionType.CashOut: titleId = StringIds.STRING_CASHOUT; break;
+                case FunctionType.Void: titleId = StringIds.STRING_VOID; break;
+                case FunctionType.Adjust: titleId = StringIds.STRING_ADJUST; break;
+                case FunctionType.IncrementalAdjust: titleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+            }
+            dlgData.szTotalTitle = titleId;
+
+            dlgData.CurrencySymbol = "$";
+
+            DialogBuilder.Show(IPayDialog.REQUEST_ALIPAY_WECHAT_DIALOG, StringIds.STRING_QR_PAYMENTS, (iResult, args) =>
+            {
+
+            }, blockUI, false, dlgData);
         }
     }
 }

@@ -274,7 +274,6 @@ namespace CloudBanking.UITestApp
 
             RequestDlgData.fNoPresentCard = false;
             RequestDlgData.fOtherPay = false;
-            //RequestDlgData.fShowCardFees = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -285,9 +284,9 @@ namespace CloudBanking.UITestApp
                                     + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
 
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
-            RequestDlgData.fAliPay = true;
-            RequestDlgData.fWePay = true;
-            RequestDlgData.IsEmulator = false;
+            RequestDlgData.fAliPay = false;
+            RequestDlgData.fWePay = false;
+            RequestDlgData.IsEmulator = true;
             RequestDlgData.fShowMenu = false;
             RequestDlgData.fMultiTender = false;
 
@@ -299,6 +298,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fUnionPay = true;
             RequestDlgData.fTroy = true;
             RequestDlgData.fDiscover = true;
+            RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
 
             switch (caseDialog)
             {
@@ -318,7 +318,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
-                    RequestDlgData.fRfid = false;
+                    RequestDlgData.fRfid = true;
                     RequestDlgData.fManualPay = false;
 
                     break;
@@ -2127,7 +2127,7 @@ namespace CloudBanking.UITestApp
             dialog4.Show(this);
         }
 
-        void ShowRequestAliPayWechat(string szQRCode, bool fAliPay = true, bool blockUI = false)
+        void ShowRequestAliPayWechat(string szQRCode, bool fAliPay = true, bool blockUI = false, ResultStatus status = ResultStatus.None)
         {
             QrCodeAlipayWeChatDlgData dlgData = new QrCodeAlipayWeChatDlgData();
 
@@ -2143,14 +2143,17 @@ namespace CloudBanking.UITestApp
 
             dlgData.szQRCode = szQRCode;
 
-            if (string.IsNullOrEmpty(szQRCode))
-            {
-                dlgData.status = ResultStatus.Running;
-            }
-            else
-            {
-                dlgData.status = ResultStatus.None;
-            }
+            dlgData.status = status;
+
+            //if (string.IsNullOrEmpty(szQRCode))
+            //{
+            //    dlgData.status = ResultStatus.Declined;
+            //}
+            //else
+            //{
+            //    dlgData.status = ResultStatus.None;
+            //}
+
             switch (iFunctionButton)
             {
                 case FunctionType.Refund: titleId = StringIds.STRING_FUNCTIONTYPES_REFUND; break;
@@ -2174,6 +2177,9 @@ namespace CloudBanking.UITestApp
             {
 
             }, blockUI, false, dlgData);
+
+            //hardcode in dialog to show all case
+            //_data_PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(nameof(_data.status)));
         }
     }
 }

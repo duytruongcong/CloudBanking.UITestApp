@@ -501,21 +501,41 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"RequestAliPayWechatDialog1",
+                Title = $"RequestAliPayWechatDialog1_None",
                 RightIconResName = "RequestAliPayWechatDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowRequestAliPayWechat("", true);
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.None);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"RequestAliPayWechatDialog2",
+                Title = $"RequestAliPayWechatDialog2_Declined",
                 RightIconResName = "RequestAliPayWechatDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowRequestAliPayWechat("abcdef1234567889", true);
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Declined);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog3_Running",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Running);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog4_Approval",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Approval);
                 })
             });
 

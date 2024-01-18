@@ -157,7 +157,7 @@ namespace CloudBanking.UITestApp
                     ShowCusViewSelectCharityDialog();
                 })
             });
-            
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"CusViewBasketItemReviewDialog",
@@ -283,6 +283,7 @@ namespace CloudBanking.UITestApp
             });
 
             #region ApprovalDialog
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"ApprovalDialog CASE1",
@@ -496,68 +497,72 @@ namespace CloudBanking.UITestApp
 
         private void InitializeCommonData()
         {
-#if true
             #region AddNew
+#if true
+
+
+#endif
+
+            #endregion
+
+#if false
+            #region Customer Display
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"RequestAliPayWechatDialog1_None",
-                RightIconResName = "RequestAliPayWechatDialog",
+                Title = $"CustomerDisplayGetCashOutDialog",
+                RightIconResName = "CustomerDisplayGetCashOutDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.None);
+                    ShowCustomerDisplayGetCashOutDialog();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"RequestAliPayWechatDialog2_Declined",
-                RightIconResName = "RequestAliPayWechatDialog",
+                Title = $"AuthenticatingDialog",
+                RightIconResName = "AuthenticatingDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Declined);
+                    ShowAuthenticatingDialog();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"RequestAliPayWechatDialog3_Running",
-                RightIconResName = "RequestAliPayWechatDialog",
+                Title = $"BasketItemReviewDialog",
+                RightIconResName = "BasketItemReviewDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Running);
+                    ShowBasketItemReviewDialog();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"RequestAliPayWechatDialog4_Approval",
-                RightIconResName = "RequestAliPayWechatDialog",
+                Title = $"CustomerAuthenticateOptions",
+                RightIconResName = "CustomerAuthenticateOptions",
                 ItemAction = new Action(() =>
                 {
-                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Approval);
+                    CustomerAuthenticateOptions();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ReceiptOptionsDialog",
-                RightIconResName = "ReceiptOptionsDialog",
+                Title = $"BasketItemSelectOfferDialog",
+                RightIconResName = "BasketItemSelectOfferDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowReceiptOptionDialog();
+                    BasketItemSelectOffer();
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"AdvertisingDialog",
-                RightIconResName = "AdvertisingDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowAdvertisingDialog();
-                })
-            });
+            #endregion
+#endif
+
+#if false
+            #region Main Payment Flow//done for A30
 
             _lData.Add(new ScreenViewModel()
             {
@@ -566,16 +571,6 @@ namespace CloudBanking.UITestApp
                 ItemAction = new Action(() =>
                 {
                     ShowAdjustDonationDialog();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectDonationDialog",
-                RightIconResName = "select_donation",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectDonationDialog();
                 })
             });
 
@@ -591,6 +586,47 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"EnterTipAmount",
+                RightIconResName = null,
+                ItemAction = new Action(() =>
+                {
+                    ShowEnterTipAmountDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DigitalSignatureDialog",
+                RightIconResName = "DigitalSignatureDialog",
+                ItemAction = new Action(() =>
+                {
+                    DigitalSignature();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectTipLayout",
+                RightIconResName = "select_tip",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectTipDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog();
+                })
+            });
+
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"GetAmountCashOutDialog",
                 RightIconResName = "GetAmountCashOutDialog",
                 ItemAction = new Action(() =>
@@ -598,6 +634,18 @@ namespace CloudBanking.UITestApp
                     ShowGetAmountCashOutDialog();
                 })
             });
+
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectDonationDialog",
+                RightIconResName = "select_donation",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectDonationDialog();
+                })
+            });
+
 
             _lData.Add(new ScreenViewModel()
             {
@@ -631,91 +679,53 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"PreAuthCompletePreAuthInfoDialog",
-                RightIconResName = "PreAuthCompletePreAuthInfoDialog",
+                Title = $"MainDialog",
+                RightIconResName = "MainDialog_land",
                 ItemAction = new Action(() =>
                 {
-                    ShowPreAuthCompletePreAuthInfoDialog();
+                    ShowMainDialog();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"CustomerDisplayGetCashOutDialog",
-                RightIconResName = "CustomerDisplayGetCashOutDialog",
+                Title = $"AdvertisingDialog",
+                RightIconResName = "AdvertisingDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowCustomerDisplayGetCashOutDialog();
+                    ShowAdvertisingDialog();
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountDialog",
-                RightIconResName = "GetAmountDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountDialog();
-                })
-            });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"SelectTipLayout",
-                RightIconResName = "select_tip",
+                Title = $"SurchargeConfirmDialog",
+                RightIconResName = "surcharge_confirm",
                 ItemAction = new Action(() =>
                 {
-                    ShowSelectTipDialog();
+                    ShowSurchargeConfirmDialog();
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ListPaymentDialog",
-                RightIconResName = "ListPaymentDialog",
-                ItemAction = new Action(() =>
-                {
-                    ListPaymentRecordDialog();
-                })
-            });
+            ////_lData.Add(new ScreenViewModel()
+            ////{
+            ////    Title = $"SignOrPinDialog",
+            ////    RightIconResName = "SignOrPinDialog",
+            ////    ItemAction = new Action(() =>
+            ////    {
+            ////        SignOrPin();
+            ////    })
+            ////});
+
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"EnterTipAmount",
-                RightIconResName = null,
+                Title = $"ReceiptOptionsDialog",
+                RightIconResName = "ReceiptOptionsDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowEnterTipAmountDialog();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"AuthenticatingDialog",
-                RightIconResName = "AuthenticatingDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowAuthenticatingDialog();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"EmailReceiptSendResultDialogSuccess",
-                RightIconResName = "EmailReceiptSendResultDialogSuccess",
-                ItemAction = new Action(() =>
-                {
-                    ShowEmailReceiptSendResultDialogSuccess();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"EmailReceiptSendResultDialogFail",
-                RightIconResName = "EmailReceiptSendResultDialogFail",
-                ItemAction = new Action(() =>
-                {
-                    ShowEmailReceiptSendResultDialogFail();
+                    ShowReceiptOptionDialog();
                 })
             });
 
@@ -741,61 +751,83 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"BasketItemReviewDialog",
-                RightIconResName = "BasketItemReviewDialog",
+                Title = $"EmailReceiptSendResultDialogSuccess",
+                RightIconResName = "EmailReceiptSendResultDialogSuccess",
                 ItemAction = new Action(() =>
                 {
-                    ShowBasketItemReviewDialog();
+                    ShowEmailReceiptSendResultDialogSuccess();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"CustomerAuthenticateOptions",
-                RightIconResName = "CustomerAuthenticateOptions",
+                Title = $"EmailReceiptSendResultDialogFail",
+                RightIconResName = "EmailReceiptSendResultDialogFail",
                 ItemAction = new Action(() =>
                 {
-                    CustomerAuthenticateOptions();
+                    ShowEmailReceiptSendResultDialogFail();
+                })
+            });
+
+
+            #endregion
+#endif
+
+#if false
+            #region Settlement & Reprint
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"Settlement Options",
+                RightIconResName = "settlement_select_options",
+                ItemAction = new Action(() =>
+                {
+                    ShowSettlementOptions();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"SurchargeConfirmDialog",
-                RightIconResName = "surcharge_confirm",
+                Title = $"Reprint Options",
+                RightIconResName = "reprint_options",
                 ItemAction = new Action(() =>
                 {
-                    ShowSurchargeConfirmDialog();
+                    ShowReprintOptions();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"DigitalSignatureDialog",
-                RightIconResName = "DigitalSignatureDialog",
+                Title = $"ShowSettlementGetDateDialog",
+                RightIconResName = "settlement_get_date_dialog",
                 ItemAction = new Action(() =>
                 {
-                    DigitalSignature();
+                    ShowSettlementGetDateDialog();
+                })
+            });
+            #endregion
+#endif
+
+#if false
+            #region Preauth Flow//done for a30
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ListPaymentDialog",
+                RightIconResName = "ListPaymentDialog",
+                ItemAction = new Action(() =>
+                {
+                    ListPaymentRecordDialog();
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"SignOrPinDialog",
-                RightIconResName = "SignOrPinDialog",
+                Title = $"PreAuthCompletePreAuthInfoDialog",
+                RightIconResName = "PreAuthCompletePreAuthInfoDialog",
                 ItemAction = new Action(() =>
                 {
-                    SignOrPin();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"BasketItemSelectOfferDialog",
-                RightIconResName = "BasketItemSelectOfferDialog",
-                ItemAction = new Action(() =>
-                {
-                    BasketItemSelectOffer();
+                    ShowPreAuthCompletePreAuthInfoDialog();
                 })
             });
 
@@ -821,71 +853,11 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MainDialog",
-                RightIconResName = "MainDialog_land",
-                ItemAction = new Action(() =>
-                {
-                    ShowMainDialog();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectMoto",
-                RightIconResName = "select_moto",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectMoto();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectDate",
-                RightIconResName = "select_date",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectDate();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"Settlement Options",
-                RightIconResName = "settlement_select_options",
-                ItemAction = new Action(() =>
-                {
-                    ShowSettlementOptions();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"Reprint Options",
-                RightIconResName = "reprint_options",
-                ItemAction = new Action(() =>
-                {
-                    ShowReprintOptions();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
                 Title = $"PreAuthEnterAmountDialog",
                 RightIconResName = "preauth_enter_amount_dialog",
                 ItemAction = new Action(() =>
                 {
                     ShowPreAuthEnterAmountDialog();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ShowSettlementGetDateDialog",
-                RightIconResName = "settlement_get_date_dialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowSettlementGetDateDialog();
                 })
             });
 
@@ -898,9 +870,13 @@ namespace CloudBanking.UITestApp
                     ShowSearchOptions();
                 })
             });
+
             #endregion
 #endif
-            #region RequestCardDialog
+
+#if true
+            #region Request Card Flow
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"RequestCardDialog CASE1",
@@ -1001,9 +977,52 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            #endregion
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog1_None",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.None);
+                })
+            });
 
-            #region SelectAccountTypeDialog
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog2_Declined",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Declined);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog3_Running",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Running);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog4_Approval",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Approval);
+                })
+            });
+
+            #endregion
+#endif
+
+#if false
+            #region SelectAccountTypeDialog // done for task a30
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"DynamicOptionDialog CASE1",
@@ -1033,9 +1052,10 @@ namespace CloudBanking.UITestApp
                     ShowDynamicOptionDialog(CaseDialog.CASE3);
                 })
             });
+
             #endregion
 
-            #region MessageDialog
+            #region MessageDialog// done for task a30
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"ShowMessageDialog CASE1",
@@ -1077,7 +1097,8 @@ namespace CloudBanking.UITestApp
             });
             #endregion
 
-            #region PresentCardErrorDlg
+            #region PresentCardErrorDlg// done for task a30
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"PresentCardErrorDlg CASE1",
@@ -1099,7 +1120,7 @@ namespace CloudBanking.UITestApp
             });
             #endregion
 
-            #region EnterPinDialog
+            #region EnterPinDialog// done for task a30
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"EnterPinDialog CASE1",
@@ -1141,7 +1162,7 @@ namespace CloudBanking.UITestApp
             });
             #endregion
 
-            #region ApprovalDialog
+            #region ApprovalDialog// done for task a30
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"ApprovalDialog CASE1",
@@ -1213,7 +1234,7 @@ namespace CloudBanking.UITestApp
             });
             #endregion
 
-            #region SettlementApprovalDialog
+            #region SettlementApprovalDialog// done for task a30
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1236,7 +1257,29 @@ namespace CloudBanking.UITestApp
             });
             #endregion
 
-            #region MOTO FLOW
+            #region MOTO FLOW// done for task a30
+
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectMoto",
+                RightIconResName = "select_moto",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectMoto();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectDate",
+                RightIconResName = "select_date",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectDate();
+                })
+            });
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"EntryCardNumberDialog",
@@ -1278,7 +1321,8 @@ namespace CloudBanking.UITestApp
             });
             #endregion
 
-            #region ProcessMessageDialog
+            #region ProcessMessageDialog // done for task a30
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"ProcessMessageDialog CASE1",
@@ -1343,6 +1387,7 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
+#endif
         }
 
         private void EventButtonClick(int position)

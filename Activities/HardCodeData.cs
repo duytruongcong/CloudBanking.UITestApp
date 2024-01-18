@@ -273,7 +273,7 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fOtherPay = false;
+            RequestDlgData.fOtherPay = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -284,8 +284,8 @@ namespace CloudBanking.UITestApp
                                     + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
 
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
-            RequestDlgData.fAliPay = false;
-            RequestDlgData.fWePay = false;
+            RequestDlgData.fAliPay = true;
+            RequestDlgData.fWePay = true;
             RequestDlgData.IsEmulator = true;
             RequestDlgData.fShowMenu = false;
             RequestDlgData.fMultiTender = false;
@@ -298,7 +298,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fUnionPay = true;
             RequestDlgData.fTroy = true;
             RequestDlgData.fDiscover = true;
-            RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
+            //RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
 
             switch (caseDialog)
             {
@@ -308,7 +308,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -319,7 +319,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
 
                     break;
 
@@ -329,7 +329,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -340,7 +340,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
 
                     break;
 
@@ -350,7 +350,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = false;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_OPEN_PREAUTH_UPCASE;
 
                     break;
@@ -361,7 +361,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = false;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
 
                     break;
 
@@ -371,7 +371,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
 
                     break;
 
@@ -381,7 +381,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_CARD_STATUS_CHECK_UPCASE;
 
                     break;
@@ -926,7 +926,6 @@ namespace CloudBanking.UITestApp
             var pProcessingData = new ProcessingData();
 
             pProcessingData.fAutoClose = true;
-
             string cancelBtnTitleId = "";
 
             switch (caseDialog)
@@ -1745,7 +1744,7 @@ namespace CloudBanking.UITestApp
             var keyValue = new KeyValuePair<double, long>(x, y);
             var data = new List<KeyValuePair<double, long>>() { keyValue, keyValue, keyValue, keyValue };
 
-            var dialog = new SelectTipDialog(StringIds.STRING_STARTAPP, null, data, true, amount);
+            var dialog = new SelectTipDialog(StringIds.STRING_SELECT_TIP_AMOUNT, null, data, true, amount);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
         }
@@ -1781,7 +1780,7 @@ namespace CloudBanking.UITestApp
             initData.iFunctionButton = FunctionType.Purchase;
             data.pInitProcessData = initData;
 
-            var dialog4 = new SurchargeConfirmDialog(StringIds.STRING_STARTAPP, null, data);
+            var dialog4 = new SurchargeConfirmDialog(StringIds.STRING_SURCHARGE_CONFIRMATION, null, data);
             dialog4.DialogStyle = DialogStyle.FULLSCREEN;
             dialog4.Show(this);
         }
@@ -2043,6 +2042,25 @@ namespace CloudBanking.UITestApp
 
             merchants.Add(John);
 
+            Merchant luke = new Merchant();
+
+            luke.lszMerchantName = "Dr Luke";
+            luke.Id = 4;
+            luke.lszLogo = "icon_default_merchant";
+            luke.lszPicture = "icon_default_merchant";
+            luke.lszTerminalIDNumber = "49500096";
+            luke.Setup.fPromptCustomerRef = false;
+            luke.Setup.fRefundMerchantCard = true;
+            luke.Setup.fRefundAccessCode = false;
+            luke.Setup.lszRefundAccessCode = "1111";
+            luke.Setup.fPrintQRClaiming = true;
+            luke.Setup.fAdvertising = false;
+            luke.Setup.fInstoreCashoutFeeEnable = false;
+            luke.Setup.fInstoreCashoutFeePercent = false;
+            luke.Setup.lInstoreCashoutFeeAmount = 0;
+
+            merchants.Add(luke);
+
             DialogBuilder.Show(IPayDialog.SELECT_MERCHANT_DIALOG, StringIds.STRING_MERCHANT, (int iResult, object[] args) =>
             {
 
@@ -2052,7 +2070,7 @@ namespace CloudBanking.UITestApp
         void ShowSelectDonationDialog()
         {
             var data = new CusDisplaySelectDonationDlgData();
-            data.DonationImgName = "don_1_select";
+            data.DonationImgName = "donation_port_demo_02";
             var listValue = new List<long>() { 1, 2, 5, 10, 50 };
             data.DonationValues = listValue;
 
@@ -2079,9 +2097,15 @@ namespace CloudBanking.UITestApp
         {
             IList<string> imagePaths = new List<string>();
 
-            imagePaths.Add("ads_1.png");
-            imagePaths.Add("ads_2.png");
+            //portrait
+            //imagePaths.Add("ads_1.png");
+            //imagePaths.Add("ads_2.png");
 
+            //landspace
+            imagePaths.Add("land_avertising_1.png");
+            imagePaths.Add("ads_1_land.png");
+            imagePaths.Add("ads_3_land.png");
+            
             int ellapseSeconds = 2;
 
             var dialog = new AdvertisingDialog(StringIds.STRING_ANDROID_PAYMENTS, null, imagePaths, ellapseSeconds, GlobalResource.NEXT_BUTTON, true);

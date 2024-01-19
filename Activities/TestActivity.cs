@@ -497,13 +497,6 @@ namespace CloudBanking.UITestApp
 
         private void InitializeCommonData()
         {
-            #region AddNew
-#if true
-
-
-#endif
-
-            #endregion
 
 #if false
             #region Customer Display
@@ -808,7 +801,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
+#if true
             #region Preauth Flow//done for a30
 
             _lData.Add(new ScreenViewModel()
@@ -871,10 +864,20 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+              _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CancelPreAuthConfirmDialog",
+                RightIconResName = "PreAuthCancelDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCancelPreAuthConfirmDialog();
+                })
+            });
+
             #endregion
 #endif
 
-#if true
+#if false
             #region Request Card Flow
 
             _lData.Add(new ScreenViewModel()
@@ -1375,19 +1378,8 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
-
-            #region CancelPreAuthConfirmDialog
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CancelPreAuthConfirmDialog",
-                RightIconResName = "PreAuthCancelDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowCancelPreAuthConfirmDialog();
-                })
-            });
-            #endregion
 #endif
+
         }
 
         private void EventButtonClick(int position)

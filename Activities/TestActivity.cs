@@ -801,7 +801,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true
+#if false
             #region Preauth Flow//done for a30
 
             _lData.Add(new ScreenViewModel()
@@ -877,7 +877,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
+#if true
             #region Request Card Flow
 
             _lData.Add(new ScreenViewModel()
@@ -1017,6 +1017,16 @@ namespace CloudBanking.UITestApp
                 ItemAction = new Action(() =>
                 {
                     ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Approval);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ViewLeftIconRightQuadrupleTextOverlayDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowViewLeftIconRightQuadrupleTextOverlayDialog();
                 })
             });
 

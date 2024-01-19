@@ -8,6 +8,7 @@ using CloudBanking.ShellModels;
 using CloudBanking.ShellUI;
 using CloudBanking.UI;
 using CloudBanking.Utilities;
+using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -272,8 +273,8 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fOtherPay = true;
+            RequestDlgData.fNoPresentCard = true;
+            RequestDlgData.fOtherPay = false;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -308,7 +309,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -2204,6 +2205,307 @@ namespace CloudBanking.UITestApp
 
             //hardcode in dialog to show all case
             //_data_PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(nameof(_data.status)));
+        }
+
+        void ShowViewLeftIconRightQuadrupleTextOverlayDialog()
+        {
+
+            List<ViewFourthLineModel> dlgCardFeeData = new List<ViewFourthLineModel>();
+
+            Action<ViewFourthLineModel> addCardFee = model => { if (model != null) dlgCardFeeData.Add(model); };
+
+            addCardFee(SetDataCardFees(MerchantCardType.Visa));
+            addCardFee(SetDataCardFees(MerchantCardType.MasterCard));
+            addCardFee(SetDataCardFees(MerchantCardType.UnionPay));
+            addCardFee(SetDataCardFees(MerchantCardType.Amex));
+            addCardFee(SetDataCardFees(MerchantCardType.JCB));
+            addCardFee(SetDataCardFees(MerchantCardType.Discover));
+            addCardFee(SetDataCardFees(MerchantCardType.Diners));
+            addCardFee(SetDataCardFees(MerchantCardType.Troy));
+
+            var dialogCardFees = new ViewLeftIconRightQuadrupleTextOverlayDialog(StringIds.STRING_SURCHARGE_AND_SERVICE_FEES_UPCASE, dlgCardFeeData);
+
+            dialogCardFees.OnLoadedEvt += delegate
+            {
+            };
+
+            dialogCardFees?.Show(CrossCurrentActivity.Current.Activity);
+        }
+
+        private ViewFourthLineModel SetDataCardFees(MerchantCardType merchantCardType)
+        {
+            ViewFourthLineModel data = null;
+
+            MerchantCreditCardsAccepted creditCardAccepted = new MerchantCreditCardsAccepted();
+
+            MerchantDebitCardsAccepted debitCardAccepted = new MerchantDebitCardsAccepted();
+
+            long lSurcharge = 0;
+
+            long lCreditAccountSurcharge = 0;
+
+            long lSavingsAccountSurcharge = 0;
+
+            long lChequeAccountSurcharge = 0;
+
+            string cardName = string.Empty;
+
+            switch (merchantCardType)
+            {
+                case MerchantCardType.Debit:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_DEBIT);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.ic_debit_logo_large
+                    };
+
+                    break;
+
+                case MerchantCardType.Visa:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.vector_visa
+                    };
+
+                    break;
+
+                case MerchantCardType.MasterCard:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_MASTERCARD);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.vector_master_card
+                    };
+
+                    break;
+
+                case MerchantCardType.Amex:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_AMEX);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.vector_american_express
+                    };
+
+                    break;
+
+                case MerchantCardType.Diners:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_DINERS);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.vector_diners
+                    };
+
+                    break;
+
+                case MerchantCardType.JCB:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_JCB);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.vector_jcb
+                    };
+
+                    break;
+
+                case MerchantCardType.Discover:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_DISCOVER);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.vector_discover_network
+                    };
+
+                    break;
+
+                case MerchantCardType.UnionPay:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_UNIONPAY);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.vector_union_pay
+                    };
+
+                    break;
+
+                case MerchantCardType.Interact:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_INTERACT);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.ic_interac_logo_large
+                    };
+
+                    break;
+
+                case MerchantCardType.Maestro:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_MAESTRO);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.ic_maestro_logo_large
+                    };
+
+                    break;
+
+                case MerchantCardType.Troy:
+
+                    cardName = Localize.GetString(StringIds.STRING_CARDTYPE_TROY);
+
+                    data = new ViewFourthLineModel()
+                    {
+                        LeftIconImgResId = Resource.Drawable.ic_troy_logo_large
+                    };
+
+                    break;
+            }
+
+            double dPercent = 0;
+            bool fAdd = false;
+
+            if (data != null && (creditCardAccepted != null || debitCardAccepted != null))
+            {
+                data.IsLeftIconVector = true;
+
+                if (creditCardAccepted != null)
+                {
+                    lSurcharge = 10000;
+
+                    if (lSurcharge != 0)
+                    {
+                        fAdd = true;
+
+                        data.FirstLine_Title = cardName + " " + Localize.GetString(StringIds.STRING_SURCHARGE);
+
+                        if (dPercent > 0)
+                            data.FirstLine_Title += $" {(dPercent / 100).ToString("F2")}%";
+
+                        data.FirstLine_Value = lSurcharge.ToFormatLocalCurrencyAmount();
+                    }
+
+                    lChequeAccountSurcharge = 1000;
+
+                    if (lChequeAccountSurcharge != 0)
+                    {
+                        fAdd = true;
+
+                        data.SecondLine_Title = cardName + " " + Localize.GetString(StringIds.STRING_CHEQUE);
+
+                        if (dPercent > 0)
+                            data.SecondLine_Title += $" {(dPercent / 100).ToString("F2")}%";
+
+                        data.SecondLine_Value = lChequeAccountSurcharge.ToFormatLocalCurrencyAmount();
+                    }
+
+                    lSavingsAccountSurcharge = 1000;
+
+                    if (lSavingsAccountSurcharge != 0)
+                    {
+                        fAdd = true;
+
+                        data.ThirdLine_Title = cardName + " " + Localize.GetString(StringIds.STRING_SAVINGS);
+
+                        if (dPercent > 0)
+                            data.ThirdLine_Title += $" {(dPercent / 100).ToString("F2")}%";
+
+                        data.ThirdLine_Value = lSavingsAccountSurcharge.ToFormatLocalCurrencyAmount();
+                    }
+
+                    lCreditAccountSurcharge = 2000;
+
+                    if (lCreditAccountSurcharge != 0)
+                    {
+                        fAdd = true;
+
+                        data.FourthLine_Title = cardName + " " + Localize.GetString(StringIds.STRING_CREDIT);
+
+                        if (dPercent > 0)
+                            data.FourthLine_Title += $" {(dPercent / 100).ToString("F2")}%";
+
+                        data.FourthLine_Value = lCreditAccountSurcharge.ToFormatLocalCurrencyAmount();
+                    }
+
+                    if (!fAdd)
+                        return null;
+                }
+                else if (debitCardAccepted != null)
+                {
+                    lSurcharge = 1000;
+
+                    if (lSurcharge != 0)
+                    {
+                        fAdd = true;
+
+                        data.FirstLine_Title = cardName + " " + Localize.GetString(StringIds.STRING_SURCHARGE);
+
+                        if (dPercent > 0)
+                            data.FirstLine_Title += $" {(dPercent / 100).ToString("F2")}%";
+
+                        data.FirstLine_Value = lSurcharge.ToFormatLocalCurrencyAmount();
+                    }
+
+                    lChequeAccountSurcharge = 2000;
+
+                    if (lChequeAccountSurcharge != 0)
+                    {
+                        fAdd = true;
+
+                        data.SecondLine_Title = cardName + " " + Localize.GetString(StringIds.STRING_CHEQUE);
+
+                        if (dPercent > 0)
+                            data.SecondLine_Title += $" {(dPercent / 100).ToString("F2")}%";
+
+                        data.SecondLine_Value = lChequeAccountSurcharge.ToFormatLocalCurrencyAmount();
+                    }
+
+                    lSavingsAccountSurcharge = 3000;
+
+                    if (lSavingsAccountSurcharge != 0)
+                    {
+                        fAdd = true;
+
+                        data.ThirdLine_Title = cardName + " " + Localize.GetString(StringIds.STRING_SAVINGS);
+
+                        if (dPercent > 0)
+                            data.ThirdLine_Title += $" {(dPercent / 100).ToString("F2")}%";
+
+                        data.ThirdLine_Value = lSavingsAccountSurcharge.ToFormatLocalCurrencyAmount();
+                    }
+
+                    lCreditAccountSurcharge = 4000;
+
+                    if (lCreditAccountSurcharge != 0)
+                    {
+                        fAdd = true;
+
+                        data.FourthLine_Title = cardName + " " + Localize.GetString(StringIds.STRING_CREDIT);
+
+                        if (dPercent > 0)
+                            data.FourthLine_Title += $" {(dPercent / 100).ToString("F2")}%";
+
+                        data.FourthLine_Value = lCreditAccountSurcharge.ToFormatLocalCurrencyAmount();
+                    }
+                }
+            }
+
+            if (fAdd)
+                return data;
+            else
+                return null;
         }
     }
 }

@@ -864,7 +864,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-              _lData.Add(new ScreenViewModel()
+            _lData.Add(new ScreenViewModel()
             {
                 Title = $"CancelPreAuthConfirmDialog",
                 RightIconResName = "PreAuthCancelDialog",

@@ -38,7 +38,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
+    <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>

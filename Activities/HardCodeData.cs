@@ -285,8 +285,8 @@ namespace CloudBanking.UITestApp
                                     + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
 
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
-            RequestDlgData.fAliPay = true;
-            RequestDlgData.fWePay = true;
+            RequestDlgData.fAliPay = false;
+            RequestDlgData.fWePay = false;
             RequestDlgData.IsEmulator = true;
             RequestDlgData.fShowMenu = false;
             RequestDlgData.fMultiTender = false;
@@ -299,7 +299,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fUnionPay = true;
             RequestDlgData.fTroy = true;
             RequestDlgData.fDiscover = true;
-            //RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
+            RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
 
             switch (caseDialog)
             {
@@ -1767,6 +1767,7 @@ namespace CloudBanking.UITestApp
             data.szCardNumber = "**** **** **** 7654";
             data.szCardHolderName = "David Smith";
             data.fRemoveSurchargeFee = false;
+            data.wszCurrencyCode = "NZD Currency";
 
             var initData = new ShellInitProcessData();
             initData.lAmount = 13018;
@@ -2258,7 +2259,7 @@ namespace CloudBanking.UITestApp
 
                     data = new ViewFourthLineModel()
                     {
-                        LeftIconImgResId = Resource.Drawable.ic_debit_logo_large
+                        LeftIconImgResId = Resource.Drawable.vector_debit_logo
                     };
 
                     break;
@@ -2346,7 +2347,7 @@ namespace CloudBanking.UITestApp
 
                     data = new ViewFourthLineModel()
                     {
-                        LeftIconImgResId = Resource.Drawable.ic_interac_logo_large
+                        LeftIconImgResId = Resource.Drawable.vector_interac_logo
                     };
 
                     break;
@@ -2357,7 +2358,7 @@ namespace CloudBanking.UITestApp
 
                     data = new ViewFourthLineModel()
                     {
-                        LeftIconImgResId = Resource.Drawable.ic_maestro_logo_large
+                        LeftIconImgResId = Resource.Drawable.vector_maestro_logo
                     };
 
                     break;
@@ -2368,7 +2369,7 @@ namespace CloudBanking.UITestApp
 
                     data = new ViewFourthLineModel()
                     {
-                        LeftIconImgResId = Resource.Drawable.ic_troy_logo_large
+                        LeftIconImgResId = Resource.Drawable.vector_troy_logo
                     };
 
                     break;
@@ -2506,6 +2507,23 @@ namespace CloudBanking.UITestApp
                 return data;
             else
                 return null;
+        }
+
+
+        void ShowReceiptEmailAddressDialog()
+        {
+            DialogBuilder.Show(IPayDialog.RECEIPT_EMAIL_ADDRESS_DIALOG, StringIds.STRING_EMAIL_RECEIPT_LOWCASE, (iResult, args) =>
+            {
+             
+            }, true, false);
+        }
+
+        void ShowEnterCellNumberDialog()
+        {
+            DialogBuilder.Show(IPayDialog.RECEIPT_TEXT_CELL_NUMBER_DIALOG, StringIds.STRING_CELL_NUMBER, (iResult, args) =>
+            {
+               
+            }, true, false, new EnterCellNumberDlgData(string.Empty, string.Empty, StringIds.STRING_CANCEL, StringIds.STRING_SEND));
         }
     }
 }

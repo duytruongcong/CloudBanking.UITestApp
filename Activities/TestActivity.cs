@@ -550,12 +550,22 @@ namespace CloudBanking.UITestApp
                     BasketItemSelectOffer();
                 })
             });
+            
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CustomerDisplayRequestCardDialog",
+                RightIconResName = "CustomerDisplayRequestCardDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowCusDisplayRequestCardDialog(CaseDialog.CASE1);
+                })
+            });
 
             #endregion
 #endif
 
-#if false
-            #region Main Payment Flow//done for A30
+#if false   //done for a3700
+            #region Main Payment Flow
 
             _lData.Add(new ScreenViewModel()
             {
@@ -724,6 +734,26 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"ReceiptEmailAddressDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowReceiptEmailAddressDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterCellNumberDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowEnterCellNumberDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"ConfirmServiceDialog",
                 RightIconResName = "confirm_service_dialog",
                 ItemAction = new Action(() =>
@@ -801,8 +831,8 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
-            #region Preauth Flow//done for a30
+#if false    //done for a3700
+            #region Preauth Flow
 
             _lData.Add(new ScreenViewModel()
             {
@@ -878,7 +908,7 @@ namespace CloudBanking.UITestApp
 #endif
 
 #if true
-            #region Request Card Flow
+            #region Request Card Flow // done for a30
 
             _lData.Add(new ScreenViewModel()
             {
@@ -962,16 +992,6 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"CustomerDisplayRequestCardDialog",
-                RightIconResName = "CustomerDisplayRequestCardDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowCusDisplayRequestCardDialog(CaseDialog.CASE1);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
                 Title = $"MerchantSwipeCardDialog",
                 RightIconResName = "MerchantSwipeCardDialog",
                 ItemAction = new Action(() =>
@@ -1033,8 +1053,9 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
-            #region SelectAccountTypeDialog // done for task a30
+#if false   // done for task a3700
+
+            #region SelectAccountTypeDialog 
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1067,8 +1088,11 @@ namespace CloudBanking.UITestApp
             });
 
             #endregion
+#endif
 
-            #region MessageDialog// done for task a30
+#if false   // done for task a3700
+            #region MessageDialog
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"ShowMessageDialog CASE1",
@@ -1109,7 +1133,9 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
+#endif
 
+#if false
             #region PresentCardErrorDlg// done for task a30
 
             _lData.Add(new ScreenViewModel()
@@ -1132,7 +1158,9 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
+#endif
 
+#if false // done for task a3700
             #region EnterPinDialog// done for task a30
             _lData.Add(new ScreenViewModel()
             {
@@ -1174,8 +1202,11 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
+#endif
 
-            #region ApprovalDialog// done for task a30
+#if false   // done for task a3700
+
+            #region ApprovalDialog
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"ApprovalDialog CASE1",
@@ -1246,7 +1277,9 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
+#endif
 
+#if false
             #region SettlementApprovalDialog// done for task a30
 
             _lData.Add(new ScreenViewModel()
@@ -1269,7 +1302,9 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
+#endif
 
+#if false
             #region MOTO FLOW// done for task a30
 
 
@@ -1333,8 +1368,10 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
+#endif
 
-            #region ProcessMessageDialog // done for task a30
+#if false// done for task a3700
+            #region ProcessMessageDialog
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1376,7 +1413,9 @@ namespace CloudBanking.UITestApp
                 })
             });
             #endregion
+#endif
 
+#if false
             #region EOVProcessMessageDialog
             _lData.Add(new ScreenViewModel()
             {

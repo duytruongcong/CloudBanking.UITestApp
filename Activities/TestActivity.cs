@@ -1137,8 +1137,9 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true
-            #region PresentCardErrorDlg// done for task a30
+#if false   // done for task a3700
+
+            #region PresentCardErrorDlg
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1281,8 +1282,9 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
-            #region SettlementApprovalDialog// done for task a30
+#if false   // done for task a3700
+
+            #region SettlementApprovalDialog
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1306,7 +1308,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
+#if true
             #region MOTO FLOW// done for task a30
 
 

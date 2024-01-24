@@ -1163,7 +1163,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // done for task a3700
+#if true // done for task a3700
             #region EnterPinDialog// done for task a30
             _lData.Add(new ScreenViewModel()
             {
@@ -1308,9 +1308,9 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true
-            #region MOTO FLOW// done for task a30
+#if false    // done for task a3700
 
+            #region MOTO FLOW
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1374,7 +1374,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false// done for task a3700
+#if false   // done for task a3700
             #region ProcessMessageDialog
 
             _lData.Add(new ScreenViewModel()
@@ -1419,8 +1419,9 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
+#if false    // done for task a3700
             #region EOVProcessMessageDialog
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"EOVProcessMessageDialog",
@@ -1430,6 +1431,7 @@ namespace CloudBanking.UITestApp
                     ShowEOVProcessingDialog();
                 })
             });
+
             #endregion
 #endif
 

@@ -796,7 +796,8 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
+#if false    //done for a3700
+
             #region Settlement & Reprint
 
             _lData.Add(new ScreenViewModel()
@@ -907,7 +908,8 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true
+#if false   //done for a3700
+
             #region Request Card Flow // done for a30
 
             _lData.Add(new ScreenViewModel()
@@ -1135,7 +1137,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
+#if true
             #region PresentCardErrorDlg// done for task a30
 
             _lData.Add(new ScreenViewModel()

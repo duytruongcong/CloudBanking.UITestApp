@@ -274,7 +274,7 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = true;
-            RequestDlgData.fOtherPay = false;
+            RequestDlgData.fOtherPay = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -285,8 +285,8 @@ namespace CloudBanking.UITestApp
                                     + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
 
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
-            RequestDlgData.fAliPay = false;
-            RequestDlgData.fWePay = false;
+            RequestDlgData.fAliPay = true;
+            RequestDlgData.fWePay = true;
             RequestDlgData.IsEmulator = true;
             RequestDlgData.fShowMenu = false;
             RequestDlgData.fMultiTender = false;
@@ -309,7 +309,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -2170,15 +2170,6 @@ namespace CloudBanking.UITestApp
             dlgData.szQRCode = szQRCode;
 
             dlgData.status = status;
-
-            //if (string.IsNullOrEmpty(szQRCode))
-            //{
-            //    dlgData.status = ResultStatus.Declined;
-            //}
-            //else
-            //{
-            //    dlgData.status = ResultStatus.None;
-            //}
 
             switch (iFunctionButton)
             {

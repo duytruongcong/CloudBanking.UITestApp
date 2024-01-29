@@ -1,4 +1,5 @@
-﻿using CloudBanking.BaseControl;
+﻿using Android.App;
+using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -273,7 +274,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = true;
+            RequestDlgData.fNoPresentCard = false;
             RequestDlgData.fOtherPay = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
@@ -2107,7 +2108,7 @@ namespace CloudBanking.UITestApp
             imagePaths.Add("land_avertising_1.png");
             imagePaths.Add("ads_1_land.png");
             imagePaths.Add("ads_3_land.png");
-            
+
             int ellapseSeconds = 2;
 
             var dialog = new AdvertisingDialog(StringIds.STRING_ANDROID_PAYMENTS, null, imagePaths, ellapseSeconds, GlobalResource.NEXT_BUTTON, true);
@@ -2250,7 +2251,7 @@ namespace CloudBanking.UITestApp
 
                     data = new ViewFourthLineModel()
                     {
-                        LeftIconImgResId = Resource.Drawable.vector_debit_logo
+                        //LeftIconImgResId = Resource.Drawable.vector_debit_logo
                     };
 
                     break;
@@ -2338,7 +2339,7 @@ namespace CloudBanking.UITestApp
 
                     data = new ViewFourthLineModel()
                     {
-                        LeftIconImgResId = Resource.Drawable.vector_interac_logo
+                        //LeftIconImgResId = Resource.Drawable.vector_interac_logo
                     };
 
                     break;
@@ -2349,7 +2350,7 @@ namespace CloudBanking.UITestApp
 
                     data = new ViewFourthLineModel()
                     {
-                        LeftIconImgResId = Resource.Drawable.vector_maestro_logo
+                        //LeftIconImgResId = Resource.Drawable.vector_maestro_logo
                     };
 
                     break;
@@ -2360,7 +2361,7 @@ namespace CloudBanking.UITestApp
 
                     data = new ViewFourthLineModel()
                     {
-                        LeftIconImgResId = Resource.Drawable.vector_troy_logo
+                        //LeftIconImgResId = Resource.Drawable.vector_troy_logo
                     };
 
                     break;
@@ -2505,7 +2506,7 @@ namespace CloudBanking.UITestApp
         {
             DialogBuilder.Show(IPayDialog.RECEIPT_EMAIL_ADDRESS_DIALOG, StringIds.STRING_EMAIL_RECEIPT_LOWCASE, (iResult, args) =>
             {
-             
+
             }, true, false);
         }
 
@@ -2513,8 +2514,28 @@ namespace CloudBanking.UITestApp
         {
             DialogBuilder.Show(IPayDialog.RECEIPT_TEXT_CELL_NUMBER_DIALOG, StringIds.STRING_CELL_NUMBER, (iResult, args) =>
             {
-               
+
             }, true, false, new EnterCellNumberDlgData(string.Empty, string.Empty, StringIds.STRING_CANCEL, StringIds.STRING_SEND));
+        }
+
+        void ShowSplitReviewPaymentsDialog()
+        {
+            var data = new ReviewPaymentDialogModel();
+            data.TotalBalance = 10732;
+            data.TotalAmount = 53512;
+            data.TableName = "Table 21";
+            data.TitlePaymentId = StringIds.STRING_PURCHASE;
+
+            data.SplitItems = new List<SplitItem>();
+            data.SplitItems.Add(new SplitItem() { Index = 1, GuestName = "Jack Welsh", Amount = 10502, IsMultipleTender = true });
+            data.SplitItems.Add(new SplitItem() { Index = 2, GuestName = "Alexie Smith", Amount = 10502, IsMultipleTender = false });
+            data.SplitItems.Add(new SplitItem() { Index = 3, GuestName = "Paul", Amount = 10502, IsMultipleTender = false });
+            data.SplitItems.Add(new SplitItem() { Index = 4, GuestName = "Thomas", Amount = 10502, IsMultipleTender = false });
+            data.SplitItems.Add(new SplitItem() { Index = 5, GuestName = "Hilary", Amount = 10502, IsMultipleTender = true });
+
+            var dialog = new SplitReviewPaymentsDialog(StringIds.STRING_REVIEW_PAYMENTS, null, data);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
         }
     }
 }

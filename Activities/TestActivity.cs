@@ -502,6 +502,16 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"TicketSearchOptionsDialog",
+                RightIconResName = "TicketSearchOptionsDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowTicketSearchOptionsDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"SplitReviewPaymentsDialog",
                 RightIconResName = "SplitReviewPaymentsDialog",
                 ItemAction = new Action(() =>

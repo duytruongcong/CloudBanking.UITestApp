@@ -502,6 +502,16 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"IncreaseSplitDialog",
+                RightIconResName = "IncreaseSplitDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowIncreaseSplitDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"TicketSearchOptionsDialog",
                 RightIconResName = "TicketSearchOptionsDialog",
                 ItemAction = new Action(() =>
@@ -590,7 +600,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   //done for a3700
+#if false   //done for a3700
             #region Main Payment Flow
 
             //_lData.Add(new ScreenViewModel()

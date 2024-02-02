@@ -3,3 +3,4 @@ bin/
 Resources/AboutResources.txt
 Resources/Resource.designer.cs
 custom.aprof
+.vs/CloudBanking.UITestApp.csproj.dtbcache.json

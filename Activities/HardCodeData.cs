@@ -275,7 +275,7 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fOtherPay = true;
+            RequestDlgData.fOtherPay = false;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -301,6 +301,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fTroy = true;
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
+            RequestDlgData.fAlipayWechatLogo = true;
 
             switch (caseDialog)
             {
@@ -310,7 +311,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -321,7 +322,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
 
                     break;
 
@@ -2520,79 +2521,101 @@ namespace CloudBanking.UITestApp
 
         void ShowSplitReviewPaymentsDialog()
         {
-            var data = new ReviewPaymentDialogModel();
-            data.TotalBalance = 10732;
-            data.TotalAmount = 53512;
-            data.TableName = "Table 21";
-            data.TitlePaymentId = StringIds.STRING_PURCHASE;
+            //var data = new ReviewPaymentDialogModel();
+            //data.TotalBalance = 10732;
+            //data.TotalAmount = 53512;
+            //data.TableName = "Table 21";
+            //data.TitlePaymentId = StringIds.STRING_PURCHASE;
 
-            data.SplitItems = new List<SplitItem>();
-            data.SplitItems.Add(new SplitItem() { Index = 1, GuestName = "Jack Welsh", Amount = 10502, IsMultipleTender = true });
-            data.SplitItems.Add(new SplitItem() { Index = 2, GuestName = "Alexie Smith", Amount = 10502, IsMultipleTender = false });
-            data.SplitItems.Add(new SplitItem() { Index = 3, GuestName = "Paul", Amount = 10502, IsMultipleTender = false });
-            data.SplitItems.Add(new SplitItem() { Index = 4, GuestName = "Thomas", Amount = 10502, IsMultipleTender = false });
-            data.SplitItems.Add(new SplitItem() { Index = 5, GuestName = "Hilary", Amount = 10502, IsMultipleTender = true });
+            //data.SplitItems = new List<SplitItem>();
+            //data.SplitItems.Add(new SplitItem() { Index = 1, GuestName = "Jack Welsh", Amount = 10502, IsMultipleTender = true });
+            //data.SplitItems.Add(new SplitItem() { Index = 2, GuestName = "Alexie Smith", Amount = 10502, IsMultipleTender = false });
+            //data.SplitItems.Add(new SplitItem() { Index = 3, GuestName = "Paul", Amount = 10502, IsMultipleTender = false });
+            //data.SplitItems.Add(new SplitItem() { Index = 4, GuestName = "Thomas", Amount = 10502, IsMultipleTender = false });
+            //data.SplitItems.Add(new SplitItem() { Index = 5, GuestName = "Hilary", Amount = 10502, IsMultipleTender = true });
 
-            var dialog = new SplitReviewPaymentsDialog(StringIds.STRING_REVIEW_PAYMENTS, null, data);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
+            //var dialog = new SplitReviewPaymentsDialog(StringIds.STRING_REVIEW_PAYMENTS, null, data);
+            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog.Show(this);
         }
 
         void ShowTicketSearchOptionsDialog()
         {
-            POSTicketInfo searchData = new POSTicketInfo();
-            var pullSetupDlgData = new StandardSetupDialogModel()
-            {
-                OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
-                OkBtnTitleId = StringIds.STRING_SEARCH,
-            };
+            //POSTicketInfo searchData = new POSTicketInfo();
+            //var pullSetupDlgData = new StandardSetupDialogModel()
+            //{
+            //    OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
+            //    OkBtnTitleId = StringIds.STRING_SEARCH,
+            //};
 
-            searchData.TicketNumber = "";
-            searchData.EmployeeId = 1;
-            searchData.Reference = string.Empty;
-            searchData.TableNumber = 0;
-            searchData.GuestName = string.Empty;
+            //searchData.TicketNumber = "";
+            //searchData.EmployeeId = 1;
+            //searchData.Reference = string.Empty;
+            //searchData.TableNumber = 0;
+            //searchData.GuestName = string.Empty;
 
-            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            //{
+            //    PropertyName = nameof(searchData.TableNumber),
+            //    TitleId = StringIds.STRING_TABLENUMBER,
+            //    HeaderTitleId = StringIds.STRING_TABLENUMBER,
+            //    FieldTitleId = StringIds.STRING_TABLENUMBER,
+            //    Value = searchData.TableNumber
+            //});
+
+            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            //{
+            //    PropertyName = nameof(searchData.TicketNumber),
+            //    TitleId = StringIds.STRING_TICKETNO,
+            //    HeaderTitleId = StringIds.STRING_TICKETNO,
+            //    FieldTitleId = StringIds.STRING_TICKETNO,
+            //    Value = searchData.TicketNumber
+            //});
+
+            //pullSetupDlgData.Items.Add(new InputTextEditModel()
+            //{
+            //    PropertyName = nameof(searchData.GuestName),
+            //    TitleId = StringIds.STRING_GUEST_NAME,
+            //    HeaderTitleId = StringIds.STRING_GUEST_NAME,
+            //    FieldTitleId = StringIds.STRING_GUEST_NAME,
+            //    Value = searchData.GuestName
+            //});
+
+            //pullSetupDlgData.Items.Add(new InputTextEditModel()
+            //{
+            //    PropertyName = nameof(searchData.Reference),
+            //    TitleId = StringIds.STRING_REFERENCE,
+            //    HeaderTitleId = StringIds.STRING_REFERENCE,
+            //    FieldTitleId = StringIds.STRING_REFERENCE,
+            //    Value = searchData.Reference
+            //});
+
+            //DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
+            //{
+
+            //}, true, false, pullSetupDlgData);
+        }
+
+        void ShowIncreaseSplitDialog()
+        {
+            IncreaseSplitDialog adjustDialog = null;
+
+            adjustDialog = new IncreaseSplitDialog(StringIds.STRING_INCREASE_MY_SPLIT_AMOUNT, (iResult, args) =>
             {
-                PropertyName = nameof(searchData.TableNumber),
-                TitleId = StringIds.STRING_TABLENUMBER,
-                HeaderTitleId = StringIds.STRING_TABLENUMBER,
-                FieldTitleId = StringIds.STRING_TABLENUMBER,
-                Value = searchData.TableNumber
+                adjustDialog.Dismiss();
+
+            }, new AdjustSplitDlgData()
+            {
+                Reference = "Smith",
+                Amount = 4000,
+                MaxValue = 15000,
+                AmountTitleId = StringIds.STRING_ADJUST_AMOUNT,
+                MainBtnTitleId = StringIds.STRING_OK
             });
 
-            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            {
-                PropertyName = nameof(searchData.TicketNumber),
-                TitleId = StringIds.STRING_TICKETNO,
-                HeaderTitleId = StringIds.STRING_TICKETNO,
-                FieldTitleId = StringIds.STRING_TICKETNO,
-                Value = searchData.TicketNumber
-            });
+            adjustDialog.DialogStyle = DialogStyle.FULLSCREEN;
 
-            pullSetupDlgData.Items.Add(new InputTextEditModel()
-            {
-                PropertyName = nameof(searchData.GuestName),
-                TitleId = StringIds.STRING_GUEST_NAME,
-                HeaderTitleId = StringIds.STRING_GUEST_NAME,
-                FieldTitleId = StringIds.STRING_GUEST_NAME,
-                Value = searchData.GuestName
-            });
-
-            pullSetupDlgData.Items.Add(new InputTextEditModel()
-            {
-                PropertyName = nameof(searchData.Reference),
-                TitleId = StringIds.STRING_REFERENCE,
-                HeaderTitleId = StringIds.STRING_REFERENCE,
-                FieldTitleId = StringIds.STRING_REFERENCE,
-                Value = searchData.Reference
-            });
-
-            DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
-            {
-
-            }, true, false, pullSetupDlgData);
+            adjustDialog.Show(CrossCurrentActivity.Current.Activity);
         }
     }
 }

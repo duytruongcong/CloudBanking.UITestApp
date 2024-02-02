@@ -502,13 +502,23 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"IncreaseSplitDialog",
-                RightIconResName = "IncreaseSplitDialog",
+                Title = $"SplitPayDialog",
+                RightIconResName = "SplitPayDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowIncreaseSplitDialog();
+                    ShowSplitPayDialog();
                 })
             });
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"IncreaseSplitDialog",
+            //    RightIconResName = "IncreaseSplitDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowIncreaseSplitDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {

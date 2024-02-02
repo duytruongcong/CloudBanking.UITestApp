@@ -13,6 +13,7 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static CloudBanking.Entities.Database;
 using static CloudBanking.Utilities.UtilEnum;
 using static Java.Util.Jar.Attributes;
 
@@ -2541,59 +2542,59 @@ namespace CloudBanking.UITestApp
 
         void ShowTicketSearchOptionsDialog()
         {
-            //POSTicketInfo searchData = new POSTicketInfo();
-            //var pullSetupDlgData = new StandardSetupDialogModel()
-            //{
-            //    OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
-            //    OkBtnTitleId = StringIds.STRING_SEARCH,
-            //};
+            POSTicketInfo searchData = new POSTicketInfo();
+            var pullSetupDlgData = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
+                OkBtnTitleId = StringIds.STRING_SEARCH,
+            };
 
-            //searchData.TicketNumber = "";
-            //searchData.EmployeeId = 1;
-            //searchData.Reference = string.Empty;
-            //searchData.TableNumber = 0;
-            //searchData.GuestName = string.Empty;
+            searchData.TicketNumber = "";
+            searchData.EmployeeId = 1;
+            searchData.Reference = string.Empty;
+            searchData.TableNumber = 0;
+            searchData.GuestName = string.Empty;
 
-            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(searchData.TableNumber),
-            //    TitleId = StringIds.STRING_TABLENUMBER,
-            //    HeaderTitleId = StringIds.STRING_TABLENUMBER,
-            //    FieldTitleId = StringIds.STRING_TABLENUMBER,
-            //    Value = searchData.TableNumber
-            //});
+            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(searchData.TableNumber),
+                TitleId = StringIds.STRING_TABLENUMBER,
+                HeaderTitleId = StringIds.STRING_TABLENUMBER,
+                FieldTitleId = StringIds.STRING_TABLENUMBER,
+                Value = searchData.TableNumber
+            });
 
-            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(searchData.TicketNumber),
-            //    TitleId = StringIds.STRING_TICKETNO,
-            //    HeaderTitleId = StringIds.STRING_TICKETNO,
-            //    FieldTitleId = StringIds.STRING_TICKETNO,
-            //    Value = searchData.TicketNumber
-            //});
+            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(searchData.TicketNumber),
+                TitleId = StringIds.STRING_TICKETNO,
+                HeaderTitleId = StringIds.STRING_TICKETNO,
+                FieldTitleId = StringIds.STRING_TICKETNO,
+                Value = searchData.TicketNumber
+            });
 
-            //pullSetupDlgData.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(searchData.GuestName),
-            //    TitleId = StringIds.STRING_GUEST_NAME,
-            //    HeaderTitleId = StringIds.STRING_GUEST_NAME,
-            //    FieldTitleId = StringIds.STRING_GUEST_NAME,
-            //    Value = searchData.GuestName
-            //});
+            pullSetupDlgData.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(searchData.GuestName),
+                TitleId = StringIds.STRING_GUEST_NAME,
+                HeaderTitleId = StringIds.STRING_GUEST_NAME,
+                FieldTitleId = StringIds.STRING_GUEST_NAME,
+                Value = searchData.GuestName
+            });
 
-            //pullSetupDlgData.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(searchData.Reference),
-            //    TitleId = StringIds.STRING_REFERENCE,
-            //    HeaderTitleId = StringIds.STRING_REFERENCE,
-            //    FieldTitleId = StringIds.STRING_REFERENCE,
-            //    Value = searchData.Reference
-            //});
+            pullSetupDlgData.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(searchData.Reference),
+                TitleId = StringIds.STRING_REFERENCE,
+                HeaderTitleId = StringIds.STRING_REFERENCE,
+                FieldTitleId = StringIds.STRING_REFERENCE,
+                Value = searchData.Reference
+            });
 
-            //DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
+            {
 
-            //}, true, false, pullSetupDlgData);
+            }, true, false, pullSetupDlgData);
         }
 
         void ShowIncreaseSplitDialog()
@@ -2616,6 +2617,56 @@ namespace CloudBanking.UITestApp
             adjustDialog.DialogStyle = DialogStyle.FULLSCREEN;
 
             adjustDialog.Show(CrossCurrentActivity.Current.Activity);
+        }
+
+        void ShowSplitPayDialog()
+        {
+            var splitItem = new SplitModel();
+
+            splitItem.Items.Add(new SplitItem()
+            {
+                Amount = 1000,
+                Reference = "LOI",
+                Id = 1,
+                IsPaid = false
+            });
+
+            splitItem.Items.Add(new SplitItem()
+            {
+                Amount = 2000,
+                Reference = "KHA",
+                Id = 2,
+                IsPaid = true
+            });
+
+            splitItem.Items.Add(new SplitItem()
+            {
+                Amount = 3000,
+                Reference = "DUY",
+                Id = 3,
+                IsPaid = true
+            });
+
+            splitItem.Items.Add(new SplitItem()
+            {
+                Amount = 4000,
+                Reference = "LIEN",
+                Id = 4,
+                IsPaid = true
+            });
+
+            var data = new POSGuestBalanceDlgData()
+            {
+                TableId = 1,
+                BalanceTotal = 150000,
+                GuestName = "MARTIN",
+                SplitItem = splitItem
+            };
+
+            DialogBuilder.Show(IPayDialog.SPLIT_PAY_DIALOG, StringIds.STRING_SPLIT_PAY, (iResult, args) =>
+            {
+
+            }, true, false, data);
         }
     }
 }

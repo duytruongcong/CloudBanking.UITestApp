@@ -500,33 +500,43 @@ namespace CloudBanking.UITestApp
 #if true
             #region Table Flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SplitPayDialog",
-                RightIconResName = "SplitPayDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowSplitPayDialog();
-                })
-            });
-
             //_lData.Add(new ScreenViewModel()
             //{
-            //    Title = $"IncreaseSplitDialog",
-            //    RightIconResName = "IncreaseSplitDialog",
+            //    Title = $"SplitPayDialog",
+            //    RightIconResName = "SplitPayDialog",
             //    ItemAction = new Action(() =>
             //    {
-            //        ShowIncreaseSplitDialog();
+            //        ShowSplitPayDialog();
             //    })
             //});
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"TicketSearchOptionsDialog",
-                RightIconResName = "TicketSearchOptionsDialog",
+                Title = $"IncreaseSplitDialog",
+                RightIconResName = "IncreaseSplitDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowTicketSearchOptionsDialog();
+                    ShowIncreaseSplitDialog();
+                })
+            });
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"TicketSearchOptionsDialog",
+            //    RightIconResName = "TicketSearchOptionsDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowTicketSearchOptionsDialog();
+            //    })
+            //});
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ReviewPaymentDialog",
+                RightIconResName = "ReviewPaymentDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowReviewPaymentDialog();
                 })
             });
 

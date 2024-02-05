@@ -2522,6 +2522,34 @@ namespace CloudBanking.UITestApp
 
         void ShowSplitReviewPaymentsDialog()
         {
+            var data = new ReviewPaymentDialogModel();
+            data.TotalBalance = 10732;
+            data.TotalAmount = 53512;
+            data.GuestName = "Table 21";
+            data.TitlePaymentId = StringIds.STRING_PURCHASE;
+
+            data.SplitItems = new List<POSSplitItem>();
+
+            var posSplitItem1 = new POSSplitItem() { Id = 1 };
+            posSplitItem1.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Jack Welsh" });
+            data.SplitItems.Add(posSplitItem1);
+
+            var posSplitItem2 = new POSSplitItem() { Id = 2 };
+            posSplitItem2.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Alexie Smith" });
+            data.SplitItems.Add(posSplitItem2);
+
+            var posSplitItem3 = new POSSplitItem() { Id = 3 };
+            posSplitItem3.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Paul" });
+            data.SplitItems.Add(posSplitItem3);
+
+            var posSplitItem4 = new POSSplitItem() { Id = 4 };
+            posSplitItem4.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Thomas" });
+            data.SplitItems.Add(posSplitItem4);
+
+            var posSplitItem5 = new POSSplitItem() { Id = 4 };
+            posSplitItem5.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Hilary" });
+            data.SplitItems.Add(posSplitItem5);
+
             //var data = new ReviewPaymentDialogModel();
             //data.TotalBalance = 10732;
             //data.TotalAmount = 53512;
@@ -2535,9 +2563,9 @@ namespace CloudBanking.UITestApp
             //data.SplitItems.Add(new SplitItem() { Index = 4, GuestName = "Thomas", Amount = 10502, IsMultipleTender = false });
             //data.SplitItems.Add(new SplitItem() { Index = 5, GuestName = "Hilary", Amount = 10502, IsMultipleTender = true });
 
-            //var dialog = new SplitReviewPaymentsDialog(StringIds.STRING_REVIEW_PAYMENTS, null, data);
-            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog.Show(this);
+            var dialog = new SplitReviewPaymentsDialog(StringIds.STRING_REVIEW_PAYMENTS, null, data);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
         }
 
         void ShowTicketSearchOptionsDialog()
@@ -2664,6 +2692,30 @@ namespace CloudBanking.UITestApp
             };
 
             DialogBuilder.Show(IPayDialog.SPLIT_PAY_DIALOG, StringIds.STRING_SPLIT_PAY, (iResult, args) =>
+            {
+
+            }, true, false, data);
+        }
+
+        void ShowReviewPaymentDialog()
+        {
+            var tenderItems = new List<POSTenderItem>();
+            tenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Wechat" });
+            tenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Visa Credit" });
+            tenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Alipay" });
+            tenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Alipay" });
+            tenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Visa Debit" });
+
+            var data = new POSReviewPaymentsDlgData()
+            {
+                TenderItems = tenderItems,
+                PurchaseTotal = 40000,
+                TotalBalance = 50000,
+                SubTitle = StringIds.STRING_ALL_GUESTS.GetString(),
+                RightSubTitleId = StringIds.STRING_BALANCE
+            };
+
+            DialogBuilder.Show(IPayDialog.REVIEW_PAYMENTS_DIALOG, StringIds.STRING_REVIEW_PAYMENTS, (iResult, args) =>
             {
 
             }, true, false, data);

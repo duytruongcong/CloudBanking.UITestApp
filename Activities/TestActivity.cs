@@ -500,15 +500,45 @@ namespace CloudBanking.UITestApp
 #if true
             #region Table Flow
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"SplitPayDialog",
-            //    RightIconResName = "SplitPayDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowSplitPayDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectGuestAccountDialog",
+                RightIconResName = "SelectGuestAccountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectGuestAccountDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GuestBalanceDialog",
+                RightIconResName = "GuestBalanceDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGuestBalanceDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectOptionDialog",
+                RightIconResName = "SelectOptionDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectOptionDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SplitPayDialog",
+                RightIconResName = "SplitPayDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSplitPayDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -520,15 +550,15 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"TicketSearchOptionsDialog",
-            //    RightIconResName = "TicketSearchOptionsDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowTicketSearchOptionsDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"TicketSearchOptionsDialog",
+                RightIconResName = "TicketSearchOptionsDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowTicketSearchOptionsDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -620,7 +650,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //done for a3700
+#if false   //
             #region Main Payment Flow
 
             //_lData.Add(new ScreenViewModel()
@@ -852,7 +882,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //done for a3700
+#if false    //
 
             #region Settlement & Reprint
 
@@ -888,7 +918,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //done for a3700
+#if false    //
             #region Preauth Flow
 
             _lData.Add(new ScreenViewModel()
@@ -964,9 +994,9 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //done for a3700
+#if false   //
 
-            #region Request Card Flow // done for a30
+            #region Request Card Flow // 
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1111,7 +1141,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for task a3700
+#if false   // 
 
             #region SelectAccountTypeDialog 
 
@@ -1148,7 +1178,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for task a3700
+#if false   //
             #region MessageDialog
 
             _lData.Add(new ScreenViewModel()
@@ -1193,7 +1223,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for task a3700
+#if false   // 
 
             #region PresentCardErrorDlg
 
@@ -1219,7 +1249,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // done for task a3700/a30
+#if false // 
             #region EnterPinDialog// done for task a30
             _lData.Add(new ScreenViewModel()
             {
@@ -1263,7 +1293,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for task a3700
+#if false   // 
 
             #region ApprovalDialog
             _lData.Add(new ScreenViewModel()

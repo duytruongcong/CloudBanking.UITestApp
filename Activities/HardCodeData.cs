@@ -276,7 +276,7 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fOtherPay = false;
+            RequestDlgData.fOtherPay = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -303,6 +303,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             RequestDlgData.fAlipayWechatLogo = true;
+            RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
 
             switch (caseDialog)
             {
@@ -312,7 +313,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -2719,6 +2720,103 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, data);
+        }
+
+        void ShowSelectOptionDialog()
+        {
+            var items = new List<SelectOptionItem>()
+            {
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.REVIEW_PAYMENTS_BUTTON,
+                    TitleId = StringIds.STRING_REVIEW_PAYMENTS,
+                    VectorIconResName = IconIds.VECTOR_SHOW_LIGHT,
+                },
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.EDIT_BUTTON,
+                    TitleId = StringIds.STRING_EDIT_DETAILS,
+                    VectorIconResName = IconIds.VECTOR_EDIT_GRAY_NO_BACKGROUND,
+                },
+            };
+
+            var data = new SelectOptionDlgData();
+
+            data.MenuItems = items;
+
+            DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_REFERENCE_TYPE, (iResult, args) =>
+            {
+
+            }, true, true, data);
+        }
+
+        void ShowGuestBalanceDialog()
+        {
+            var data = new POSGuestBalanceDlgData()
+            {
+                BalanceTotal = 25000,
+                GuestName = "Smith",
+                TableId = 1,
+            };
+
+            DialogBuilder.Show(IPayDialog.GUEST_VIEW_BALANCE_DIALOG, StringIds.STRING_PAYMENT_AMOUNT, (iResult, args) =>
+            {
+            }, true, false, data);
+        }
+
+        void ShowSelectGuestAccountDialog()
+        {
+            var data = new SelectGuestAccountDlgData()
+            {
+                TicketNumber = "12345",
+                RefNumber = "12",
+                RefTypeStringIds = StringIds.STRING_TABLE,
+                TotalAmount = 25000,
+                GuestItems = new List<GuestAccItemViewModel>()
+            };
+
+
+            data.GuestItems.Add(new GuestAccItemViewModel()
+            {
+                AvtUrl = "https://creazilla-store.fra1.digitaloceanspaces.com/icons/7912990/avatar-icon-md.png",
+                Name = "Loi Truong",
+                Id = 1,
+                Number = "1",
+                TotalAmount = 2000
+            });
+
+            data.GuestItems.Add(new GuestAccItemViewModel()
+            {
+                AvtUrl = "https://i.pngimg.me/thumb/f/720/comvecteezy420553.jpg",
+                Name = "Duy Ha",
+                Id = 2,
+                Number = "2",
+                TotalAmount = 2000
+            });
+
+            data.GuestItems.Add(new GuestAccItemViewModel()
+            {
+                AvtUrl = "https://cdn.iconscout.com/icon/free/png-512/free-avatar-369-456321.png?f=webp&w=256",
+                Name = "Duy Ha",
+                Id = 3,
+                Number = "3",
+                TotalAmount = 2000
+            });
+
+            data.GuestItems.Add(new GuestAccItemViewModel()
+            {
+                AvtUrl = "https://cdn.iconscout.com/icon/free/png-512/free-avatar-369-456321.png?f=webp&w=256",
+                Name = "Huy Le",
+                Id = 4,
+                Number = "4",
+                TotalAmount = 2000
+            });
+
+            DialogBuilder.Show(IPayDialog.SELECT_GUEST_ACCOUNT_DIALOG, StringIds.STRING_GUEST_ACCOUNT, (iResult, args) =>
+            {
+
+            }, true, false, data);
+
         }
     }
 }

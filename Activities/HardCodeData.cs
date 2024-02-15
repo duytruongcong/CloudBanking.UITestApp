@@ -2076,11 +2076,17 @@ namespace CloudBanking.UITestApp
         void ShowSelectDonationDialog()
         {
             var data = new CusDisplaySelectDonationDlgData();
-            data.DonationImgName = "donation_port_demo_02";
+
+            //landscape
+            //data.DonationImgName = "donation_port_demo_02";
+
+            //portrait
+            data.DonationImgName = "donation_small";
+
             var listValue = new List<long>() { 1, 2, 5, 10, 50 };
             data.DonationValues = listValue;
 
-            var dialog = new SelectDonationDialog(StringIds.STRING_STARTAPP, null, data);
+            var dialog = new SelectDonationDialog(StringIds.STRING_DONATION, null, data);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
         }
@@ -2090,7 +2096,13 @@ namespace CloudBanking.UITestApp
             long amount = 38000;
 
             List<long> donation = new List<long> { 50, 200, 500, 1000 };
-            string iconId = "donation_port_demo_02.png";
+
+            //landscape
+            //string iconId = "donation_port_demo_02.png";
+
+            //portrait
+            string iconId = "donation_small.png";
+
             string noBtnTitleId = "STRING_NO_DONATION";
             int noBtnCommand = 5016;
 
@@ -2104,13 +2116,13 @@ namespace CloudBanking.UITestApp
             IList<string> imagePaths = new List<string>();
 
             //portrait
-            //imagePaths.Add("ads_1.png");
-            //imagePaths.Add("ads_2.png");
+            imagePaths.Add("ads_1.png");
+            imagePaths.Add("ads_2.png");
 
             //landspace
-            imagePaths.Add("land_avertising_1.png");
-            imagePaths.Add("ads_1_land.png");
-            imagePaths.Add("ads_3_land.png");
+            //imagePaths.Add("land_avertising_1.png");
+            //imagePaths.Add("ads_1_land.png");
+            //imagePaths.Add("ads_3_land.png");
 
             int ellapseSeconds = 2;
 

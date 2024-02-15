@@ -223,6 +223,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Core\CloudBanking.ApiLocators\CloudBanking.ApiLocators.csproj">
+      <Project>{EA931DB5-1AFE-4664-B3E7-6DAD303A60B8}</Project>
+      <Name>CloudBanking.ApiLocators</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Languages\CloudBanking.Language\CloudBanking.Language.csproj">
       <Project>{18960CD8-1D90-45A4-83A6-37ABB03484AF}</Project>
       <Name>CloudBanking.Language</Name>
@@ -230,6 +234,10 @@
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Core\CloudBanking.Utilities\CloudBanking.Utilities.csproj">
       <Project>{FF83F117-98F1-4965-9037-88AF7C55AF4F}</Project>
       <Name>CloudBanking.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.LinklyHttpClient\CloudBanking.LinklyHttpClient.csproj">
+      <Project>{AEBDC6A1-C46F-404D-825B-E7C7624FA550}</Project>
+      <Name>CloudBanking.LinklyHttpClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.BaseHardware\CloudBanking.BaseHardware.csproj">
       <Project>{11E62D69-78C8-45D6-B00C-02E6E8D24152}</Project>

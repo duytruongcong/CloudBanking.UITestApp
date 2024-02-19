@@ -275,7 +275,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = false;
+            RequestDlgData.fNoPresentCard = true;
             RequestDlgData.fOtherPay = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
@@ -313,7 +313,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -334,7 +334,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -345,7 +345,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
 
                     break;
 
@@ -355,7 +355,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = false;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_OPEN_PREAUTH_UPCASE;
 
                     break;
@@ -366,7 +366,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = false;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
 
                     break;
 
@@ -376,7 +376,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
 
                     break;
 
@@ -386,7 +386,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_CARD_STATUS_CHECK_UPCASE;
 
                     break;

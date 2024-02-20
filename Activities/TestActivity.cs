@@ -497,8 +497,19 @@ namespace CloudBanking.UITestApp
 
         private void InitializeCommonData()
         {
-#if true
+#if true // 
+
             #region Table Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectTablePayTicketsDialog",
+                RightIconResName = "SelectTablePayTicketsDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectTablePayTicketsDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -584,7 +595,8 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false
+#if false // 
+
             #region Customer Display
 
             _lData.Add(new ScreenViewModel()
@@ -650,7 +662,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //done for nuvei 720x1440
+#if false   
 
             #region Main Payment Flow
 
@@ -883,7 +895,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  done for nuvei 720x1440
+#if false    
 
             #region Settlement & Reprint
 
@@ -919,8 +931,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // done for nuvei 720x1440
-
+#if false    // 
             #region Preauth Flow
 
             _lData.Add(new ScreenViewModel()
@@ -996,7 +1007,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //checked for NUVEI, ask later
+#if false   //
 
             #region Request Card Flow
 
@@ -1143,7 +1154,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for NUVEI-A920
+#if false   // 
 
             #region SelectAccountTypeDialog 
 
@@ -1180,7 +1191,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for NUVEI-A920
+#if false   //
 
             #region MessageDialog
 
@@ -1226,7 +1237,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for NUVEI-A920  
+#if false   // 
 
             #region PresentCardErrorDlg
 
@@ -1252,7 +1263,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // done for NUVEI-A920 
+#if false // 
 
             #region EnterPinDialog
             _lData.Add(new ScreenViewModel()
@@ -1297,7 +1308,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for NUVEI-A920 
+#if false   // 
 
             #region ApprovalDialog
             _lData.Add(new ScreenViewModel()
@@ -1372,7 +1383,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for NUVEI-A920 
+#if false   // 
 
             #region SettlementApprovalDialog
 
@@ -1398,7 +1409,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // done for NUVEI-A920 
+#if false    // 
 
             #region MOTO FLOW
 
@@ -1464,7 +1475,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for NUVEI-A920 
+#if false   // 
 
             #region ProcessMessageDialog
 
@@ -1510,7 +1521,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // done for NUVEI-A920  
+#if false    // 
 
             #region EOVProcessMessageDialog
 

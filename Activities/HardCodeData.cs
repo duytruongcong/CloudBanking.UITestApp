@@ -2830,5 +2830,54 @@ namespace CloudBanking.UITestApp
             }, true, false, data);
 
         }
+
+        void ShowSelectTablePayTicketsDialog()
+        {
+            var data = new List<ListTablePayItemViewModel>();
+            
+            data.Add(new ListTablePayItemViewModel()
+            {
+                Reference = "Jack Welsh",
+                GuestAccCount = 1,
+                Amount = 274140,
+                TableNumber = 21,
+                TicketNumber = "765323",
+            });
+
+            data.Add(new ListTablePayItemViewModel()
+            {
+                Reference = "Jack Welsh",
+                GuestAccCount = 1,
+                Amount = 274140,
+                TableNumber = 21,
+                TicketNumber = "765323",
+            });
+
+            data.Add(new ListTablePayItemViewModel()
+            {
+                Reference = "Jack Welsh",
+                GuestAccCount = 1,
+                Amount = 274140,
+                TableNumber = 21,
+                TicketNumber = "765323",
+            });
+
+            data.Add(new ListTablePayItemViewModel()
+            {
+                Reference = "Jack Welsh",
+                GuestAccCount = 1,
+                Amount = 274140,
+                TableNumber = 21,
+                TicketNumber = "765323",
+            });
+
+            var localSelectedTicketNumber = string.Empty;
+
+            DialogBuilder.Show(IPayDialog.SELECT_TABLE_PAY_TICKET_DIALOG, StringIds.STRING_ALL_TICKETS, (iResult, args) =>
+            {
+                
+
+            }, true, false, data);
+        }
     }
 }

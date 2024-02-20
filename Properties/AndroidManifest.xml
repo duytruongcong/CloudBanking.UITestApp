@@ -31,4 +31,5 @@
 	<uses-permission android:name="com.pax.permission.ICC" />
 	<uses-permission android:name="com.pax.permission.PICC" />
 	<uses-permission android:name="com.pax.permission.PRINTER" />
+	<uses-permission android:name="android.permission.SET_DEBUG_APP" />
 </manifest>

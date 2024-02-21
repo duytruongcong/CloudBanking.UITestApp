@@ -2834,7 +2834,7 @@ namespace CloudBanking.UITestApp
         void ShowSelectTablePayTicketsDialog()
         {
             var data = new List<ListTablePayItemViewModel>();
-            
+
             data.Add(new ListTablePayItemViewModel()
             {
                 Reference = "Jack Welsh",
@@ -2875,9 +2875,33 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.SELECT_TABLE_PAY_TICKET_DIALOG, StringIds.STRING_ALL_TICKETS, (iResult, args) =>
             {
-                
+
 
             }, true, false, data);
+        }
+
+        void ShowSelectTenderExtraAmountDialog()
+        {
+            var dlgData = new SelectTenderExtraAmountDlgData();
+
+            dlgData.TenderNumber = 5;
+
+            dlgData.lAmount = 36000;
+
+            dlgData.lCashout = 5000;
+
+            dlgData.lPreCashout = 4000;
+
+            dlgData.lTip = 1000;
+
+            dlgData.Donations = new PaymentDonations() { lTotalDonations = 1000 };
+
+            dlgData.PaymentVouchers = new PaymentVouchers() { lTotalVouchers = 1000 };
+
+            DialogBuilder.Show(IPayDialog.SELECT_TENDER_EXTRA_AMOUNT_DIALOG, StringIds.STRING_MULTI_TENDER, (int iResult, object[] args) =>
+            {
+
+            }, true, false, dlgData);
         }
     }
 }

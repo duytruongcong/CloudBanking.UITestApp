@@ -503,6 +503,16 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"SelectTenderExtraAmountDialog",
+                RightIconResName = "SelectTenderExtraAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectTenderExtraAmountDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"SelectTablePayTicketsDialog",
                 RightIconResName = "SelectTablePayTicketsDialog",
                 ItemAction = new Action(() =>

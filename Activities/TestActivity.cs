@@ -497,7 +497,24 @@ namespace CloudBanking.UITestApp
 
         private void InitializeCommonData()
         {
-#if true // 
+
+#if true
+            #region Refund flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountRefundAlipayWeChatDialog",
+                RightIconResName = "GetAmountRefundAlipayWeChatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountRefundAlipayWeChatDialog();
+                })
+            });
+
+            #endregion
+#endif
+
+#if false // 
 
             #region Table Flow
 
@@ -672,7 +689,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   
+#if false
 
             #region Main Payment Flow
 
@@ -905,7 +922,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    
+#if false
 
             #region Settlement & Reprint
 

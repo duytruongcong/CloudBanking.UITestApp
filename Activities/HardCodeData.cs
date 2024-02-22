@@ -2875,7 +2875,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.SELECT_TABLE_PAY_TICKET_DIALOG, StringIds.STRING_ALL_TICKETS, (iResult, args) =>
             {
-
+                //SelectTablePayTicketsDialog
 
             }, true, false, data);
         }
@@ -2902,6 +2902,20 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, dlgData);
+        }
+
+        void ShowGetAmountRefundAlipayWeChatDialog()
+        {
+            //var data = new RefundAlipayWechatDlgData() 
+            //{
+            //    szTransactionId= "4200000027201709294868542706",
+            //    lAmount = 20000,
+            //    lOrginalAmount = 40000
+            //};
+
+            //var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data);
+            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog.Show(this);
         }
     }
 }

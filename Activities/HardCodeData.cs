@@ -2576,6 +2576,7 @@ namespace CloudBanking.UITestApp
             //data.SplitItems.Add(new SplitItem() { Index = 4, GuestName = "Thomas", Amount = 10502, IsMultipleTender = false });
             //data.SplitItems.Add(new SplitItem() { Index = 5, GuestName = "Hilary", Amount = 10502, IsMultipleTender = true });
 
+            //TABLE_PAY_GUEST_SPLIT_PAYMENT_REVIEW_DIALOG
             var dialog = new SplitReviewPaymentsDialog(StringIds.STRING_REVIEW_PAYMENTS, null, data);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
@@ -2634,7 +2635,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
             {
-
+                //TicketSearchOptionsDialog
             }, true, false, pullSetupDlgData);
         }
 
@@ -2706,7 +2707,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.SPLIT_PAY_DIALOG, StringIds.STRING_SPLIT_PAY, (iResult, args) =>
             {
-
+                //SplitPayDialog
             }, true, false, data);
         }
 
@@ -2730,7 +2731,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.REVIEW_PAYMENTS_DIALOG, StringIds.STRING_REVIEW_PAYMENTS, (iResult, args) =>
             {
-
+                //ReviewPaymentDialog
             }, true, false, data);
         }
 
@@ -2758,7 +2759,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_REFERENCE_TYPE, (iResult, args) =>
             {
-
+                //SelectOptionDialog
             }, true, true, data);
         }
 
@@ -2773,6 +2774,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.GUEST_VIEW_BALANCE_DIALOG, StringIds.STRING_PAYMENT_AMOUNT, (iResult, args) =>
             {
+                //GuestBalanceDialog
             }, true, false, data);
         }
 
@@ -2826,9 +2828,8 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.SELECT_GUEST_ACCOUNT_DIALOG, StringIds.STRING_GUEST_ACCOUNT, (iResult, args) =>
             {
-
+                //SelectGuestAccountDialog
             }, true, false, data);
-
         }
 
         void ShowSelectTablePayTicketsDialog()
@@ -2900,7 +2901,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.SELECT_TENDER_EXTRA_AMOUNT_DIALOG, StringIds.STRING_MULTI_TENDER, (int iResult, object[] args) =>
             {
-
+                //SelectTenderExtraAmountDialog
             }, true, false, dlgData);
         }
 
@@ -2916,6 +2917,104 @@ namespace CloudBanking.UITestApp
             //var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data);
             //dialog.DialogStyle = DialogStyle.FULLSCREEN;
             //dialog.Show(this);
+        }
+
+        void EditTicket()
+        {
+            var viewModel = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.SAVE_BUTTON,
+                OkBtnTitleId = StringIds.STRING_SAVE,
+                CancelBtnCommandId = GlobalResource.CANCEL_SUB_FLOW,
+                CancelTitleId = StringIds.STRING_CANCEL
+            };
+
+            var data = new POSTicketEditModel()
+            {
+                OriginalTicketNumber = "1234567",
+                NewData = new POSTicketInfo()
+                {
+                    TicketNumber = "1234567",
+                    GuestName = "Smith",
+                    Reference = "Table 1",
+                    TableNumber = 1
+                }
+            };
+
+            viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(data.NewData.TableNumber),
+                TitleId = StringIds.STRING_TABLE,
+                HeaderTitleId = StringIds.STRING_TABLE,
+                FieldTitleId = StringIds.STRING_TABLE,
+                Value = data.NewData.TableNumber
+            });
+
+            viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(data.NewData.TicketNumber),
+                TitleId = StringIds.STRING_TICKETNO,
+                HeaderTitleId = StringIds.STRING_TICKETNO,
+                FieldTitleId = StringIds.STRING_TICKETNO,
+                Value = data.NewData.TicketNumber
+            });
+
+            viewModel.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(data.NewData.GuestName),
+                TitleId = StringIds.STRING_GUEST_NAME,
+                HeaderTitleId = StringIds.STRING_GUEST_NAME,
+                FieldTitleId = StringIds.STRING_GUEST_NAME,
+                Value = data.NewData.GuestName
+            });
+
+            viewModel.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(data.NewData.Reference),
+                TitleId = StringIds.STRING_REFERENCE,
+                HeaderTitleId = StringIds.STRING_REFERENCE,
+                FieldTitleId = StringIds.STRING_REFERENCE,
+                Value = data.NewData.Reference
+            });
+
+            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_EDIT_DETAILS, (iResult, args) =>
+            {
+
+            }, true, false, viewModel);
+        }
+
+        void ShowConfirmClosingTableDialog()
+        {
+            TicketSearchItemModel selectedTicket = new TicketSearchItemModel()
+            {
+                Balance = 35000,
+                EmployeeId = 1,
+                TableNumber = 4,
+                TicketNumber = "1234567",
+                GuestName = "John",
+                Reference = "Jack Welsh",
+                GuestAccCount = 5,
+                PurchaseTotal = 25000,
+                Stage = TicketStage.Opened
+            };
+
+            DialogBuilder.Show(IPayDialog.CONFIRM_CLOSING_TABLE_DIALOG, StringIds.STRING_NOTIFICATION, (iResult, args) =>
+            {
+                //ConfirmClosingTableDialog
+            }, true, false, selectedTicket);
+        }
+
+        void ShowGetTenderBalanceDialog()
+        {
+            GetTenderBalanceDlgData dlgData = new GetTenderBalanceDlgData();
+            dlgData.PaidAmount = 35000;
+            dlgData.PurchaseAmount = 50000;
+            dlgData.index = 2;
+
+            var iResult = DialogBuilder.Show(IPayDialog.GET_TENDER_BALANCE_DIALOG, StringIds.STRING_MULTI_TENDER, (int iResult, object[] args) =>
+            {
+                //GetTenderBalanceDialog
+            }, true, false, dlgData);
         }
     }
 }

@@ -498,7 +498,7 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if true
+#if false
             #region Refund flow
 
             _lData.Add(new ScreenViewModel()
@@ -514,9 +514,39 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // 
+#if true // 
 
             #region Table Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetTenderBalanceDialog",
+                RightIconResName = "GetTenderBalanceDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetTenderBalanceDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ConfirmClosingTableDialog",
+                RightIconResName = "ConfirmClosingTableDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowConfirmClosingTableDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EditTicket",
+                RightIconResName = "EditTicket",
+                ItemAction = new Action(() =>
+                {
+                    EditTicket();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {

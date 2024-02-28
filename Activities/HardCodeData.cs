@@ -302,7 +302,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fTroy = true;
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
-            RequestDlgData.fAlipayWechatLogo = true;
+            //RequestDlgData.fAlipayWechatLogo = true;
             RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
 
             switch (caseDialog)
@@ -2891,13 +2891,13 @@ namespace CloudBanking.UITestApp
 
             dlgData.lCashout = 5000;
 
-            dlgData.lPreCashout = 4000;
+            //dlgData.lPreCashout = 4000;
 
             dlgData.lTip = 1000;
 
             dlgData.Donations = new PaymentDonations() { lTotalDonations = 1000 };
 
-            dlgData.PaymentVouchers = new PaymentVouchers() { lTotalVouchers = 1000 };
+            //dlgData.PaymentVouchers = new PaymentVouchers() { lTotalVouchers = 1000 };
 
             DialogBuilder.Show(IPayDialog.SELECT_TENDER_EXTRA_AMOUNT_DIALOG, StringIds.STRING_MULTI_TENDER, (int iResult, object[] args) =>
             {
@@ -2907,16 +2907,16 @@ namespace CloudBanking.UITestApp
 
         void ShowGetAmountRefundAlipayWeChatDialog()
         {
-            //var data = new RefundAlipayWechatDlgData() 
-            //{
-            //    szTransactionId= "4200000027201709294868542706",
-            //    lAmount = 20000,
-            //    lOrginalAmount = 40000
-            //};
+            var data = new RefundAlipayWechatDlgData()
+            {
+                szTransactionId = "4200000027201709294868542706",
+                lAmount = 20000,
+                lOrginalAmount = 40000
+            };
 
-            //var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data);
-            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog.Show(this);
+            var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
         }
 
         void EditTicket()
@@ -2979,7 +2979,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_EDIT_DETAILS, (iResult, args) =>
             {
-
+                //StandardSetupDialog
             }, true, false, viewModel);
         }
 
@@ -3015,6 +3015,91 @@ namespace CloudBanking.UITestApp
             {
                 //GetTenderBalanceDialog
             }, true, false, dlgData);
+        }
+
+        void RefundOptions()
+        {
+            SelRefndOptDlgData data = new SelRefndOptDlgData();
+
+            data.fShowLogout = false;
+            data.iExitButton = 0;
+            data.pIdSecurityUser = 1;
+            data.FunctionButtons = new List<SelectButton>();
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_EFT_REFUND,
+                Title = StringIds.STRING_EFT_REFUND,
+                idImage = IconIds.VECTOR_REFUND_MERCHANT_CARD,
+                IdProcessor = 0,
+                iCommand = GlobalResource.REFUND_EFT_REFUND_BUTTON
+            });
+
+            // NOTE: Not supported
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    iCommandLang = StringIds.STRING_VOUCHER,
+            //    Title = StringIds.STRING_VOUCHER,
+            //    idImage = IconIds.VECTOR_VOUCHER,
+            //    IdProcessor = 0,
+            //    iCommand = GlobalResource.REFUND_VOUCHER_BUTTON
+            //});
+
+            var fAliPay = true;
+
+            //Unsupported in this version.
+            if (DialogBuilder.Orientation == ServiceLocators.ScreenOrientation.Landscape)
+                fAliPay = false;
+
+            if (fAliPay)
+                data.FunctionButtons.Add(new SelectButton()
+                {
+                    iCommandLang = StringIds.STRING_ALIPAY,
+                    Title = StringIds.STRING_ALIPAY,
+                    idImage = IconIds.VECTOR_ALI_PAY,
+                    IdProcessor = 0,
+                    iCommand = GlobalResource.ALI_PAY_BUTTON
+                });
+
+            var fWePay = true;
+
+            //Unsupported in this version.
+            if (DialogBuilder.Orientation == ServiceLocators.ScreenOrientation.Landscape)
+                fWePay = false;
+
+            if (fWePay)
+                data.FunctionButtons.Add(new SelectButton()
+                {
+                    iCommandLang = StringIds.STRING_WEPAY,
+                    Title = StringIds.STRING_WEPAY,
+                    idImage = IconIds.VECTOR_WECHAT,
+                    IdProcessor = 0,
+                    iCommand = GlobalResource.WECHAT_PAY_BUTTON
+                });
+
+            // NOTE: Not supported
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    iCommandLang = StringIds.STRING_REWARDS,
+            //    Title = StringIds.STRING_REWARDS,
+            //    idImage = IconIds.VECTOR_REWARDS,
+            //    IdProcessor = 0,
+            //    iCommand = GlobalResource.FNC_REWARD_BUTTON
+            //});
+
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    iCommandLang = StringIds.STRING_TOP_UP,
+            //    Title = StringIds.STRING_TOP_UP,
+            //    idImage = IconIds.VECTOR_TOP_UP,
+            //    IdProcessor = 0,
+            //    iCommand = GlobalResource.REFUND_TOP_UP_BUTTON
+            //});
+
+            DialogBuilder.Show(IPayDialog.REFUND_OPTION_DIALOG, StringIds.STRING_REFUND_OPTIONS, (iResult, args) =>
+            {
+                //RefundOptionsDialog
+            }, true, false, data);
         }
     }
 }

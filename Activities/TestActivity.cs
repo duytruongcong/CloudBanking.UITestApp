@@ -498,8 +498,18 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if false
+#if true
             #region Refund flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RefundOptionsDialog",
+                RightIconResName = "RefundOptionsDialog",
+                ItemAction = new Action(() =>
+                {
+                    RefundOptions();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -514,7 +524,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // 
+#if false 
 
             #region Table Flow
 

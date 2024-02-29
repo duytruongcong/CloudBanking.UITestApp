@@ -1806,6 +1806,10 @@ namespace CloudBanking.UITestApp
 
             data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
             data.EntryAmountTitleId = StringIds.STRING_PURCHASE;
+            data.fShowReference = true;
+            data.plszReference = "123456";
+            data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+            data.isEnabledEntryAmount = true;
 
             var dialog = new GetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;

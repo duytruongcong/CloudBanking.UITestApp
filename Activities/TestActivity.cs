@@ -6,21 +6,29 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
+using Antlr.Runtime;
 using CloudBanking.BaseControl;
+using CloudBanking.Common;
+using CloudBanking.Entities;
+using CloudBanking.Language;
 using CloudBanking.ServiceLocators;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CloudBanking.ShellContainers;
 
 namespace CloudBanking.UITestApp
 {
     [Activity(MainLauncher = true, LaunchMode = LaunchMode.SingleTask, NoHistory = false, Theme = "@style/WindowBackgroundTheme", ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize)]
-    public partial class TestActivity : BaseActivity
+    public partial class TestActivity : BaseActivity, IGatewayDownloadCallbackListener
     {
         ListView list_view;
         TestItemAdapter _adapter;
         IList<ScreenViewModel> _lData;
 
         BaseDialog _baseDialog;
+        private ApplicationFlow _paymentFlow => ((MainApplication)Application).PaymentFlow;
+
 
         IDialogBuilder DialogBuilder => ServiceLocator.Instance.Get<IDialogBuilder>();
 
@@ -106,6 +114,34 @@ namespace CloudBanking.UITestApp
             {
                 EventButtonClick(e.Position);
             };
+
+            //
+            Task.Run((() =>
+            {
+                try
+                {
+                    ((MainApplication)Application).PaymentFlow = new ApplicationFlow();
+
+                    ServiceLocator.Instance.Get<IShellServer>().SetApplicationFlow(_paymentFlow);
+
+                    if (!_paymentFlow.IsInitialized && !_paymentFlow.IsInitializating)
+                    {
+                        _paymentFlow.IsInitializating = true;
+
+                        _paymentFlow.InitGlobalRecords((m) =>
+                        {
+
+                        }, (sm) =>
+                        {
+
+                        }, this, true);
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    throw ex;
+                }
+            }));
         }
 
         private bool CheckPermission(string[] permissions)
@@ -498,7 +534,7 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if true
+#if false
             #region Refund flow
 
             _lData.Add(new ScreenViewModel()
@@ -1074,7 +1110,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //
+#if true   //
 
             #region Request Card Flow
 
@@ -1610,6 +1646,10 @@ namespace CloudBanking.UITestApp
         private void EventButtonClick(int position)
         {
             _lData[position].ItemAction.Invoke();
+        }
+
+        public void DownloadUpdating(int current, int total)
+        {
         }
 
         private enum CaseDialog

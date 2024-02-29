@@ -23,6 +23,8 @@ namespace CloudBanking.UITestApp
     [Application]
 	public class MainApplication  : Application
 	{
+        public ApplicationFlow PaymentFlow { get; set; }
+
         public MainApplication(IntPtr handle, JniHandleOwnership ownerShip) : base(handle, ownerShip)
         {
 

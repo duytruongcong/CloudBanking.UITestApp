@@ -160,6 +160,7 @@ namespace CloudBanking.UITestApp
             ActivityCompat.RequestPermissions(this, permission, code);
         }
 
+        #region InitializeCusViewData
         private void InitializeCusViewData()
         {
 
@@ -529,12 +530,13 @@ namespace CloudBanking.UITestApp
 
             #endregion
         }
+        #endregion
 
-
+        #region InitializeCommonData
         private void InitializeCommonData()
         {
 
-#if false
+#if true
             #region Refund flow
 
             _lData.Add(new ScreenViewModel()
@@ -549,6 +551,76 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"REFUND_SELECT_TYPE_DIALOG",
+                RightIconResName = "REFUND_SELECT_TYPE_DIALOG",
+                ItemAction = new Action(() =>
+                {
+                    ShowRefundTypes();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RefundSearchOptionDialog",
+                RightIconResName = "RefundSearchOptionDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRefundSearchOptionDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ManualScanQRCodeDialog",
+                RightIconResName = "ManualScanQRCodeDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowManualScanQRCodeDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ListPaymentDialog",
+                RightIconResName = "ListPaymentDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowListPaymentDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RefundPurchaseListItemsDialog",
+                RightIconResName = "RefundPurchaseListItemsDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRefundPurchaseListItemsDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RefundReasonDialog",
+                RightIconResName = "RefundReasonDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRefundReasonDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"AdvancedSearchDialog",
+                RightIconResName = "AdvancedSearchDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowAdvancedSearchDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"GetAmountRefundAlipayWeChatDialog",
                 RightIconResName = "GetAmountRefundAlipayWeChatDialog",
                 ItemAction = new Action(() =>
@@ -556,6 +628,58 @@ namespace CloudBanking.UITestApp
                     ShowGetAmountRefundAlipayWeChatDialog();
                 })
             });
+
+            ////
+
+            ////_lData.Add(new ScreenViewModel()
+            ////{
+            ////    Title = $"RefundListCardDialog",
+            ////    RightIconResName = "RefundListCardDialog",
+            ////    ItemAction = new Action(() =>
+            ////    {
+            ////        ShowRefundListCardDialog();
+            ////    })
+            ////});
+
+            ////_lData.Add(new ScreenViewModel()
+            ////{
+            ////    Title = $"RefundSearchDetailDialog",
+            ////    RightIconResName = "RefundSearchDetailDialog",
+            ////    ItemAction = new Action(() =>
+            ////    {
+            ////        ShowRefundSearchDetailDialog();
+            ////    })
+            ////});
+
+            ////_lData.Add(new ScreenViewModel()
+            ////{
+            ////    Title = $"RefundNFCDialog",
+            ////    RightIconResName = "RefundNFCDialog",
+            ////    ItemAction = new Action(() =>
+            ////    {
+            ////        ShowRefundNFCDialog();
+            ////    })
+            ////});
+
+            ////_lData.Add(new ScreenViewModel()
+            ////{
+            ////    Title = $"RefundSeachResultDialog",
+            ////    RightIconResName = "RefundSeachResultDialog",
+            ////    ItemAction = new Action(() =>
+            ////    {
+            ////        ShowRefundSeachResultDialog();
+            ////    })
+            ////});
+
+            ////_lData.Add(new ScreenViewModel()
+            ////{
+            ////    Title = $"AccessCodeEnterDialog",
+            ////    RightIconResName = "AccessCodeEnterDialog",
+            ////    ItemAction = new Action(() =>
+            ////    {
+            ////        GetRefundAccessCode();
+            ////    })
+            ////});
 
             #endregion
 #endif
@@ -1110,7 +1234,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   //
+#if false   //
 
             #region Request Card Flow
 
@@ -1642,6 +1766,7 @@ namespace CloudBanking.UITestApp
 #endif
 
         }
+        #endregion
 
         private void EventButtonClick(int position)
         {

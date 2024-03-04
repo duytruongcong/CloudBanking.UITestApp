@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using CloudBanking.BaseControl;
+using CloudBanking.BaseHardware;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -13,7 +14,9 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Android.Content.ClipData;
 using static CloudBanking.Entities.Database;
+using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using static Java.Util.Jar.Attributes;
 
@@ -275,7 +278,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = true;
+            RequestDlgData.fNoPresentCard = false;
             RequestDlgData.fOtherPay = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
@@ -303,7 +306,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
-            RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
+            //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_ARROW_UP;
 
             switch (caseDialog)
             {
@@ -458,6 +461,11 @@ namespace CloudBanking.UITestApp
             var requestCardDialog = new RequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             {
             }, RequestDlgData);
+
+            //comment out
+            //var requestCardDialog = new AnimatedRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            //{
+            //}, RequestDlgData);
 
             requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
             requestCardDialog.Show(this);
@@ -1809,7 +1817,7 @@ namespace CloudBanking.UITestApp
             data.fShowReference = true;
             data.plszReference = "123456";
             data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
-            data.isEnabledEntryAmount = true;
+            //data.isEnabledEntryAmount = false;
 
             var dialog = new GetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
@@ -2918,7 +2926,9 @@ namespace CloudBanking.UITestApp
                 lOrginalAmount = 40000
             };
 
-            var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data);
+            var fAlipay = true;
+
+            var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data, fAlipay);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
         }
@@ -3104,6 +3114,405 @@ namespace CloudBanking.UITestApp
             {
                 //RefundOptionsDialog
             }, true, false, data);
+        }
+
+        void GetRefundAccessCode()
+        {
+            DialogBuilder.Show(IPayDialog.REFUND_ACCESS_DIALOG, StringIds.STRING_ACCESSCODE, (iResult, args) =>
+            {
+                //AccessCodeEnterDialog
+            }, true, false);
+        }
+
+        void ShowRefundSeachResultDialog()
+        {
+            var results = new List<ResultViewModel>();
+
+            long amount = 10000;
+
+            results.Add(new ResultViewModel()
+            {
+                DataValueString = "abc",
+                Id = 1,
+                IsActualTitle = true,
+                IsRightTextBold = true,
+                IsSpecial = true,
+                RightIconId = Resource.Drawable.vector_info_gray,
+                SubValue = "subvalue",
+                Title = StringIds.STRING_TRANSACTIONID,
+                Value = amount.ToFormatLocalCurrencyAmount(),
+            });
+
+            results.Add(new ResultViewModel()
+            {
+                DataValueString = "abc",
+                Id = 2,
+                IsActualTitle = true,
+                IsRightTextBold = true,
+                IsSpecial = true,
+                RightIconId = Resource.Drawable.vector_info_gray,
+                SubValue = "subvalue",
+                Title = StringIds.STRING_TRANSACTIONID,
+                Value = amount.ToFormatLocalCurrencyAmount(),
+            });
+
+            results.Add(new ResultViewModel()
+            {
+                DataValueString = "abc",
+                Id = 3,
+                IsActualTitle = true,
+                IsRightTextBold = true,
+                IsSpecial = true,
+                RightIconId = Resource.Drawable.vector_info_gray,
+                SubValue = "subvalue",
+                Title = StringIds.STRING_TRANSACTIONID,
+                Value = amount.ToFormatLocalCurrencyAmount(),
+            });
+
+            results.Add(new ResultViewModel()
+            {
+                DataValueString = "abc",
+                Id = 4,
+                IsActualTitle = true,
+                IsRightTextBold = true,
+                IsSpecial = true,
+                RightIconId = Resource.Drawable.vector_info_gray,
+                SubValue = "subvalue",
+                Title = StringIds.STRING_TRANSACTIONID,
+                Value = amount.ToFormatLocalCurrencyAmount(),
+            });
+
+            DialogBuilder.Show(IPayDialog.REFUND_SEARCH_RESULT_DIALOG, StringIds.STRING_TRANSACTION_LIST, (iResult, args) =>
+            {
+                //RefundSeachResultDialog
+            }, true, false, results);
+        }
+
+        void ShowRefundNFCDialog()
+        {
+            var dialogData = new RefundNFCDlgData()
+            {
+                fAdvaceSearch = true,
+                BottomTitleId = StringIds.STRING_NFC,
+                TopTitleId = StringIds.STRING_NFC
+            };
+
+            DialogBuilder.Show(IPayDialog.REFUND_NFC_DIALOG, StringIds.STRING_NFC, (iResult, args) =>
+            {
+                //RefundNFCDialog
+            }, true, false, dialogData);
+        }
+
+        void ShowRefundSearchDetailDialog()
+        {
+            RefundPurchaseDetailDlgData dlgData = new RefundPurchaseDetailDlgData()
+            {
+                CustomerName = "Smith",
+                OriginalAmount = 10000,
+                OriginalAuthCode = "1234",
+                OriginalCardNumber = "1234 5678 9876",
+                OriginalCardType = "Debit",
+                OriginalCreatedBy = DateTimeOffset.Now,
+                OriginalLastFourDigitCardNumber = "5678",
+                OriginalRRNNumber = "1234",
+                OriginalSTAN = "1234",
+                OriginalTransactionId = "1122",
+                Reference = ReferenceType.Invoice,
+                ReferenceNumber = "1234",
+                RefundedAmount = 2000,
+                RefundedAuthCode = "3344",
+                RefundedCardNumber = "8877 6655 8877",
+                RefundedCardType = "Debit",
+                RefundedCreatedBy = DateTimeOffset.Now,
+                RefundedLastFourDigitCardNumber = "1234",
+                RefundedRRNNumber = "123456",
+                RefundedSTAN = "1122",
+                RefundedTransactionId = "123",
+                RREF = "1234",
+                Status = PaymentStatus.Refunded
+            };
+
+            FunctionType functionType = FunctionType.Refund;
+
+            DialogBuilder.Show(IPayDialog.REFUND_SEARCH_DETAILS_DIALOG, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
+           {
+               //RefundSearchDetailDialog
+           }, true, false, dlgData, functionType);
+        }
+
+        void ShowRefundListCardDialog()
+        {
+            var dlgData = new RefundListCardDlgData()
+            {
+                RefundAmount = 36000,
+                payment = new Payment()
+                {
+                    DateTime = DateTime.Now,
+                    AuthorizationExpiryDate = DateTime.Now,
+                    szReferenceNumber = "12354",
+                    Id = 1,
+                    IdProcessor = 1,
+                    lAmount = (int)10000,
+                    lCashOut = (int)5000,
+                    lTipAmount = (int)1000,
+                    iCardType = CARDTYPE.CARD_AMEX,
+                    iAccountTypeCode = 2,
+                    lszEndCardNumber = "1234",
+                    szApprovalCode = "5544",
+                    CustomerReferenceType = ReferenceType.Customer,
+                    lszCustomerReference = "3456",
+                    fRefunded = true,
+                    szSTAN = "4455",
+                    szCardHolderName = "David Smith",
+                    iPaymentType = (ushort)1,
+                    Donations = new PaymentDonations()
+                    {
+                        lTotalDonations = 1000,
+                        Donations = new List<PaymentDonation>()
+                        {
+                            new PaymentDonation(){IdCharity = 1, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+                            new PaymentDonation(){IdCharity = 2, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+                            new PaymentDonation(){IdCharity = 3, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+                        }
+                    },
+                    szAuthorizationResponseCode = "1234",
+                    szTransactionId = "4567",
+                },
+                cardIconString = CARDTYPE.CARD_AMEX.GetIconDrawable(),
+            };
+
+            DialogBuilder.Show(IPayDialog.REFUND_LIST_CARD_DIALOG, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
+            {
+                //RefundListCardDialog
+            }, true, false, dlgData);
+        }
+
+        void ShowAdvancedSearchDialog()
+        {
+            TransactionFindModel model = new TransactionFindModel()
+            {
+                Reference = ReferenceType.Invoice,
+                ReferenceNumber = "12345",
+                Amount = 50000,
+                IsExactAmount = false,
+                TransactionId = "1"
+            };
+
+            string RightButtonTextId = string.Empty;
+
+            string Title = StringIds.STRING_ADVANCE_SEARCH;
+
+            FunctionType iFunctionButton = FunctionType.WechatRefund;
+
+            switch (iFunctionButton)
+            {
+                case FunctionType.Refund:
+
+                    RightButtonTextId = StringIds.STRING_FIND_PURCHASE;
+
+                    break;
+                case FunctionType.AlipayRefund:
+
+                    Title = StringIds.STRING_ALIPAY_SEARCH;
+
+                    RightButtonTextId = StringIds.STRING_FIND_PURCHASE;
+                    break;
+
+                case FunctionType.WechatRefund:
+
+                    Title = StringIds.STRING_WECHAT_SEARCH;
+
+                    RightButtonTextId = StringIds.STRING_FIND_PURCHASE;
+
+                    break;
+
+                case FunctionType.PreAuthComplete:
+                case FunctionType.PreAuthIncrement:
+                case FunctionType.PreAuthPartial:
+                case FunctionType.PreAuthCancel:
+                case FunctionType.PreAuthDelayedCompletion:
+
+                    RightButtonTextId = StringIds.STRING_FIND_PRE_AUTH;
+
+                    break;
+
+                case FunctionType.Reprint:
+
+                case FunctionType.ReprintPreAuth:
+
+                    RightButtonTextId = StringIds.STRING_FIND_RECEIPT;
+
+                    break;
+            }
+
+            DialogBuilder.Show(IPayDialog.ADVANCED_SEARCH_DIALOG, Title, (iResult, args) =>
+            {
+                //AdvancedSearchDialog
+            }, true, false, model, RightButtonTextId);
+        }
+
+        protected int ShowRefundReasonDialog()
+        {
+            RefundReasonDlgData dlgData = new RefundReasonDlgData()
+            {
+                Comment = "abcdef",
+                RefundValue = 50000,
+                SelectedCommand = 1,
+                MenuItems = new List<AccessMenuItem>()
+                {
+                    new AccessMenuItem()
+                    {
+                        Command = (int)UtilEnum.RefundReason.None,
+                        TitleId = StringIds.STRING_NONE,
+                    },
+                    new AccessMenuItem()
+                    {
+                        Command = (int)UtilEnum.RefundReason.ReturnedGoods,
+                        TitleId = StringIds.STRING_RETURNED_GOODS,
+                    },
+                    new AccessMenuItem()
+                    {
+                        Command = (int)UtilEnum.RefundReason.CancelledPurchase,
+                        TitleId = StringIds.STRING_CANCELLED_PURCHASE
+                    },
+                    new AccessMenuItem()
+                    {
+                        Command = (int)UtilEnum.RefundReason.CustomerService,
+                        TitleId = StringIds.STRING_CUSTOMER_SERVICE
+                    },
+                    new AccessMenuItem()
+                    {
+                        Command = (int)UtilEnum.RefundReason.EmployeeError,
+                        TitleId = StringIds.STRING_EMPLOYEE_ERROR
+                    },
+                    new AccessMenuItem()
+                    {
+                        Command = (int)UtilEnum.RefundReason.Other,
+                        TitleId = StringIds.STRING_OTHER
+                    }
+                }
+            };
+            return DialogBuilder.Show(IPayDialog.REFUND_REASON_DIALOG, StringIds.STRING_REFUND_REASON, (iResult, args) =>
+            {
+                //RefundReasonDialog
+            }, true, true, dlgData);
+        }
+
+        void ShowRefundPurchaseListItemsDialog()
+        {
+            long amount = 10000;
+            long lCashOut = 10000;
+            long lDonation = 10000;
+            long lTipAmount = 2000;
+            RefundPurchaseListItemsDlgData dlgData = new RefundPurchaseListItemsDlgData()
+            {
+                Amount = 60000,
+                ListPurchase = new List<LeftRightTextCheckIconModel>()
+                {
+                    new LeftRightTextCheckIconModel()
+                    {
+                        Id = 1,
+                        Title = StringIds.STRING_PURCHASE,
+                        Value = amount.ToFormatLocalCurrencyAmount(),
+                        IsChecked = true,
+                        IsTopRadiusBackground = true
+                    },
+                    new LeftRightTextCheckIconModel()
+                    {
+                        Id = 2,
+                        Title = StringIds.STRING_CASHOUT,
+                        Value = lCashOut.ToFormatCurrency(),
+                        IsChecked = true
+                    },
+                    new LeftRightTextCheckIconModel()
+                    {
+                        Id = 3,
+                        IsActualTitle = true,
+                        Title = StringIds.STRING_DONATION,
+                        Value = lDonation.ToFormatCurrency(),
+                        IsChecked = true
+                    },
+                    new LeftRightTextCheckIconModel()
+                    {
+                        Id = 4,
+                        Title = StringIds.STRING_TIP,
+                        Value = lTipAmount.ToFormatCurrency(),
+                        IsChecked = true
+                    },
+                    new LeftRightTextCheckIconModel()
+                    {
+                        IsActualTitle = true,
+                        Title = Localize.GetString(StringIds.STRING_SALESSUMMARY_TOTALREFUND).ToUpper(),
+                        Value = amount.ToFormatCurrency(),
+                        HasCheckbox = false,
+                        HasBottomLine = false,
+                        IsBoldAll = true,
+                        IsBottomRadiusBackground = true
+                    }
+                }
+            };
+
+            DialogBuilder.Show(IPayDialog.REFUND_PURCHASE_LIST_ITEMS, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
+            {
+                //RefundPurchaseListItemsDialog
+            }, true, false, dlgData);
+        }
+
+        void ShowRefundTypes()
+        {
+
+            var generalType = new List<GenericType>()
+            {
+                new GenericType()
+                {
+                     Icon = IconIds.VECTOR_REFUND_PURCHASE,
+                     lszText =  StringIds.STRING_REFUND_PURCHASE,
+                     Id = GlobalResource.FNC_REFUND_PURCHASE,
+                },
+                new GenericType()
+                {
+                     Icon = IconIds.VECTOR_REFUND_ONLY,
+                     lszText =  StringIds.STRING_REFUND_ONLY,
+                     Id = GlobalResource.FNC_REFUND_ONLY,
+                },
+            };
+
+            DialogBuilder.Show(IPayDialog.REFUND_SELECT_TYPE_DIALOG, StringIds.STRING_REFUND_TITLE, (iResult, args) =>
+            {
+                //DynamicOptionDialog
+            }, true, false, generalType);
+        }
+
+        void ShowManualScanQRCodeDialog()
+        {
+            string IdDlgTitle = string.Empty;
+
+            ManualScanQRCodeDlgData dlgData = new ManualScanQRCodeDlgData()
+            {
+                GuideTitleId = StringIds.STRING_PLACE_QR_CODE_INSIDE_THE_SCAN_AREA,
+                ScanTitleId = StringIds.STRING_SCAN_QR_CODE,
+            };
+
+            IdDlgTitle = StringIds.STRING_REFUND_PURCHASE;
+
+            dlgData.AboveScanViewTitleId = StringIds.STRING_FIND_PURCHASE;
+
+            DialogBuilder.Show(IPayDialog.SCAN_QRCODE_DIALOG, IdDlgTitle, (iResult, args) =>
+            {
+
+                //ManualScanQRCodeDialog
+            }, true, false, dlgData);
+        }
+
+        void ShowRefundSearchOptionDialog()
+        {
+            var dlgData = new RefundSearchOptionsDlgData();
+
+            DialogBuilder.Show(IPayDialog.REFUND_SEARCH_OPTIONS_DIALOG, StringIds.STRING_WECHAT_REFUND_PURCHASE, (iResult, args) =>
+            {
+
+                //RefundSearchOptionDialog
+            }, true, false, dlgData);
         }
     }
 }

@@ -1418,6 +1418,7 @@ namespace CloudBanking.UITestApp
             item1.Amount = 10000;
             item1.AuthNumber = "87654";
             item1.CardType = "Visa Debit";
+            item1.CardInfo = "****6785";
             var date = new XDateTime();
             date.Year = 2023;
             date.Month = 6;
@@ -1427,6 +1428,15 @@ namespace CloudBanking.UITestApp
             item1.CreatedDate = date;
             item1.CustomerName = "David";
             item1.ReferenceTypeStringIds = "Table 10";
+            item1.Value = "4";
+            item1.FunctionType = "Refund";
+            item1.TransactionNumber = "4200000027201709294868542706";
+            item1.FunctionType = Localize.GetString(FunctionType.Wechat.ToStringId());
+            item1.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
+            item1.ReferenceNumber = "123";
+            item1.IconId = IconIds.VECTOR_REFUNDED;
+            item1.Status = PaymentStatus.Refunded;
+
             var item2 = new TransactionInfoModel();
             var item3 = new TransactionInfoModel();
             item2 = item1;
@@ -1438,7 +1448,8 @@ namespace CloudBanking.UITestApp
             data.Items.Add(item1);
             data.Items.Add(item2);
             data.Items.Add(item3);
-            DialogBuilder.Show(IPayDialog.LIST_ITEM_RECORDS_DIALOG, StringIds.STRING_REFUND_PURCHASE, null, true, false, data);
+            DialogBuilder.Show(IPayDialog.LIST_ITEM_RECORDS_DIALOG, StringIds.STRING_REFUND_PURCHASE, null, true, false, data, FunctionType.WechatRefund);
+            //ListPaymentDialog
         }
 
         void BasketItemSelectOffer()
@@ -2917,7 +2928,7 @@ namespace CloudBanking.UITestApp
             }, true, false, dlgData);
         }
 
-        void ShowGetAmountRefundAlipayWeChatDialog()
+        void ShowGetAmountRefundAlipayWeChatDialog_01()
         {
             var data = new RefundAlipayWechatDlgData()
             {
@@ -2927,8 +2938,26 @@ namespace CloudBanking.UITestApp
             };
 
             var fAlipay = true;
+            var fManual = true;
 
-            var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data, fAlipay);
+            var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data, fAlipay, fManual);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
+        }
+
+        void ShowGetAmountRefundAlipayWeChatDialog_02()
+        {
+            var data = new RefundAlipayWechatDlgData()
+            {
+                szTransactionId = "4200000027201709294868542706",
+                lAmount = 20000,
+                lOrginalAmount = 40000
+            };
+
+            var fAlipay = true;
+            var fManual = false;
+
+            var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data, fAlipay, fManual);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
         }
@@ -3061,10 +3090,6 @@ namespace CloudBanking.UITestApp
 
             var fAliPay = true;
 
-            //Unsupported in this version.
-            if (DialogBuilder.Orientation == ServiceLocators.ScreenOrientation.Landscape)
-                fAliPay = false;
-
             if (fAliPay)
                 data.FunctionButtons.Add(new SelectButton()
                 {
@@ -3078,8 +3103,8 @@ namespace CloudBanking.UITestApp
             var fWePay = true;
 
             //Unsupported in this version.
-            if (DialogBuilder.Orientation == ServiceLocators.ScreenOrientation.Landscape)
-                fWePay = false;
+            //if (DialogBuilder.Orientation == ServiceLocators.ScreenOrientation.Landscape)
+            //    fWePay = false;
 
             if (fWePay)
                 data.FunctionButtons.Add(new SelectButton()
@@ -3216,7 +3241,7 @@ namespace CloudBanking.UITestApp
                 OriginalLastFourDigitCardNumber = "5678",
                 OriginalRRNNumber = "1234",
                 OriginalSTAN = "1234",
-                OriginalTransactionId = "1122",
+                OriginalTransactionId = "4200000027201709294868542706",
                 Reference = ReferenceType.Invoice,
                 ReferenceNumber = "1234",
                 RefundedAmount = 2000,
@@ -3232,12 +3257,12 @@ namespace CloudBanking.UITestApp
                 Status = PaymentStatus.Refunded
             };
 
-            FunctionType functionType = FunctionType.Refund;
+            FunctionType functionType = FunctionType.WechatRefund;
 
             DialogBuilder.Show(IPayDialog.REFUND_SEARCH_DETAILS_DIALOG, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
-           {
-               //RefundSearchDetailDialog
-           }, true, false, dlgData, functionType);
+            {
+                //RefundSearchDetailDialog
+            }, true, false, dlgData, functionType);
         }
 
         void ShowRefundListCardDialog()
@@ -3489,13 +3514,14 @@ namespace CloudBanking.UITestApp
 
             ManualScanQRCodeDlgData dlgData = new ManualScanQRCodeDlgData()
             {
-                GuideTitleId = StringIds.STRING_PLACE_QR_CODE_INSIDE_THE_SCAN_AREA,
+                //GuideTitleId = StringIds.STRING_PLACE_QR_CODE_INSIDE_THE_SCAN_AREA,
                 ScanTitleId = StringIds.STRING_SCAN_QR_CODE,
             };
 
             IdDlgTitle = StringIds.STRING_REFUND_PURCHASE;
 
             dlgData.AboveScanViewTitleId = StringIds.STRING_FIND_PURCHASE;
+            //dlgData.ManualIconId = 
 
             DialogBuilder.Show(IPayDialog.SCAN_QRCODE_DIALOG, IdDlgTitle, (iResult, args) =>
             {
@@ -3504,15 +3530,290 @@ namespace CloudBanking.UITestApp
             }, true, false, dlgData);
         }
 
-        void ShowRefundSearchOptionDialog()
+        void ShowFindPurchaseOptionDialog()
         {
-            var dlgData = new RefundSearchOptionsDlgData();
+            string IdDlgTitle = string.Empty;
 
-            DialogBuilder.Show(IPayDialog.REFUND_SEARCH_OPTIONS_DIALOG, StringIds.STRING_WECHAT_REFUND_PURCHASE, (iResult, args) =>
+            TransactionFindModel findModel = new TransactionFindModel()
             {
+                Reference = ReferenceType.Invoice,
+                ReferenceNumber = "1234",
+                TransactionId = "12",
+                Amount = 13000,
+                IsExactAmount =false,
+                Last4Digit="5678",
+                AuthCode="1234",
+                STAN="7890"
+            };
 
-                //RefundSearchOptionDialog
-            }, true, false, dlgData);
+            FindPurchaseOptionDlgData dlgData = new FindPurchaseOptionDlgData();
+
+            var functionType = FunctionType.WechatRefund;
+
+            var fPayplusRefund = functionType == FunctionType.WechatRefund || functionType == FunctionType.AlipayRefund;
+
+            if (fPayplusRefund)
+            {
+                var referenceTypeModel = new SingleSelectEditModel()
+                {
+                    TitleId = StringIds.STRING_REFERENCE_TYPE,
+                    Value = findModel.Reference,
+                    PropertyName = nameof(TransactionFindModel.Reference),
+                };
+
+                var referenceTypes = new List<RadioEditModel>();
+
+                foreach (ReferenceType type in Enum.GetValues(typeof(ReferenceType)))
+                {
+                    referenceTypes.Add(new RadioEditModel()
+                    {
+                        GroupName = nameof(TransactionFindModel.Reference),
+                        TitleId = DataHelper.GetRefName(type),
+                        Identifier = type,
+                    });
+                }
+
+                referenceTypeModel.SetItems(referenceTypes);
+
+                dlgData.Items.Add(referenceTypeModel);
+
+                dlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+                {
+                    TitleId = StringIds.STRING_REFERENCE_CODE,
+                    Value = findModel.ReferenceNumber,
+                    IsEnabled = true,
+                    PropertyName = nameof(TransactionFindModel.ReferenceNumber),
+                    SpanSize = 1
+                });
+
+                dlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+                {
+                    TitleId = StringIds.STRING_TRANSACTIONID,
+                    Value = findModel.TransactionId,
+                    IsEnabled = true,
+                    PropertyName = nameof(TransactionFindModel.TransactionId),
+                    SpanSize = 1
+                });
+            }
+            else
+            {
+                dlgData.Items.Add(new InputAmountEditModel()
+                {
+                    TitleId = StringIds.STRING_AMOUNT,
+                    PropertyName = nameof(TransactionFindModel.Amount),
+                    Value = findModel.Amount,
+                    SpanSize = 1
+                });
+
+                dlgData.Items.Add(new SwitcherEditModel()
+                {
+                    TitleId = StringIds.STRING_EXACT_AMOUNT,
+                    PropertyName = nameof(TransactionFindModel.IsExactAmount),
+                    Value = findModel.IsExactAmount,
+                    SpanSize = 1
+                });
+
+
+                var endCardNumb = new InputNumberFixedKeyboardEditModel()
+                {
+                    TitleId = StringIds.STRING_LAST_FOUR_DIGITS,
+                    Value = findModel.Last4Digit,
+                    MaxLength = 4,
+                    PropertyName = nameof(TransactionFindModel.Last4Digit),
+                    SpanSize = 1
+                };
+
+                dlgData.Items.Add(endCardNumb);
+
+                var authCodeModel = new InputNumberAndTextFixedKeyboardEditModel()
+                {
+                    TitleId = StringIds.STRING_AUTHCODE,
+                    Value = findModel.AuthCode,
+                    IsEnabled = true,
+                    PropertyName = nameof(TransactionFindModel.AuthCode),
+                    SpanSize = 1
+                };
+
+                dlgData.Items.Add(authCodeModel);
+
+                var stanModel = new InputNumberFixedKeyboardEditModel()
+                {
+                    TitleId = StringIds.STRING_STAN,
+                    Value = findModel.STAN,
+                    IsEnabled = true,
+                    PropertyName = nameof(TransactionFindModel.STAN),
+                    SpanSize = 1
+                };
+
+                dlgData.Items.Add(stanModel);
+
+                //var refModel = new InputTextEditModel()
+                //{
+                //    TitleId = StringIds.STRING_CUSTOMERREF,
+                //    Value = findModel.ReferenceNumber,
+                //    IsEnabled = true,
+                //    PropertyName = nameof(TransactionFindModel.ReferenceNumber)
+                //};
+
+                //dlgData.Items.Add(refModel);
+            }
+
+            switch (functionType)
+            {
+                case FunctionType.Refund:
+
+                    IdDlgTitle = StringIds.STRING_REFUND_PURCHASE;
+
+                    dlgData.TopTitleId = StringIds.STRING_FIND_PURCHASE_OPTIONS;
+
+                    dlgData.RightBtnTitleId = StringIds.STRING_FIND_PURCHASE;
+
+                    break;
+
+                case FunctionType.PreAuthComplete:
+                case FunctionType.PreAuthIncrement:
+                case FunctionType.PreAuthPartial:
+                case FunctionType.PreAuthCancel:
+                case FunctionType.PreAuthDelayedCompletion:
+
+                    IdDlgTitle = functionType.ToStringId();
+
+                    dlgData.TopTitleId = StringIds.STRING_FIND_PREAUTH_OPTIONS;
+
+                    dlgData.RightBtnTitleId = StringIds.STRING_FIND_PRE_AUTH;
+
+                    break;
+
+                case FunctionType.OpenTab:
+
+                case FunctionType.CloseTab:
+
+                    IdDlgTitle = functionType == FunctionType.OpenTab ? StringIds.STRING_OPEN_TAB : StringIds.STRING_CLOSE_TAB;
+
+                    dlgData.TopTitleId = StringIds.STRING_FIND_OPEN_TAB;
+
+                    dlgData.RightBtnTitleId = StringIds.STRING_FIND_OPEN_TAB;
+
+                    break;
+
+                case FunctionType.ReprintPreAuth:
+
+                    IdDlgTitle = StringIds.STRING_REPRINT_RECEIPT;
+
+                    dlgData.TopTitleId = StringIds.STRING_FIND_PREAUTH_OPTIONS;
+
+                    dlgData.RightBtnTitleId = StringIds.STRING_FIND_PRE_AUTH;
+
+                    break;
+
+                case FunctionType.ReprintPreAuthPending:
+
+                    IdDlgTitle = StringIds.STRING_PRINT_PENDING_HOSPITALITY;
+
+                    dlgData.TopTitleId = StringIds.STRING_FIND_PENDING_HOSPITALITY_OPTIONS;
+
+                    dlgData.RightBtnTitleId = StringIds.STRING_FIND_PRE_AUTH;
+
+                    break;
+
+                case FunctionType.Reprint:
+
+                    IdDlgTitle = StringIds.STRING_REPRINT_RECEIPT;
+
+                    dlgData.TopTitleId = StringIds.STRING_SEARCH_PAYMENTS;
+
+                    dlgData.RightBtnTitleId = StringIds.STRING_SEARCH_PAYMENTS;
+
+                    break;
+
+                case FunctionType.AlipayRefund:
+
+                    IdDlgTitle = StringIds.STRING_ALIPAY_REFUND_PURCHASE;
+
+                    dlgData.TopTitleId = StringIds.STRING_SEARCH_OPTIONS;
+
+                    dlgData.RightBtnTitleId = StringIds.STRING_FIND_PURCHASE;
+
+                    dlgData.fQrCode = dlgData.fAdvancedSearch = dlgData.fViewList = true;
+
+                    break;
+
+                case FunctionType.WechatRefund:
+
+                    IdDlgTitle = StringIds.STRING_WECHAT_REFUND_PURCHASE;
+
+                    dlgData.TopTitleId = StringIds.STRING_SEARCH_OPTIONS;
+
+                    dlgData.RightBtnTitleId = StringIds.STRING_FIND_PURCHASE;
+
+                    dlgData.fQrCode = dlgData.fAdvancedSearch = dlgData.fViewList = true;
+
+                    break;
+
+                default:
+
+                    break;
+            }
+
+            DialogBuilder.Show(IPayDialog.SEARCH_OPTION_DIALOG, IdDlgTitle, (iResult, args) =>
+            {
+                //FindPurchaseOptionDialog
+            }, true, false, dlgData, findModel);
+        }
+
+        void ShowSearchFilterOptionsDialog()
+        {
+            FunctionType functionType = FunctionType.AlipayRefund;
+
+            TransactionFindModel dlgData = new TransactionFindModel();
+
+            string RightButtonTextId = string.Empty;
+
+            switch (functionType)
+            {
+                case FunctionType.Refund:
+                case FunctionType.AlipayRefund:
+                case FunctionType.WechatRefund:
+
+                    RightButtonTextId = StringIds.STRING_FIND_PURCHASE;
+
+                    break;
+
+                case FunctionType.PreAuthComplete:
+                case FunctionType.PreAuthIncrement:
+                case FunctionType.PreAuthPartial:
+                case FunctionType.PreAuthCancel:
+                case FunctionType.PreAuthDelayedCompletion:
+
+                    RightButtonTextId = StringIds.STRING_FIND_PRE_AUTH;
+
+                    break;
+
+                case FunctionType.CloseTab:
+                case FunctionType.OpenTab:
+
+                    RightButtonTextId = StringIds.STRING_FIND_OPEN_TAB;
+
+                    break;
+
+                case FunctionType.Reprint:
+
+                case FunctionType.ReprintPreAuth:
+
+                    RightButtonTextId = StringIds.STRING_FIND_RECEIPT;
+
+                    break;
+
+                default:
+
+                    break;
+            }
+
+            DialogBuilder.Show(IPayDialog.SEARCH_FILTER_OPTIONS_DIALOG, StringIds.STRING_VIEW_LIST, (iResult, args) =>
+            {
+                //SearchFilterOptionsDialog
+            }, true, false, dlgData, RightButtonTextId, functionType);
+
         }
     }
 }

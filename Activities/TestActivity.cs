@@ -541,6 +541,16 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"SearchFilterOptionsDialog",
+                RightIconResName = "SearchFilterOptionsDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSearchFilterOptionsDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"RefundOptionsDialog",
                 RightIconResName = "RefundOptionsDialog",
                 ItemAction = new Action(() =>
@@ -561,11 +571,11 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"RefundSearchOptionDialog",
-                RightIconResName = "RefundSearchOptionDialog",
+                Title = $"FindPurchaseOptionDialog",
+                RightIconResName = "FindPurchaseOptionDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowRefundSearchOptionDialog();
+                    ShowFindPurchaseOptionDialog();
                 })
             });
 
@@ -621,15 +631,36 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"GetAmountRefundAlipayWeChatDialog",
+                Title = $"GetAmountRefundAlipayWeChatDialog_01",
                 RightIconResName = "GetAmountRefundAlipayWeChatDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowGetAmountRefundAlipayWeChatDialog();
+                    ShowGetAmountRefundAlipayWeChatDialog_01();
                 })
             });
 
-            ////
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountRefundAlipayWeChatDialog_02",
+                RightIconResName = "GetAmountRefundAlipayWeChatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountRefundAlipayWeChatDialog_02();
+                })
+            });
+
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RefundSearchDetailDialog",
+                RightIconResName = "RefundSearchDetailDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRefundSearchDetailDialog();
+                })
+            });
+
+            //// work later, don't need now
 
             ////_lData.Add(new ScreenViewModel()
             ////{
@@ -641,15 +672,7 @@ namespace CloudBanking.UITestApp
             ////    })
             ////});
 
-            ////_lData.Add(new ScreenViewModel()
-            ////{
-            ////    Title = $"RefundSearchDetailDialog",
-            ////    RightIconResName = "RefundSearchDetailDialog",
-            ////    ItemAction = new Action(() =>
-            ////    {
-            ////        ShowRefundSearchDetailDialog();
-            ////    })
-            ////});
+
 
             ////_lData.Add(new ScreenViewModel()
             ////{
@@ -684,7 +707,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false 
+#if false
 
             #region Table Flow
 

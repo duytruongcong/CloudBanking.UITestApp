@@ -160,6 +160,27 @@ namespace CloudBanking.UITestApp
             ActivityCompat.RequestPermissions(this, permission, code);
         }
 
+        private void EventButtonClick(int position)
+        {
+            _lData[position].ItemAction.Invoke();
+        }
+
+        public void DownloadUpdating(int current, int total)
+        {
+        }
+
+        private enum CaseDialog
+        {
+            CASE1,
+            CASE2,
+            CASE3,
+            CASE4,
+            CASE5,
+            CASE6,
+            CASE7,
+            CASE8
+        }
+
         #region InitializeCusViewData
         private void InitializeCusViewData()
         {
@@ -1799,27 +1820,6 @@ namespace CloudBanking.UITestApp
 
         }
         #endregion
-
-        private void EventButtonClick(int position)
-        {
-            _lData[position].ItemAction.Invoke();
-        }
-
-        public void DownloadUpdating(int current, int total)
-        {
-        }
-
-        private enum CaseDialog
-        {
-            CASE1,
-            CASE2,
-            CASE3,
-            CASE4,
-            CASE5,
-            CASE6,
-            CASE7,
-            CASE8
-        }
 
     }
 }

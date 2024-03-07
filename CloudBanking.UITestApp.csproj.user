@@ -4,5 +4,6 @@
     <SelectedDevice>PAX A77</SelectedDevice>
     <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
     <ActiveDebugProfile>PAX A77 %28Android 8.1 - API 27%29</ActiveDebugProfile>
+    <AndroidDesignerPreferredTheme>WindowBackgroundTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

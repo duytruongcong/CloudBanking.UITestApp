@@ -539,25 +539,25 @@ namespace CloudBanking.UITestApp
 #if true
             #region Refund flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SearchFilterOptionsDialog",
-                RightIconResName = "SearchFilterOptionsDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowSearchFilterOptionsDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SearchFilterOptionsDialog",
+            //    RightIconResName = "SearchFilterOptionsDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSearchFilterOptionsDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RefundOptionsDialog",
-                RightIconResName = "RefundOptionsDialog",
-                ItemAction = new Action(() =>
-                {
-                    RefundOptions();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RefundOptionsDialog",
+            //    RightIconResName = "RefundOptionsDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        RefundOptions();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -568,14 +568,23 @@ namespace CloudBanking.UITestApp
                     ShowRefundTypes();
                 })
             });
-
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"FindPurchaseOptionDialog",
+                Title = $"FindPurchaseOptionDialog_CASE01",
                 RightIconResName = "FindPurchaseOptionDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowFindPurchaseOptionDialog();
+                    ShowFindPurchaseOptionDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"FindPurchaseOptionDialog_CASE02",
+                RightIconResName = "FindPurchaseOptionDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowFindPurchaseOptionDialog(CaseDialog.CASE2);
                 })
             });
 

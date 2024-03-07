@@ -3530,9 +3530,31 @@ namespace CloudBanking.UITestApp
             }, true, false, dlgData);
         }
 
-        void ShowFindPurchaseOptionDialog()
+        void ShowFindPurchaseOptionDialog(CaseDialog caseDialog)
         {
             string IdDlgTitle = string.Empty;
+
+            FindPurchaseOptionDlgData dlgData = new FindPurchaseOptionDlgData();
+
+            FunctionType functionType;
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    functionType = FunctionType.Refund;
+                    break;
+
+                case CaseDialog.CASE2:
+                    functionType = FunctionType.WechatRefund;
+                    break;
+
+                default:
+                    functionType = FunctionType.Refund;
+                    break;
+            }
+
+
+            var fPayplusRefund = functionType == FunctionType.WechatRefund || functionType == FunctionType.AlipayRefund;
 
             TransactionFindModel findModel = new TransactionFindModel()
             {
@@ -3540,17 +3562,12 @@ namespace CloudBanking.UITestApp
                 ReferenceNumber = "1234",
                 TransactionId = "12",
                 Amount = 13000,
-                IsExactAmount =false,
-                Last4Digit="5678",
-                AuthCode="1234",
-                STAN="7890"
+                IsExactAmount = false,
+                Last4Digit = "5678",
+                AuthCode = "1234",
+                STAN = "7890",
+                //fPayplusRefund = fPayplusRefund
             };
-
-            FindPurchaseOptionDlgData dlgData = new FindPurchaseOptionDlgData();
-
-            var functionType = FunctionType.WechatRefund;
-
-            var fPayplusRefund = functionType == FunctionType.WechatRefund || functionType == FunctionType.AlipayRefund;
 
             if (fPayplusRefund)
             {
@@ -3586,14 +3603,14 @@ namespace CloudBanking.UITestApp
                     SpanSize = 1
                 });
 
-                dlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-                {
-                    TitleId = StringIds.STRING_TRANSACTIONID,
-                    Value = findModel.TransactionId,
-                    IsEnabled = true,
-                    PropertyName = nameof(TransactionFindModel.TransactionId),
-                    SpanSize = 1
-                });
+                //dlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+                //{
+                //    TitleId = StringIds.STRING_TRANSACTIONID,
+                //    Value = findModel.TransactionId,
+                //    IsEnabled = true,
+                //    PropertyName = nameof(TransactionFindModel.TransactionId),
+                //    SpanSize = 1
+                //});
             }
             else
             {

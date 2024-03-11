@@ -21,8 +21,8 @@ using Plugin.DeviceInfo;
 namespace CloudBanking.UITestApp
 {
     [Application]
-	public class MainApplication  : Application
-	{
+    public class MainApplication : Application
+    {
         public ApplicationFlow PaymentFlow { get; set; }
 
         public MainApplication(IntPtr handle, JniHandleOwnership ownerShip) : base(handle, ownerShip)
@@ -56,13 +56,19 @@ namespace CloudBanking.UITestApp
 
             //create smart card
             if (CrossDeviceInfo.Current.IsPaxTerminal())
+            {
                 ServiceLocator.Instance.Register<ISmartDevice, PaxSmartDevice>(this,
                     ServiceLocator.Instance.Get<ILoggerService>(),
                     ServiceLocator.Instance.Get<IFileService>(),
                     ServiceLocator.Instance.Get<IProfileService>(),
                     CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
+                ServiceLocator.Instance.Register<IBarcodeService, PaxBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
+            }
             else
+            {
                 ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>());
+                ServiceLocator.Instance.Register<IBarcodeService, ZXingBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
+            }
 
             ServiceLocator.Instance.Get<ISmartDevice>().SetHardwareModule(
                 CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),

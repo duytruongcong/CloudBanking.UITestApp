@@ -316,7 +316,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -327,7 +327,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fManualPay = true;
 
                     break;
 
@@ -2231,7 +2231,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.REQUEST_ALIPAY_WECHAT_DIALOG, StringIds.STRING_QR_PAYMENTS, (iResult, args) =>
             {
-
+                //RequestAliPayWechatDialog
             }, blockUI, false, dlgData);
 
             //hardcode in dialog to show all case
@@ -2930,7 +2930,7 @@ namespace CloudBanking.UITestApp
 
         void ShowGetAmountRefundAlipayWeChatDialog_01()
         {
-            var data = new RefundAlipayWechatDlgData()
+            RefundAlipayWechatDlgData data = new RefundAlipayWechatDlgData()
             {
                 szTransactionId = "4200000027201709294868542706",
                 lAmount = 20000,
@@ -2940,7 +2940,7 @@ namespace CloudBanking.UITestApp
             var fAlipay = true;
             var fManual = true;
 
-            var dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data, fAlipay, fManual);
+            GetAmountRefundAlipayWeChatDialog dialog = new GetAmountRefundAlipayWeChatDialog(StringIds.STRING_WECHAT_REFUND_ONLY, null, data, fAlipay, fManual);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
         }

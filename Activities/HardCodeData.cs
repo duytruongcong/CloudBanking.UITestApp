@@ -14,8 +14,10 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using static Android.Content.ClipData;
 using static CloudBanking.Entities.Database;
+using static CloudBanking.Entities.GenericPOS;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using static Java.Util.Jar.Attributes;
@@ -278,7 +280,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = false;
+            RequestDlgData.fNoPresentCard = true;
             RequestDlgData.fOtherPay = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
@@ -1437,13 +1439,51 @@ namespace CloudBanking.UITestApp
             item1.IconId = IconIds.VECTOR_REFUNDED;
             item1.Status = PaymentStatus.Refunded;
 
+
             var item2 = new TransactionInfoModel();
+            item2.Amount = 10000;
+            item2.AuthNumber = "87654";
+            item2.CardType = "Visa Debit";
+            item2.CardInfo = "****6785";
+            date.Year = 2023;
+            date.Month = 6;
+            date.Day = 30;
+            date.Hours = 11;
+            date.Minutes = 30;
+            item2.CreatedDate = date;
+            item2.CustomerName = "David";
+            item2.ReferenceTypeStringIds = "Table 10";
+            item2.Value = "4";
+            item2.FunctionType = "Refund";
+            item2.TransactionNumber = "4200000027201709294868542706";
+            item2.FunctionType = Localize.GetString(FunctionType.Wechat.ToStringId());
+            item2.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
+            item2.ReferenceNumber = "123";
+            item2.IconId = IconIds.VECTOR_REFUNDED;
+            item2.Status = PaymentStatus.Refunded;
+
             var item3 = new TransactionInfoModel();
-            item2 = item1;
-            item3 = item1;
-            item1.IsSelected = true;
-            item2.IsSelected = false;
-            item3.IsSelected = false;
+            item3.Amount = 10000;
+            item3.AuthNumber = "87654";
+            item3.CardType = "Visa Debit";
+            item3.CardInfo = "****6785";
+            date.Year = 2023;
+            date.Month = 6;
+            date.Day = 30;
+            date.Hours = 11;
+            date.Minutes = 30;
+            item3.CreatedDate = date;
+            item3.CustomerName = "David";
+            item3.ReferenceTypeStringIds = "Table 10";
+            item3.Value = "4";
+            item3.FunctionType = "Refund";
+            item3.TransactionNumber = "4200000027201709294868542706";
+            item3.FunctionType = Localize.GetString(FunctionType.Wechat.ToStringId());
+            item3.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
+            item3.ReferenceNumber = "123";
+            item3.IconId = IconIds.VECTOR_REFUNDED;
+            item3.Status = PaymentStatus.Refunded;
+
             var data = new ListPaymentRecordsDlgData();
             data.Items.Add(item1);
             data.Items.Add(item2);
@@ -3566,7 +3606,7 @@ namespace CloudBanking.UITestApp
                 Last4Digit = "5678",
                 AuthCode = "1234",
                 STAN = "7890",
-                //fPayplusRefund = fPayplusRefund
+                fPayplusRefund = fPayplusRefund
             };
 
             if (fPayplusRefund)
@@ -3830,6 +3870,457 @@ namespace CloudBanking.UITestApp
             {
                 //SearchFilterOptionsDialog
             }, true, false, dlgData, RightButtonTextId, functionType);
+
+        }
+
+        void SetupMenu()
+        {
+            bool fDumpDb = true;
+
+            var menuItems = new SelFncDlgData()
+            {
+                iPage = 0,
+                iMaxPage = 4,
+                iMinPage = 1,
+                pIdProcessor = 0,
+                fShowLogout = false,
+                fGrid = false,
+                fModeDisplay = false,
+                pIdSecurityUser = 0,
+            };
+
+            menuItems.FunctionButtons = new List<SelectButton>();
+
+            menuItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_INFO,
+                Title = StringIds.STRING_INFO,
+                idImage = IconIds.VECTOR_INFO,
+                IdProcessor = 0,
+                iCommand = GlobalResource.INFO_BUTTON
+            });
+
+            menuItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_SETUP,
+                Title = StringIds.STRING_SETUP,
+                idImage = IconIds.VECTOR_SETUP,
+                IdProcessor = 0,
+                iCommand = GlobalResource.SETUP_BUTTON
+            });
+
+            //menuItems.FunctionButtons.Add(new SelectButton()
+            //{
+            //    iCommandLang = StringIds.STRING_ADVANCE_SETUP,
+            //    Title = StringIds.STRING_ADVANCE_SETUP,
+            //    idImage = IconIds.VECTOR_AUTO_SETUP,
+            //    IdProcessor = 0,
+            //    iCommand = GlobalResource.ADMIN_SETUP_BUTTON
+            //});
+
+            menuItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = fDumpDb ? StringIds.STRING_DUMP_LOGS_AND_DATABASES : StringIds.STRING_DUMP_LOGS,
+                Title = fDumpDb ? StringIds.STRING_DUMP_LOGS_AND_DATABASES : StringIds.STRING_DUMP_LOGS,
+                idImage = IconIds.VECTOR_TEM_UPDATE,
+                IdProcessor = 0,
+                iCommand = GlobalResource.UPLOAD_LOGS
+            });
+
+            menuItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = string.Empty,
+                Title = "Close POS Intergrated Mode",
+                idImage = IconIds.VECTOR_EXIT,
+                IdProcessor = 0,
+                iCommand = GlobalResource.EXIT_POS_INTEGRATE
+            });
+
+            menuItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_EXIT,
+                Title = StringIds.STRING_EXIT,
+                idImage = IconIds.VECTOR_EXIT,
+                IdProcessor = 0,
+                iCommand = GlobalResource.EXIT_BUTTON
+            });
+
+            DialogBuilder.Show(IShellDialog.MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
+            {
+                //MenuDialog
+            }, true, false, menuItems);
+        }
+
+        void SetupInfo()
+        {
+            var infoItems = new SelFncDlgData()
+            {
+                iPage = 0,
+                iMaxPage = 4,
+                iMinPage = 1,
+                pIdProcessor = 0,
+                fShowLogout = false,
+                fGrid = false,
+                pIdSecurityUser = 0
+            };
+
+            infoItems.FunctionButtons = new List<SelectButton>();
+
+            infoItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_SETUP_MERCHANTINFO,
+                Title = StringIds.STRING_SETUP_MERCHANTINFO,
+                idImage = IconIds.VECTOR_MERCHANT_INFO,
+                IdProcessor = 0,
+                iCommand = GlobalResource.OK_BUTTON
+            });
+
+            infoItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_SECURITY_INFO,
+                Title = StringIds.STRING_SECURITY_INFO,
+                idImage = IconIds.VECTOR_SECURITY_INFO,
+                IdProcessor = 0,
+                iCommand = GlobalResource.OK_BUTTON + 1000
+            });
+
+            infoItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_TERMINAL_INFO,
+                Title = StringIds.STRING_TERMINAL_INFO,
+                idImage = IconIds.VECTOR_TERMINAL_INFO,
+                IdProcessor = 0,
+                iCommand = GlobalResource.OK_BUTTON + 2000
+            });
+
+            infoItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_PRINT_TERMINAL_INFO,
+                Title = StringIds.STRING_PRINT_TERMINAL_INFO,
+                idImage = IconIds.VECTOR_PRINT_TERMINAL_INFO,
+                IdProcessor = 0,
+                iCommand = GlobalResource.OK_BUTTON + 3000
+            });
+
+            DialogBuilder.Show(IShellDialog.MENU_DIALOG, StringIds.STRING_INFO, (iResult, args) =>
+            {
+                //MenuDialog
+            }, true, false, infoItems);
+        }
+
+        void MerchantInfo()
+        {
+            var dataMerchant = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.OK_BUTTON,
+                OkBtnTitleId = "",
+                Items = new List<BaseEditModel>()
+                {
+                    new InputNumberEditModel()
+                    {
+                        TitleId = StringIds.STRING_TERMINAL_ID,
+                        Value =  "123456",
+                        IsEnabled = false
+                    },
+                    new InputNumberEditModel()
+                    {
+                        TitleId = StringIds.STRING_MERCHANT_ID,
+                        Value = "123456",
+                        IsEnabled = false
+                    }
+                }
+            };
+
+            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_SETUP_MERCHANTINFO, (iResult, args) =>
+            {
+                //StandardSetupDialog
+            }, true, false, dataMerchant);
+        }
+
+        void ShowSecurityInfo()
+        {
+            var dataSecurity = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.OK_BUTTON,
+                OkBtnTitleId = "",
+                Items = new List<BaseEditModel>()
+                {
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_KEK_1_KVC,
+                        Value =  "ACD765",
+                        IsEnabled = false
+                    },
+                    new InputNumberEditModel()
+                    {
+                        TitleId = StringIds.STRING_KEK_2_KVC,
+                        Value =  "ACD765",
+                        IsEnabled = false
+                    },
+                    new InputNumberEditModel()
+                    {
+                        TitleId = StringIds.STRING_TSEK_KVC,
+                        Value = "ACD765",
+                        IsEnabled = false
+                    }
+                }
+            };
+
+            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_SECURITY_INFO, (iResult, args) =>
+            {
+                //StandardSetupDialog
+            }, true, false, dataSecurity);
+        }
+
+        void ShowTerminalInfo()
+        {
+            var dataTerminal = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.OK_BUTTON,
+                OkBtnTitleId = "",
+                Items = new List<BaseEditModel>()
+                {
+                    new InputNumberEditModel()
+                    {
+                        TitleId = StringIds.STRING_TERMINAL_SOFTWARE_VERSION,
+                        Value = "PX78UIOI8976",
+                        IsEnabled = false
+                    },
+                    new InputNumberEditModel()
+                    {
+                        TitleId = StringIds.STRING_TERMINAL_SERIAL_NUMBER,
+                        Value = "PX78UIOI8976",
+                        IsEnabled = false
+                    },
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_PIN_PAD_SOFTWARE_VERSION,
+                        Value = "PX78UIOI8976",
+                        IsEnabled = false
+                    },
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_PIN_PAD_SERIAL_NUMBER,
+                        Value = "PX78UIOI8976",
+                        IsEnabled = false
+                    }
+                }
+            };
+
+            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_TERMINAL_INFO, (iResult, args) =>
+            {
+                //StandardSetupDialog
+            }, true, false, dataTerminal);
+        }
+
+        void ShowPrintHeaderSetup()
+        {
+            var printerHeaderSetupDlgData = new StandardSetupDialogModel()
+            {
+                Items = new List<BaseEditModel>()
+                {
+                    new SwitcherEditModel()
+                    {
+                        TitleId = StringIds.STRING_ENABLED,
+                        FieldTitleId = nameof(MerchantPrintMessages.fPrinterHeaderEnable),
+                        Value = true
+                    },
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_MESSAGES_LINE1,
+                        HeaderTitleId = StringIds.STRING_PRINT_HEADER,
+                        FieldTitleId = StringIds.STRING_MESSAGES_LINE1,
+                        Value = "Thank you for shopping"
+                    },
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_MESSAGES_LINE2,
+                        HeaderTitleId = StringIds.STRING_PRINT_HEADER,
+                        FieldTitleId = StringIds.STRING_MESSAGES_LINE2,
+                        Value = "Thank you for shopping"
+                    },
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_MESSAGES_LINE3,
+                        HeaderTitleId = StringIds.STRING_PRINT_HEADER,
+                        FieldTitleId = StringIds.STRING_MESSAGES_LINE3,
+                        Value = "Thank you for shopping"
+                    },
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_MESSAGES_LINE4,
+                        HeaderTitleId = StringIds.STRING_PRINT_HEADER,
+                        FieldTitleId = StringIds.STRING_MESSAGES_LINE4,
+                        Value = "Thank you for shopping"
+                    },
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_MESSAGES_LINE5,
+                        HeaderTitleId = StringIds.STRING_PRINT_HEADER,
+                        FieldTitleId = StringIds.STRING_MESSAGES_LINE5,
+                        Value = "Thank you for shopping"
+                    },
+                    new InputTextEditModel()
+                    {
+                        TitleId = StringIds.STRING_MESSAGES_LINE6,
+                        HeaderTitleId = StringIds.STRING_PRINT_HEADER,
+                        FieldTitleId = StringIds.STRING_MESSAGES_LINE6,
+                        Value = "Thank you for shopping"
+                    }
+                }
+            };
+
+            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_PRINT_HEADER, (iResult, args) =>
+            {
+                //StandardSetupDialog
+            }, true, false, printerHeaderSetupDlgData);
+        }
+
+        void ShowPullConnections()
+        {
+            var pullSetupDlgData = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.OK_BUTTON,
+                OkBtnTitleId = StringIds.STRING_SAVE
+            };
+
+            pullSetupDlgData.Items.Add(new InputIPEditModel()
+            {
+                TitleId = StringIds.STRING_IPADDRESS,
+                HeaderTitleId = StringIds.STRING_IPADDRESS,
+                FieldTitleId = StringIds.STRING_IPADDRESS,
+                Value = "192.168.0.123",
+                PropertyName = null
+            });
+
+            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                TitleId = StringIds.STRING_PORT,
+                HeaderTitleId = StringIds.STRING_PORT,
+                FieldTitleId = StringIds.STRING_PORT,
+                PropertyName = null,
+                Value = "5555"
+            });
+
+            pullSetupDlgData.Items.Add(new SwitcherEditModel()
+            {
+                TitleId = StringIds.HTTPS_CONNECTION,
+                FieldTitleId = "IsSSL",
+                PropertyName = null,
+                Value = true
+            });
+
+            DialogBuilder.Show(IShellDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_PULLCONNECTIONS, (iResult, args) =>
+            {
+
+            }, true, false, pullSetupDlgData);
+        }
+
+        void ShowShiftEnterDateRangeDialog()
+        {
+            DateTime startDate = DateTime.Now, endDate = DateTime.Now;
+
+            DialogBuilder.Show(IPayDialog.SHIFT_ENTER_DATE_RANGE_DIALOG, StringIds.STRING_HISTORY_SALES, (iResult, args) =>
+            {
+                //ShiftEnterDateRangeDialog
+            }, true, false, startDate, endDate);
+        }
+
+        void ShowSelectPaymentMethod()
+        {
+
+            var selectFuncDialogDta = new SelFncDlgData()
+            {
+                iPage = 0,
+                iMaxPage = 4,
+                iMinPage = 1,
+                pIdProcessor = 0,
+                fShowLogout = false,
+                fGrid = false,
+                fModeDisplay = false,
+            };
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_EFT_CARDS,
+                Title = StringIds.STRING_EFT_CARDS,
+                idImage = IconIds.VECTOR_EFT_CARD,
+                IdProcessor = 0,
+                iCommand = GlobalResource.REPORT_EFT_CARDS_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_ALIPAY,
+                Title = StringIds.STRING_ALIPAY,
+                idImage = IconIds.VECTOR_ALI_PAY,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_ALIPAY_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_WECHAT,
+                Title = StringIds.STRING_WECHAT,
+                idImage = IconIds.VECTOR_WECHAT,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_WEPAY_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_OTHERS,
+                Title = StringIds.STRING_OTHERS,
+                idImage = IconIds.VECTOR_OTHER,
+                IdProcessor = 0,
+                iCommand = GlobalResource.OTHER_BUTTON,
+            });
+
+            DialogBuilder.Show(IPayDialog.REPORT_SELECT_PAYMENT_METHOD_DIALOG, StringIds.STRING_CURRENT_SALES, (iResult, args) =>
+            {
+                //MenuDialog
+            }, true, false, selectFuncDialogDta);
+        }
+
+        void SettlementApproval()
+        {
+            FunctionType IdFunctionButton = FunctionType.SettleInquiry;
+
+            string lpszResult = "TRANS. COMPLETE";
+
+            string lpszSecondaryResult = null;
+
+            SettlementApprovalDlgData DlgData = new SettlementApprovalDlgData();
+
+            DlgData.fApproved = true;
+
+            DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_APPROVED);
+
+            DlgData.lpszResult = lpszResult;
+
+            DlgData.lpszSecondaryResult = lpszSecondaryResult;
+
+            DlgData.IdFunctionButton = IdFunctionButton;
+
+            string IdTitleText = string.Empty;
+
+            switch (IdFunctionButton)
+            {
+                case FunctionType.SettleCutOver:
+                    IdTitleText = StringIds.STRING_SETTLEMENT_CUTOVER;
+                    break;
+                case FunctionType.SettleInquiry:
+                    IdTitleText = StringIds.STRING_SETTLEMENT_INQUIRY;
+                    break;
+                case FunctionType.Purchase:
+                    IdTitleText = StringIds.STRING_ADVICE_PROCESS;
+                    break;
+            }
+
+            DialogBuilder.Show(IShellDialog.SETTLEMENTAPPROVAL_DIALOG, IdTitleText, (iResult, args) =>
+            {
+                //SettlementApprovalDialog
+            }, false, false, DlgData);
 
         }
     }

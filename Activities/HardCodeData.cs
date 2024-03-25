@@ -280,8 +280,8 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = true;
-            RequestDlgData.fOtherPay = true;
+            RequestDlgData.fNoPresentCard = false;
+            RequestDlgData.fOtherPay = false;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -292,8 +292,8 @@ namespace CloudBanking.UITestApp
                                     + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
 
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
-            RequestDlgData.fAliPay = true;
-            RequestDlgData.fWePay = true;
+            RequestDlgData.fAliPay = false;
+            RequestDlgData.fWePay = false;
             RequestDlgData.IsEmulator = true;
             RequestDlgData.fShowMenu = false;
             RequestDlgData.fMultiTender = false;
@@ -308,7 +308,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
-            //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_ARROW_UP;
+            RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_ARROW_UP;
 
             switch (caseDialog)
             {
@@ -318,7 +318,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fManualPay = false;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
 
                     break;
@@ -1410,7 +1410,7 @@ namespace CloudBanking.UITestApp
 
             var ret = DialogBuilder.Show(IPayDialog.PREAUTH_COMPLE_GET_NEW_AMOUNT_DIALOG, functionType.ToStringId(), (iResult, args) =>
             {
-
+                //PreAuthCompleGetNewAmountDialog
             }, true, false, data);
         }
 
@@ -1804,11 +1804,12 @@ namespace CloudBanking.UITestApp
         {
             double x = 5.00;
             long y = 1000;
+            long originalAmount = 90000;
             long amount = 10000;
             var keyValue = new KeyValuePair<double, long>(x, y);
             var data = new List<KeyValuePair<double, long>>() { keyValue, keyValue, keyValue, keyValue };
 
-            var dialog = new SelectTipDialog(StringIds.STRING_SELECT_TIP_AMOUNT, null, data, true, amount);
+            var dialog = new SelectTipDialog(StringIds.STRING_SELECT_TIP_AMOUNT, null, data, true, amount, originalAmount);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
         }
@@ -3492,7 +3493,7 @@ namespace CloudBanking.UITestApp
                     new LeftRightTextCheckIconModel()
                     {
                         Id = 3,
-                        IsActualTitle = true,
+                        IsActualTitle = false,
                         Title = StringIds.STRING_DONATION,
                         Value = lDonation.ToFormatCurrency(),
                         IsChecked = true

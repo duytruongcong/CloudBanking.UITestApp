@@ -5,6 +5,7 @@ using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
 using CloudBanking.Language;
+using CloudBanking.Repositories;
 using CloudBanking.ShellContainers;
 using CloudBanking.ShellModels;
 using CloudBanking.ShellUI;
@@ -308,7 +309,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
-            RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_ARROW_UP;
+            //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_ARROW_UP;
 
             switch (caseDialog)
             {
@@ -4323,6 +4324,83 @@ namespace CloudBanking.UITestApp
                 //SettlementApprovalDialog
             }, false, false, DlgData);
 
+        }
+
+        void SelectDCCCurrency()
+        {
+            Currency currency;
+
+            SelectDCCCurrencyData DlgData = new SelectDCCCurrencyData();
+
+            DlgData.lTotal = 13800;
+
+            DlgData.lLocalTotal = 10100;
+
+            DlgData.lCardCurrencyTotal = 6420;
+
+            DlgData.fSmartCard = true;
+
+            DlgData.szConversionRate = "1.08234";
+
+            DlgData.szMarginPercentage = "3.3162";
+
+            currency = CurrencyRepository.Instance.GetByCurrencyCode(554);
+
+            if (currency != null)
+            {
+                DlgData.LocalCurrency = currency.wszCurrencyCode;
+
+                DlgData.LocalCountry = "NZD";
+
+                DlgData.LocalImage = currency.iCurrencyCodeFlag;
+            }
+
+            currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
+
+            if (currency != null)
+            {
+                DlgData.HomeCurrency = currency.wszCurrencyCode;
+                DlgData.HomeCountry = "USD";
+                DlgData.HomeImage = currency.iCurrencyCodeFlag;
+            }
+
+            DialogBuilder.Show(IShellDialog.SELECT_DCCCURRENCY_DIALOG, StringIds.STRING_CURRENCY, (iResult, args) =>
+            {
+                //SelectDCCCurrencyDialog
+            }, true, false, DlgData);
+        }
+
+        void DCCRateApproval()
+        {
+            long lTotal = 38000;
+
+            DCCRateResponse DCCRateResponse = new DCCRateResponse();
+
+            DCCRateResponse.szLocalCurrency = "AUD";
+            DCCRateResponse.szCardCurrency = "NZD";
+            DCCRateResponse.szConversionRate = "1.08234";
+            DCCRateResponse.szForeignAmount = "12.34";
+
+            DialogBuilder.Show(IShellDialog.DCC_RATEAPPROVAL_DIALOG, StringIds.STRING_FXRATEAPPROVAL, (iResult, args) =>
+            {
+                //DCCRateApprovalDialog
+            }, true, false, DCCRateResponse, lTotal);
+        }
+
+        void DCCConfirmation()
+        {
+            var currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
+            DCCConfimationData data = new DCCConfimationData();
+
+            data.FlagImage = currency.iCurrencyCodeFlag;
+            data.Currency = currency.wszCurrencyCode;
+            data.lAmount = 6420;
+            data.Content = "I DECLARE I HAVE BEEN GIVEN A CHOICE IN PAYMENT CURRENCY AND I AGREE TO PAY THE ABOVE AMOUNT. ";
+
+            DialogBuilder.Show(IShellDialog.DCC_CONFIRMATION_DIALOG, StringIds.STRING_CONFIRMATION, (iResult, args) =>
+            {
+                //DCCConfirmationDialog
+            }, true, false, data);
         }
     }
 }

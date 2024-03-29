@@ -556,8 +556,46 @@ namespace CloudBanking.UITestApp
         #region InitializeCommonData
         private void InitializeCommonData()
         {
+#if true
 
-#if false    // done for q10a
+            #region DCC
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DCCConfirmationDialog",
+                RightIconResName = "DCCConfirmationDialog",
+                ItemAction = new Action(() =>
+                {
+                    DCCConfirmation();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DCCRateApprovalDialog",
+                RightIconResName = "DCCRateApprovalDialog",
+                ItemAction = new Action(() =>
+                {
+                    DCCRateApproval();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectDCCCurrencyDialog",
+                RightIconResName = "SelectDCCCurrencyDialog",
+                ItemAction = new Action(() =>
+                {
+                    SelectDCCCurrency();
+                })
+            });
+
+            #endregion
+
+#endif
+
+
+#if false    // 
 
             #region Report Flow
 
@@ -585,7 +623,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // done for q10a
+#if false    // 
 
             #region Setup Flow
 
@@ -663,7 +701,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // done for q10a
+#if false    // 
             #region Refund flow
 
             //_lData.Add(new ScreenViewModel()
@@ -844,7 +882,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true
+#if false
 
             #region Table Flow
 
@@ -1051,7 +1089,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // done for q10a
+#if false // 
 
             #region Main Payment Flow
 
@@ -1284,7 +1322,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // done for q10a
+#if false    // 
 
             #region Settlement & Reprint
 
@@ -1330,7 +1368,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // done for q10a
+#if false    // 
 
             #region Preauth Flow
 
@@ -1408,7 +1446,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   // done for q10a
+#if false   // 
 
             #region Request Card Flow
 
@@ -1555,7 +1593,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for q10a
+#if false   // 
 
             #region SelectAccountTypeDialog 
 
@@ -1592,7 +1630,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for q10a
+#if false   // 
 
             #region MessageDialog
 
@@ -1639,7 +1677,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   // done for q10a
+#if false   // 
 
             #region PresentCardErrorDlg
 
@@ -1666,7 +1704,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // done for q10a
+#if false    // 
 
             #region EnterPinDialog
             _lData.Add(new ScreenViewModel()
@@ -1711,7 +1749,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for q10a
+#if false   // 
 
             #region ApprovalDialog
 
@@ -1788,7 +1826,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   // done for q10a
+#if false   // 
 
             #region SettlementApprovalDialog
 
@@ -1814,7 +1852,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // done for q10a
+#if false    // 
 
             #region MOTO FLOW
 
@@ -1880,7 +1918,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // done for q10a
+#if false   // 
 
             #region ProcessMessageDialog
 
@@ -1926,7 +1964,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // done for q10a
+#if false    // 
 
             #region EOVProcessMessageDialog
 

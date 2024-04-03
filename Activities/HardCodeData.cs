@@ -281,8 +281,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = false;
-            RequestDlgData.fOtherPay = false;
+            RequestDlgData.fNoPresentCard = true;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -293,8 +292,6 @@ namespace CloudBanking.UITestApp
                                     + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
 
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
-            RequestDlgData.fAliPay = false;
-            RequestDlgData.fWePay = false;
             RequestDlgData.IsEmulator = true;
             RequestDlgData.fShowMenu = false;
             RequestDlgData.fMultiTender = false;
@@ -309,7 +306,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
-            //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_ARROW_UP;
+            RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
 
             switch (caseDialog)
             {
@@ -319,8 +316,13 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
+
+                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fOtherPay = false;
+
+                    RequestDlgData.fAliPay = false;
+                    RequestDlgData.fWePay = false;
 
                     break;
 
@@ -330,7 +332,12 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = true;
+
+                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fOtherPay = false;
+
+                    RequestDlgData.fAliPay = true;
+                    RequestDlgData.fWePay = false;
 
                     break;
 
@@ -340,8 +347,14 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+
                     RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
+
+                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fOtherPay = false;
+
+                    RequestDlgData.fAliPay = false;
+                    RequestDlgData.fWePay = true;
 
                     break;
 
@@ -351,7 +364,12 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
+
                     RequestDlgData.fManualPay = false;
+                    RequestDlgData.fOtherPay = false;
+
+                    RequestDlgData.fAliPay = true;
+                    RequestDlgData.fWePay = true;
 
                     break;
 
@@ -361,7 +379,13 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = false;
-                    RequestDlgData.fManualPay = false;
+
+                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fOtherPay = true;
+
+                    RequestDlgData.fAliPay = false;
+                    RequestDlgData.fWePay = false;
+
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_OPEN_PREAUTH_UPCASE;
 
                     break;
@@ -372,7 +396,12 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = false;
-                    RequestDlgData.fManualPay = false;
+
+                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fOtherPay = true;
+
+                    RequestDlgData.fAliPay = true;
+                    RequestDlgData.fWePay = false;
 
                     break;
 
@@ -382,7 +411,12 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = false;
                     RequestDlgData.fSmart = false;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+
+                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fOtherPay = true;
+
+                    RequestDlgData.fAliPay = false;
+                    RequestDlgData.fWePay = true;
 
                     break;
 
@@ -392,7 +426,13 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fMSR = true;
                     RequestDlgData.fSmart = true;
                     RequestDlgData.fRfid = true;
-                    RequestDlgData.fManualPay = false;
+
+                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fOtherPay = true;
+
+                    RequestDlgData.fAliPay = true;
+                    RequestDlgData.fWePay = true;
+
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_CARD_STATUS_CHECK_UPCASE;
 
                     break;
@@ -3556,14 +3596,16 @@ namespace CloudBanking.UITestApp
 
             ManualScanQRCodeDlgData dlgData = new ManualScanQRCodeDlgData()
             {
-                //GuideTitleId = StringIds.STRING_PLACE_QR_CODE_INSIDE_THE_SCAN_AREA,
+                GuideTitleId = StringIds.STRING_PLACE_SCAN_CODE_INSIDE_THE_SCAN_AREA,
                 ScanTitleId = StringIds.STRING_SCAN_QR_CODE,
+                AboveScanViewTitleId = StringIds.STRING_FIND_PURCHASE,
+                ManualTitleId = StringIds.STRING_MANUAL_ENTER,
+                ManualCommand = GlobalResource.MANUAL_BUTTON,
+                ManualIconId = IconIds.VECTOR_MANUAL_REFUND,
+                fScanAlipayWechat = true
             };
 
             IdDlgTitle = StringIds.STRING_REFUND_PURCHASE;
-
-            dlgData.AboveScanViewTitleId = StringIds.STRING_FIND_PURCHASE;
-            //dlgData.ManualIconId = 
 
             DialogBuilder.Show(IPayDialog.SCAN_QRCODE_DIALOG, IdDlgTitle, (iResult, args) =>
             {

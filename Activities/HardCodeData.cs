@@ -281,7 +281,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = true;
+            RequestDlgData.fNoPresentCard = false;
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -306,7 +306,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
-            RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
+            //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
 
             switch (caseDialog)
             {
@@ -1235,11 +1235,23 @@ namespace CloudBanking.UITestApp
             dialog3.Show(this);
         }
 
-        private void ShowPreAuthEnterAmountDialog()
+        private void ShowPreAuthEnterAmountDialog(CaseDialog caseDialog)
         {
             long amount = 10000;
 
-            var dialog = new PreAuthEnterAmountDialog(StringIds.STRING_PRE_AUTH, null, amount, true);
+            bool fReferenceEnable = false;
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    fReferenceEnable = true;
+                    break;
+                case CaseDialog.CASE2:
+                    fReferenceEnable = false;
+                    break;
+            }
+
+            var dialog = new PreAuthEnterAmountDialog(StringIds.STRING_PRE_AUTH, null, amount, fReferenceEnable);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
         }
@@ -1901,16 +1913,33 @@ namespace CloudBanking.UITestApp
             }, true, false, authType, false);
         }
 
-        void ShowGetAmountDialog()
+        void ShowGetAmountDialog( CaseDialog caseDialog)
         {
             var data = new GetAmountDlgData();
 
             data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
             data.EntryAmountTitleId = StringIds.STRING_PURCHASE;
-            data.fShowReference = true;
             data.plszReference = "123456";
             data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
             //data.isEnabledEntryAmount = false;
+
+            switch(caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    data.fShowReference = false;
+                    data.isEnabledEntryAmount = true;
+
+                    break;
+                case CaseDialog.CASE2:
+                    data.fShowReference = true;
+                    data.isEnabledEntryAmount = false;
+                    break;
+
+                default:
+                    data.fShowReference = true;
+                    data.isEnabledEntryAmount = true;
+                    break;
+            }
 
             var dialog = new GetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
@@ -2081,14 +2110,30 @@ namespace CloudBanking.UITestApp
             }, true, false, pLogonData, false);
         }
 
-        void ShowGetAmountCashOutDialog()
+        void ShowGetAmountCashOutDialog(CaseDialog caseDialog)
         {
             var data = new GetAmountDlgData();
             data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
-            data.fInstoreCashoutFeeEnable = true;
-            data.fInstoreCashoutFeePercent = true;
             data.lInstoreCashoutFeeAmount = 1000;
             data.plAmount = 2800;
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    data.fInstoreCashoutFeeEnable = true;
+                    data.fInstoreCashoutFeePercent = true;
+                    break;
+
+                case CaseDialog.CASE2:
+                    data.fInstoreCashoutFeeEnable = false;
+                    data.fInstoreCashoutFeePercent = false;
+                    break;
+
+                default:
+                    data.fInstoreCashoutFeeEnable = true;
+                    data.fInstoreCashoutFeePercent = false;
+                    break;
+            }
 
             DialogBuilder.Show(IPayDialog.GET_AMOUNT_CASH_OUT_DIALOG, StringIds.STRING_CASH, (iResult, args) =>
             {

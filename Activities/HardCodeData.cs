@@ -15,6 +15,7 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Security.AccessControl;
 using static Android.Content.ClipData;
 using static CloudBanking.Entities.Database;
@@ -1927,17 +1928,17 @@ namespace CloudBanking.UITestApp
             {
                 case CaseDialog.CASE1:
                     data.fShowReference = false;
-                    data.isEnabledEntryAmount = true;
+                    //data.isEnabledEntryAmount = true;
 
                     break;
                 case CaseDialog.CASE2:
                     data.fShowReference = true;
-                    data.isEnabledEntryAmount = false;
+                    //data.isEnabledEntryAmount = false;
                     break;
 
                 default:
                     data.fShowReference = true;
-                    data.isEnabledEntryAmount = true;
+                    //data.isEnabledEntryAmount = true;
                     break;
             }
 
@@ -4487,6 +4488,28 @@ namespace CloudBanking.UITestApp
             DialogBuilder.Show(IShellDialog.DCC_CONFIRMATION_DIALOG, StringIds.STRING_CONFIRMATION, (iResult, args) =>
             {
                 //DCCConfirmationDialog
+            }, true, false, data);
+        }
+
+        void ShowConfirmPreauthAutoTopUpDialog()
+        {
+            ConfirmPreauthAutoTopUpData data = new ConfirmPreauthAutoTopUpData();
+
+            data.TopTitleId = StringIds.STRING_AMOUNT_EXCEEDS;
+            data.ResultTitleId = StringIds.STRING_APPROVAL;
+            data.MainMessage = StringIds.STRING_DO_YOU_WANT_TO_PERFORM_A_PREAUTH_TOPUP;
+            data.BtnRight = StringIds.STRING_YES;
+            data.lAmount = 10000;
+            data.lTipAmount = 1600;
+            data.lAccountSurChargeFee = 116;
+            data.lSurChargeFee = 100;
+            data.TotalAmount = 11816;
+            data.lAuthAmount = 10000;
+            data.MainIcon = IconIds.VECTOR_TOP_UP;
+
+            DialogBuilder.Show(IShellDialog.CONFIRM_PREAUTH_AUTO_TOPUP_DIALOG, StringIds.STRING_CONFIRMATION, (iResult, args) =>
+            {
+                //ConfirmPreauthAutoTopUpDialog
             }, true, false, data);
         }
     }

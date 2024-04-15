@@ -1093,7 +1093,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // 
+#if false // 
 
             #region Main Payment Flow
 
@@ -1393,6 +1393,16 @@ namespace CloudBanking.UITestApp
 #if true    // 
 
             #region Preauth Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ConfirmPreauthAutoTopUpDialog",
+                RightIconResName = "ConfirmPreauthAutoTopUpDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowConfirmPreauthAutoTopUpDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{

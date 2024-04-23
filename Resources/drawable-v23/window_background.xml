@@ -3,6 +3,6 @@
 	<item>
 		<color android:color="@color/colorPrimary" />
 	</item>
-	<item android:drawable="@drawable/vector_logo_android" android:gravity="center">
+	<item android:drawable="@drawable/vector_logo_android" android:gravity="center" android:height="@dimen/main_logo_height" android:width="@dimen/main_logo_width">
 	</item>
 </layer-list>

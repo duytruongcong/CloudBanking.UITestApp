@@ -6,16 +6,13 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
-using Antlr.Runtime;
 using CloudBanking.BaseControl;
-using CloudBanking.Common;
 using CloudBanking.Entities;
-using CloudBanking.Language;
 using CloudBanking.ServiceLocators;
+using CloudBanking.ShellContainers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CloudBanking.ShellContainers;
 
 namespace CloudBanking.UITestApp
 {
@@ -1093,7 +1090,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // 
+#if true // 
 
             #region Main Payment Flow
 
@@ -1147,45 +1144,45 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountDialog_CASE1",
-                RightIconResName = "GetAmountDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"GetAmountDialog_CASE1",
+            //    RightIconResName = "GetAmountDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowGetAmountDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountDialog_CASE2",
-                RightIconResName = "GetAmountDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountDialog(CaseDialog.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"GetAmountDialog_CASE2",
+            //    RightIconResName = "GetAmountDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowGetAmountDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountCashOutDialog CASE1",
-                RightIconResName = "GetAmountCashOutDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountCashOutDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"GetAmountCashOutDialog CASE1",
+            //    RightIconResName = "GetAmountCashOutDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowGetAmountCashOutDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountCashOutDialog CASE2",
-                RightIconResName = "GetAmountCashOutDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountCashOutDialog(CaseDialog.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"GetAmountCashOutDialog CASE2",
+            //    RightIconResName = "GetAmountCashOutDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowGetAmountCashOutDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -1228,15 +1225,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MainDialog",
-            //    RightIconResName = "MainDialog_land",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMainDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MainDialog",
+                RightIconResName = "MainDialog_land",
+                ItemAction = new Action(() =>
+                {
+                    ShowMainDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -1390,7 +1387,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true    // 
+#if false    // 
 
             #region Preauth Flow
 
@@ -1445,25 +1442,25 @@ namespace CloudBanking.UITestApp
             //});
 
             // check logo!!!!!
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"PreAuthEnterAmountDialog CASE1",
-                RightIconResName = "preauth_enter_amount_dialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowPreAuthEnterAmountDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"PreAuthEnterAmountDialog CASE1",
+            //    RightIconResName = "preauth_enter_amount_dialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowPreAuthEnterAmountDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"PreAuthEnterAmountDialog CASE2",
-                RightIconResName = "preauth_enter_amount_dialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowPreAuthEnterAmountDialog(CaseDialog.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"PreAuthEnterAmountDialog CASE2",
+            //    RightIconResName = "preauth_enter_amount_dialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowPreAuthEnterAmountDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{

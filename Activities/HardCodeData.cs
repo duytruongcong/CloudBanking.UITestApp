@@ -4483,7 +4483,7 @@ namespace CloudBanking.UITestApp
             data.FlagImage = currency.iCurrencyCodeFlag;
             data.Currency = currency.wszCurrencyCode;
             data.lAmount = 6420;
-            data.Content = "I DECLARE I HAVE BEEN GIVEN A CHOICE IN PAYMENT CURRENCY AND I AGREE TO PAY THE ABOVE AMOUNT. ";
+            data.Content = "I declare i have been given a choice in payment currency and i agree to pay the above amount. ";
 
             DialogBuilder.Show(IShellDialog.DCC_CONFIRMATION_DIALOG, StringIds.STRING_CONFIRMATION, (iResult, args) =>
             {

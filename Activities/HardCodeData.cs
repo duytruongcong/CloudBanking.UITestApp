@@ -793,7 +793,8 @@ namespace CloudBanking.UITestApp
             {
                 case CaseDialog.CASE1:
 
-                    CustomStringMessageBox(false, StringIds.STRING_EMV_REMOVECARD, StringIds.STRING_EMV_REMOVECARD, false, GlobalResource.MB_NONE, GlobalResource.ICON_ICC_CARD_REMOVED, fAutoDismiss: true);
+                    CustomStringMessageBox(false, StringIds.STRING_EMV_REMOVECARD, StringIds.STRING_EMV_REMOVECARD, false, GlobalResource.MB_NONE, GlobalResource.ICON_ICC_CARD_REMOVED, null, StringIds.STRING_CANNOTREADCARD, false, StringIds.STRING_DELETEWARNING, "", 
+                        0, StringIds.STRING_DELETE_DONATION, false, true, StringIds.STRING_DELETEQUESTION, false,false,"");
                     break;
 
                 case CaseDialog.CASE2:
@@ -808,7 +809,7 @@ namespace CloudBanking.UITestApp
 
                 case CaseDialog.CASE4:
 
-                    CustomStringMessageBox(true, StringIds.STRING_CONFIRM_SIGNATURE, StringIds.STRING_CONFIRM_SIGNATURE_IS_CORRECT_UPCASE, false, GlobalResource.MB_YESNO, ref dialog, GlobalResource.MB_ICON_SIGNATURE_RESULT, aboveMsg: StringIds.STRING_SIGNATURE_REQUIRED, fAboveMsgActualText: false);
+                    CustomStringMessageBox(true, StringIds.STRING_CONFIRM_SIGNATURE, StringIds.STRING_CONFIRM_SIGNATURE_IS_CORRECT_UPCASE, false, GlobalResource.MB_YESNOCANCEL, ref dialog, GlobalResource.MB_ICON_SIGNATURE_RESULT, aboveMsg: StringIds.STRING_SIGNATURE_REQUIRED, fAboveMsgActualText: false);
                     break;
             }
         }
@@ -1914,7 +1915,7 @@ namespace CloudBanking.UITestApp
             }, true, false, authType, false);
         }
 
-        void ShowGetAmountDialog( CaseDialog caseDialog)
+        void ShowGetAmountDialog(CaseDialog caseDialog)
         {
             var data = new GetAmountDlgData();
 
@@ -1924,7 +1925,7 @@ namespace CloudBanking.UITestApp
             data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
             //data.isEnabledEntryAmount = false;
 
-            switch(caseDialog)
+            switch (caseDialog)
             {
                 case CaseDialog.CASE1:
                     data.fShowReference = false;
@@ -2389,6 +2390,55 @@ namespace CloudBanking.UITestApp
             };
 
             dialogCardFees?.Show(CrossCurrentActivity.Current.Activity);
+        }
+
+        void ShowListCardBrandDialog()
+        {
+
+            List<int> listCardBrandImgId = new List<int>();
+
+            listCardBrandImgId.Add(Resource.Drawable.vector_visa);
+            listCardBrandImgId.Add(Resource.Drawable.vector_master_card_text);
+            listCardBrandImgId.Add(Resource.Drawable.vector_american_express);
+            listCardBrandImgId.Add(Resource.Drawable.vector_union_pay_bg);
+            listCardBrandImgId.Add(Resource.Drawable.vector_discover_network);
+            listCardBrandImgId.Add(Resource.Drawable.vector_jcb_bg);
+            listCardBrandImgId.Add(Resource.Drawable.vector_diners_bg);
+            listCardBrandImgId.Add(Resource.Drawable.vector_eft_pos);
+            listCardBrandImgId.Add(Resource.Drawable.wechatpay_logo);
+            listCardBrandImgId.Add(Resource.Drawable.alipay_logo);
+            listCardBrandImgId.Add(Resource.Drawable.vector_epay);
+            listCardBrandImgId.Add(Resource.Drawable.vector_centra_pay);
+            listCardBrandImgId.Add(Resource.Drawable.vector_bnpl);
+            listCardBrandImgId.Add(Resource.Drawable.vector_crypto);
+
+
+            var dialog = new ListCardBrandDialog(StringIds.STRING_MERCHANT_FEES, listCardBrandImgId);
+
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog?.Show(CrossCurrentActivity.Current.Activity);
+        }
+
+        void ShowSurchargeFeeDetailDialog()
+        {
+            SurchargeFeeDetailDlgData data = new SurchargeFeeDetailDlgData()
+            {
+                CardResId = Resource.Drawable.vector_visa,
+                CardLocation = CardLocation.Local,
+                AccountType = ACCOUNTTYPE.Credit,
+                CardCharges = new List<CardChargeViewModel>()
+                {
+                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_TAP, Percent = 1.2f, Amount = 1200},
+                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_INSERT, Percent = 1.1f, Amount = 1100},
+                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_SWIPE, Percent = 1.5f, Amount = 1500},
+                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_MANUAL, Percent = 1.6f, Amount = 1600},
+                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_MOTO, Percent = 1.75f, Amount = 1750},
+                }
+            };
+            var dialog = new SurchargeFeeDetailDialog(StringIds.STRING_SURCHARGE_AND_SERVICE_FEES, null, data);
+
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog?.Show(CrossCurrentActivity.Current.Activity);
         }
 
         private ViewFourthLineModel SetDataCardFees(MerchantCardType merchantCardType)

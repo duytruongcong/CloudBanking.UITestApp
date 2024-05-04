@@ -1998,8 +1998,8 @@ namespace CloudBanking.UITestApp
             selectedPayment.lAmount = 10000;
             selectedPayment.DateTime = DateTime.Now.ToXDateTime();
             selectedPayment.lszEndCardNumber = "7654";
-            selectedPayment.CustomerReferenceType = ReferenceType.Customer;
-            selectedPayment.lszCustomerReference = "1234";
+            selectedPayment.CustomerReferenceType = ReferenceType.Room;
+            selectedPayment.lszCustomerReference = "123";
             selectedPayment.szSTAN = "2345";
             selectedPayment.szReferenceNumber = "1234";
             selectedPayment.AuthorizationExpiryDate = DateTime.Now;

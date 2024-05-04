@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Security.AccessControl;
+using System.Text;
 using static Android.Content.ClipData;
 using static CloudBanking.Entities.Database;
 using static CloudBanking.Entities.GenericPOS;
@@ -1402,7 +1403,7 @@ namespace CloudBanking.UITestApp
             dialog.Show(this);
         }
 
-        private void PreAuthItemGetNewAmount()
+        private void PreAuthItemGetNewAmount(CaseDialog caseDialog)
         {
             RecordViewModel selectedPayment = new RecordViewModel();
             selectedPayment.iCardType = CARDTYPE.CARD_AMEX;
@@ -1414,7 +1415,21 @@ namespace CloudBanking.UITestApp
             selectedPayment.lszCustomerReference = "6789";
             selectedPayment.AuthorizationExpiryDate = DateTime.Now;
 
-            FunctionType functionType = FunctionType.PreAuthPartial;
+            FunctionType functionType;
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    functionType = FunctionType.PreAuthPartial;
+                    break;
+                case CaseDialog.CASE2:
+                    functionType = FunctionType.PreAuthComplete;
+                    break;
+                default:
+                    functionType = FunctionType.PreAuthPartial;
+                    break;
+            }
+
 
             var data = new PreAuthCompletionDlgData()
             {
@@ -1422,13 +1437,14 @@ namespace CloudBanking.UITestApp
                 Amount = selectedPayment.lAmount,
                 OriginalCardType = string.Format("{0} {1}", Localize.GetString(StringIds.STRING_CARDTYPE_AMEX), Localize.GetString(StringIds.STRING_ACCOUNTTYPESAVINGS)),
                 LastFourDigitCardNumber = $"**** **** **** {selectedPayment.lszEndCardNumber}",
-                Reference = selectedPayment.CustomerReferenceType,
-                ReferenceNumber = selectedPayment?.lszCustomerReference,
+                //Reference = selectedPayment.CustomerReferenceType,
+                //ReferenceNumber = selectedPayment?.lszCustomerReference,
                 ExpireTime = selectedPayment?.AuthorizationExpiryDate,
                 CustomerName = "David",
                 PaymentStatus = Localize.GetString(StringIds.STRING_APPROVED).ToUpper(),
                 AuthCode = selectedPayment?.szApprovalCode,
-                CardBrandIconResName = CARDTYPE.CARD_AMEX.GetIconDrawable()
+                CardBrandIconResName = CARDTYPE.CARD_AMEX.GetIconDrawable(),
+                FunctionType = functionType
             };
 
             switch (functionType)
@@ -1898,7 +1914,11 @@ namespace CloudBanking.UITestApp
             initData.lSurChargeFee = 25;
             initData.lSurChargePercent = 10;
             initData.lAccountSurChargePercent = 5;
-            initData.iFunctionButton = FunctionType.Purchase;
+            initData.iFunctionButton = FunctionType.PreAuthComplete;
+            initData.ExpandedPayment = new Payment()
+            {
+                lAmount = 5000
+            };
             data.pInitProcessData = initData;
 
             var dialog4 = new SurchargeConfirmDialog(StringIds.STRING_SURCHARGE_CONFIRMATION, null, data);
@@ -1999,7 +2019,7 @@ namespace CloudBanking.UITestApp
                 RRNNumber = selectedPayment.szReferenceNumber,
                 TransactionId = selectedPayment.Id.ToString(),
                 ExpireTime = selectedPayment.AuthorizationExpiryDate,
-                CustomerName = string.Empty,  //GetCustomerName.OriginalPayment,TODO disabled on certification
+                CustomerName = "TRUONG VINH LOI",  //GetCustomerName.OriginalPayment,TODO disabled on certification
             };
 
             string titleDialog = StringIds.STRING_FINAL_COMPLETION;
@@ -4561,6 +4581,92 @@ namespace CloudBanking.UITestApp
             {
                 //ConfirmPreauthAutoTopUpDialog
             }, true, false, data);
+        }
+
+        void ConfirmTopUpMessageBox(CaseDialog caseDialog)
+        {
+            long lTotalAmount = 40000;
+            FunctionType function = FunctionType.Purchase;
+
+            switch(caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    function = FunctionType.PreAuthPartial;
+                    break;
+                case CaseDialog.CASE2:
+                    function = FunctionType.Purchase;
+                    break;
+            }
+
+            MessageType dialog = new MessageType();
+            long lPreviousAmount = 50000;
+            FunctionType iFunctionButton = FunctionType.PreAuthPartial;
+
+            string aboveMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_PARTIAL_COMPLETION_WAS_DECLINED)
+                              : Localize.GetString((StringIds.STRING_PRE_AUTH_COMPLETE_UPCASE)) + "\n" + lTotalAmount.ToFormatLocalCurrencyAmount();
+            string topMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_PREAUTH_PARTIAL_UPCASE) : "";
+            string mainMsg = function == FunctionType.PreAuthPartial ? string.Format(Localize.GetString(StringIds.STRING_AMOUNT_EXCEEDS_THE_APPROVED_PREAUTH), lPreviousAmount.ToFormatLocalCurrencyAmount())
+                            : string.Format(Localize.GetString(StringIds.STRING_PREAUTH_DELETED_DUE_TO_EXCEEDING_THE_APPROVED_PREAUTH), lPreviousAmount.ToFormatLocalCurrencyAmount());
+            string warningMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_YOU_WILL_NEED_TO_PERFORM_A_PREAUTH_TOPUP)
+                                : Localize.GetString(StringIds.STRING_PREAUTH_DELETE_YOU_MUST_PERFORM_A_PURCHASE_TRANSACTION);
+            var textRightButton = StringIds.STRING_TOP_UP;
+
+            var buttonBottom = GlobalResource.MB_RESUMECANCEL;
+
+            dialog.IsShowCancelBtn = true;
+
+            CustomStringMessageBox(true, StringIds.STRING_DECLINED, mainMsg, false, buttonBottom, ref dialog, aboveMsg: aboveMsg, fAboveMsgActualText: false,
+                      isShowBackBtn: true, bottomWarningId: warningMsg, aboveTopMsg: topMsg, textRightButton: textRightButton);
+
+        }
+
+        public void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref MessageType data, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
+            string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "", string aboveTopMsg = "", string textRightButton = "")
+        {
+            data = new MessageType();
+
+            data.IsShowBackBtn = isShowBackBtn;
+            data.IsAboveMsgActualText = fAboveMsgActualText;
+            data.IsActualText = fActualText;
+            data.IsSubActualText = fSubActualText;
+            data.IsThirdActualText = fThirdActualText;
+
+            data.AboveMessage = aboveMsg;
+            data.Message = strContent;
+            data.SubMessage = subMsg;
+            data.ThirdMessage = thirdbMsg;
+            data.AboveMessageTop = aboveTopMsg;
+            data.TextRightButton = textRightButton;
+
+            data.iType = uType;
+            data.idImg = idImg;
+            data.BottomWarningId = bottomWarningId;
+
+            if (!string.IsNullOrWhiteSpace(strSubMessageColor))
+            {
+                data.strSubMessageColor = strSubMessageColor;
+            }
+
+            if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
+            {
+                data.thirdbMsgColor = thirdbMsgColor;
+            }
+
+            if (iSubMessageTextSize != 0)
+            {
+                data.iSubMessageTextSize = iSubMessageTextSize;
+            }
+
+            if (Evt == null)
+            {
+                Evt = new EvtMessage();
+            }
+
+            data.Evt = Evt;
+
+            DialogBuilder.Show(IShellDialog.MESSAGE_DIALOG, fAutoDismiss, IdDlgTitleText, (iResult, args) =>
+            {
+            }, BlockUI, false, data);
         }
     }
 }

@@ -789,28 +789,48 @@ namespace CloudBanking.UITestApp
         private void ShowMessageDialog(CaseDialog caseDialog)
         {
             IBaseDialog dialog = null;
+            MessageType messageData = new MessageType();
 
             switch (caseDialog)
             {
                 case CaseDialog.CASE1:
-
-                    CustomStringMessageBox(false, StringIds.STRING_EMV_REMOVECARD, StringIds.STRING_EMV_REMOVECARD, false, GlobalResource.MB_NONE, GlobalResource.ICON_ICC_CARD_REMOVED, null, StringIds.STRING_CANNOTREADCARD, false, StringIds.STRING_DELETEWARNING, "", 
-                        0, StringIds.STRING_DELETE_DONATION, false, true, StringIds.STRING_DELETEQUESTION, false,false,"");
+                    messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
+                    ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_PRINT_PENDING_HOSPITALITY, StringIds.STRING_REPORT_PRINTED_FAILED, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
                 case CaseDialog.CASE2:
-
-                    CustomStringMessageBox(true, StringIds.STRING_EMV_REMOVECARD, StringIds.STRING_CARD_REMOVE_TOO_SOON, false, GlobalResource.MB_RETRYCANCEL, GlobalResource.ICON_ICC_CARD_REMOVED);
+                    messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_PRINT_PENDING_HOSPITALITY, StringIds.STRING_REPORT_PRINTED_SUCCESSFULLY, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
                 case CaseDialog.CASE3:
-
-                    ErrorMessage(string.Empty, Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED), false, string.Empty, false, Localize.GetString(StringIds.STRING_PLEASEREMOVECARD), GlobalResource.MB_NONE);
+                    ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_WARNING_TITLE, StringIds.STRING_PROCESSORNOTFOUND, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
                 case CaseDialog.CASE4:
+                    messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_PRINTPENDING, StringIds.STRING_REPORT_PRINTED_SUCCESSFULLY, false, GlobalResource.MB_OK, ref messageData);
+                    break;
 
-                    CustomStringMessageBox(true, StringIds.STRING_CONFIRM_SIGNATURE, StringIds.STRING_CONFIRM_SIGNATURE_IS_CORRECT_UPCASE, false, GlobalResource.MB_YESNOCANCEL, ref dialog, GlobalResource.MB_ICON_SIGNATURE_RESULT, aboveMsg: StringIds.STRING_SIGNATURE_REQUIRED, fAboveMsgActualText: false);
+                case CaseDialog.CASE5:
+                    messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
+                    ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_ERROR_TITLE, StringIds.STRING_CARDREADERROR, false, GlobalResource.MB_OK, ref messageData);
+                    break;
+
+                case CaseDialog.CASE6:
+                    messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
+                    messageData.SubMessage = StringIds.STRING_PLEASE_TRY_AGAIN;
+                    messageData.IsSubActualText = false;
+                    ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_RKI, StringIds.STRING_RKI_INITIALISATION_FAILED, false, GlobalResource.MB_RETRYCANCEL, ref messageData);
+                    break;
+
+                case CaseDialog.CASE7:
+                    messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_LOGON, StringIds.STRING_LOGON_SUCCESSFUL_UPCASE, false, GlobalResource.MB_OK, ref messageData);
+                    break;
+
+                case CaseDialog.CASE8:
+                    ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_WARNING_TITLE, StringIds.STRING_PROCESSORNOTFOUND, false, GlobalResource.MB_OK, ref messageData);
                     break;
             }
         }
@@ -829,60 +849,100 @@ namespace CloudBanking.UITestApp
 
         private void ErrorMessage(string IdDlgTitle, string lpszMainResult, bool fActualText, string lpszSecondaryResult, bool fSubActualText, string bottomWarningId, int uType)
         {
-            CustomStringMessageBox(true, IdDlgTitle, lpszMainResult, fActualText, uType, GlobalResource.MB_ICONDECLINED_BMP, subMsg: lpszSecondaryResult, fSubActualText: fSubActualText, bottomWarningId: bottomWarningId);
         }
 
-        private void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
-                string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "")
-        {
-            IBaseDialog dialog = null;
+        //public void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref MessageType data, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
+        //   string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "", string aboveTopMsg = ""
+        //   , string textRightButton = "", string textLeftButton = "")
+        //{
+        //    data = new MessageType();
 
-            CustomStringMessageBox(BlockUI, IdDlgTitleText, strContent, fActualText, uType, ref dialog, idImg, Evt, subMsg, fSubActualText, bottomWarningId,
-              strSubMessageColor, iSubMessageTextSize, thirdbMsg, fThirdActualText, isShowBackBtn, aboveMsg, fAboveMsgActualText, fAutoDismiss, thirdbMsgColor);
-        }
+        //    data.IsShowBackBtn = isShowBackBtn;
+        //    data.IsAboveMsgActualText = fAboveMsgActualText;
+        //    data.IsActualText = fActualText;
+        //    data.IsSubActualText = fSubActualText;
+        //    data.IsThirdActualText = fThirdActualText;
 
-        private void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref IBaseDialog dialog, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
-                string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "")
-        {
-            MessageType data = new MessageType();
+        //    data.AboveMessage = aboveMsg;
+        //    data.Message = strContent;
+        //    data.SubMessage = subMsg;
+        //    data.ThirdMessage = thirdbMsg;
+        //    data.AboveMessageTop = aboveTopMsg;
+        //    data.TextRightButton = textRightButton;
+        //    data.TextLeftButton = textLeftButton;
+        //    data.iType = uType;
+        //    data.idImg = idImg;
+        //    data.BottomWarningId = bottomWarningId;
 
-            data.IsShowBackBtn = true;
-            data.IsShowCancelBtn = true;
-            data.IsAboveMsgActualText = fAboveMsgActualText;
-            data.IsActualText = fActualText;
-            data.IsSubActualText = fSubActualText;
-            data.IsThirdActualText = fThirdActualText;
+        //    if (!string.IsNullOrWhiteSpace(strSubMessageColor))
+        //    {
+        //        data.strSubMessageColor = strSubMessageColor;
+        //    }
 
-            data.AboveMessage = aboveMsg;
-            data.Message = strContent;
-            data.SubMessage = subMsg;
-            data.ThirdMessage = thirdbMsg;
+        //    if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
+        //    {
+        //        data.thirdbMsgColor = thirdbMsgColor;
+        //    }
 
-            data.iType = uType;
-            data.idImg = idImg;
-            data.BottomWarningId = bottomWarningId;
+        //    if (iSubMessageTextSize != 0)
+        //    {
+        //        data.iSubMessageTextSize = iSubMessageTextSize;
+        //    }
 
-            if (!string.IsNullOrWhiteSpace(strSubMessageColor))
-            {
-                data.strSubMessageColor = strSubMessageColor;
-            }
+        //    if (Evt == null)
+        //    {
+        //        Evt = new EvtMessage();
+        //    }
 
-            if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
-            {
-                data.thirdbMsgColor = thirdbMsgColor;
-            }
+        //    data.Evt = Evt;
 
-            if (iSubMessageTextSize != 0)
-            {
-                data.iSubMessageTextSize = iSubMessageTextSize;
-            }
+        //    DialogBuilder.Show(IShellDialog.MESSAGE_DIALOG, fAutoDismiss, IdDlgTitleText, (iResult, args) =>
+        //    {
+        //    }, BlockUI, false, data);
+        //}
 
-            data.Evt = Evt;
+        //private void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref IBaseDialog dialog, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
+        //        string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "")
+        //{
+        //    MessageType data = new MessageType();
 
-            var messageDialog = new MessageDialog(IdDlgTitleText, null, data);
-            messageDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            messageDialog.Show(this);
-        }
+        //    data.IsShowBackBtn = true;
+        //    data.IsShowCancelBtn = true;
+        //    data.IsAboveMsgActualText = fAboveMsgActualText;
+        //    data.IsActualText = fActualText;
+        //    data.IsSubActualText = fSubActualText;
+        //    data.IsThirdActualText = fThirdActualText;
+
+        //    data.AboveMessage = aboveMsg;
+        //    data.Message = strContent;
+        //    data.SubMessage = subMsg;
+        //    data.ThirdMessage = thirdbMsg;
+
+        //    data.iType = uType;
+        //    data.idImg = idImg;
+        //    data.BottomWarningId = bottomWarningId;
+
+        //    if (!string.IsNullOrWhiteSpace(strSubMessageColor))
+        //    {
+        //        data.strSubMessageColor = strSubMessageColor;
+        //    }
+
+        //    if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
+        //    {
+        //        data.thirdbMsgColor = thirdbMsgColor;
+        //    }
+
+        //    if (iSubMessageTextSize != 0)
+        //    {
+        //        data.iSubMessageTextSize = iSubMessageTextSize;
+        //    }
+
+        //    data.Evt = Evt;
+
+        //    var messageDialog = new MessageDialog(IdDlgTitleText, null, data);
+        //    messageDialog.DialogStyle = DialogStyle.FULLSCREEN;
+        //    messageDialog.Show(this);
+        //}
 
         private void ShowPresentCardErrorDlg(CaseDialog caseDialog)
         {
@@ -1411,7 +1471,7 @@ namespace CloudBanking.UITestApp
             selectedPayment.szApprovalCode = "123456";
             selectedPayment.lAmount = 10000;
             selectedPayment.lszEndCardNumber = "7654";
-            selectedPayment.CustomerReferenceType = ReferenceType.Customer;
+            selectedPayment.CustomerReferenceType = ReferenceType.Room;
             selectedPayment.lszCustomerReference = "6789";
             selectedPayment.AuthorizationExpiryDate = DateTime.Now;
 
@@ -1425,6 +1485,9 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE2:
                     functionType = FunctionType.PreAuthComplete;
                     break;
+                case CaseDialog.CASE3:
+                    functionType = FunctionType.PreAuthIncrement;
+                    break;
                 default:
                     functionType = FunctionType.PreAuthPartial;
                     break;
@@ -1437,8 +1500,8 @@ namespace CloudBanking.UITestApp
                 Amount = selectedPayment.lAmount,
                 OriginalCardType = string.Format("{0} {1}", Localize.GetString(StringIds.STRING_CARDTYPE_AMEX), Localize.GetString(StringIds.STRING_ACCOUNTTYPESAVINGS)),
                 LastFourDigitCardNumber = $"**** **** **** {selectedPayment.lszEndCardNumber}",
-                //Reference = selectedPayment.CustomerReferenceType,
-                //ReferenceNumber = selectedPayment?.lszCustomerReference,
+                Reference = selectedPayment.CustomerReferenceType,
+                ReferenceNumber = selectedPayment?.lszCustomerReference,
                 ExpireTime = selectedPayment?.AuthorizationExpiryDate,
                 CustomerName = "David",
                 PaymentStatus = Localize.GetString(StringIds.STRING_APPROVED).ToUpper(),
@@ -2024,7 +2087,7 @@ namespace CloudBanking.UITestApp
 
             string titleDialog = StringIds.STRING_FINAL_COMPLETION;
 
-            FunctionType functionType = FunctionType.PreAuthPartial;
+            FunctionType functionType = FunctionType.PreAuthComplete;
 
             switch (functionType)
             {
@@ -2084,7 +2147,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.PREAUTH_COMPLETE_PREAUTH_INFO_DIALOG, titleDialog, (iResult, args) =>
             {
-
+                //PreAuthCompletePreAuthInfoDialog
             }, true, false, data);
         }
 
@@ -2390,53 +2453,53 @@ namespace CloudBanking.UITestApp
         void ShowViewLeftIconRightQuadrupleTextOverlayDialog()
         {
 
-            List<ViewFourthLineModel> dlgCardFeeData = new List<ViewFourthLineModel>();
+            //List<ViewFourthLineModel> dlgCardFeeData = new List<ViewFourthLineModel>();
 
-            Action<ViewFourthLineModel> addCardFee = model => { if (model != null) dlgCardFeeData.Add(model); };
+            //Action<ViewFourthLineModel> addCardFee = model => { if (model != null) dlgCardFeeData.Add(model); };
 
-            addCardFee(SetDataCardFees(MerchantCardType.Visa));
-            addCardFee(SetDataCardFees(MerchantCardType.MasterCard));
-            addCardFee(SetDataCardFees(MerchantCardType.UnionPay));
-            addCardFee(SetDataCardFees(MerchantCardType.Amex));
-            addCardFee(SetDataCardFees(MerchantCardType.JCB));
-            addCardFee(SetDataCardFees(MerchantCardType.Discover));
-            addCardFee(SetDataCardFees(MerchantCardType.Diners));
-            addCardFee(SetDataCardFees(MerchantCardType.Troy));
+            //addCardFee(SetDataCardFees(MerchantCardType.Visa));
+            //addCardFee(SetDataCardFees(MerchantCardType.MasterCard));
+            //addCardFee(SetDataCardFees(MerchantCardType.UnionPay));
+            //addCardFee(SetDataCardFees(MerchantCardType.Amex));
+            //addCardFee(SetDataCardFees(MerchantCardType.JCB));
+            //addCardFee(SetDataCardFees(MerchantCardType.Discover));
+            //addCardFee(SetDataCardFees(MerchantCardType.Diners));
+            //addCardFee(SetDataCardFees(MerchantCardType.Troy));
 
-            var dialogCardFees = new ViewLeftIconRightQuadrupleTextOverlayDialog(StringIds.STRING_SURCHARGE_AND_SERVICE_FEES_UPCASE, dlgCardFeeData);
+            //var dialogCardFees = new ViewLeftIconRightQuadrupleTextOverlayDialog(StringIds.STRING_SURCHARGE_AND_SERVICE_FEES_UPCASE, dlgCardFeeData);
 
-            dialogCardFees.OnLoadedEvt += delegate
-            {
-            };
+            //dialogCardFees.OnLoadedEvt += delegate
+            //{
+            //};
 
-            dialogCardFees?.Show(CrossCurrentActivity.Current.Activity);
+            //dialogCardFees?.Show(CrossCurrentActivity.Current.Activity);
         }
 
         void ShowListCardBrandDialog()
         {
 
-            List<int> listCardBrandImgId = new List<int>();
+            //List<int> listCardBrandImgId = new List<int>();
 
-            listCardBrandImgId.Add(Resource.Drawable.vector_visa);
-            listCardBrandImgId.Add(Resource.Drawable.vector_master_card_text);
-            listCardBrandImgId.Add(Resource.Drawable.vector_american_express);
-            listCardBrandImgId.Add(Resource.Drawable.vector_union_pay_bg);
-            listCardBrandImgId.Add(Resource.Drawable.vector_discover_network);
-            listCardBrandImgId.Add(Resource.Drawable.vector_jcb_bg);
-            listCardBrandImgId.Add(Resource.Drawable.vector_diners_bg);
-            listCardBrandImgId.Add(Resource.Drawable.vector_eft_pos);
-            listCardBrandImgId.Add(Resource.Drawable.wechatpay_logo);
-            listCardBrandImgId.Add(Resource.Drawable.alipay_logo);
-            listCardBrandImgId.Add(Resource.Drawable.vector_epay);
-            listCardBrandImgId.Add(Resource.Drawable.vector_centra_pay);
-            listCardBrandImgId.Add(Resource.Drawable.vector_bnpl);
-            listCardBrandImgId.Add(Resource.Drawable.vector_crypto);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_visa);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_master_card_text);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_american_express);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_union_pay_bg);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_discover_network);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_jcb_bg);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_diners_bg);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_eft_pos);
+            //listCardBrandImgId.Add(Resource.Drawable.wechatpay_logo);
+            //listCardBrandImgId.Add(Resource.Drawable.alipay_logo);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_epay);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_centra_pay);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_bnpl);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_crypto);
 
 
-            var dialog = new ListCardBrandDialog(StringIds.STRING_MERCHANT_FEES, listCardBrandImgId);
+            //var dialog = new ListCardBrandDialog(StringIds.STRING_MERCHANT_FEES, listCardBrandImgId);
 
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog?.Show(CrossCurrentActivity.Current.Activity);
+            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog?.Show(CrossCurrentActivity.Current.Activity);
         }
 
         void ShowSurchargeFeeDetailDialog()
@@ -2444,16 +2507,14 @@ namespace CloudBanking.UITestApp
             SurchargeFeeDetailDlgData data = new SurchargeFeeDetailDlgData()
             {
                 CardResId = Resource.Drawable.vector_visa,
-                CardLocation = CardLocation.Local,
-                AccountType = ACCOUNTTYPE.Credit,
-                CardCharges = new List<CardChargeViewModel>()
+                lAmount = 38000,
+                iCardType = CARDTYPE.CARD_AMEX,
+                Rules = new List<SurchargeRule>()
                 {
-                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_TAP, Percent = 1.2f, Amount = 1200},
-                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_INSERT, Percent = 1.1f, Amount = 1100},
-                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_SWIPE, Percent = 1.5f, Amount = 1500},
-                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_MANUAL, Percent = 1.6f, Amount = 1600},
-                    new CardChargeViewModel() {TypeStringId = StringIds.STRING_MOTO, Percent = 1.75f, Amount = 1750},
+                    new SurchargeRule() {},
+
                 }
+
             };
             var dialog = new SurchargeFeeDetailDialog(StringIds.STRING_SURCHARGE_AND_SERVICE_FEES, null, data);
 
@@ -4588,7 +4649,7 @@ namespace CloudBanking.UITestApp
             long lTotalAmount = 40000;
             FunctionType function = FunctionType.Purchase;
 
-            switch(caseDialog)
+            switch (caseDialog)
             {
                 case CaseDialog.CASE1:
                     function = FunctionType.PreAuthPartial;
@@ -4598,75 +4659,86 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            MessageType dialog = new MessageType();
+            MessageType messageData = new MessageType();
             long lPreviousAmount = 50000;
             FunctionType iFunctionButton = FunctionType.PreAuthPartial;
 
-            string aboveMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_PARTIAL_COMPLETION_WAS_DECLINED)
-                              : Localize.GetString((StringIds.STRING_PRE_AUTH_COMPLETE_UPCASE)) + "\n" + lTotalAmount.ToFormatLocalCurrencyAmount();
-            string topMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_PREAUTH_PARTIAL_UPCASE) : "";
-            string mainMsg = function == FunctionType.PreAuthPartial ? string.Format(Localize.GetString(StringIds.STRING_AMOUNT_EXCEEDS_THE_APPROVED_PREAUTH), lPreviousAmount.ToFormatLocalCurrencyAmount())
-                            : string.Format(Localize.GetString(StringIds.STRING_PREAUTH_DELETED_DUE_TO_EXCEEDING_THE_APPROVED_PREAUTH), lPreviousAmount.ToFormatLocalCurrencyAmount());
-            string warningMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_YOU_WILL_NEED_TO_PERFORM_A_PREAUTH_TOPUP)
-                                : Localize.GetString(StringIds.STRING_PREAUTH_DELETE_YOU_MUST_PERFORM_A_PURCHASE_TRANSACTION);
-            var textRightButton = StringIds.STRING_TOP_UP;
+            string aboveMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_PARTIAL_COMPLETION_COULD_BE_DECLINED)
+                              : Localize.GetString(StringIds.STRING_FINAL_COMPLETION_COULD_BE_DECLINED);
+            string topMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_PREAUTH_PARTIAL_UPCASE) : Localize.GetString(StringIds.STRING_FINAL_COMPLETION_UPCASE);
+            string mainMsg = string.Format(Localize.GetString(StringIds.STRING_AMOUNT_EXCEEDS_THE_APPROVED_PREAUTH_AMOUNT), lTotalAmount.ToFormatLocalCurrencyAmount());
+            string warningMsg = Localize.GetString(StringIds.STRING_YOU_WILL_NEED_TO_PERFORM_A_PREAUTH_TOPUP);
 
             var buttonBottom = GlobalResource.MB_RESUMECANCEL;
 
-            dialog.IsShowCancelBtn = true;
+            messageData.IsShowCancelBtn = true;
+            messageData.IsShowBackBtn = false;
+            messageData.IsAboveMsgActualText = false;
+            messageData.IsActualText = false;
+            messageData.IsSubActualText = false;
+            messageData.IsThirdActualText = false;
+            messageData.AboveMessage = aboveMsg;
+            messageData.IsAboveMsgActualText = false;
+            messageData.Message = mainMsg;
+            messageData.SubMessage = "";
+            messageData.ThirdMessage = "";
+            messageData.AboveMessageTop = topMsg;
+            messageData.TextRightButton = StringIds.STRING_TOP_UP;
+            messageData.TextLeftButton = StringIds.STRING_ENTER_AMOUNT;
+            messageData.iType = buttonBottom;
+            messageData.idImg = 0;
+            messageData.BottomWarningId = warningMsg;
 
-            CustomStringMessageBox(true, StringIds.STRING_DECLINED, mainMsg, false, buttonBottom, ref dialog, aboveMsg: aboveMsg, fAboveMsgActualText: false,
-                      isShowBackBtn: true, bottomWarningId: warningMsg, aboveTopMsg: topMsg, textRightButton: textRightButton);
-
+            ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_DECLINED, mainMsg, false, buttonBottom, ref messageData);
         }
 
-        public void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref MessageType data, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
-            string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "", string aboveTopMsg = "", string textRightButton = "")
-        {
-            data = new MessageType();
+        //public void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref MessageType data, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
+        //    string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "", string aboveTopMsg = "", string textRightButton = "")
+        //{
+        //    data = new MessageType();
 
-            data.IsShowBackBtn = isShowBackBtn;
-            data.IsAboveMsgActualText = fAboveMsgActualText;
-            data.IsActualText = fActualText;
-            data.IsSubActualText = fSubActualText;
-            data.IsThirdActualText = fThirdActualText;
+        //    data.IsShowBackBtn = isShowBackBtn;
+        //    data.IsAboveMsgActualText = fAboveMsgActualText;
+        //    data.IsActualText = fActualText;
+        //    data.IsSubActualText = fSubActualText;
+        //    data.IsThirdActualText = fThirdActualText;
 
-            data.AboveMessage = aboveMsg;
-            data.Message = strContent;
-            data.SubMessage = subMsg;
-            data.ThirdMessage = thirdbMsg;
-            data.AboveMessageTop = aboveTopMsg;
-            data.TextRightButton = textRightButton;
+        //    data.AboveMessage = aboveMsg;
+        //    data.Message = strContent;
+        //    data.SubMessage = subMsg;
+        //    data.ThirdMessage = thirdbMsg;
+        //    data.AboveMessageTop = aboveTopMsg;
+        //    data.TextRightButton = textRightButton;
 
-            data.iType = uType;
-            data.idImg = idImg;
-            data.BottomWarningId = bottomWarningId;
+        //    data.iType = uType;
+        //    data.idImg = idImg;
+        //    data.BottomWarningId = bottomWarningId;
 
-            if (!string.IsNullOrWhiteSpace(strSubMessageColor))
-            {
-                data.strSubMessageColor = strSubMessageColor;
-            }
+        //    if (!string.IsNullOrWhiteSpace(strSubMessageColor))
+        //    {
+        //        data.strSubMessageColor = strSubMessageColor;
+        //    }
 
-            if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
-            {
-                data.thirdbMsgColor = thirdbMsgColor;
-            }
+        //    if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
+        //    {
+        //        data.thirdbMsgColor = thirdbMsgColor;
+        //    }
 
-            if (iSubMessageTextSize != 0)
-            {
-                data.iSubMessageTextSize = iSubMessageTextSize;
-            }
+        //    if (iSubMessageTextSize != 0)
+        //    {
+        //        data.iSubMessageTextSize = iSubMessageTextSize;
+        //    }
 
-            if (Evt == null)
-            {
-                Evt = new EvtMessage();
-            }
+        //    if (Evt == null)
+        //    {
+        //        Evt = new EvtMessage();
+        //    }
 
-            data.Evt = Evt;
+        //    data.Evt = Evt;
 
-            DialogBuilder.Show(IShellDialog.MESSAGE_DIALOG, fAutoDismiss, IdDlgTitleText, (iResult, args) =>
-            {
-            }, BlockUI, false, data);
-        }
+        //    DialogBuilder.Show(IShellDialog.MESSAGE_DIALOG, fAutoDismiss, IdDlgTitleText, (iResult, args) =>
+        //    {
+        //    }, BlockUI, false, data);
+        //}
     }
 }

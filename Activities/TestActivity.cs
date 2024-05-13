@@ -1710,13 +1710,93 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   
+#if true
 
             #region MessageDialog
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog Confirm CASE1",
+                Title = $"MessageDialog Droid CASE1",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Droid CASE2",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Droid CASE3",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Droid CASE4",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE4);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Droid CASE5",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE5);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Droid CASE6",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE6);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Droid CASE7",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE7);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Droid CASE8",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE8);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Shell Confirm CASE1",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -1726,7 +1806,7 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog Confirm CASE2",
+                Title = $"MessageDialog Shell Confirm CASE2",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -1736,81 +1816,81 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog CASE1",
+                Title = $"MessageDialog Shell CASE1",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMessageDialog(CaseDialog.CASE1);
+                    ShowMessageDialogShell(CaseDialog.CASE1);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog CASE2",
+                Title = $"MessageDialog Shell CASE2",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMessageDialog(CaseDialog.CASE2);
+                    ShowMessageDialogShell(CaseDialog.CASE2);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog CASE3",
+                Title = $"MessageDialog Shell CASE3",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMessageDialog(CaseDialog.CASE3);
+                    ShowMessageDialogShell(CaseDialog.CASE3);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog CASE4",
+                Title = $"MessageDialog Shell CASE4",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMessageDialog(CaseDialog.CASE4);
+                    ShowMessageDialogShell(CaseDialog.CASE4);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog CASE5",
+                Title = $"MessageDialog Shell CASE5",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMessageDialog(CaseDialog.CASE5);
+                    ShowMessageDialogShell(CaseDialog.CASE5);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog CASE6",
+                Title = $"MessageDialog Shell CASE6",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMessageDialog(CaseDialog.CASE6);
+                    ShowMessageDialogShell(CaseDialog.CASE6);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog CASE7",
+                Title = $"MessageDialog Shell CASE7",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMessageDialog(CaseDialog.CASE7);
+                    ShowMessageDialogShell(CaseDialog.CASE7);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MessageDialog CASE8",
+                Title = $"MessageDialog Shell CASE8",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMessageDialog(CaseDialog.CASE8);
+                    ShowMessageDialogShell(CaseDialog.CASE8);
                 })
             });
             #endregion

@@ -786,9 +786,8 @@ namespace CloudBanking.UITestApp
             dynamicOptionDialog.Show(this);
         }
 
-        private void ShowMessageDialog(CaseDialog caseDialog)
+        private void ShowMessageDialogShell(CaseDialog caseDialog)
         {
-            IBaseDialog dialog = null;
             MessageType messageData = new MessageType();
 
             switch (caseDialog)
@@ -835,6 +834,69 @@ namespace CloudBanking.UITestApp
             }
         }
 
+        private void ShowMessageDialogDroid(CaseDialog caseDialog)
+        {
+            MessageType messageData = new MessageType();
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_ERROR, StringIds.STRING_ERRORDATA, false, GlobalResource.MB_OK, ref messageData);
+                    break;
+
+                case CaseDialog.CASE2:
+                    messageData.idImg = GlobalResource.MB_ICON_SIGNATURE_RESULT;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_MESSAGE, StringIds.STRING_SIGNATUREACCEPTED, false, GlobalResource.MB_OK, ref messageData);
+                    break;
+
+                case CaseDialog.CASE3:
+                    messageData.idImg = GlobalResource.ICON_SHIFT_STARTED;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_SHIFT, StringIds.STRING_SHIFTHASALREADYSTARTED, false, GlobalResource.MB_OK, ref messageData);
+                    break;
+
+                case CaseDialog.CASE4:
+                    messageData = new MessageType();
+                    messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
+                    messageData.IsShowBackBtn = true;
+                    messageData.IsShowCancelBtn = false;
+                    messageData.SubMessage = StringIds.STRING_NO_TICKET_FOUND;
+                    messageData.IsSubActualText = false;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_LINK_OPEN_TAB, StringIds.STRING_NO_OPEN_TAB_FOUND_UPCASE, false, GlobalResource.MB_RETRYCANCEL, ref messageData);
+                    break;
+
+                case CaseDialog.CASE5:
+                    messageData = new MessageType();
+                    messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    messageData.SubMessage = StringIds.STRING_ACCESS_CODE_HAS_BEEN_VALIDATED;
+                    messageData.strSubMessageColor = GlobalConstants.STRING_PRIMARY_COLOR;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_ACCESSCODE, StringIds.STRING_CONNECTION_SUCCESSFULL, false, GlobalResource.MB_OK, ref messageData);
+                    break;
+
+                case CaseDialog.CASE6:
+                    messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_PRINT_PENDING_HOSPITALITY, StringIds.STRING_REPORT_PRINTED_SUCCESSFULLY, false, GlobalResource.MB_OK, ref messageData);
+                    break;
+
+                case CaseDialog.CASE7:
+                    messageData = new MessageType();
+                    messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
+                    messageData.IsShowBackBtn = true;
+                    messageData.IsShowCancelBtn = false;
+                    messageData.SubMessage = StringIds.STRING_NO_TICKET_FOUND;
+                    messageData.IsSubActualText = false;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_LINK_OPEN_TAB, StringIds.STRING_NO_OPEN_TAB_FOUND_UPCASE, false, GlobalResource.MB_RETRYCANCEL, ref messageData);
+                    break;
+
+                case CaseDialog.CASE8:
+                    messageData = new MessageType();
+                    messageData.idImg = GlobalResource.ICON_SHIFT_STARTED;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_SHIFT, StringIds.STRING_SHIFTHASALREADYSTARTED, false, GlobalResource.MB_OK, ref messageData);
+                    break;
+            }
+        }
+
+
         private void ShowEOVProcessingDialog()
         {
             var pProcessingData = new ProcessingData();
@@ -846,103 +908,6 @@ namespace CloudBanking.UITestApp
             enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
             enterPinDialog.Show(this);
         }
-
-        private void ErrorMessage(string IdDlgTitle, string lpszMainResult, bool fActualText, string lpszSecondaryResult, bool fSubActualText, string bottomWarningId, int uType)
-        {
-        }
-
-        //public void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref MessageType data, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
-        //   string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "", string aboveTopMsg = ""
-        //   , string textRightButton = "", string textLeftButton = "")
-        //{
-        //    data = new MessageType();
-
-        //    data.IsShowBackBtn = isShowBackBtn;
-        //    data.IsAboveMsgActualText = fAboveMsgActualText;
-        //    data.IsActualText = fActualText;
-        //    data.IsSubActualText = fSubActualText;
-        //    data.IsThirdActualText = fThirdActualText;
-
-        //    data.AboveMessage = aboveMsg;
-        //    data.Message = strContent;
-        //    data.SubMessage = subMsg;
-        //    data.ThirdMessage = thirdbMsg;
-        //    data.AboveMessageTop = aboveTopMsg;
-        //    data.TextRightButton = textRightButton;
-        //    data.TextLeftButton = textLeftButton;
-        //    data.iType = uType;
-        //    data.idImg = idImg;
-        //    data.BottomWarningId = bottomWarningId;
-
-        //    if (!string.IsNullOrWhiteSpace(strSubMessageColor))
-        //    {
-        //        data.strSubMessageColor = strSubMessageColor;
-        //    }
-
-        //    if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
-        //    {
-        //        data.thirdbMsgColor = thirdbMsgColor;
-        //    }
-
-        //    if (iSubMessageTextSize != 0)
-        //    {
-        //        data.iSubMessageTextSize = iSubMessageTextSize;
-        //    }
-
-        //    if (Evt == null)
-        //    {
-        //        Evt = new EvtMessage();
-        //    }
-
-        //    data.Evt = Evt;
-
-        //    DialogBuilder.Show(IShellDialog.MESSAGE_DIALOG, fAutoDismiss, IdDlgTitleText, (iResult, args) =>
-        //    {
-        //    }, BlockUI, false, data);
-        //}
-
-        //private void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref IBaseDialog dialog, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
-        //        string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "")
-        //{
-        //    MessageType data = new MessageType();
-
-        //    data.IsShowBackBtn = true;
-        //    data.IsShowCancelBtn = true;
-        //    data.IsAboveMsgActualText = fAboveMsgActualText;
-        //    data.IsActualText = fActualText;
-        //    data.IsSubActualText = fSubActualText;
-        //    data.IsThirdActualText = fThirdActualText;
-
-        //    data.AboveMessage = aboveMsg;
-        //    data.Message = strContent;
-        //    data.SubMessage = subMsg;
-        //    data.ThirdMessage = thirdbMsg;
-
-        //    data.iType = uType;
-        //    data.idImg = idImg;
-        //    data.BottomWarningId = bottomWarningId;
-
-        //    if (!string.IsNullOrWhiteSpace(strSubMessageColor))
-        //    {
-        //        data.strSubMessageColor = strSubMessageColor;
-        //    }
-
-        //    if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
-        //    {
-        //        data.thirdbMsgColor = thirdbMsgColor;
-        //    }
-
-        //    if (iSubMessageTextSize != 0)
-        //    {
-        //        data.iSubMessageTextSize = iSubMessageTextSize;
-        //    }
-
-        //    data.Evt = Evt;
-
-        //    var messageDialog = new MessageDialog(IdDlgTitleText, null, data);
-        //    messageDialog.DialogStyle = DialogStyle.FULLSCREEN;
-        //    messageDialog.Show(this);
-        //}
 
         private void ShowPresentCardErrorDlg(CaseDialog caseDialog)
         {
@@ -4691,54 +4656,5 @@ namespace CloudBanking.UITestApp
 
             ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_DECLINED, mainMsg, false, buttonBottom, ref messageData);
         }
-
-        //public void CustomStringMessageBox(bool BlockUI, string IdDlgTitleText, string strContent, bool fActualText, int uType, ref MessageType data, int idImg = 0, EvtMessage Evt = null, string subMsg = "", bool fSubActualText = false, string bottomWarningId = "",
-        //    string strSubMessageColor = "", int iSubMessageTextSize = 0, string thirdbMsg = "", bool fThirdActualText = false, bool isShowBackBtn = false, string aboveMsg = "", bool fAboveMsgActualText = false, bool fAutoDismiss = false, string thirdbMsgColor = "", string aboveTopMsg = "", string textRightButton = "")
-        //{
-        //    data = new MessageType();
-
-        //    data.IsShowBackBtn = isShowBackBtn;
-        //    data.IsAboveMsgActualText = fAboveMsgActualText;
-        //    data.IsActualText = fActualText;
-        //    data.IsSubActualText = fSubActualText;
-        //    data.IsThirdActualText = fThirdActualText;
-
-        //    data.AboveMessage = aboveMsg;
-        //    data.Message = strContent;
-        //    data.SubMessage = subMsg;
-        //    data.ThirdMessage = thirdbMsg;
-        //    data.AboveMessageTop = aboveTopMsg;
-        //    data.TextRightButton = textRightButton;
-
-        //    data.iType = uType;
-        //    data.idImg = idImg;
-        //    data.BottomWarningId = bottomWarningId;
-
-        //    if (!string.IsNullOrWhiteSpace(strSubMessageColor))
-        //    {
-        //        data.strSubMessageColor = strSubMessageColor;
-        //    }
-
-        //    if (!string.IsNullOrWhiteSpace(thirdbMsgColor))
-        //    {
-        //        data.thirdbMsgColor = thirdbMsgColor;
-        //    }
-
-        //    if (iSubMessageTextSize != 0)
-        //    {
-        //        data.iSubMessageTextSize = iSubMessageTextSize;
-        //    }
-
-        //    if (Evt == null)
-        //    {
-        //        Evt = new EvtMessage();
-        //    }
-
-        //    data.Evt = Evt;
-
-        //    DialogBuilder.Show(IShellDialog.MESSAGE_DIALOG, fAutoDismiss, IdDlgTitleText, (iResult, args) =>
-        //    {
-        //    }, BlockUI, false, data);
-        //}
     }
 }

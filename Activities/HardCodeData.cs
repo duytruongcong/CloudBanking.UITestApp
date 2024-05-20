@@ -4632,7 +4632,8 @@ namespace CloudBanking.UITestApp
                               : Localize.GetString(StringIds.STRING_FINAL_COMPLETION_COULD_BE_DECLINED);
             string topMsg = function == FunctionType.PreAuthPartial ? Localize.GetString(StringIds.STRING_PREAUTH_PARTIAL_UPCASE) : Localize.GetString(StringIds.STRING_FINAL_COMPLETION_UPCASE);
             string mainMsg = string.Format(Localize.GetString(StringIds.STRING_AMOUNT_EXCEEDS_THE_APPROVED_PREAUTH_AMOUNT), lTotalAmount.ToFormatLocalCurrencyAmount());
-            string warningMsg = Localize.GetString(StringIds.STRING_YOU_WILL_NEED_TO_PERFORM_A_PREAUTH_TOPUP);
+            //string warningMsg = Localize.GetString(StringIds.STRING_YOU_WILL_NEED_TO_PERFORM_A_PREAUTH_TOPUP);
+            string warningMsg = "";
 
             var buttonBottom = GlobalResource.MB_RESUMECANCEL;
 

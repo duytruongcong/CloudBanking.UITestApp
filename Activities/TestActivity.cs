@@ -1277,6 +1277,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+            //nhung
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"ReceiptEmailAddressDialog",
@@ -1319,21 +1320,41 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"EmailReceiptSendResultDialogSuccess",
+                Title = $"EmailReceiptSendResultDialog Email Success",
                 RightIconResName = "EmailReceiptSendResultDialogSuccess",
                 ItemAction = new Action(() =>
                 {
-                    ShowEmailReceiptSendResultDialogSuccess();
+                    ShowEmailReceiptSendResultDialog(CaseDialog.CASE1);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"EmailReceiptSendResultDialogFail",
+                Title = $"EmailReceiptSendResultDialog Email Fail",
                 RightIconResName = "EmailReceiptSendResultDialogFail",
                 ItemAction = new Action(() =>
                 {
-                    ShowEmailReceiptSendResultDialogFail();
+                    ShowEmailReceiptSendResultDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EmailReceiptSendResultDialog Text Success",
+                RightIconResName = "EmailReceiptSendResultDialogSuccess",
+                ItemAction = new Action(() =>
+                {
+                    ShowEmailReceiptSendResultDialog(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EmailReceiptSendResultDialog Text Fail",
+                RightIconResName = "EmailReceiptSendResultDialogFail",
+                ItemAction = new Action(() =>
+                {
+                    ShowEmailReceiptSendResultDialog(CaseDialog.CASE4);
                 })
             });
 

@@ -1,6 +1,4 @@
-﻿using Android.App;
-using CloudBanking.BaseControl;
-using CloudBanking.BaseHardware;
+﻿using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -15,15 +13,8 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using System.Security.AccessControl;
-using System.Text;
-using static Android.Content.ClipData;
-using static CloudBanking.Entities.Database;
-using static CloudBanking.Entities.GenericPOS;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
-using static Java.Util.Jar.Attributes;
 
 namespace CloudBanking.UITestApp
 {
@@ -1850,22 +1841,46 @@ namespace CloudBanking.UITestApp
 
         }
 
-        void ShowEmailReceiptSendResultDialogSuccess()
+        void ShowEmailReceiptSendResultDialog(CaseDialog caseDialog)
         {
             var selectedEmail = "d.timms@yahoo.com";
+            var selectedCellNumber = "+61 404 033 099";
 
-            DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_EMAIL_RECEIPT_LOWCASE, (iResult, args) =>
+            switch (caseDialog)
             {
-            }, true, false, new ReceiptResultDlgData(selectedEmail, UtilEnum.ReceiptType.Email, true));
-        }
+                case CaseDialog.CASE1:
 
-        void ShowEmailReceiptSendResultDialogFail()
-        {
-            var selectedEmail = "d.timms@yahoo.com";
+                    DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_EMAIL_RECEIPT_LOWCASE, (iResult, args) =>
+                    {
+                        //EmailReceiptSendResultDialog
+                    }, true, false, new ReceiptResultDlgData(selectedEmail, UtilEnum.ReceiptType.Email, true));
+                    break;
 
-            DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_EMAIL_RECEIPT_LOWCASE, (iResult, args) =>
-            {
-            }, true, false, new ReceiptResultDlgData(selectedEmail, UtilEnum.ReceiptType.Email, false));
+                case CaseDialog.CASE2:
+
+                    DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_EMAIL_RECEIPT_LOWCASE, (iResult, args) =>
+                    {
+                        //EmailReceiptSendResultDialog
+                    }, true, false, new ReceiptResultDlgData(selectedEmail, UtilEnum.ReceiptType.Email, false));
+                    break;
+
+                case CaseDialog.CASE3:
+                    DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_TEXT_RECEIPT, (iResult, args) =>
+                    {
+                        //EmailReceiptSendResultDialog
+                    }, true, false, new ReceiptResultDlgData(selectedCellNumber, UtilEnum.ReceiptType.Text, true));
+                    break;
+
+                case CaseDialog.CASE4:
+                    DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_TEXT_RECEIPT, (iResult, args) =>
+                    {
+                        //EmailReceiptSendResultDialog
+                    }, true, false, new ReceiptResultDlgData(selectedCellNumber, UtilEnum.ReceiptType.Text, false));
+                    break;
+
+            }
+
+           
         }
 
         void ListPaymentRecordDialog()

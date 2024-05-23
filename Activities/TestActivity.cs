@@ -623,7 +623,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true    // 
+#if false    // 
 
             #region Setup Flow
 
@@ -1090,7 +1090,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // 
+#if false // 
 
             #region Main Payment Flow
 
@@ -1225,6 +1225,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+            // duy done p17
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"MainDialog",
@@ -1277,7 +1278,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            //nhung
+            //nhung done p17
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"ReceiptEmailAddressDialog",
@@ -1318,6 +1319,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+            //nhung
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"EmailReceiptSendResultDialog Email Success",
@@ -1328,6 +1330,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+            //nhung
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"EmailReceiptSendResultDialog Email Fail",
@@ -1338,6 +1341,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+            //nhung
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"EmailReceiptSendResultDialog Text Success",
@@ -1348,6 +1352,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+            //nhung
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"EmailReceiptSendResultDialog Text Fail",
@@ -1527,7 +1532,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   // 
+#if true   // 
 
             #region Request Card Flow
 
@@ -1611,65 +1616,65 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MerchantSwipeCardDialog",
-            //    RightIconResName = "MerchantSwipeCardDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowSwipeMerchantCardDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MerchantSwipeCardDialog",
+                RightIconResName = "MerchantSwipeCardDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSwipeMerchantCardDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"RequestAliPayWechatDialog1_None",
-            //    RightIconResName = "RequestAliPayWechatDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.None);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog1_None",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.None);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"RequestAliPayWechatDialog2_Declined",
-            //    RightIconResName = "RequestAliPayWechatDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Declined);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog2_Declined",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Declined);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"RequestAliPayWechatDialog3_Running",
-            //    RightIconResName = "RequestAliPayWechatDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Running);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog3_Running",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Running);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"RequestAliPayWechatDialog4_Approval",
-            //    RightIconResName = "RequestAliPayWechatDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Approval);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestAliPayWechatDialog4_Approval",
+                RightIconResName = "RequestAliPayWechatDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRequestAliPayWechat("abcdef1234567889", true, true, Entities.ResultStatus.Approval);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"ViewLeftIconRightQuadrupleTextOverlayDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowViewLeftIconRightQuadrupleTextOverlayDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ViewLeftIconRightQuadrupleTextOverlayDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowViewLeftIconRightQuadrupleTextOverlayDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1991,7 +1996,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   // 
+#if false   // 
 
             #region ApprovalDialog
 

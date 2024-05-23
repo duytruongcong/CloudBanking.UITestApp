@@ -432,6 +432,12 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\setupimages\land_avertising_1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values-sw480dp-w480dp-land-mdpi\dimens.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>

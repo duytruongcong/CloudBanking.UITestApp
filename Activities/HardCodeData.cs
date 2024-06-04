@@ -2351,9 +2351,41 @@ namespace CloudBanking.UITestApp
             var data = new ReceiptOptionsDlgData();
 
             data.QRReceiptResult = "ReceiptOptionsDialog";
-            data.fShowQrCode = true;
+            data.fShowQrCode = false;
 
             data.FunctionButtons = new List<SelectButton>();
+
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
+            //    idImage = IconIds.VECTOR_EMAIL_RECEIPT,
+            //    IdProcessor = 0,
+            //    IsVectorDrawble = true
+            //});
+
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    Title = StringIds.STRING_TEXT_RECEIPT,
+            //    idImage = IconIds.VECTOR_TEXT_RECEIPT,
+            //    IdProcessor = 0,
+            //    IsVectorDrawble = true
+            //});
+
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    Title = StringIds.STRING_PRINT_CUSTOMER,
+            //    idImage = IconIds.VECTOR_PRINT_RECEIPT,
+            //    IdProcessor = 0,
+            //    IsVectorDrawble = true
+            //});
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_QR_CODE,
+                idImage = IconIds.VECTOR_QR_CODE,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
 
             data.FunctionButtons.Add(new SelectButton()
             {
@@ -2367,14 +2399,6 @@ namespace CloudBanking.UITestApp
             {
                 Title = StringIds.STRING_TEXT_RECEIPT,
                 idImage = IconIds.VECTOR_TEXT_RECEIPT,
-                IdProcessor = 0,
-                IsVectorDrawble = true
-            });
-
-            data.FunctionButtons.Add(new SelectButton()
-            {
-                Title = StringIds.STRING_PRINT_CUSTOMER,
-                idImage = IconIds.VECTOR_PRINT_RECEIPT,
                 IdProcessor = 0,
                 IsVectorDrawble = true
             });
@@ -2402,6 +2426,8 @@ namespace CloudBanking.UITestApp
 
             dlgData.status = status;
 
+            dlgData.lSurcharge = 8000;
+
             switch (iFunctionButton)
             {
                 case FunctionType.Refund: titleId = StringIds.STRING_FUNCTIONTYPES_REFUND; break;
@@ -2420,6 +2446,7 @@ namespace CloudBanking.UITestApp
             dlgData.szTotalTitle = titleId;
 
             dlgData.CurrencySymbol = "$";
+            dlgData.szContent = StringIds.STRING_TRANSMISSIONERROR;
 
             DialogBuilder.Show(IPayDialog.REQUEST_ALIPAY_WECHAT_DIALOG, StringIds.STRING_QR_PAYMENTS, (iResult, args) =>
             {
@@ -2458,28 +2485,28 @@ namespace CloudBanking.UITestApp
         void ShowListCardBrandDialog()
         {
 
-            //List<int> listCardBrandImgId = new List<int>();
+            List<int> listCardBrandImgId = new List<int>();
 
-            //listCardBrandImgId.Add(Resource.Drawable.vector_visa);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_master_card_text);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_american_express);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_union_pay_bg);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_discover_network);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_jcb_bg);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_diners_bg);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_eft_pos);
-            //listCardBrandImgId.Add(Resource.Drawable.wechatpay_logo);
-            //listCardBrandImgId.Add(Resource.Drawable.alipay_logo);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_epay);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_centra_pay);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_bnpl);
-            //listCardBrandImgId.Add(Resource.Drawable.vector_crypto);
+            listCardBrandImgId.Add(Resource.Drawable.vector_visa);
+            listCardBrandImgId.Add(Resource.Drawable.vector_master_card_text);
+            listCardBrandImgId.Add(Resource.Drawable.vector_american_express);
+            listCardBrandImgId.Add(Resource.Drawable.vector_union_pay_bg);
+            listCardBrandImgId.Add(Resource.Drawable.vector_discover_network);
+            listCardBrandImgId.Add(Resource.Drawable.vector_jcb_bg);
+            listCardBrandImgId.Add(Resource.Drawable.vector_diners_bg);
+            listCardBrandImgId.Add(Resource.Drawable.vector_eft_pos);
+            listCardBrandImgId.Add(Resource.Drawable.wechatpay_logo);
+            listCardBrandImgId.Add(Resource.Drawable.alipay_logo);
+            listCardBrandImgId.Add(Resource.Drawable.vector_epay);
+            listCardBrandImgId.Add(Resource.Drawable.vector_centra_pay);
+            listCardBrandImgId.Add(Resource.Drawable.vector_bnpl);
+            listCardBrandImgId.Add(Resource.Drawable.vector_crypto);
 
 
-            //var dialog = new ListCardBrandDialog(StringIds.STRING_MERCHANT_FEES, listCardBrandImgId);
+            var dialog = new ListCardBrandDialog(StringIds.STRING_MERCHANT_FEES, null,null);
 
-            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog?.Show(CrossCurrentActivity.Current.Activity);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog?.Show(CrossCurrentActivity.Current.Activity);
         }
 
         void ShowSurchargeFeeDetailDialog()
@@ -2491,8 +2518,79 @@ namespace CloudBanking.UITestApp
                 iCardType = CARDTYPE.CARD_AMEX,
                 Rules = new List<SurchargeRule>()
                 {
-                    new SurchargeRule() {},
+                    new SurchargeRule() 
+                    {
+                        Surcharge = new MerchantCardSurcharge()
+                        {
+                            lFeeChange = 1000,
+                            usFeeHigh = 40,
+                            usFeeLow = 20,
+                            fPercent = true
+                        },
+                        EFTPaymentMethods = new List<ENTRYMODE>()
+                        {
+                            ENTRYMODE.EM_SMC,
+                            ENTRYMODE.EM_RFID,
+                            ENTRYMODE.EM_SWIPED,
+                            ENTRYMODE.EM_MOTO,
+                            ENTRYMODE.EM_MANUAL
+                        }
+                    },
+                    new SurchargeRule()
+                    {
+                        Surcharge = new MerchantCardSurcharge()
+                        {
+                            lFeeChange = 1000,
+                            usFeeHigh = 40,
+                            usFeeLow = 20,
+                            fPercent = true
 
+                        },
+                        EFTPaymentMethods = new List<ENTRYMODE>()
+                        {
+                            ENTRYMODE.EM_SMC,
+                            ENTRYMODE.EM_RFID,
+                            ENTRYMODE.EM_SWIPED,
+                            ENTRYMODE.EM_MOTO,
+                            ENTRYMODE.EM_MANUAL
+                        }
+                    },new SurchargeRule()
+                    {
+                        Surcharge = new MerchantCardSurcharge()
+                        {
+                            lFeeChange = 1000,
+                            usFeeHigh = 40,
+                            usFeeLow = 20,
+                            fPercent = true
+
+                        },
+                        EFTPaymentMethods = new List<ENTRYMODE>()
+                        {
+                            ENTRYMODE.EM_SMC,
+                            ENTRYMODE.EM_RFID,
+                            ENTRYMODE.EM_SWIPED,
+                            ENTRYMODE.EM_MOTO,
+                            ENTRYMODE.EM_MANUAL
+                        }
+                    },new SurchargeRule()
+                    {
+                        Surcharge = new MerchantCardSurcharge()
+                        {
+                            lFeeChange = 1000,
+                            usFeeHigh = 40,
+                            usFeeLow = 20,
+                            fPercent = true
+
+                        },
+                        EFTPaymentMethods = new List<ENTRYMODE>()
+                        {
+                            ENTRYMODE.EM_SMC,
+                            ENTRYMODE.EM_RFID,
+                            ENTRYMODE.EM_SWIPED,
+                            ENTRYMODE.EM_MOTO,
+                            ENTRYMODE.EM_MANUAL
+                        }
+                    },
                 }
 
             };

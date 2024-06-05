@@ -4770,5 +4770,16 @@ namespace CloudBanking.UITestApp
 
             ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_DECLINED, mainMsg, false, buttonBottom, ref messageData);
         }
+
+        void ShowDigitalSignatureConfirmDialog()
+        {
+            string digitalData = "qwkjhjhjhkhkhjhhklkkikk"; 
+            EvtMessage evt = new EvtMessage();
+
+            DialogBuilder.Show(IShellDialog.DIGITAL_SIGNATURE_CONFIRM_DIALOG, StringIds.STRING_CONFIRM_SIGNATURE, (iResult, args) =>
+            {
+                //DigitalSignatureConfirmDialog
+            }, true, false, digitalData, evt);
+        }
     }
 }

@@ -1124,15 +1124,25 @@ namespace CloudBanking.UITestApp
             //                })
             //            });
 
-            //            _lData.Add(new ScreenViewModel()
-            //            {
-            //                Title = $"DigitalSignatureDialog",
-            //                RightIconResName = "DigitalSignatureDialog",
-            //                ItemAction = new Action(() =>
-            //                {
-            //                    DigitalSignature();
-            //                })
-            //            });
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DigitalSignatureDialog",
+                RightIconResName = "DigitalSignatureDialog",
+                ItemAction = new Action(() =>
+                {
+                    DigitalSignature();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DigitalSignatureConfirmDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowDigitalSignatureConfirmDialog();
+                })
+            });
 
             //            _lData.Add(new ScreenViewModel()
             //            {
@@ -1319,49 +1329,49 @@ namespace CloudBanking.UITestApp
             //                })
             //            });
 
-            //nhung
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"EmailReceiptSendResultDialog Email Success",
-                RightIconResName = "EmailReceiptSendResultDialogSuccess",
-                ItemAction = new Action(() =>
-                {
-                    ShowEmailReceiptSendResultDialog(CaseDialog.CASE1);
-                })
-            });
+            ////nhung
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"EmailReceiptSendResultDialog Email Success",
+            //    RightIconResName = "EmailReceiptSendResultDialogSuccess",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowEmailReceiptSendResultDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            //nhung
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"EmailReceiptSendResultDialog Email Fail",
-                RightIconResName = "EmailReceiptSendResultDialogFail",
-                ItemAction = new Action(() =>
-                {
-                    ShowEmailReceiptSendResultDialog(CaseDialog.CASE2);
-                })
-            });
+            ////nhung
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"EmailReceiptSendResultDialog Email Fail",
+            //    RightIconResName = "EmailReceiptSendResultDialogFail",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowEmailReceiptSendResultDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
-            //nhung
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"EmailReceiptSendResultDialog Text Success",
-                RightIconResName = "EmailReceiptSendResultDialogSuccess",
-                ItemAction = new Action(() =>
-                {
-                    ShowEmailReceiptSendResultDialog(CaseDialog.CASE3);
-                })
-            });
+            ////nhung
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"EmailReceiptSendResultDialog Text Success",
+            //    RightIconResName = "EmailReceiptSendResultDialogSuccess",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowEmailReceiptSendResultDialog(CaseDialog.CASE3);
+            //    })
+            //});
 
-            //nhung
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"EmailReceiptSendResultDialog Text Fail",
-                RightIconResName = "EmailReceiptSendResultDialogFail",
-                ItemAction = new Action(() =>
-                {
-                    ShowEmailReceiptSendResultDialog(CaseDialog.CASE4);
-                })
-            });
+            ////nhung
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"EmailReceiptSendResultDialog Text Fail",
+            //    RightIconResName = "EmailReceiptSendResultDialogFail",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowEmailReceiptSendResultDialog(CaseDialog.CASE4);
+            //    })
+            //});
 
 
             #endregion

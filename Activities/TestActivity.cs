@@ -1277,16 +1277,16 @@ namespace CloudBanking.UITestApp
             //                })
             //            });
             //#endif
-            //nhung
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ReceiptOptionsDialog",
-                RightIconResName = "ReceiptOptionsDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowReceiptOptionDialog();
-                })
-            });
+            ////nhung
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ReceiptOptionsDialog",
+            //    RightIconResName = "ReceiptOptionsDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowReceiptOptionDialog();
+            //    })
+            //});
 
             //            //nhung done p17
             //            _lData.Add(new ScreenViewModel()

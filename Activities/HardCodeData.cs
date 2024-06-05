@@ -2513,7 +2513,7 @@ namespace CloudBanking.UITestApp
         {
             SurchargeFeeDetailDlgData data = new SurchargeFeeDetailDlgData()
             {
-                CardResId = Resource.Drawable.vector_visa,
+                //CardResId = Resource.Drawable.vector_visa, bug,fix later
                 lAmount = 38000,
                 iCardType = CARDTYPE.CARD_AMEX,
                 Rules = new List<SurchargeRule>()

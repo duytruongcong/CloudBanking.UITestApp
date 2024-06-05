@@ -122,6 +122,8 @@
     <Compile Include="..\xcrpos-android\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Services\PaymentAppUtilityService.cs">
       <Link>PaymentAppUtilityService.cs</Link>
     </Compile>
+    <Compile Include="Services\ShellClient.cs" />
+    <Compile Include="Services\ShellServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

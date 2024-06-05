@@ -1,5 +1,6 @@
 ﻿using System;
 using Android.App;
+using Android.App.Job;
 using Android.Runtime;
 using CloudBanking.ApiLocators.Services;
 using CloudBanking.BaseControl;
@@ -9,6 +10,7 @@ using CloudBanking.DroidCommon;
 using CloudBanking.LinklyHttpClient;
 using CloudBanking.PaxSdk;
 using CloudBanking.PhoneSdk;
+using CloudBanking.Printing;
 using CloudBanking.Repositories;
 using CloudBanking.ServiceLocators;
 using CloudBanking.ShellContainers;
@@ -39,11 +41,6 @@ namespace CloudBanking.UITestApp
 
         void RegisterServices()
         {
-            ServiceLocator.Instance.Register<IUtilityService, PaymentAppUtilityService>(this);
-            //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
-            //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(), !CrossDeviceInfo.Current.IsTerminalNotFullScreen());
-
-            // add new
             ServiceLocator.Instance.Register<IUtilityService, PaymentAppUtilityService>(this, CrossDeviceInfo.Current.IsLargeScreen());
             ServiceLocator.Instance.Register<IFileService, DroidFileService>(this, ServiceLocator.Instance.Get<IUtilityService>(), GlobalConstants.FOLDER_SINGLEAPP);
             ServiceLocator.Instance.Register<ILoggerService, DroidLoggerService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>());
@@ -54,6 +51,7 @@ namespace CloudBanking.UITestApp
             ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>();
             ServiceLocator.Instance.Register<IPosInterfaceClient, HttpPosInterfaceClient>(new Uri(string.Format("https://{0}:{1}", "127.0.0.1", "5643")), string.Empty);
 
+
             //create smart card
             if (CrossDeviceInfo.Current.IsPaxTerminal())
             {
@@ -61,7 +59,8 @@ namespace CloudBanking.UITestApp
                     ServiceLocator.Instance.Get<ILoggerService>(),
                     ServiceLocator.Instance.Get<IFileService>(),
                     ServiceLocator.Instance.Get<IProfileService>(),
-                    CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
+                    CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),
+                    ServiceLocator.Instance.Get<IUtilityService>());
                 ServiceLocator.Instance.Register<IBarcodeService, PaxBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
             }
             else
@@ -95,6 +94,14 @@ namespace CloudBanking.UITestApp
             ServiceLocator.Instance.Register<ISendSMSService, TwilioService>(ServiceLocator.Instance.Get<ILoggerService>());
 
             ServiceLocator.Instance.Register<IReceiptClient, ReceiptClient>(new Uri("https://receipt.project-jump-start.com/"), "");
+
+            ServiceLocator.Instance.Register<IShellClient, ShellClient>(this, ServiceLocator.Instance.Get<IDialogBuilder>());
+           
+            //ServiceLocator.Instance.Register<IPosService, POSService>(this, ServiceLocator.Instance.Get<IDialogBuilder>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IPosInterfaceClient>());
+
+            ServiceLocator.Instance.Register<IPrinting, DroidPrintingServices>(this);
+
+            //ServiceLocator.Instance.Register<IPaymentLoyaltyService, PaymentLoyaltyService>(this);
         }
     }
 }

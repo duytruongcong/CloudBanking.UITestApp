@@ -833,6 +833,7 @@ namespace CloudBanking.UITestApp
             {
                 case CaseDialog.CASE1:
                     messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
+                    messageData.BottomWarningId = StringIds.STRING_PRINT_MERCHANT_COPY;
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_ERROR, StringIds.STRING_ERRORDATA, false, GlobalResource.MB_OK, ref messageData);
                     break;
 

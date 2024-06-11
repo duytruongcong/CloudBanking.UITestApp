@@ -1023,7 +1023,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false // duy done p17
+#if false // 
 
             #region Customer Display
 
@@ -1090,7 +1090,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // 
+#if false // 
 
             #region Main Payment Flow
 
@@ -1235,7 +1235,7 @@ namespace CloudBanking.UITestApp
             //                })
             //            });
 
-            //            // duy done p17
+            //            // 
             //            _lData.Add(new ScreenViewModel()
             //            {
             //                Title = $"MainDialog",
@@ -1377,7 +1377,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // duy done p17
+#if false    // 
 
             #region Settlement & Reprint
 
@@ -1542,7 +1542,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   // duy done p17
+#if false   // 
 
             #region Request Card Flow
 
@@ -1709,7 +1709,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // duy done p17
+#if false   // 
 
             #region SelectAccountTypeDialog 
 
@@ -1746,7 +1746,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // duy done p17
+#if true    // duy working
 
             #region MessageDialog
 
@@ -1933,7 +1933,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   // duy done p17
+#if false   // 
 
             #region PresentCardErrorDialog
 
@@ -1960,7 +1960,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // duy done p17
+#if false    // 
 
             #region EnterPinDialog
 
@@ -2006,7 +2006,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // duy done p17
+#if false   // duy done new design p17
 
             #region ApprovalDialog
 
@@ -2083,7 +2083,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  duy done p17
+#if false   //  
 
             #region SettlementApprovalDialog
 
@@ -2110,7 +2110,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // duy done p17
+#if false    // 
 
             #region MOTO FLOW
 
@@ -2176,7 +2176,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // duy done p17
+#if false   // 
 
             #region ProcessMessageDialog
 

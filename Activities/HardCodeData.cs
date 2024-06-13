@@ -2319,7 +2319,7 @@ namespace CloudBanking.UITestApp
             //portrait
             string iconId = "donation_small.png";
 
-            string noBtnTitleId = "STRING_NO_DONATION";
+            string noBtnTitleId = "STRING_DONT_WANT_TO_DONATE";
             int noBtnCommand = 5016;
 
             var dialog = new AdjustDonationDialog(StringIds.STRING_DONATION, null, amount, donation, iconId, noBtnTitleId, noBtnCommand);

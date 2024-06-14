@@ -1194,26 +1194,26 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectDonationDialog",
-                RightIconResName = "select_donation",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectDonationDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectDonationDialog",
+            //    RightIconResName = "select_donation",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSelectDonationDialog();
+            //    })
+            //});
 
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SingleUserLoginDialog",
-                RightIconResName = "SingleUserLoginDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowSingleUserLoginDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SingleUserLoginDialog",
+            //    RightIconResName = "SingleUserLoginDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSingleUserLoginDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {

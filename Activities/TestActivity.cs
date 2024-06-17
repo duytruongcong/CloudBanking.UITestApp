@@ -1124,25 +1124,25 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DigitalSignatureDialog",
-            //    RightIconResName = "DigitalSignatureDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        DigitalSignature();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DigitalSignatureDialog",
+                RightIconResName = "DigitalSignatureDialog",
+                ItemAction = new Action(() =>
+                {
+                    DigitalSignature();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DigitalSignatureConfirmDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDigitalSignatureConfirmDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DigitalSignatureConfirmDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowDigitalSignatureConfirmDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -1215,25 +1215,25 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"LogonDialog_1",
-                RightIconResName = "logon_dialog_1",
-                ItemAction = new Action(() =>
-                {
-                    ShowLogonDialogCase01();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"LogonDialog_1",
+            //    RightIconResName = "logon_dialog_1",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowLogonDialogCase01();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"LogonDialog_2",
-                RightIconResName = "logon_dialog_2",
-                ItemAction = new Action(() =>
-                {
-                    ShowLogonDialogCase02();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"LogonDialog_2",
+            //    RightIconResName = "logon_dialog_2",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowLogonDialogCase02();
+            //    })
+            //});
 
             // 
             _lData.Add(new ScreenViewModel()

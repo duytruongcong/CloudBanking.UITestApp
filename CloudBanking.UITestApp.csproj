@@ -440,6 +440,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\dr_madison.png" />
+  </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>

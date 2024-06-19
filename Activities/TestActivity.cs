@@ -553,6 +553,45 @@ namespace CloudBanking.UITestApp
         #region InitializeCommonData
         private void InitializeCommonData()
         {
+
+#if true
+            #region Donation Flow
+
+         
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationEnterAccessCodeDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationEnterAccessCodeDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectDonationDialog",
+                RightIconResName = "select_donation",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectDonationDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectCharityDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectCharityDialog();
+                })
+            });
+
+            #endregion
+#endif
+
 #if false   //   
 
             #region DCC
@@ -1090,7 +1129,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // duy working 
+#if false // duy working 
 
             #region Main Payment Flow
 
@@ -1194,15 +1233,7 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"SelectDonationDialog",
-            //    RightIconResName = "select_donation",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowSelectDonationDialog();
-            //    })
-            //});
+          
 
 
             //_lData.Add(new ScreenViewModel()

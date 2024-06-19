@@ -1881,7 +1881,7 @@ namespace CloudBanking.UITestApp
 
             }
 
-           
+
         }
 
         void ListPaymentRecordDialog()
@@ -2504,7 +2504,7 @@ namespace CloudBanking.UITestApp
             listCardBrandImgId.Add(Resource.Drawable.vector_crypto);
 
 
-            var dialog = new ListCardBrandDialog(StringIds.STRING_MERCHANT_FEES, null,null);
+            var dialog = new ListCardBrandDialog(StringIds.STRING_MERCHANT_FEES, null, null);
 
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog?.Show(CrossCurrentActivity.Current.Activity);
@@ -2519,7 +2519,7 @@ namespace CloudBanking.UITestApp
                 iCardType = CARDTYPE.CARD_AMEX,
                 Rules = new List<SurchargeRule>()
                 {
-                    new SurchargeRule() 
+                    new SurchargeRule()
                     {
                         Surcharge = new MerchantCardSurcharge()
                         {
@@ -4774,13 +4774,168 @@ namespace CloudBanking.UITestApp
 
         void ShowDigitalSignatureConfirmDialog()
         {
-            string digitalData = "qwkjhjhjhkhkhjhhklkkikk"; 
+            string digitalData = "qwkjhjhjhkhkhjhhklkkikk";
             EvtMessage evt = new EvtMessage();
 
             DialogBuilder.Show(IShellDialog.DIGITAL_SIGNATURE_CONFIRM_DIALOG, StringIds.STRING_CONFIRM_SIGNATURE, (iResult, args) =>
             {
                 //DigitalSignatureConfirmDialog
             }, true, false, digitalData, evt);
+        }
+
+        void ShowSelectCharityDialog()
+        {
+            uint startId = 0;
+            var charityItem1 = new CharityItem();
+            charityItem1.PortraitPoster = "don_1_port_poster.png";
+            charityItem1.Logo = "don_1_logo.png";
+            charityItem1.LandcapsetPoster = "don_1_land_poster.png";
+            charityItem1.Id = startId++;
+            charityItem1.Name = "Stop Violence";
+            charityItem1.DonationType = new DonationType();
+            charityItem1.DonationType.IsEnabled = true;
+            charityItem1.DonationType.FixedAmount = 50;
+            charityItem1.DonationType.FixedDonation = false;
+            charityItem1.DonationType.FixedAmountStringIcon = "don_1_fixed_poster.png";
+            charityItem1.DonationType.DonationPercentAmount = new DonationPercentAmount();
+            charityItem1.DonationType.DonationPercentAmount.IsEnabled = true;
+            charityItem1.DonationType.DonationPercentAmount.SuggestiveDonations = new SuggestiveDonations();
+            charityItem1.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent1 = 5;
+            charityItem1.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent2 = 10;
+            charityItem1.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent3 = 20;
+            charityItem1.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent4 = 30;
+            charityItem1.DonationType.DonationPercentAmount.DonationExcludes.IsEnabled = true;
+
+            charityItem1.DonationType.DonationAmounts = new DonationAmounts();
+            charityItem1.DonationType.DonationAmounts.IsEnabled = true;
+            charityItem1.DonationType.DonationAmounts.AmountOne = 50;
+            charityItem1.DonationType.DonationAmounts.AmountTwo = 200;
+            charityItem1.DonationType.DonationAmounts.AmountThree = 500;
+            charityItem1.DonationType.DonationAmounts.AmountFour = 1000;
+
+            charityItem1.DonationAmount = new DonationAmount();
+            charityItem1.DonationAmount.Amount = 0;
+            charityItem1.DonationAmount.SelectAmountStringIcon = IconIds.IMG_DON_1_SELECT;
+
+            var charityItem2 = new CharityItem();
+            charityItem2.Id = startId++;
+            charityItem2.Name = "Australian Red Cross";
+            charityItem2.PortraitPoster = "don_2_port_poster.png";
+            charityItem2.LandcapsetPoster = "don_2_land_poster.png";
+            charityItem2.Logo = "don_2_logo.png";
+            charityItem2.DonationType = new DonationType();
+            charityItem2.DonationType.IsEnabled = true;
+            charityItem2.DonationType.FixedAmount = 70;
+            charityItem2.DonationType.FixedDonation = false;
+
+            charityItem2.DonationType.DonationPercentAmount = new DonationPercentAmount();
+            charityItem2.DonationType.FixedAmountStringIcon = "don_1_fixed_poster.png";
+            charityItem2.DonationType.DonationPercentAmount.IsEnabled = false;
+            charityItem2.DonationType.DonationPercentAmount.SuggestiveDonations = new SuggestiveDonations();
+            charityItem2.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent1 = 10;
+            charityItem2.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent2 = 20;
+            charityItem2.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent3 = 30;
+            charityItem2.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent4 = 40;
+            charityItem2.DonationType.DonationPercentAmount.DonationExcludes.IsEnabled = true;
+
+            charityItem2.DonationType.DonationAmounts = new DonationAmounts();
+            charityItem2.DonationType.DonationAmounts.IsEnabled = true;
+            charityItem2.DonationType.DonationAmounts.AmountOne = 100;
+            charityItem2.DonationType.DonationAmounts.AmountTwo = 500;
+            charityItem2.DonationType.DonationAmounts.AmountThree = 1000;
+            charityItem2.DonationType.DonationAmounts.AmountFour = 2000;
+
+            charityItem2.DonationAmount = new DonationAmount();
+            charityItem2.DonationAmount.Amount = 0;
+            charityItem2.DonationAmount.SelectAmountStringIcon = IconIds.IMG_DON_2_SELECT;
+
+            var charityItem3 = new CharityItem();
+            charityItem3.Id = startId++;
+            charityItem3.Name = "Breast Cancer";
+            charityItem3.PortraitPoster = "don_3_port_poster.png";
+            charityItem3.LandcapsetPoster = "don_3_land_poster.png";
+            charityItem3.Logo = "don_3_logo.png";
+            charityItem3.DonationType = new DonationType();
+            charityItem3.DonationType.IsEnabled = true;
+            charityItem3.DonationType.FixedAmount = 70;
+            charityItem3.DonationType.FixedDonation = false;
+            charityItem3.DonationType.DonationPercentAmount = new DonationPercentAmount();
+            charityItem3.DonationType.FixedAmountStringIcon = "don_1_fixed_poster.png";
+            charityItem3.DonationType.DonationPercentAmount.IsEnabled = false;
+            charityItem3.DonationType.DonationPercentAmount.SuggestiveDonations = new SuggestiveDonations();
+            charityItem3.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent1 = 10;
+            charityItem3.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent2 = 20;
+            charityItem3.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent3 = 30;
+            charityItem3.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent4 = 40;
+            charityItem3.DonationType.DonationPercentAmount.DonationExcludes.IsEnabled = true;
+            charityItem3.DonationType.DonationAmounts = new DonationAmounts();
+            charityItem3.DonationType.DonationAmounts.IsEnabled = true;
+            charityItem3.DonationType.DonationAmounts.AmountOne = 200;
+            charityItem3.DonationType.DonationAmounts.AmountTwo = 400;
+            charityItem3.DonationType.DonationAmounts.AmountThree = 7000;
+            charityItem3.DonationType.DonationAmounts.AmountFour = 9000;
+            charityItem3.DonationAmount = new DonationAmount();
+            charityItem3.DonationAmount.Amount = 0;
+            charityItem3.DonationAmount.SelectAmountStringIcon = IconIds.IMG_DON_2_SELECT;
+
+            var charityItem4 = new CharityItem();
+            charityItem4.Id = startId++;
+            charityItem4.Name = "Qatar Charity";
+            charityItem4.PortraitPoster = "don_4_port_poster.png";
+            charityItem4.LandcapsetPoster = "don_4_land_poster.png";
+            charityItem4.Logo = "don_4_logo.png";
+            charityItem4.DonationType = new DonationType();
+            charityItem4.DonationType.IsEnabled = true;
+            charityItem4.DonationType.FixedAmount = 70;
+            charityItem4.DonationType.FixedDonation = false;
+            charityItem4.DonationType.DonationPercentAmount = new DonationPercentAmount();
+            charityItem4.DonationType.FixedAmountStringIcon = "don_1_fixed_poster.png";
+            charityItem4.DonationType.DonationPercentAmount.IsEnabled = false;
+            charityItem4.DonationType.DonationPercentAmount.SuggestiveDonations = new SuggestiveDonations();
+            charityItem4.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent1 = 10;
+            charityItem4.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent2 = 20;
+            charityItem4.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent3 = 30;
+            charityItem4.DonationType.DonationPercentAmount.SuggestiveDonations.DonationPercent4 = 40;
+            charityItem4.DonationType.DonationPercentAmount.DonationExcludes.IsEnabled = true;
+            charityItem4.DonationType.DonationAmounts = new DonationAmounts();
+            charityItem4.DonationType.DonationAmounts.IsEnabled = true;
+            charityItem4.DonationType.DonationAmounts.AmountOne = 150;
+            charityItem4.DonationType.DonationAmounts.AmountTwo = 550;
+            charityItem4.DonationType.DonationAmounts.AmountThree = 1350;
+            charityItem4.DonationType.DonationAmounts.AmountFour = 2350;
+            charityItem4.DonationAmount = new DonationAmount();
+            charityItem4.DonationAmount.Amount = 0;
+            charityItem4.DonationAmount.SelectAmountStringIcon = IconIds.IMG_DON_2_SELECT;
+            var dlgData = new SelectCharityDlgData()
+            {
+                Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
+                fHideCancelButton = true,
+            };
+
+            DialogBuilder.Show(IPayDialog.DONATION_SELECT_FIRST_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            {
+
+            }, true, false, dlgData);
+        }
+
+        void ShowEnterAccesscode()
+        {
+            ApplicationBaseFlow baseFlow = new ApplicationBaseFlow();
+            baseFlow.Notification(StringIds.STRING_NOTIFICATION, IconIds.VECTOR_SECURITY_ACCESS, StringIds.STRING_USER_SECURITY_ACCESS_DENIED, StringIds.STRING_ENTERACCESSCODE, StringIds.STRING_OK);
+        }
+
+        void ShowDonationEnterAccessCodeDialog()
+        {
+            var dlgData = new DonationEnterAccessCodeDlgData()
+            {
+                AvatarRes = "dr_madison.png",
+                MerchantName = "Dr Madison"
+            };
+
+            DialogBuilder.Show(IPayDialog.DONATION_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
+            {
+
+            }, true, false, dlgData);
         }
     }
 }

@@ -557,7 +557,15 @@ namespace CloudBanking.UITestApp
 #if true
             #region Donation Flow
 
-         
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationAdvertisingDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationAdvertising();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {

@@ -4937,5 +4937,19 @@ namespace CloudBanking.UITestApp
 
             }, true, false, dlgData);
         }
+
+        void ShowDonationAdvertising()
+        {
+            var dlgData = new DonationAdvertisingDlgData()
+            {
+                AdvertisingImgRes = "donation_salvation_ads.png",
+                AdvertisingBannerRes = "donation_salvation_banner.png"
+            };
+
+            DialogBuilder.Show(IPayDialog.DONATION_ADVERTISING_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
+            {
+
+            }, true, false, dlgData);
+        }
     }
 }

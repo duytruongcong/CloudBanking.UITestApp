@@ -443,6 +443,10 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\setupimages\dr_madison.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\donation_salvation_ads.png" />
+    <AndroidAsset Include="Assets\setupimages\donation_salvation_banner.png" />
+  </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>

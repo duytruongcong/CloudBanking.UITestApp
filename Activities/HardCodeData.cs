@@ -2302,9 +2302,10 @@ namespace CloudBanking.UITestApp
             var listValue = new List<long>() { 1, 2, 5, 10, 50 };
             data.DonationValues = listValue;
 
-            var dialog = new SelectDonationDialog(StringIds.STRING_DONATION, null, data);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
+            DialogBuilder.Show(IPayDialog.SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            {
+
+            }, true, false, data);
         }
 
         void ShowAdjustDonationDialog()
@@ -4950,6 +4951,345 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, dlgData);
+        }
+
+        void ShowDonationSelectAmountDialog()
+        {
+            var listValue = new List<long>() { 1, 2, 5, 10, 50 };
+
+            DialogBuilder.Show(IPayDialog.DONATION_SELECT_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            {
+
+            }, true, false, listValue);
+        }
+
+        void ShowDonationSelectOptionDialog()
+        {
+            var items = new List<SelectOptionItem>()
+            {
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.EXIT_BUTTON,
+                    TitleId = StringIds.STRING_EXIT_CHARITY,
+                    VectorIconResName = IconIds.VECTOR_USER_LOGOUT,
+                },
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.ADVERTISING_SCREEN_OFF_BUTTON,
+                    TitleId = StringIds.STRING_ADVERTISING_SCREEN_OFF,
+                    VectorIconResName = IconIds.VECTOR_SCREEN_GRAY,
+                },
+                 new SelectOptionItem()
+                {
+                    Command = GlobalResource.SYNC_BUTTON,
+                    TitleId = StringIds.STRING_SYNC_SETTINGS,
+                    VectorIconResName = IconIds.VECTOR_SYNC,
+                },
+            };
+
+            var data = new SelectOptionDlgData();
+
+            data.MenuItems = items;
+
+            DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
+            {
+                //SelectOptionDialog
+            }, true, true, data);
+        }
+
+        void ShowDonationReceiptOptionsDialog()
+        {
+            var data = new ReceiptOptionsDlgData();
+
+            data.QRReceiptResult = "ReceiptOptionsDialog";
+            data.fShowQrCode = true;
+
+            data.FunctionButtons = new List<SelectButton>();
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
+                idImage = IconIds.VECTOR_EMAIL_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_TEXT_RECEIPT,
+                idImage = IconIds.VECTOR_TEXT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_PRINT_CUSTOMER,
+                idImage = IconIds.VECTOR_PRINT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
+
+            var dialog4 = new DonationReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
+        }
+
+        private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
+        {
+            var RequestDlgData = new RequestCardDlgData();
+            var pInitProcessData = new ShellInitProcessData()
+            {
+                lAmount = 10000,
+                lDiscount = 0,
+                lDiscountPercent = 0,
+                PaymentDonations = new PaymentDonations()
+                {
+                    lTotalDonations = 0,
+                },
+                lTipAmount = 0,
+                lCashOut = 2000,
+                lCashOutFee = 0,
+                lSurChargeFee = 0,
+                lSurChargePercent = 0,
+                lAccountSurChargeFee = 0,
+                lAccountSurChargePercent = 0,
+                PaymentVouchers = new PaymentVouchers()
+                {
+                },
+            };
+
+            RequestDlgData.fNoPresentCard = false;
+            RequestDlgData.pInitProcessData = pInitProcessData;
+            RequestDlgData.fMultiplePayments = false;
+            RequestDlgData.fCanCancel = true;
+            RequestDlgData.lTotal = pInitProcessData.lAmount
+                                    + pInitProcessData.lTipAmount
+                                    + pInitProcessData.lCashOut
+                                    + (pInitProcessData.PaymentDonations != null ? pInitProcessData.PaymentDonations.lTotalDonations : 0)
+                                    + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
+
+            RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
+            RequestDlgData.IsEmulator = true;
+            RequestDlgData.fShowMenu = false;
+            RequestDlgData.fMultiTender = false;
+
+            RequestDlgData.fVisa = true;
+            RequestDlgData.fMasterCard = true;
+            RequestDlgData.fDiners = true;
+            RequestDlgData.fAmex = true;
+            RequestDlgData.fJBC = true;
+            RequestDlgData.fUnionPay = true;
+            RequestDlgData.fTroy = true;
+            RequestDlgData.fDiscover = true;
+            RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
+            //RequestDlgData.fAlipayWechatLogo = true;
+            //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+
+                    RequestDlgData.iFunctionButton = FunctionType.Purchase;
+                    RequestDlgData.fMSR = true;
+                    RequestDlgData.fSmart = true;
+                    RequestDlgData.fRfid = true;
+                    RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
+
+                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fOtherPay = false;
+
+                    RequestDlgData.fAliPay = false;
+                    RequestDlgData.fWePay = false;
+
+                    break;
+
+                case CaseDialog.CASE2:
+
+                    RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
+                    RequestDlgData.fMSR = true;
+                    RequestDlgData.fSmart = true;
+                    RequestDlgData.fRfid = true;
+
+                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fOtherPay = false;
+
+                    RequestDlgData.fAliPay = true;
+                    RequestDlgData.fWePay = false;
+
+                    break;
+
+                case CaseDialog.CASE3:
+
+                    RequestDlgData.iFunctionButton = FunctionType.Cash;
+                    RequestDlgData.fMSR = true;
+                    RequestDlgData.fSmart = false;
+                    RequestDlgData.fRfid = true;
+
+                    RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
+
+                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fOtherPay = false;
+
+                    RequestDlgData.fAliPay = false;
+                    RequestDlgData.fWePay = true;
+
+                    break;
+
+                case CaseDialog.CASE4:
+
+                    RequestDlgData.iFunctionButton = FunctionType.Refund;
+                    RequestDlgData.fMSR = false;
+                    RequestDlgData.fSmart = true;
+                    RequestDlgData.fRfid = true;
+
+                    RequestDlgData.fManualPay = false;
+                    RequestDlgData.fOtherPay = false;
+
+                    RequestDlgData.fAliPay = true;
+                    RequestDlgData.fWePay = true;
+
+                    break;
+
+                case CaseDialog.CASE5:
+
+                    RequestDlgData.iFunctionButton = FunctionType.PreAuth;
+                    RequestDlgData.fMSR = true;
+                    RequestDlgData.fSmart = false;
+                    RequestDlgData.fRfid = false;
+
+                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fOtherPay = true;
+
+                    RequestDlgData.fAliPay = false;
+                    RequestDlgData.fWePay = false;
+
+                    RequestDlgData.PresentCardSubTitleId = StringIds.STRING_OPEN_PREAUTH_UPCASE;
+
+                    break;
+
+                case CaseDialog.CASE6:
+
+                    RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
+                    RequestDlgData.fMSR = false;
+                    RequestDlgData.fSmart = true;
+                    RequestDlgData.fRfid = false;
+
+                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fOtherPay = true;
+
+                    RequestDlgData.fAliPay = true;
+                    RequestDlgData.fWePay = false;
+
+                    break;
+
+                case CaseDialog.CASE7:
+
+                    RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
+                    RequestDlgData.fMSR = false;
+                    RequestDlgData.fSmart = false;
+                    RequestDlgData.fRfid = true;
+
+                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fOtherPay = true;
+
+                    RequestDlgData.fAliPay = false;
+                    RequestDlgData.fWePay = true;
+
+                    break;
+
+                case CaseDialog.CASE8:
+
+                    RequestDlgData.iFunctionButton = FunctionType.CardStatusCheck;
+                    RequestDlgData.fMSR = true;
+                    RequestDlgData.fSmart = true;
+                    RequestDlgData.fRfid = true;
+
+                    RequestDlgData.fManualPay = true;
+                    RequestDlgData.fOtherPay = true;
+
+                    RequestDlgData.fAliPay = true;
+                    RequestDlgData.fWePay = true;
+
+                    RequestDlgData.PresentCardSubTitleId = StringIds.STRING_CARD_STATUS_CHECK_UPCASE;
+
+                    break;
+            }
+
+            var lszTitle = string.Empty;
+            var totalTitleId = string.Empty;
+            switch (RequestDlgData.iFunctionButton)
+            {
+                case FunctionType.Refund: lszTitle = StringIds.STRING_FUNCTIONTYPES_REFUND; totalTitleId = StringIds.STRING_FUNCTIONTYPES_REFUND; break;
+                case FunctionType.Purchase: lszTitle = StringIds.STRING_PRESENTCARD_TITLE; totalTitleId = StringIds.STRING_PURCHASE; break;
+                case FunctionType.PurchaseCash: lszTitle = StringIds.STRING_PRESENTCARD_TITLE; totalTitleId = StringIds.STRING_PURCHASE_AND_CASH; break;
+                case FunctionType.Deposit: lszTitle = StringIds.STRING_FUNCTIONTYPES_DEPOSIT; totalTitleId = StringIds.STRING_DEPOSIT; break;
+                case FunctionType.CardAuthentication: lszTitle = StringIds.STRING_FUNCTIONTYPES_CARDAUTHENTICATION; totalTitleId = StringIds.STRING_CARD_AUTH; break;
+                case FunctionType.TestComm: lszTitle = StringIds.STRING_FUNCTIONTYPES_TESTCOMM; totalTitleId = StringIds.STRING_TESTCOMM; break;
+                case FunctionType.CardStatusCheck: lszTitle = StringIds.STRING_FUNCTIONTYPES_CARDSTATUSCHECK; totalTitleId = StringIds.STRING_CARD_CHECK_OPTIONS; break;
+                case FunctionType.PreAuth: lszTitle = StringIds.STRING_FUNCTIONTYPES_PREAUTH; totalTitleId = StringIds.STRING_PRE_AUTH; break;
+                case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
+                case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
+                case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
+                case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+            }
+
+            RequestDlgData.szTotalTitle = totalTitleId;
+
+            if (RequestDlgData.fSmart && RequestDlgData.fMSR && RequestDlgData.fRfid)
+            {
+                RequestDlgData.CardIconResId = IconIds.VECTOR_INSERT_SWIPE_TAP_CARD;
+
+                RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENT_INSERT_OR_SWIPE_CARD_UPCASE;
+            }
+            else if (RequestDlgData.fSmart && RequestDlgData.fRfid)
+            {
+                RequestDlgData.CardIconResId = IconIds.VECTOR_INSERT_TAP_CARD;
+
+                RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORTAPCARD;
+            }
+            else if (RequestDlgData.fSmart && RequestDlgData.fMSR)
+            {
+                RequestDlgData.CardIconResId = IconIds.VECTOR_INSERT_SWIPE_CARD;
+
+                RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORSWIPECARD;
+            }
+            else if (RequestDlgData.fSmart)
+            {
+                RequestDlgData.CardIconResId = IconIds.VECTOR_INSERT_CARD;
+
+                RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTCARD;
+            }
+            else if (RequestDlgData.fMSR && RequestDlgData.fRfid)
+            {
+                RequestDlgData.CardIconResId = IconIds.VECTOR_SWIPE_TAP_CARD;
+
+                RequestDlgData.PresentCardTitleId = StringIds.STRING_TAPORSWIPECARD;
+            }
+            else if (RequestDlgData.fRfid)
+            {
+                RequestDlgData.CardIconResId = IconIds.VECTOR_TAP_CARD;
+
+                RequestDlgData.PresentCardTitleId = StringIds.STRING_PLEASE_PRESENT_CARD_UPCASE;
+            }
+            else
+            {
+                RequestDlgData.CardIconResId = IconIds.VECTOR_SWIPE_CARD;
+
+                RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
+            }
+
+            var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            {
+            }, RequestDlgData);
+
+            //comment out
+            //var requestCardDialog = new AnimatedRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            //{
+            //}, RequestDlgData);
+
+            requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            requestCardDialog.Show(this);
         }
     }
 }

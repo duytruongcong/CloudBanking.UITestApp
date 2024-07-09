@@ -2302,10 +2302,10 @@ namespace CloudBanking.UITestApp
             var listValue = new List<long>() { 1, 2, 5, 10, 50 };
             data.DonationValues = listValue;
 
-            DialogBuilder.Show(IPayDialog.SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
-            {
+            //DialogBuilder.Show(IPayDialog.SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            //{
 
-            }, true, false, data);
+            //}, true, false, data);
         }
 
         void ShowAdjustDonationDialog()
@@ -2384,7 +2384,7 @@ namespace CloudBanking.UITestApp
             data.FunctionButtons.Add(new SelectButton()
             {
                 Title = StringIds.STRING_QR_CODE,
-                idImage = IconIds.VECTOR_QR_CODE,
+                idImage = IconIds.VECTOR_QR_REFERENCE,
                 IdProcessor = 0,
                 IsVectorDrawble = true
             });
@@ -2515,7 +2515,7 @@ namespace CloudBanking.UITestApp
         {
             SurchargeFeeDetailDlgData data = new SurchargeFeeDetailDlgData()
             {
-                //CardResId = Resource.Drawable.vector_visa, bug,fix later
+                CardResId = Resource.Drawable.vector_visa,
                 lAmount = 38000,
                 iCardType = CARDTYPE.CARD_AMEX,
                 Rules = new List<SurchargeRule>()
@@ -3576,7 +3576,7 @@ namespace CloudBanking.UITestApp
                 OriginalAuthCode = "1234",
                 OriginalCardNumber = "1234 5678 9876",
                 OriginalCardType = "Debit",
-                OriginalCreatedBy = DateTimeOffset.Now,
+                //OriginalCreatedBy = DateTimeOffset.Now,
                 OriginalLastFourDigitCardNumber = "5678",
                 OriginalRRNNumber = "1234",
                 OriginalSTAN = "1234",
@@ -3606,49 +3606,49 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundListCardDialog()
         {
-            var dlgData = new RefundListCardDlgData()
-            {
-                RefundAmount = 36000,
-                payment = new Payment()
-                {
-                    DateTime = DateTime.Now,
-                    AuthorizationExpiryDate = DateTime.Now,
-                    szReferenceNumber = "12354",
-                    Id = 1,
-                    IdProcessor = 1,
-                    lAmount = (int)10000,
-                    lCashOut = (int)5000,
-                    lTipAmount = (int)1000,
-                    iCardType = CARDTYPE.CARD_AMEX,
-                    iAccountTypeCode = 2,
-                    lszEndCardNumber = "1234",
-                    szApprovalCode = "5544",
-                    CustomerReferenceType = ReferenceType.Customer,
-                    lszCustomerReference = "3456",
-                    fRefunded = true,
-                    szSTAN = "4455",
-                    szCardHolderName = "David Smith",
-                    iPaymentType = (ushort)1,
-                    Donations = new PaymentDonations()
-                    {
-                        lTotalDonations = 1000,
-                        Donations = new List<PaymentDonation>()
-                        {
-                            new PaymentDonation(){IdCharity = 1, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
-                            new PaymentDonation(){IdCharity = 2, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
-                            new PaymentDonation(){IdCharity = 3, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
-                        }
-                    },
-                    szAuthorizationResponseCode = "1234",
-                    szTransactionId = "4567",
-                },
-                cardIconString = CARDTYPE.CARD_AMEX.GetIconDrawable(),
-            };
+            //var dlgData = new RefundListCardDlgData()
+            //{
+            //    RefundAmount = 36000,
+            //    payment = new Payment()
+            //    {
+            //        DateTime = DateTime.Now,
+            //        AuthorizationExpiryDate = DateTime.Now,
+            //        szReferenceNumber = "12354",
+            //        Id = 1,
+            //        IdProcessor = 1,
+            //        lAmount = (int)10000,
+            //        lCashOut = (int)5000,
+            //        lTipAmount = (int)1000,
+            //        iCardType = CARDTYPE.CARD_AMEX,
+            //        iAccountTypeCode = 2,
+            //        lszEndCardNumber = "1234",
+            //        szApprovalCode = "5544",
+            //        CustomerReferenceType = ReferenceType.Customer,
+            //        lszCustomerReference = "3456",
+            //        fRefunded = true,
+            //        szSTAN = "4455",
+            //        szCardHolderName = "David Smith",
+            //        iPaymentType = (ushort)1,
+            //        Donations = new PaymentDonations()
+            //        {
+            //            lTotalDonations = 1000,
+            //            Donations = new List<PaymentDonation>()
+            //            {
+            //                new PaymentDonation(){IdCharity = 1, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+            //                new PaymentDonation(){IdCharity = 2, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+            //                new PaymentDonation(){IdCharity = 3, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+            //            }
+            //        },
+            //        szAuthorizationResponseCode = "1234",
+            //        szTransactionId = "4567",
+            //    },
+            //    cardIconString = CARDTYPE.CARD_AMEX.GetIconDrawable(),
+            //};
 
-            DialogBuilder.Show(IPayDialog.REFUND_LIST_CARD_DIALOG, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
-            {
-                //RefundListCardDialog
-            }, true, false, dlgData);
+            //DialogBuilder.Show(IPayDialog.REFUND_LIST_CARD_DIALOG, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
+            //{
+            //    //RefundListCardDialog
+            //}, true, false, dlgData);
         }
 
         void ShowAdvancedSearchDialog()
@@ -4775,13 +4775,13 @@ namespace CloudBanking.UITestApp
 
         void ShowDigitalSignatureConfirmDialog()
         {
-            string digitalData = "qwkjhjhjhkhkhjhhklkkikk";
-            EvtMessage evt = new EvtMessage();
+            //string digitalData = "qwkjhjhjhkhkhjhhklkkikk";
+            //EvtMessage evt = new EvtMessage();
 
-            DialogBuilder.Show(IShellDialog.DIGITAL_SIGNATURE_CONFIRM_DIALOG, StringIds.STRING_CONFIRM_SIGNATURE, (iResult, args) =>
-            {
-                //DigitalSignatureConfirmDialog
-            }, true, false, digitalData, evt);
+            //DialogBuilder.Show(IShellDialog.DIGITAL_SIGNATURE_CONFIRM_DIALOG, StringIds.STRING_CONFIRM_SIGNATURE, (iResult, args) =>
+            //{
+            //    //DigitalSignatureConfirmDialog
+            //}, true, false, digitalData, evt);
         }
 
         void ShowSelectCharityDialog()
@@ -4927,30 +4927,30 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationEnterAccessCodeDialog()
         {
-            var dlgData = new DonationEnterAccessCodeDlgData()
-            {
-                AvatarRes = "dr_madison.png",
-                MerchantName = "Dr Madison"
-            };
+            //var dlgData = new DonationEnterAccessCodeDlgData()
+            //{
+            //    AvatarRes = "dr_madison.png",
+            //    MerchantName = "Dr Madison"
+            //};
 
-            DialogBuilder.Show(IPayDialog.DONATION_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
-            {
+            //DialogBuilder.Show(IPayDialog.DONATION_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
+            //{
 
-            }, true, false, dlgData);
+            //}, true, false, dlgData);
         }
 
         void ShowDonationAdvertising()
         {
-            var dlgData = new DonationAdvertisingDlgData()
-            {
-                AdvertisingImgRes = "donation_salvation_ads.png",
-                AdvertisingBannerRes = "donation_salvation_banner.png"
-            };
+            //var dlgData = new DonationAdvertisingDlgData()
+            //{
+            //    AdvertisingImgRes = "donation_salvation_ads.png",
+            //    AdvertisingBannerRes = "donation_salvation_banner.png"
+            //};
 
-            DialogBuilder.Show(IPayDialog.DONATION_ADVERTISING_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
-            {
+            //DialogBuilder.Show(IPayDialog.DONATION_ADVERTISING_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
+            //{
 
-            }, true, false, dlgData);
+            //}, true, false, dlgData);
         }
 
         void ShowDonationSelectAmountDialog()
@@ -4965,74 +4965,74 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationSelectOptionDialog()
         {
-            var items = new List<SelectOptionItem>()
-            {
-                new SelectOptionItem()
-                {
-                    Command = GlobalResource.EXIT_BUTTON,
-                    TitleId = StringIds.STRING_EXIT_CHARITY,
-                    VectorIconResName = IconIds.VECTOR_USER_LOGOUT,
-                },
-                new SelectOptionItem()
-                {
-                    Command = GlobalResource.ADVERTISING_SCREEN_OFF_BUTTON,
-                    TitleId = StringIds.STRING_ADVERTISING_SCREEN_OFF,
-                    VectorIconResName = IconIds.VECTOR_SCREEN_GRAY,
-                },
-                 new SelectOptionItem()
-                {
-                    Command = GlobalResource.SYNC_BUTTON,
-                    TitleId = StringIds.STRING_SYNC_SETTINGS,
-                    VectorIconResName = IconIds.VECTOR_SYNC,
-                },
-            };
+            //var items = new List<SelectOptionItem>()
+            //{
+            //    new SelectOptionItem()
+            //    {
+            //        Command = GlobalResource.EXIT_BUTTON,
+            //        TitleId = StringIds.STRING_EXIT_CHARITY,
+            //        VectorIconResName = IconIds.VECTOR_USER_LOGOUT,
+            //    },
+            //    new SelectOptionItem()
+            //    {
+            //        //Command = GlobalResource.ADVERTISING_SCREEN_OFF_BUTTON,
+            //        TitleId = StringIds.STRING_ADVERTISING_SCREEN_OFF,
+            //        VectorIconResName = IconIds.VECTOR_SCREEN_GRAY,
+            //    },
+            //     new SelectOptionItem()
+            //    {
+            //        Command = GlobalResource.SYNC_BUTTON,
+            //        TitleId = StringIds.STRING_SYNC_SETTINGS,
+            //        VectorIconResName = IconIds.VECTOR_SYNC,
+            //    },
+            //};
 
-            var data = new SelectOptionDlgData();
+            //var data = new SelectOptionDlgData();
 
-            data.MenuItems = items;
+            //data.MenuItems = items;
 
-            DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
-            {
-                //SelectOptionDialog
-            }, true, true, data);
+            //DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
+            //{
+            //    //SelectOptionDialog
+            //}, true, true, data);
         }
 
         void ShowDonationReceiptOptionsDialog()
         {
-            var data = new ReceiptOptionsDlgData();
+            //var data = new ReceiptOptionsDlgData();
 
-            data.QRReceiptResult = "ReceiptOptionsDialog";
-            data.fShowQrCode = true;
+            //data.QRReceiptResult = "ReceiptOptionsDialog";
+            //data.fShowQrCode = true;
 
-            data.FunctionButtons = new List<SelectButton>();
+            //data.FunctionButtons = new List<SelectButton>();
 
-            data.FunctionButtons.Add(new SelectButton()
-            {
-                Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
-                idImage = IconIds.VECTOR_EMAIL_RECEIPT,
-                IdProcessor = 0,
-                IsVectorDrawble = true
-            });
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
+            //    idImage = IconIds.VECTOR_EMAIL_RECEIPT,
+            //    IdProcessor = 0,
+            //    IsVectorDrawble = true
+            //});
 
-            data.FunctionButtons.Add(new SelectButton()
-            {
-                Title = StringIds.STRING_TEXT_RECEIPT,
-                idImage = IconIds.VECTOR_TEXT_RECEIPT,
-                IdProcessor = 0,
-                IsVectorDrawble = true
-            });
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    Title = StringIds.STRING_TEXT_RECEIPT,
+            //    idImage = IconIds.VECTOR_TEXT_RECEIPT,
+            //    IdProcessor = 0,
+            //    IsVectorDrawble = true
+            //});
 
-            data.FunctionButtons.Add(new SelectButton()
-            {
-                Title = StringIds.STRING_PRINT_CUSTOMER,
-                idImage = IconIds.VECTOR_PRINT_RECEIPT,
-                IdProcessor = 0,
-                IsVectorDrawble = true
-            });
+            //data.FunctionButtons.Add(new SelectButton()
+            //{
+            //    Title = StringIds.STRING_PRINT_CUSTOMER,
+            //    idImage = IconIds.VECTOR_PRINT_RECEIPT,
+            //    IdProcessor = 0,
+            //    IsVectorDrawble = true
+            //});
 
-            var dialog4 = new DonationReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
-            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog4.Show(this);
+            //var dialog4 = new DonationReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
+            //dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog4.Show(this);
         }
 
         private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
@@ -5279,17 +5279,30 @@ namespace CloudBanking.UITestApp
                 RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
             }
 
-            var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
-            {
-            }, RequestDlgData);
-
-            //comment out
-            //var requestCardDialog = new AnimatedRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            //var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             //{
             //}, RequestDlgData);
 
-            requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            requestCardDialog.Show(this);
+            ////comment out
+            ////var requestCardDialog = new AnimatedRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            ////{
+            ////}, RequestDlgData);
+
+            //requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //requestCardDialog.Show(this);
+        }
+
+        void ShowStandaloneSelectDonationAmountDialog()
+        {
+            //CusDisplaySelectDonationDlgData dlgData = new CusDisplaySelectDonationDlgData();
+
+            //dlgData.DonationImgName = "donation_small.png";
+            //dlgData.DonationValues = new List<long>() { 200, 500, 1000, 2000,3000, 5000, 10000 };
+
+            //DialogBuilder.Show(IPayDialog.STANDALONE_SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            //{
+            //    //StandaloneSelectDonationAmountDialog
+            //}, true, false, dlgData);
         }
     }
 }

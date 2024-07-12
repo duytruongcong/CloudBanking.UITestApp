@@ -274,7 +274,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = false;
+            RequestDlgData.fNoPresentCard = false;// change to show difference case
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -2515,7 +2515,7 @@ namespace CloudBanking.UITestApp
         {
             SurchargeFeeDetailDlgData data = new SurchargeFeeDetailDlgData()
             {
-                CardResId = Resource.Drawable.vector_visa,
+                //CardResId = Resource.Drawable.vector_visa,
                 lAmount = 38000,
                 iCardType = CARDTYPE.CARD_AMEX,
                 Rules = new List<SurchargeRule>()

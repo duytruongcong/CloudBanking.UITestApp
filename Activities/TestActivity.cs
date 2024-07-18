@@ -1257,7 +1257,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // duy done new design p17// duy checked
+#if true // duy done new design p17// duy checked
 
             #region Main Payment Flow
 
@@ -1412,15 +1412,15 @@ namespace CloudBanking.UITestApp
             //});
 
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SurchargeConfirmDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSurchargeConfirmDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SurchargeConfirmDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSurchargeConfirmDialog();
+            //    })
+            //});
 #if false
                         _lData.Add(new ScreenViewModel()
                         {
@@ -1440,6 +1440,16 @@ namespace CloudBanking.UITestApp
                 ItemAction = new Action(() =>
                 {
                     ShowReceiptOptionDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"QrCodeReceiptClaimDialog",
+                RightIconResName = "QrCodeReceiptClaimDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowQrCodeReceiptClaimDialog();
                 })
             });
 
@@ -1693,7 +1703,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true   // duy done new design p17
+#if false   // duy done new design p17
 
             #region Request Card Flow
 

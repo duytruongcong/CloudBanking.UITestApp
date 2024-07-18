@@ -4775,13 +4775,13 @@ namespace CloudBanking.UITestApp
 
         void ShowDigitalSignatureConfirmDialog()
         {
-            //string digitalData = "qwkjhjhjhkhkhjhhklkkikk";
-            //EvtMessage evt = new EvtMessage();
+            string digitalData = "qwkjhjhjhkhkhjhhklkkikk";
+            EvtMessage evt = new EvtMessage();
 
-            //DialogBuilder.Show(IShellDialog.DIGITAL_SIGNATURE_CONFIRM_DIALOG, StringIds.STRING_CONFIRM_SIGNATURE, (iResult, args) =>
-            //{
-            //    //DigitalSignatureConfirmDialog
-            //}, true, false, digitalData, evt);
+            DialogBuilder.Show(IShellDialog.DIGITAL_SIGNATURE_CONFIRM_DIALOG, StringIds.STRING_CONFIRM_SIGNATURE, (iResult, args) =>
+            {
+                //DigitalSignatureConfirmDialog
+            }, true, false, digitalData, evt);
         }
 
         void ShowSelectCharityDialog()
@@ -5303,6 +5303,16 @@ namespace CloudBanking.UITestApp
             //{
             //    //StandaloneSelectDonationAmountDialog
             //}, true, false, dlgData);
+        }
+
+        void ShowQrCodeReceiptClaimDialog()
+        {
+            string QRReceiptResult = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
+
+            DialogBuilder.Show(IPayDialog.RECEIPT_QR_CODE_DIALOG, StringIds.STRING_RECEIPT_CLAIM, (iResult, args) =>
+            {
+
+            }, true, false, QRReceiptResult);
         }
     }
 }

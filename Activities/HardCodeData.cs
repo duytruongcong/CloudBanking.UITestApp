@@ -2487,35 +2487,50 @@ namespace CloudBanking.UITestApp
         void ShowListCardBrandDialog()
         {
 
-            List<int> listCardBrandImgId = new List<int>();
+            //List<int> listCardBrandImgId = new List<int>();
 
-            listCardBrandImgId.Add(Resource.Drawable.vector_visa);
-            listCardBrandImgId.Add(Resource.Drawable.vector_master_card_text);
-            listCardBrandImgId.Add(Resource.Drawable.vector_american_express);
-            listCardBrandImgId.Add(Resource.Drawable.vector_union_pay_bg);
-            listCardBrandImgId.Add(Resource.Drawable.vector_discover_network);
-            listCardBrandImgId.Add(Resource.Drawable.vector_jcb_bg);
-            listCardBrandImgId.Add(Resource.Drawable.vector_diners_bg);
-            listCardBrandImgId.Add(Resource.Drawable.vector_eft_pos);
-            listCardBrandImgId.Add(Resource.Drawable.wechatpay_logo);
-            listCardBrandImgId.Add(Resource.Drawable.alipay_logo);
-            listCardBrandImgId.Add(Resource.Drawable.vector_epay);
-            listCardBrandImgId.Add(Resource.Drawable.vector_centra_pay);
-            listCardBrandImgId.Add(Resource.Drawable.vector_bnpl);
-            listCardBrandImgId.Add(Resource.Drawable.vector_crypto);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_visa);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_master_card_text);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_american_express);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_union_pay_bg);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_discover_network);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_jcb_bg);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_diners_bg);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_eft_pos);
+            //listCardBrandImgId.Add(Resource.Drawable.wechatpay_logo);
+            //listCardBrandImgId.Add(Resource.Drawable.alipay_logo);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_epay);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_centra_pay);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_bnpl);
+            //listCardBrandImgId.Add(Resource.Drawable.vector_crypto);
 
+            List<CardBrandViewModel> listCardBrandModel = new List<CardBrandViewModel>();
 
-            var dialog = new ListCardBrandDialog(StringIds.STRING_MERCHANT_FEES, null, null);
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_VISA, CardBrandImg = "vector_visa" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_MASTER, CardBrandImg = "vector_master_card_text" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_AMEX, CardBrandImg = "vector_american_express" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_UNIONPAY, CardBrandImg = "vector_union_pay_bg" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_DISCOVER, CardBrandImg = "vector_discover_network" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_JCB, CardBrandImg = "vector_jcb_bg" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_DINERS, CardBrandImg = "vector_diners_bg" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_EFTPOS, CardBrandImg = "vector_eft_pos" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_WESTFLD, CardBrandImg = "wechatpay_logo" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_ALLIEDP, CardBrandImg = "alipay_logo" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_ALLIEDP, CardBrandImg = "vector_epay" });
+            listCardBrandModel.Add(new CardBrandViewModel() { iCardType = CARDTYPE.CARD_EFTPOSDEBIT, CardBrandImg = "vector_centra_pay" });
 
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog?.Show(CrossCurrentActivity.Current.Activity);
+            DialogBuilder.Show(IShellDialog.SELECT_CARD_BRAND_DIALOG, StringIds.STRING_MERCHANT_FEES, (iResult, args) =>
+            {
+
+                //ListCardBrandDialog
+            }, true, false, listCardBrandModel);
         }
 
         void ShowSurchargeFeeDetailDialog()
         {
             SurchargeFeeDetailDlgData data = new SurchargeFeeDetailDlgData()
             {
-                //CardResId = Resource.Drawable.vector_visa,
+                CardResId = "vector_visa",
                 lAmount = 38000,
                 iCardType = CARDTYPE.CARD_AMEX,
                 Rules = new List<SurchargeRule>()

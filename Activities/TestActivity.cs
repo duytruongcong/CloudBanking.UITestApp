@@ -46,8 +46,8 @@ namespace CloudBanking.UITestApp
                 Window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
                 Window.AddFlags(Android.Views.WindowManagerFlags.DrawsSystemBarBackgrounds);
 
-                Window.SetStatusBarColor(this.Resources.GetColor(Resource.Color.transparent_color));
-                Window.SetNavigationBarColor(this.Resources.GetColor(Resource.Color.transparent_color));
+                Window.SetStatusBarColor(this.GetThemeNavigationBarColor()); 
+                Window.SetNavigationBarColor(this.GetThemeNavigationBarColor());
 
                 Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
 

@@ -1,6 +1,4 @@
-﻿using System;
-using Android.App;
-using Android.App.Job;
+﻿using Android.App;
 using Android.Runtime;
 using CloudBanking.ApiLocators.Services;
 using CloudBanking.BaseControl;
@@ -14,11 +12,10 @@ using CloudBanking.Printing;
 using CloudBanking.Repositories;
 using CloudBanking.ServiceLocators;
 using CloudBanking.ShellContainers;
-using CloudBanking.ShellUI;
-using CloudBanking.SinglePaymentApp;
 using CloudBanking.Utilities;
 using Plugin.CurrentActivity;
 using Plugin.DeviceInfo;
+using System;
 
 namespace CloudBanking.UITestApp
 {
@@ -36,6 +33,7 @@ namespace CloudBanking.UITestApp
         {
             base.OnCreate();
             CrossCurrentActivity.Current.Init(this);
+
             RegisterServices();
         }
 

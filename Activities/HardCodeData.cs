@@ -4942,30 +4942,30 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationEnterAccessCodeDialog()
         {
-            //var dlgData = new DonationEnterAccessCodeDlgData()
-            //{
-            //    AvatarRes = "dr_madison.png",
-            //    MerchantName = "Dr Madison"
-            //};
+            var dlgData = new DonationEnterAccessCodeDlgData()
+            {
+                AvatarRes = "dr_madison.png",
+                MerchantName = "Dr Madison"
+            };
 
-            //DialogBuilder.Show(IPayDialog.DONATION_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.DONATION_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
+            {
 
-            //}, true, false, dlgData);
+            }, true, false, dlgData);
         }
 
         void ShowDonationAdvertising()
         {
-            //var dlgData = new DonationAdvertisingDlgData()
-            //{
-            //    AdvertisingImgRes = "donation_salvation_ads.png",
-            //    AdvertisingBannerRes = "donation_salvation_banner.png"
-            //};
+            var dlgData = new DonationAdvertisingDlgData()
+            {
+                AdvertisingImgRes = "donation_salvation_ads.png",
+                AdvertisingBannerRes = "donation_salvation_banner.png"
+            };
 
-            //DialogBuilder.Show(IPayDialog.DONATION_ADVERTISING_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.DONATION_ADVERTISING_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
+            {
 
-            //}, true, false, dlgData);
+            }, true, false, dlgData);
         }
 
         void ShowDonationSelectAmountDialog()
@@ -4980,74 +4980,74 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationSelectOptionDialog()
         {
-            //var items = new List<SelectOptionItem>()
-            //{
-            //    new SelectOptionItem()
-            //    {
-            //        Command = GlobalResource.EXIT_BUTTON,
-            //        TitleId = StringIds.STRING_EXIT_CHARITY,
-            //        VectorIconResName = IconIds.VECTOR_USER_LOGOUT,
-            //    },
-            //    new SelectOptionItem()
-            //    {
-            //        //Command = GlobalResource.ADVERTISING_SCREEN_OFF_BUTTON,
-            //        TitleId = StringIds.STRING_ADVERTISING_SCREEN_OFF,
-            //        VectorIconResName = IconIds.VECTOR_SCREEN_GRAY,
-            //    },
-            //     new SelectOptionItem()
-            //    {
-            //        Command = GlobalResource.SYNC_BUTTON,
-            //        TitleId = StringIds.STRING_SYNC_SETTINGS,
-            //        VectorIconResName = IconIds.VECTOR_SYNC,
-            //    },
-            //};
+            var items = new List<SelectOptionItem>()
+            {
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.EXIT_BUTTON,
+                    TitleId = StringIds.STRING_EXIT_CHARITY,
+                    VectorIconResName = IconIds.VECTOR_USER_LOGOUT,
+                },
+                new SelectOptionItem()
+                {
+                    //Command = GlobalResource.ADVERTISING_SCREEN_OFF_BUTTON,
+                    TitleId = StringIds.STRING_ADVERTISING_SCREEN_OFF,
+                    VectorIconResName = IconIds.VECTOR_SCREEN_GRAY,
+                },
+                 new SelectOptionItem()
+                {
+                    Command = GlobalResource.SYNC_BUTTON,
+                    TitleId = StringIds.STRING_SYNC_SETTINGS,
+                    VectorIconResName = IconIds.VECTOR_SYNC,
+                },
+            };
 
-            //var data = new SelectOptionDlgData();
+            var data = new SelectOptionDlgData();
 
-            //data.MenuItems = items;
+            data.MenuItems = items;
 
-            //DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
-            //{
-            //    //SelectOptionDialog
-            //}, true, true, data);
+            DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
+            {
+                //SelectOptionDialog
+            }, true, true, data);
         }
 
         void ShowDonationReceiptOptionsDialog()
         {
-            //var data = new ReceiptOptionsDlgData();
+            var data = new ReceiptOptionsDlgData();
 
-            //data.QRReceiptResult = "ReceiptOptionsDialog";
-            //data.fShowQrCode = true;
+            data.QRReceiptResult = "ReceiptOptionsDialog";
+            data.fShowQrCode = true;
 
-            //data.FunctionButtons = new List<SelectButton>();
+            data.FunctionButtons = new List<SelectButton>();
 
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
-            //    idImage = IconIds.VECTOR_EMAIL_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
+                idImage = IconIds.VECTOR_EMAIL_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
 
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_TEXT_RECEIPT,
-            //    idImage = IconIds.VECTOR_TEXT_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_TEXT_RECEIPT,
+                idImage = IconIds.VECTOR_TEXT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
 
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_PRINT_CUSTOMER,
-            //    idImage = IconIds.VECTOR_PRINT_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_PRINT_CUSTOMER,
+                idImage = IconIds.VECTOR_PRINT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
 
-            //var dialog4 = new DonationReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
-            //dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog4.Show(this);
+            var dialog4 = new DonationReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
         }
 
         private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
@@ -5294,30 +5294,30 @@ namespace CloudBanking.UITestApp
                 RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
             }
 
-            //var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            {
+            }, RequestDlgData);
+
+            //comment out
+            //var requestCardDialog = new AnimatedRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             //{
             //}, RequestDlgData);
 
-            ////comment out
-            ////var requestCardDialog = new AnimatedRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
-            ////{
-            ////}, RequestDlgData);
-
-            //requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            //requestCardDialog.Show(this);
+            requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            requestCardDialog.Show(this);
         }
 
         void ShowStandaloneSelectDonationAmountDialog()
         {
-            //CusDisplaySelectDonationDlgData dlgData = new CusDisplaySelectDonationDlgData();
+            CusDisplaySelectDonationDlgData dlgData = new CusDisplaySelectDonationDlgData();
 
-            //dlgData.DonationImgName = "donation_small.png";
-            //dlgData.DonationValues = new List<long>() { 200, 500, 1000, 2000,3000, 5000, 10000 };
+            dlgData.DonationImgName = "donation_small.png";
+            dlgData.DonationValues = new List<long>() { 200, 500, 1000, 2000, 3000, 5000, 10000 };
 
-            //DialogBuilder.Show(IPayDialog.STANDALONE_SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
-            //{
-            //    //StandaloneSelectDonationAmountDialog
-            //}, true, false, dlgData);
+            DialogBuilder.Show(IPayDialog.STANDALONE_SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            {
+                //StandaloneSelectDonationAmountDialog
+            }, true, false, dlgData);
         }
 
         void ShowQrCodeReceiptClaimDialog()

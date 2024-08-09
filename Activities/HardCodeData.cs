@@ -2353,48 +2353,16 @@ namespace CloudBanking.UITestApp
             var data = new ReceiptOptionsDlgData();
 
             data.QRReceiptResult = "ReceiptOptionsDialog";
-            data.fShowQrCode = false;
+            data.fShowQrCode = true;
 
             data.FunctionButtons = new List<SelectButton>();
-
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
-            //    idImage = IconIds.VECTOR_EMAIL_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
-
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_TEXT_RECEIPT,
-            //    idImage = IconIds.VECTOR_TEXT_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
-
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_PRINT_CUSTOMER,
-            //    idImage = IconIds.VECTOR_PRINT_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
-
-            data.FunctionButtons.Add(new SelectButton()
-            {
-                Title = StringIds.STRING_QR_CODE,
-                idImage = IconIds.VECTOR_QR_REFERENCE,
-                IdProcessor = 0,
-                IsVectorDrawble = true
-            });
 
             data.FunctionButtons.Add(new SelectButton()
             {
                 Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
                 idImage = IconIds.VECTOR_EMAIL_RECEIPT,
                 IdProcessor = 0,
-                IsVectorDrawble = true
+                iCommand = GlobalResource.BUTTON_EMAIL_RECEIPT,
             });
 
             data.FunctionButtons.Add(new SelectButton()
@@ -2402,7 +2370,15 @@ namespace CloudBanking.UITestApp
                 Title = StringIds.STRING_TEXT_RECEIPT,
                 idImage = IconIds.VECTOR_TEXT_RECEIPT,
                 IdProcessor = 0,
-                IsVectorDrawble = true
+                iCommand = GlobalResource.BUTTON_TEXT_RECEIPT,
+            });
+
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_PRINT_CUSTOMER,
+                idImage = IconIds.VECTOR_PRINT_RECEIPT,
+                IdProcessor = 0,
+                iCommand = GlobalResource.BUTTON_PRINT_RECEIPT,
             });
 
             var dialog4 = new ReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);

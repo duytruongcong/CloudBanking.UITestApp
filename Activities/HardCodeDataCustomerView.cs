@@ -845,7 +845,7 @@ namespace CloudBanking.UITestApp
 
             var dlgData = new SelectCharityDlgData()
             {
-                Items = merchantCharity.MultipleItemsList
+                //Items = merchantCharity.MultipleItemsList
             };
 
             long amount = 13800;

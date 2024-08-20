@@ -7,6 +7,7 @@ using CloudBanking.Common;
 using CloudBanking.DroidCommon;
 using CloudBanking.LinklyHttpClient;
 using CloudBanking.PaxSdk;
+using CloudBanking.PaymentLoyalty;
 using CloudBanking.PhoneSdk;
 using CloudBanking.Printing;
 using CloudBanking.Repositories;
@@ -99,6 +100,7 @@ namespace CloudBanking.UITestApp
 
             ServiceLocator.Instance.Register<IPrinting, DroidPrintingServices>(this);
 
+            ServiceLocator.Instance.Register<IPaymentLoyaltyService, PaymentLoyaltyService>(this, ServiceLocator.Instance.Get<ILoggerService>());
             //ServiceLocator.Instance.Register<IPaymentLoyaltyService, PaymentLoyaltyService>(this);
         }
     }

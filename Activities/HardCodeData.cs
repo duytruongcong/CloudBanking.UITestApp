@@ -5315,5 +5315,18 @@ namespace CloudBanking.UITestApp
 
             }, true, false, QRReceiptResult);
         }
+
+        void ShowHelpDialog()
+        {
+            //HelpDlgData helpDlgData = new HelpDlgData();
+
+            //helpDlgData.Title = StringIds.STRING_PURCHASE;
+
+            //helpDlgData.SettingUrl = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
+
+            //DialogBuilder.Show(IPayDialog.HELP_DIALOG, StringIds.STRING_HELP_AND_TRAINING, (iResult, args) =>
+            //{
+            //}, true, false, helpDlgData);
+        }
     }
 }

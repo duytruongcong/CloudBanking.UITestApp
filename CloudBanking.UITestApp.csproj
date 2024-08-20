@@ -227,6 +227,10 @@
       <Project>{FF83F117-98F1-4965-9037-88AF7C55AF4F}</Project>
       <Name>CloudBanking.Utilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Module\CloudBanking.PaymentLoyalty\CloudBanking.PaymentLoyalty.csproj">
+      <Project>{426901F1-19C0-4370-A1ED-E03B3B09949A}</Project>
+      <Name>CloudBanking.PaymentLoyalty</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.LinklyHttpClient\CloudBanking.LinklyHttpClient.csproj">
       <Project>{AEBDC6A1-C46F-404D-825B-E7C7624FA550}</Project>
       <Name>CloudBanking.LinklyHttpClient</Name>

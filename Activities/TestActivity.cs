@@ -556,18 +556,34 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if true   //  
+#if false
+            #region Help Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"HelpDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowHelpDialog();
+                })
+            });
+
+            #endregion
+#endif
+
+#if false   //  
             #region Donation Flow
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"StandaloneSelectDonationAmountDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowStandaloneSelectDonationAmountDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"StandaloneSelectDonationAmountDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowStandaloneSelectDonationAmountDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{

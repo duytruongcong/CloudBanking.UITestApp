@@ -572,7 +572,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  
+#if true   //  
             #region Donation Flow
 
             _lData.Add(new ScreenViewModel()
@@ -585,95 +585,95 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE1",
-            //    RightIconResName = "RequestCardDialog_CASE1",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE1",
+                RightIconResName = "RequestCardDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE1);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE2",
-            //    RightIconResName = "RequestCardDialog_CASE2",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE2",
+                RightIconResName = "RequestCardDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE2);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE3",
-            //    RightIconResName = "RequestCardDialog_CASE3",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE3);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE3",
+                RightIconResName = "RequestCardDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE3);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE4",
-            //    RightIconResName = "RequestCardDialog_CASE4",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE4);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE4",
+                RightIconResName = "RequestCardDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE4);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE5",
-            //    RightIconResName = "RequestCardDialog_CASE5",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE5);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE5",
+                RightIconResName = "RequestCardDialog_CASE5",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE5);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE6",
-            //    RightIconResName = "RequestCardDialog_CASE6",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE6);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE6",
+                RightIconResName = "RequestCardDialog_CASE6",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE6);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE7",
-            //    RightIconResName = "RequestCardDialog_CASE7",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE7);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE7",
+                RightIconResName = "RequestCardDialog_CASE7",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE7);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE8",
-            //    RightIconResName = "RequestCardDialog_CASE8",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE8);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE8",
+                RightIconResName = "RequestCardDialog_CASE8",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE8);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationReceiptOptionsDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationReceiptOptionsDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationReceiptOptionsDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationReceiptOptionsDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {

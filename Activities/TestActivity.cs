@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AndroidX.Core.App;
@@ -100,6 +101,18 @@ namespace CloudBanking.UITestApp
 
         void StartApplication()
         {
+            // Get the display metrics
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+
+            WindowManager.DefaultDisplay.GetRealMetrics(displayMetrics);
+
+            // Access the device's metrics
+            float density = displayMetrics.Density;
+            int widthPixels = displayMetrics.WidthPixels;
+            int heightPixels = displayMetrics.HeightPixels;
+            float xdpi = displayMetrics.Xdpi;
+            float ydpi = displayMetrics.Ydpi;
+
             list_view = FindViewById<ListView>(Resource.Id.list_view);
 
             _lData = new List<ScreenViewModel>();
@@ -558,6 +571,16 @@ namespace CloudBanking.UITestApp
 
 #if false
             #region Help Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"HelpQRDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowHelpQRDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {

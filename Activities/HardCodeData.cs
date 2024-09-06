@@ -5375,6 +5375,15 @@ namespace CloudBanking.UITestApp
 
             selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
             {
+                iCommandLang = StringIds.STRING_PURCHASE_AND_CASH,
+                Title = StringIds.STRING_PURCHASE_AND_CASH,
+                idImage = IconIds.VECTOR_PURCHASE_CASH,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
                 iCommandLang = StringIds.STRING_CASH_ONLY,
                 Title = StringIds.STRING_CASH_ONLY,
                 idImage = IconIds.VECTOR_CASH_ONLY,

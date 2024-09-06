@@ -5538,19 +5538,19 @@ namespace CloudBanking.UITestApp
             {
                 new GenericType()
                 {
-                        Icon = IconIds.VECTOR_USER,
-                        lszText =  StringIds.STRING_MANAGER,
-                        Id = GlobalResource.MANAGER_FUNCTION_BUTTON,
+                    Icon = IconIds.VECTOR_UNATTENDED_USER,
+                    lszText =  StringIds.STRING_MANAGER,
+                    Id = GlobalResource.MANAGER_FUNCTION_BUTTON,
                 },
                 new GenericType()
                 {
-                        Icon = IconIds.VECTOR_USER,
-                        lszText =  StringIds.STRING_UNATTENDED,
-                        Id = GlobalResource.UNATTENDED_BUTTON,
+                    Icon = IconIds.VECTOR_UNATTENDED_USER,
+                    lszText =  StringIds.STRING_UNATTENDED,
+                    Id = GlobalResource.UNATTENDED_BUTTON,
                 },
             };
 
-            var dialog3 = new UI.UnattendedDynamicOptionDialog(string.Empty, null, generalType, string.Empty);
+            var dialog3 = new UI.UnattendedDynamicOptionDialog(string.Empty, null, generalType, string.Empty, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
         }

@@ -13,6 +13,9 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Android.Content.ClipData;
+using System.Windows.Input;
+using static Android.Icu.Text.CaseMap;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 
@@ -274,7 +277,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = true;// change to show difference case
+            RequestDlgData.fNoPresentCard = false;// change to show difference case
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -2937,59 +2940,59 @@ namespace CloudBanking.UITestApp
 
         void ShowTicketSearchOptionsDialog()
         {
-            //POSTicketInfo searchData = new POSTicketInfo();
-            //var pullSetupDlgData = new StandardSetupDialogModel()
-            //{
-            //    OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
-            //    OkBtnTitleId = StringIds.STRING_SEARCH,
-            //};
+            POSTicketInfo searchData = new POSTicketInfo();
+            var pullSetupDlgData = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
+                OkBtnTitleId = StringIds.STRING_SEARCH,
+            };
 
-            //searchData.TicketNumber = "";
-            //searchData.EmployeeId = 1;
-            //searchData.Reference = string.Empty;
-            //searchData.TableNumber = 0;
-            //searchData.GuestName = string.Empty;
+            searchData.TicketNumber = "";
+            searchData.EmployeeId = 1;
+            searchData.Reference = string.Empty;
+            searchData.TableNumber = 0;
+            searchData.GuestName = string.Empty;
 
-            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(searchData.TableNumber),
-            //    TitleId = StringIds.STRING_TABLENUMBER,
-            //    HeaderTitleId = StringIds.STRING_TABLENUMBER,
-            //    FieldTitleId = StringIds.STRING_TABLENUMBER,
-            //    Value = searchData.TableNumber
-            //});
+            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(searchData.TableNumber),
+                TitleId = StringIds.STRING_TABLENUMBER,
+                HeaderTitleId = StringIds.STRING_TABLENUMBER,
+                FieldTitleId = StringIds.STRING_TABLENUMBER,
+                Value = searchData.TableNumber
+            });
 
-            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(searchData.TicketNumber),
-            //    TitleId = StringIds.STRING_TICKETNO,
-            //    HeaderTitleId = StringIds.STRING_TICKETNO,
-            //    FieldTitleId = StringIds.STRING_TICKETNO,
-            //    Value = searchData.TicketNumber
-            //});
+            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(searchData.TicketNumber),
+                TitleId = StringIds.STRING_TICKETNO,
+                HeaderTitleId = StringIds.STRING_TICKETNO,
+                FieldTitleId = StringIds.STRING_TICKETNO,
+                Value = searchData.TicketNumber
+            });
 
-            //pullSetupDlgData.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(searchData.GuestName),
-            //    TitleId = StringIds.STRING_GUEST_NAME,
-            //    HeaderTitleId = StringIds.STRING_GUEST_NAME,
-            //    FieldTitleId = StringIds.STRING_GUEST_NAME,
-            //    Value = searchData.GuestName
-            //});
+            pullSetupDlgData.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(searchData.GuestName),
+                TitleId = StringIds.STRING_GUEST_NAME,
+                HeaderTitleId = StringIds.STRING_GUEST_NAME,
+                FieldTitleId = StringIds.STRING_GUEST_NAME,
+                Value = searchData.GuestName
+            });
 
-            //pullSetupDlgData.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(searchData.Reference),
-            //    TitleId = StringIds.STRING_REFERENCE,
-            //    HeaderTitleId = StringIds.STRING_REFERENCE,
-            //    FieldTitleId = StringIds.STRING_REFERENCE,
-            //    Value = searchData.Reference
-            //});
+            pullSetupDlgData.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(searchData.Reference),
+                TitleId = StringIds.STRING_REFERENCE,
+                HeaderTitleId = StringIds.STRING_REFERENCE,
+                FieldTitleId = StringIds.STRING_REFERENCE,
+                Value = searchData.Reference
+            });
 
-            //DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
-            //{
-            //    //TicketSearchOptionsDialog
-            //}, true, false, pullSetupDlgData);
+            DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
+            {
+                //TicketSearchOptionsDialog
+            }, true, false, pullSetupDlgData);
         }
 
         void ShowIncreaseSplitDialog()
@@ -3294,87 +3297,87 @@ namespace CloudBanking.UITestApp
 
         void EditTicket()
         {
-            //var viewModel = new StandardSetupDialogModel()
-            //{
-            //    OKBtnCommandId = GlobalResource.SAVE_BUTTON,
-            //    OkBtnTitleId = StringIds.STRING_SAVE,
-            //    CancelBtnCommandId = GlobalResource.CANCEL_SUB_FLOW,
-            //    CancelTitleId = StringIds.STRING_CANCEL
-            //};
+            var viewModel = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.SAVE_BUTTON,
+                OkBtnTitleId = StringIds.STRING_SAVE,
+                CancelBtnCommandId = GlobalResource.CANCEL_SUB_FLOW,
+                CancelTitleId = StringIds.STRING_CANCEL
+            };
 
-            //var data = new POSTicketEditModel()
-            //{
-            //    OriginalTicketNumber = "1234567",
-            //    NewData = new POSTicketInfo()
-            //    {
-            //        TicketNumber = "1234567",
-            //        GuestName = "Smith",
-            //        Reference = "Table 1",
-            //        TableNumber = 1
-            //    }
-            //};
+            var data = new POSTicketEditModel()
+            {
+                OriginalTicketNumber = "1234567",
+                NewData = new POSTicketInfo()
+                {
+                    TicketNumber = "1234567",
+                    GuestName = "Smith",
+                    Reference = "Table 1",
+                    TableNumber = 1
+                }
+            };
 
-            //viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(data.NewData.TableNumber),
-            //    TitleId = StringIds.STRING_TABLE,
-            //    HeaderTitleId = StringIds.STRING_TABLE,
-            //    FieldTitleId = StringIds.STRING_TABLE,
-            //    Value = data.NewData.TableNumber
-            //});
+            viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(data.NewData.TableNumber),
+                TitleId = StringIds.STRING_TABLE,
+                HeaderTitleId = StringIds.STRING_TABLE,
+                FieldTitleId = StringIds.STRING_TABLE,
+                Value = data.NewData.TableNumber
+            });
 
-            //viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(data.NewData.TicketNumber),
-            //    TitleId = StringIds.STRING_TICKETNO,
-            //    HeaderTitleId = StringIds.STRING_TICKETNO,
-            //    FieldTitleId = StringIds.STRING_TICKETNO,
-            //    Value = data.NewData.TicketNumber
-            //});
+            viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(data.NewData.TicketNumber),
+                TitleId = StringIds.STRING_TICKETNO,
+                HeaderTitleId = StringIds.STRING_TICKETNO,
+                FieldTitleId = StringIds.STRING_TICKETNO,
+                Value = data.NewData.TicketNumber
+            });
 
-            //viewModel.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(data.NewData.GuestName),
-            //    TitleId = StringIds.STRING_GUEST_NAME,
-            //    HeaderTitleId = StringIds.STRING_GUEST_NAME,
-            //    FieldTitleId = StringIds.STRING_GUEST_NAME,
-            //    Value = data.NewData.GuestName
-            //});
+            viewModel.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(data.NewData.GuestName),
+                TitleId = StringIds.STRING_GUEST_NAME,
+                HeaderTitleId = StringIds.STRING_GUEST_NAME,
+                FieldTitleId = StringIds.STRING_GUEST_NAME,
+                Value = data.NewData.GuestName
+            });
 
-            //viewModel.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(data.NewData.Reference),
-            //    TitleId = StringIds.STRING_REFERENCE,
-            //    HeaderTitleId = StringIds.STRING_REFERENCE,
-            //    FieldTitleId = StringIds.STRING_REFERENCE,
-            //    Value = data.NewData.Reference
-            //});
+            viewModel.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(data.NewData.Reference),
+                TitleId = StringIds.STRING_REFERENCE,
+                HeaderTitleId = StringIds.STRING_REFERENCE,
+                FieldTitleId = StringIds.STRING_REFERENCE,
+                Value = data.NewData.Reference
+            });
 
-            //DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_EDIT_DETAILS, (iResult, args) =>
-            //{
-            //    //StandardSetupDialog
-            //}, true, false, viewModel);
+            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_EDIT_DETAILS, (iResult, args) =>
+            {
+                //StandardSetupDialog
+            }, true, false, viewModel);
         }
 
         void ShowConfirmClosingTableDialog()
         {
-            //TicketSearchItemModel selectedTicket = new TicketSearchItemModel()
-            //{
-            //    Balance = 35000,
-            //    EmployeeId = 1,
-            //    TableNumber = 4,
-            //    TicketNumber = "1234567",
-            //    GuestName = "John",
-            //    Reference = "Jack Welsh",
-            //    GuestAccCount = 5,
-            //    PurchaseTotal = 25000,
-            //    Stage = TicketStage.Opened
-            //};
+            TicketSearchItemModel selectedTicket = new TicketSearchItemModel()
+            {
+                Balance = 35000,
+                EmployeeId = 1,
+                TableNumber = 4,
+                TicketNumber = "1234567",
+                GuestName = "John",
+                Reference = "Jack Welsh",
+                GuestAccCount = 5,
+                PurchaseTotal = 25000,
+                Stage = TicketStage.Opened
+            };
 
-            //DialogBuilder.Show(IPayDialog.CONFIRM_CLOSING_TABLE_DIALOG, StringIds.STRING_NOTIFICATION, (iResult, args) =>
-            //{
-            //    //ConfirmClosingTableDialog
-            //}, true, false, selectedTicket);
+            DialogBuilder.Show(IPayDialog.CONFIRM_CLOSING_TABLE_DIALOG, StringIds.STRING_NOTIFICATION, (iResult, args) =>
+            {
+                //ConfirmClosingTableDialog
+            }, true, false, selectedTicket);
         }
 
         void ShowGetTenderBalanceDialog()
@@ -3597,49 +3600,49 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundListCardDialog()
         {
-            //var dlgData = new RefundListCardDlgData()
-            //{
-            //    RefundAmount = 36000,
-            //    payment = new Payment()
-            //    {
-            //        DateTime = DateTime.Now,
-            //        AuthorizationExpiryDate = DateTime.Now,
-            //        szReferenceNumber = "12354",
-            //        Id = 1,
-            //        IdProcessor = 1,
-            //        lAmount = (int)10000,
-            //        lCashOut = (int)5000,
-            //        lTipAmount = (int)1000,
-            //        iCardType = CARDTYPE.CARD_AMEX,
-            //        iAccountTypeCode = 2,
-            //        lszEndCardNumber = "1234",
-            //        szApprovalCode = "5544",
-            //        CustomerReferenceType = ReferenceType.Customer,
-            //        lszCustomerReference = "3456",
-            //        fRefunded = true,
-            //        szSTAN = "4455",
-            //        szCardHolderName = "David Smith",
-            //        iPaymentType = (ushort)1,
-            //        Donations = new PaymentDonations()
-            //        {
-            //            lTotalDonations = 1000,
-            //            Donations = new List<PaymentDonation>()
-            //            {
-            //                new PaymentDonation(){IdCharity = 1, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
-            //                new PaymentDonation(){IdCharity = 2, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
-            //                new PaymentDonation(){IdCharity = 3, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
-            //            }
-            //        },
-            //        szAuthorizationResponseCode = "1234",
-            //        szTransactionId = "4567",
-            //    },
-            //    cardIconString = CARDTYPE.CARD_AMEX.GetIconDrawable(),
-            //};
+            var dlgData = new RefundListCardDlgData()
+            {
+                RefundAmount = 36000,
+                payment = new Payment()
+                {
+                    DateTime = DateTime.Now,
+                    AuthorizationExpiryDate = DateTime.Now,
+                    szReferenceNumber = "12354",
+                    Id = 1,
+                    IdProcessor = 1,
+                    lAmount = (int)10000,
+                    lCashOut = (int)5000,
+                    lTipAmount = (int)1000,
+                    iCardType = CARDTYPE.CARD_AMEX,
+                    iAccountTypeCode = 2,
+                    lszEndCardNumber = "1234",
+                    szApprovalCode = "5544",
+                    CustomerReferenceType = ReferenceType.Customer,
+                    lszCustomerReference = "3456",
+                    fRefunded = true,
+                    szSTAN = "4455",
+                    szCardHolderName = "David Smith",
+                    iPaymentType = (ushort)1,
+                    Donations = new PaymentDonations()
+                    {
+                        lTotalDonations = 1000,
+                        Donations = new List<PaymentDonation>()
+                        {
+                            new PaymentDonation(){IdCharity = 1, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+                            new PaymentDonation(){IdCharity = 2, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+                            new PaymentDonation(){IdCharity = 3, lDonation=1000, Name="abc",StringIcon="ic_ads_1.png"},
+                        }
+                    },
+                    szAuthorizationResponseCode = "1234",
+                    szTransactionId = "4567",
+                },
+                cardIconString = CARDTYPE.CARD_AMEX.GetIconDrawable(),
+            };
 
-            //DialogBuilder.Show(IPayDialog.REFUND_LIST_CARD_DIALOG, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
-            //{
-            //    //RefundListCardDialog
-            //}, true, false, dlgData);
+            DialogBuilder.Show(IPayDialog.REFUND_LIST_CARD_DIALOG, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
+            {
+                //RefundListCardDialog
+            }, true, false, dlgData);
         }
 
         void ShowAdvancedSearchDialog()
@@ -5327,6 +5330,229 @@ namespace CloudBanking.UITestApp
             //DialogBuilder.Show(IPayDialog.HELP_DIALOG, StringIds.STRING_HELP_AND_TRAINING, (iResult, args) =>
             //{
             //}, true, false, helpDlgData);
+        }
+
+        void ShowHelpQRDialog()
+        {
+            //HelpQRDialog helpQRDialog = null;
+
+            //HelpDlgData _data = new HelpDlgData();
+
+            //_data.SettingUrl = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
+
+            //helpQRDialog = new HelpQRDialog(StringIds.STRING_HELP_QRCODE, (iResult3, args3) =>
+            //{
+            //    helpQRDialog.Dismiss();
+            //    helpQRDialog = null;
+
+            //}, _data);
+
+            //helpQRDialog.Show(this);
+        }
+
+        void ShowSelectFunctionDialog()
+        {
+            var selectFuncDialogDta = new SelFncDlgData()
+            {
+                iPage = 1,
+                iMaxPage = 4,
+                iMinPage = 1,
+                pIdProcessor = 0,
+                fShowLogout = false,
+                fGrid = true,
+                pIdSecurityUser = 1,
+                strListTitle = StringIds.STRING_SELECT_TRANSACTION_TYPE,
+            };
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_PURCHASE,
+                Title = StringIds.STRING_PURCHASE,
+                idImage = IconIds.VECTOR_PURCHASE,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_CASH_ONLY,
+                Title = StringIds.STRING_CASH_ONLY,
+                idImage = IconIds.VECTOR_CASH_ONLY,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_MOTO_OPTIONS,
+                Title = StringIds.STRING_MOTO_OPTIONS,
+                idImage = IconIds.VECTOR_MOTO,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_FUNCTIONTYPES_REFUND,
+                Title = StringIds.STRING_FUNCTIONTYPES_REFUND,
+                idImage = IconIds.VECTOR_REFUND,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_FUNCTIONTYPES_PREAUTH,
+                Title = StringIds.STRING_FUNCTIONTYPES_PREAUTH,
+                idImage = IconIds.VECTOR_PRE_AUTH_RED,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_OPEN_TAB,
+                Title = StringIds.STRING_OPEN_TAB,
+                idImage = IconIds.VECTOR_OPEN_TAB,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_REPRINT,
+                Title = StringIds.STRING_REPRINT,
+                idImage = IconIds.VECTOR_REPRINT_RECEIPT,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_LOGON,
+                Title = StringIds.STRING_LOGON,
+                idImage = IconIds.VECTOR_LOGON,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_FUNCTIONTYPES_SETTLE,
+                Title = StringIds.STRING_FUNCTIONTYPES_SETTLE,
+                idImage = IconIds.VECTOR_SETTLEMENT,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_CARD_STATUS_CHECK,
+                Title = StringIds.STRING_CARD_STATUS_CHECK,
+                idImage = IconIds.VECTOR_AUTH_ONLY,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_FUNCTIONTYPES_PREAUTH,
+                Title = StringIds.STRING_FUNCTIONTYPES_PREAUTH,
+                idImage = IconIds.VECTOR_PRE_AUTH_RED,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_FINAL_COMPLETION,
+                Title = StringIds.STRING_FINAL_COMPLETION,
+                idImage = IconIds.VECTOR_PRE_AUTH_COMPLETE,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_OTHER_PRE_AUTHS,
+                Title = StringIds.STRING_OTHER_PRE_AUTHS,
+                idImage = IconIds.VECTOR_PRE_AUTH_INCREMENT,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_PARTIAL_COMPLETION,
+                Title = StringIds.STRING_PARTIAL_COMPLETION,
+                idImage = IconIds.VECTOR_PRE_AUTH_PARTIAL,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_DELAYED_COMPLETION,
+                Title = StringIds.STRING_DELAYED_COMPLETION,
+                idImage = IconIds.VECTOR_PRE_AUTH_DELAYED_COMPLETION,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_REPRINT_PREAUTH,
+                Title = StringIds.STRING_REPRINT_PREAUTH,
+                idImage = IconIds.VECTOR_TAB_AUTH_ONLY,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_CANCEL_PRE_AUTH,
+                Title = StringIds.STRING_CANCEL_PRE_AUTH,
+                idImage = IconIds.VECTOR_CANCEL_PRE_AUTH,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_PRINT_PENDING_HOSPITALITY,
+                Title = StringIds.STRING_PRINT_PENDING_HOSPITALITY,
+                idImage = IconIds.VECTOR_PRINT_PENDING,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_SALE_BUTTON,
+            });
+
+            DialogBuilder.Show(IPayDialog.SELECT_FUNCTION_DIALOG, StringIds.STRING_TRANSACTION, (iResult, args) =>
+            {
+               
+            }, true, false, selectFuncDialogDta);
+        }
+
+        void ShowAttendedMenu()
+        {
+            var generalType = new List<GenericType>()
+            {
+                new GenericType()
+                {
+                        Icon = IconIds.VECTOR_USER,
+                        lszText =  StringIds.STRING_MANAGER,
+                        Id = GlobalResource.MANAGER_FUNCTION_BUTTON,
+                },
+                new GenericType()
+                {
+                        Icon = IconIds.VECTOR_USER,
+                        lszText =  StringIds.STRING_UNATTENDED,
+                        Id = GlobalResource.UNATTENDED_BUTTON,
+                },
+            };
+
+            var dialog3 = new UI.UnattendedDynamicOptionDialog(string.Empty, null, generalType, string.Empty);
+            dialog3.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog3.Show(this);
         }
     }
 }

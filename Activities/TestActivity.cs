@@ -47,10 +47,10 @@ namespace CloudBanking.UITestApp
                 Window.ClearFlags(Android.Views.WindowManagerFlags.TranslucentStatus);
                 Window.AddFlags(Android.Views.WindowManagerFlags.DrawsSystemBarBackgrounds);
 
-                Window.SetStatusBarColor(this.GetThemeNavigationBarColor()); 
-                Window.SetNavigationBarColor(this.GetThemeNavigationBarColor());
-                //Window.SetStatusBarColor(this.Resources.GetColor(Resource.Color.setup_status_bar_color));
-                //Window.SetNavigationBarColor(this.Resources.GetColor(Resource.Color.setup_status_bar_color));
+                //Window.SetStatusBarColor(this.GetThemeNavigationBarColor()); 
+                //Window.SetNavigationBarColor(this.GetThemeNavigationBarColor());
+                Window.SetStatusBarColor(this.Resources.GetColor(Resource.Color.setup_status_bar_color));
+                Window.SetNavigationBarColor(this.Resources.GetColor(Resource.Color.setup_status_bar_color));
 
                 Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
 
@@ -570,6 +570,271 @@ namespace CloudBanking.UITestApp
         {
 #if true
             #region Unattended Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedReceiptOptionDialog",
+                RightIconResName = "UnattendedReceiptOptionDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedReceiptOptionDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedApprovalDialog CASE1",
+                RightIconResName = "ApprovalDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedApprovalDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedApprovalDialog CASE2",
+                RightIconResName = "ApprovalDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedApprovalDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedApprovalDialog CASE3",
+                RightIconResName = "ApprovalDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedApprovalDialog(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedApprovalDialog CASE4",
+                RightIconResName = "ApprovalDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedApprovalDialog(CaseDialog.CASE4);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedApprovalDialog CASE5",
+                RightIconResName = "ApprovalDialog_CASE5",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedApprovalDialog(CaseDialog.CASE5);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedApprovalDialog CASE6",
+                RightIconResName = "ApprovalDialog_CASE6",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedApprovalDialog(CaseDialog.CASE6);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedApprovalDialog CASE7",
+                RightIconResName = "ApprovalDialog_CASE7",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedApprovalDialog(CaseDialog.CASE7);
+                })
+            });
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedDCCConfirmation",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedDCCConfirmation();
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedSelectDCCCurrency",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedSelectDCCCurrency();
+            //    })
+            //});
+
+            //
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedProcessMessageDialog CASE1",
+            //    RightIconResName = "ProcessMessageDialog_CASE1",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedProcessMessageDialog(CaseDialog.CASE1);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedProcessMessageDialog CASE2",
+            //    RightIconResName = "ProcessMessageDialog_CASE2",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedProcessMessageDialog(CaseDialog.CASE2);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedProcessMessageDialog CASE3",
+            //    RightIconResName = "ProcessMessageDialog_CASE3",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedProcessMessageDialog(CaseDialog.CASE3);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedProcessMessageDialog CASE4",
+            //    RightIconResName = "ProcessMessageDialog_CASE4",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedProcessMessageDialog(CaseDialog.CASE4);
+            //    })
+            //});
+
+            //
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedRequestCardDialog CASE1",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestCardDialog(CaseDialog.CASE1);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedRequestCardDialog CASE2",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestCardDialog(CaseDialog.CASE2);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedRequestCardDialog CASE3",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestCardDialog(CaseDialog.CASE3);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedRequestCardDialog CASE4",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestCardDialog(CaseDialog.CASE4);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedRequestCardDialog CASE5",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestCardDialog(CaseDialog.CASE5);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedRequestCardDialog CASE6",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestCardDialog(CaseDialog.CASE6);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedRequestCardDialog CASE7",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestCardDialog(CaseDialog.CASE7);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedRequestCardDialog CASE8",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestCardDialog(CaseDialog.CASE8);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedGetAmountDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedGetAmountDialog(CaseDialog.CASE1);
+            //    })
+            //});
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectManagerMenu",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectManagerMenu();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedSingleUserLoginDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedSingleUserLoginDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectUnattendedMode",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectUnattendedMode();
+                })
+            });
+
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"AttendedMenu",
@@ -582,7 +847,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // , don't need 
+#if false    //
             #region Help Flow
 
             _lData.Add(new ScreenViewModel()
@@ -608,7 +873,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  , don't need 
+#if false   // 
             #region Donation Flow
 
             //_lData.Add(new ScreenViewModel()
@@ -621,95 +886,95 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE1",
-            //    RightIconResName = "RequestCardDialog_CASE1",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE1",
+                RightIconResName = "RequestCardDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE1);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE2",
-            //    RightIconResName = "RequestCardDialog_CASE2",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE2",
+                RightIconResName = "RequestCardDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE2);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE3",
-            //    RightIconResName = "RequestCardDialog_CASE3",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE3);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE3",
+                RightIconResName = "RequestCardDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE3);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE4",
-            //    RightIconResName = "RequestCardDialog_CASE4",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE4);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE4",
+                RightIconResName = "RequestCardDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE4);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE5",
-            //    RightIconResName = "RequestCardDialog_CASE5",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE5);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE5",
+                RightIconResName = "RequestCardDialog_CASE5",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE5);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE6",
-            //    RightIconResName = "RequestCardDialog_CASE6",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE6);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE6",
+                RightIconResName = "RequestCardDialog_CASE6",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE6);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE7",
-            //    RightIconResName = "RequestCardDialog_CASE7",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE7);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE7",
+                RightIconResName = "RequestCardDialog_CASE7",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE7);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationRequestCardDialog CASE8",
-            //    RightIconResName = "RequestCardDialog_CASE8",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationRequestCardDialog(CaseDialog.CASE8);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationRequestCardDialog CASE8",
+                RightIconResName = "RequestCardDialog_CASE8",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationRequestCardDialog(CaseDialog.CASE8);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationReceiptOptionsDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationReceiptOptionsDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationReceiptOptionsDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationReceiptOptionsDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1311,7 +1576,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // 
+#if false // 
 
             #region Main Payment Flow
 

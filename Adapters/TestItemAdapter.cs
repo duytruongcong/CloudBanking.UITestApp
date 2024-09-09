@@ -60,7 +60,7 @@ namespace CloudBanking.UITestApp
 
                 viewHolder = new ViewHolder()
                 {
-                    TvTitle = view.FindViewById<FixedSizeLabel>(Resource.Id.tv_title),
+                    TvTitle = view.FindViewById<TvLabel>(Resource.Id.tv_title),
                     IvIcon = view.FindViewById<CustomImageView>(Resource.Id.iv_icon),
                 };
 
@@ -93,7 +93,7 @@ namespace CloudBanking.UITestApp
         public class ViewHolder : Java.Lang.Object
         {
             public int Position { get; set; }
-            public FixedSizeLabel TvTitle { get; set; }
+            public TvLabel TvTitle { get; set; }
             public CustomImageView IvIcon { get; set; }
         }
     }

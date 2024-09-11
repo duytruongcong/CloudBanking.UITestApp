@@ -18,6 +18,7 @@ using System.Windows.Input;
 using static Android.Icu.Text.CaseMap;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
+using static CloudBanking.Entities.Database;
 
 namespace CloudBanking.UITestApp
 {
@@ -6046,161 +6047,16 @@ namespace CloudBanking.UITestApp
             }, true, false, data);
         }
 
-        private void ShowUnattendedApprovalDialog(CaseDialog caseDialog)
+        private void ShowUnattendedApprovalDialog()
         {
-            string lpszEntryModeString = "";
+            UnattendedApprovalDlgData data = new UnattendedApprovalDlgData();
+            data.Amount = 9500;
+            data.MainTitleId = StringIds.STRING_PURCHASE_COMPLETE;
+            data.fApproved = true;
+            data.ResultTitleId = StringIds.STRING_APPROVED;
+            data.PrintTitleId = StringIds.STRING_PRINT_MERCHANT_COPY;
 
-            ApprovalDlgData DlgData = new ApprovalDlgData();
-
-            DlgData.lBalance = 111111;
-
-            DlgData.iEntryMode = ENTRYMODE.EM_MOTO;
-
-            var lpszAboveMainString = StringIds.STRING_PURCHASE;
-            if (!string.IsNullOrEmpty(lpszAboveMainString))
-            {
-                switch (DlgData.iEntryMode)
-                {
-                    case ENTRYMODE.EM_MOTO:
-
-                        lpszEntryModeString = Localize.GetString(StringIds.STRING_EM_MOTO).ToUpper() + " ";
-
-                        break;
-
-                    case ENTRYMODE.EM_MANUAL:
-
-                        lpszEntryModeString = Localize.GetString(StringIds.STRING_EM_MANUAL).ToUpper() + " ";
-
-                        break;
-
-                    default:
-                        break;
-                }
-
-
-                DlgData.lpszAboveMainString = lpszEntryModeString + Localize.GetString(lpszAboveMainString).ToUpper();
-            }
-
-            bool fPrintMerchantFirst = true;
-
-            switch (caseDialog)
-            {
-                case CaseDialog.CASE1:
-
-                    DlgData.lPurchaseApproval = 12000;
-                    DlgData.PrintStage = PrintStage.PrintComplete;
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_APPROVED);
-                    DlgData.fApproved = true;
-                    fPrintMerchantFirst = true;
-                    DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINT_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
-                    DlgData.fCustomerDisplay = false;
-                    DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
-                    DlgData.FunctionType = FunctionType.Purchase;
-                    break;
-
-                case CaseDialog.CASE2:
-
-                    DlgData.lPurchaseApproval = 12000;
-                    DlgData.PrintStage = PrintStage.PrintPrompt;
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
-                    DlgData.fApproved = false;
-                    fPrintMerchantFirst = true;
-                    DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINT_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
-                    DlgData.fCustomerDisplay = false;
-                    DlgData.lpszResult = "TRANSACTION CANCELED";
-                    DlgData.lpszSecondaryResult = "Signature didn't match";
-                    DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
-                    DlgData.FunctionType = FunctionType.PurchaseCash;
-
-                    break;
-
-                case CaseDialog.CASE3:
-
-                    DlgData.lPurchaseApproval = 12000;
-                    DlgData.PrintStage = PrintStage.Printing;
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_APPROVED);
-                    DlgData.fApproved = true;
-                    fPrintMerchantFirst = true;
-                    DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINTING_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINTING_CUSTOMER_COPY).ToUpper();
-                    DlgData.fCustomerDisplay = false;
-                    DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
-                    DlgData.FunctionType = FunctionType.Refund;
-
-                    break;
-
-                case CaseDialog.CASE4:
-
-                    DlgData.lPurchaseApproval = 0;
-                    DlgData.PrintStage = PrintStage.PrintComplete;
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
-                    DlgData.fApproved = false;
-                    fPrintMerchantFirst = false;
-                    DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINT_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
-                    DlgData.fCustomerDisplay = true;
-                    DlgData.lpszResult = "TRANSACTION CANCELED";
-                    DlgData.lpszSecondaryResult = "Signature didn't match";
-                    DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
-                    DlgData.FunctionType = FunctionType.PreAuth;
-
-                    break;
-
-                case CaseDialog.CASE5:
-
-                    DlgData.lPurchaseApproval = 0;
-                    DlgData.PrintStage = PrintStage.PrintPrompt;
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_APPROVED);
-                    DlgData.fApproved = true;
-                    fPrintMerchantFirst = false;
-                    DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINT_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
-                    DlgData.fCustomerDisplay = true;
-                    DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
-                    DlgData.FunctionType = FunctionType.PreAuthCancel;
-                    DlgData.Amount = 0;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *{"8870"}";
-                    DlgData.AuthCode = "2895647";
-
-                    break;
-
-                case CaseDialog.CASE6:
-
-                    DlgData.lPurchaseApproval = 0;
-                    DlgData.PrintStage = PrintStage.Printing;
-                    fPrintMerchantFirst = false;
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
-                    DlgData.fApproved = false;
-                    DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINTING_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINTING_CUSTOMER_COPY).ToUpper();
-                    DlgData.fCustomerDisplay = true;
-                    DlgData.lpszResult = "TRANSACTION CANCELED";
-                    DlgData.lpszSecondaryResult = "Signature didn't match";
-                    DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
-                    DlgData.FunctionType = FunctionType.CardStatusCheck;
-
-                    break;
-
-                case CaseDialog.CASE7:
-
-                    DlgData.lPurchaseApproval = 12000;
-                    fPrintMerchantFirst = true;
-                    DlgData.PrintStage = PrintStage.Printing;
-                    DlgData.fApproved = true;
-                    DlgData.lpszThirdResult = Localize.GetString(!fPrintMerchantFirst ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_SIGNATURE_REQUIRED);
-                    DlgData.IdBitmap = GlobalResource.MB_ICON_SIGNATURE_RESULT;
-                    DlgData.FunctionType = FunctionType.Purchase;
-
-                    break;
-            }
-
-            DlgData.TransactionTypeStringId = GetStringId(DlgData.FunctionType);
-
-            var approvalDialog = new ShellUI.UnattendedApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
-            approvalDialog.OnResult += (iResult, args) =>
-            {
-                approvalDialog.Dismiss();
-            };
-            approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            approvalDialog.Show(this);
+            DialogBuilder.Show(IShellDialog.UNATTENDED_APPROVAL_DIALOG, string.Empty, null, true, false, data);
         }
 
         void ShowUnattendedReceiptOptionDialog()
@@ -6239,6 +6095,127 @@ namespace CloudBanking.UITestApp
             var dialog4 = new UnattendedReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
             dialog4.DialogStyle = DialogStyle.FULLSCREEN;
             dialog4.Show(this);
+        }
+
+        void ShowUnattendedReviewTransDialog(CaseDialog caseDialog)
+        {
+            string chargeTime = "02:00:00 HR";
+            string remainingTime = "00:30:00 HR";
+            float cost = 13.8f;
+            long lPreApproved = 10000;
+            string Curccency = "ZD";
+            float fFuelLitre = 48.2f;
+            long lLittreCost = 197;
+            string strFuelType = "RON95";
+            UnattendedReviewDlgData dlgDataReview = new UnattendedReviewDlgData();
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1://fuel
+
+                    dlgDataReview = new UnattendedReviewDlgData()
+                    {
+                        lTotalAmount = 38000,
+                        TitleId = StringIds.STRING_TOTAL_PAYABLE,
+                        strIconResId = IconIds.VECTOR_FUEL
+                    };
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_FUEL_LITRES,
+                        Value = $"{fFuelLitre}L"
+                    });
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_LITRE_COST,
+                        Value = lLittreCost.ToFormatLocalCurrencyAmount()
+                    });
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_FUEL_TYPE,
+                        Value = strFuelType
+                    });
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_PRE_APPROVED,
+                        Value = lPreApproved.ToFormatLocalCurrencyAmount()
+                    });
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Value = Curccency + Localize.GetString(StringIds.STRING_CURRENCY),
+                        IsSpecial = true
+                    });
+                    break;
+
+                case CaseDialog.CASE2://hardcode vending electric
+
+                    dlgDataReview = new UnattendedReviewDlgData()
+                    {
+                        lTotalAmount = 38000,
+                        TitleId = StringIds.STRING_TOTAL_PAYABLE,
+                        strIconResId = IconIds.VECTOR_EV
+                    };
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_CHARGE_TIME,
+                        Value = chargeTime
+                    });
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_REMAINING_TIME,
+                        Value = remainingTime
+                    });
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_COST_PER_KWH,
+                        Value = $"{cost} CENT"
+                    });
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_PRE_APPROVED,
+                        Value = lPreApproved.ToFormatLocalCurrencyAmount()
+                    });
+
+                    dlgDataReview.data.Add(new ResultViewModel()
+                    {
+                        Value = Curccency + Localize.GetString(StringIds.STRING_CURRENCY),
+                        IsSpecial = true
+                    });
+
+                    break;
+            }
+
+            DialogBuilder.Show(IPayDialog.UNATTENDED_REVIEW_TRANS_DIALOG, StringIds.STRING_REVIEW, null, true, false, dlgDataReview);
+        }
+
+        void ShowUnattendedVendingStoreDialog()
+        {
+
+            List<UnattendedVendingProductViewModel> listProductModel = new List<UnattendedVendingProductViewModel>();
+
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_AMERICANO, ProductName = "Americano", Price = 440 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_BREWED_COFFEE, ProductName = "Brewed Coffee", Price = 480 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_LATTE, ProductName = "Caffe Latte", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_MOCHA, ProductName = "Caffe Mocha", Price = 550 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAPPUCCINO, ProductName = "Cappuccino", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_ESPRESSO, ProductName = "Flat White", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_FLAT_WHITE, ProductName = "Oleato Latte", Price = 550 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_OLEATO_LATTE, ProductName = "Espresso", Price = 400 });
+
+
+            DialogBuilder.Show(IPayDialog.UNATTENDED_VENDING_STORE_DIALOG, string.Empty, (iResult, args) =>
+            {
+
+                //ListCardBrandDialog
+            }, true, false, listProductModel);
         }
     }
 }

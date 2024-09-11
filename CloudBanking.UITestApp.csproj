@@ -449,6 +449,16 @@
     <AndroidAsset Include="Assets\setupimages\donation_salvation_ads.png" />
     <AndroidAsset Include="Assets\setupimages\donation_salvation_banner.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\unattended_americano.png" />
+    <AndroidAsset Include="Assets\setupimages\unattended_brewed_coffee.png" />
+    <AndroidAsset Include="Assets\setupimages\unattended_caffe_latte.png" />
+    <AndroidAsset Include="Assets\setupimages\unattended_caffe_mocha.png" />
+    <AndroidAsset Include="Assets\setupimages\unattended_cappuccino.png" />
+    <AndroidAsset Include="Assets\setupimages\unattended_espresso.png" />
+    <AndroidAsset Include="Assets\setupimages\unattended_flat_white.png" />
+    <AndroidAsset Include="Assets\setupimages\unattended_oleato_latte.png" />
+  </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>

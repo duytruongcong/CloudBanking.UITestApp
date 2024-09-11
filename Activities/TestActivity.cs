@@ -573,81 +573,51 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"UnattendedVendingStoreDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedVendingStoreDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedApprovalDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedApprovalDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedReviewTransDialog fuel",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedReviewTransDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedReviewTransDialog ev",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedReviewTransDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"UnattendedReceiptOptionDialog",
-                RightIconResName = "UnattendedReceiptOptionDialog",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
                     ShowUnattendedReceiptOptionDialog();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog CASE1",
-                RightIconResName = "ApprovalDialog_CASE1",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog(CaseDialog.CASE1);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog CASE2",
-                RightIconResName = "ApprovalDialog_CASE2",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog(CaseDialog.CASE2);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog CASE3",
-                RightIconResName = "ApprovalDialog_CASE3",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog(CaseDialog.CASE3);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog CASE4",
-                RightIconResName = "ApprovalDialog_CASE4",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog(CaseDialog.CASE4);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog CASE5",
-                RightIconResName = "ApprovalDialog_CASE5",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog(CaseDialog.CASE5);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog CASE6",
-                RightIconResName = "ApprovalDialog_CASE6",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog(CaseDialog.CASE6);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog CASE7",
-                RightIconResName = "ApprovalDialog_CASE7",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog(CaseDialog.CASE7);
                 })
             });
 

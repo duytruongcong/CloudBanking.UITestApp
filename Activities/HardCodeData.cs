@@ -2941,59 +2941,59 @@ namespace CloudBanking.UITestApp
 
         void ShowTicketSearchOptionsDialog()
         {
-            POSTicketInfo searchData = new POSTicketInfo();
-            var pullSetupDlgData = new StandardSetupDialogModel()
-            {
-                OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
-                OkBtnTitleId = StringIds.STRING_SEARCH,
-            };
+            //POSTicketInfo searchData = new POSTicketInfo();
+            //var pullSetupDlgData = new StandardSetupDialogModel()
+            //{
+            //    OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
+            //    OkBtnTitleId = StringIds.STRING_SEARCH,
+            //};
 
-            searchData.TicketNumber = "";
-            searchData.EmployeeId = 1;
-            searchData.Reference = string.Empty;
-            searchData.TableNumber = 0;
-            searchData.GuestName = string.Empty;
+            //searchData.TicketNumber = "";
+            //searchData.EmployeeId = 1;
+            //searchData.Reference = string.Empty;
+            //searchData.TableNumber = 0;
+            //searchData.GuestName = string.Empty;
 
-            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            {
-                PropertyName = nameof(searchData.TableNumber),
-                TitleId = StringIds.STRING_TABLENUMBER,
-                HeaderTitleId = StringIds.STRING_TABLENUMBER,
-                FieldTitleId = StringIds.STRING_TABLENUMBER,
-                Value = searchData.TableNumber
-            });
+            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            //{
+            //    PropertyName = nameof(searchData.TableNumber),
+            //    TitleId = StringIds.STRING_TABLENUMBER,
+            //    HeaderTitleId = StringIds.STRING_TABLENUMBER,
+            //    FieldTitleId = StringIds.STRING_TABLENUMBER,
+            //    Value = searchData.TableNumber
+            //});
 
-            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            {
-                PropertyName = nameof(searchData.TicketNumber),
-                TitleId = StringIds.STRING_TICKETNO,
-                HeaderTitleId = StringIds.STRING_TICKETNO,
-                FieldTitleId = StringIds.STRING_TICKETNO,
-                Value = searchData.TicketNumber
-            });
+            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            //{
+            //    PropertyName = nameof(searchData.TicketNumber),
+            //    TitleId = StringIds.STRING_TICKETNO,
+            //    HeaderTitleId = StringIds.STRING_TICKETNO,
+            //    FieldTitleId = StringIds.STRING_TICKETNO,
+            //    Value = searchData.TicketNumber
+            //});
 
-            pullSetupDlgData.Items.Add(new InputTextEditModel()
-            {
-                PropertyName = nameof(searchData.GuestName),
-                TitleId = StringIds.STRING_GUEST_NAME,
-                HeaderTitleId = StringIds.STRING_GUEST_NAME,
-                FieldTitleId = StringIds.STRING_GUEST_NAME,
-                Value = searchData.GuestName
-            });
+            //pullSetupDlgData.Items.Add(new InputTextEditModel()
+            //{
+            //    PropertyName = nameof(searchData.GuestName),
+            //    TitleId = StringIds.STRING_GUEST_NAME,
+            //    HeaderTitleId = StringIds.STRING_GUEST_NAME,
+            //    FieldTitleId = StringIds.STRING_GUEST_NAME,
+            //    Value = searchData.GuestName
+            //});
 
-            pullSetupDlgData.Items.Add(new InputTextEditModel()
-            {
-                PropertyName = nameof(searchData.Reference),
-                TitleId = StringIds.STRING_REFERENCE,
-                HeaderTitleId = StringIds.STRING_REFERENCE,
-                FieldTitleId = StringIds.STRING_REFERENCE,
-                Value = searchData.Reference
-            });
+            //pullSetupDlgData.Items.Add(new InputTextEditModel()
+            //{
+            //    PropertyName = nameof(searchData.Reference),
+            //    TitleId = StringIds.STRING_REFERENCE,
+            //    HeaderTitleId = StringIds.STRING_REFERENCE,
+            //    FieldTitleId = StringIds.STRING_REFERENCE,
+            //    Value = searchData.Reference
+            //});
 
-            DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
-            {
-                //TicketSearchOptionsDialog
-            }, true, false, pullSetupDlgData);
+            //DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
+            //{
+            //    //TicketSearchOptionsDialog
+            //}, true, false, pullSetupDlgData);
         }
 
         void ShowIncreaseSplitDialog()
@@ -3298,87 +3298,87 @@ namespace CloudBanking.UITestApp
 
         void EditTicket()
         {
-            var viewModel = new StandardSetupDialogModel()
-            {
-                OKBtnCommandId = GlobalResource.SAVE_BUTTON,
-                OkBtnTitleId = StringIds.STRING_SAVE,
-                CancelBtnCommandId = GlobalResource.CANCEL_SUB_FLOW,
-                CancelTitleId = StringIds.STRING_CANCEL
-            };
+            //var viewModel = new StandardSetupDialogModel()
+            //{
+            //    OKBtnCommandId = GlobalResource.SAVE_BUTTON,
+            //    OkBtnTitleId = StringIds.STRING_SAVE,
+            //    CancelBtnCommandId = GlobalResource.CANCEL_SUB_FLOW,
+            //    CancelTitleId = StringIds.STRING_CANCEL
+            //};
 
-            var data = new POSTicketEditModel()
-            {
-                OriginalTicketNumber = "1234567",
-                NewData = new POSTicketInfo()
-                {
-                    TicketNumber = "1234567",
-                    GuestName = "Smith",
-                    Reference = "Table 1",
-                    TableNumber = 1
-                }
-            };
+            //var data = new POSTicketEditModel()
+            //{
+            //    OriginalTicketNumber = "1234567",
+            //    NewData = new POSTicketInfo()
+            //    {
+            //        TicketNumber = "1234567",
+            //        GuestName = "Smith",
+            //        Reference = "Table 1",
+            //        TableNumber = 1
+            //    }
+            //};
 
-            viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
-            {
-                PropertyName = nameof(data.NewData.TableNumber),
-                TitleId = StringIds.STRING_TABLE,
-                HeaderTitleId = StringIds.STRING_TABLE,
-                FieldTitleId = StringIds.STRING_TABLE,
-                Value = data.NewData.TableNumber
-            });
+            //viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
+            //{
+            //    PropertyName = nameof(data.NewData.TableNumber),
+            //    TitleId = StringIds.STRING_TABLE,
+            //    HeaderTitleId = StringIds.STRING_TABLE,
+            //    FieldTitleId = StringIds.STRING_TABLE,
+            //    Value = data.NewData.TableNumber
+            //});
 
-            viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
-            {
-                PropertyName = nameof(data.NewData.TicketNumber),
-                TitleId = StringIds.STRING_TICKETNO,
-                HeaderTitleId = StringIds.STRING_TICKETNO,
-                FieldTitleId = StringIds.STRING_TICKETNO,
-                Value = data.NewData.TicketNumber
-            });
+            //viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
+            //{
+            //    PropertyName = nameof(data.NewData.TicketNumber),
+            //    TitleId = StringIds.STRING_TICKETNO,
+            //    HeaderTitleId = StringIds.STRING_TICKETNO,
+            //    FieldTitleId = StringIds.STRING_TICKETNO,
+            //    Value = data.NewData.TicketNumber
+            //});
 
-            viewModel.Items.Add(new InputTextEditModel()
-            {
-                PropertyName = nameof(data.NewData.GuestName),
-                TitleId = StringIds.STRING_GUEST_NAME,
-                HeaderTitleId = StringIds.STRING_GUEST_NAME,
-                FieldTitleId = StringIds.STRING_GUEST_NAME,
-                Value = data.NewData.GuestName
-            });
+            //viewModel.Items.Add(new InputTextEditModel()
+            //{
+            //    PropertyName = nameof(data.NewData.GuestName),
+            //    TitleId = StringIds.STRING_GUEST_NAME,
+            //    HeaderTitleId = StringIds.STRING_GUEST_NAME,
+            //    FieldTitleId = StringIds.STRING_GUEST_NAME,
+            //    Value = data.NewData.GuestName
+            //});
 
-            viewModel.Items.Add(new InputTextEditModel()
-            {
-                PropertyName = nameof(data.NewData.Reference),
-                TitleId = StringIds.STRING_REFERENCE,
-                HeaderTitleId = StringIds.STRING_REFERENCE,
-                FieldTitleId = StringIds.STRING_REFERENCE,
-                Value = data.NewData.Reference
-            });
+            //viewModel.Items.Add(new InputTextEditModel()
+            //{
+            //    PropertyName = nameof(data.NewData.Reference),
+            //    TitleId = StringIds.STRING_REFERENCE,
+            //    HeaderTitleId = StringIds.STRING_REFERENCE,
+            //    FieldTitleId = StringIds.STRING_REFERENCE,
+            //    Value = data.NewData.Reference
+            //});
 
-            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_EDIT_DETAILS, (iResult, args) =>
-            {
-                //StandardSetupDialog
-            }, true, false, viewModel);
+            //DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_EDIT_DETAILS, (iResult, args) =>
+            //{
+            //    //StandardSetupDialog
+            //}, true, false, viewModel);
         }
 
         void ShowConfirmClosingTableDialog()
         {
-            TicketSearchItemModel selectedTicket = new TicketSearchItemModel()
-            {
-                Balance = 35000,
-                EmployeeId = 1,
-                TableNumber = 4,
-                TicketNumber = "1234567",
-                GuestName = "John",
-                Reference = "Jack Welsh",
-                GuestAccCount = 5,
-                PurchaseTotal = 25000,
-                Stage = TicketStage.Opened
-            };
+            //TicketSearchItemModel selectedTicket = new TicketSearchItemModel()
+            //{
+            //    Balance = 35000,
+            //    EmployeeId = 1,
+            //    TableNumber = 4,
+            //    TicketNumber = "1234567",
+            //    GuestName = "John",
+            //    Reference = "Jack Welsh",
+            //    GuestAccCount = 5,
+            //    PurchaseTotal = 25000,
+            //    Stage = TicketStage.Opened
+            //};
 
-            DialogBuilder.Show(IPayDialog.CONFIRM_CLOSING_TABLE_DIALOG, StringIds.STRING_NOTIFICATION, (iResult, args) =>
-            {
-                //ConfirmClosingTableDialog
-            }, true, false, selectedTicket);
+            //DialogBuilder.Show(IPayDialog.CONFIRM_CLOSING_TABLE_DIALOG, StringIds.STRING_NOTIFICATION, (iResult, args) =>
+            //{
+            //    //ConfirmClosingTableDialog
+            //}, true, false, selectedTicket);
         }
 
         void ShowGetTenderBalanceDialog()
@@ -3902,7 +3902,7 @@ namespace CloudBanking.UITestApp
                 Last4Digit = "5678",
                 AuthCode = "1234",
                 STAN = "7890",
-                fPayplusRefund = fPayplusRefund
+                //fPayplusRefund = fPayplusRefund
             };
 
             if (fPayplusRefund)
@@ -5554,7 +5554,7 @@ namespace CloudBanking.UITestApp
                 },
                 new GenericType()
                 {
-                    Icon = IconIds.VECTOR_UNATTENDED_USER,
+                    Icon = IconIds.VECTOR_UNATTENDED_USER_NO_TIE,
                     lszText =  StringIds.STRING_UNATTENDED,
                     Id = GlobalResource.UNATTENDED_BUTTON,
                 },
@@ -5654,7 +5654,7 @@ namespace CloudBanking.UITestApp
             var data = new GetAmountDlgData();
 
             data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
-            data.EntryAmountTitleId = StringIds.STRING_PURCHASE;
+            data.EntryAmountTitleId = StringIds.STRING_AMOUNT_PREAPPROVED;
             data.plszReference = "123456";
             data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
             //data.isEnabledEntryAmount = false;
@@ -6049,14 +6049,25 @@ namespace CloudBanking.UITestApp
 
         private void ShowUnattendedApprovalDialog()
         {
-            UnattendedApprovalDlgData data = new UnattendedApprovalDlgData();
-            data.Amount = 9500;
-            data.MainTitleId = StringIds.STRING_PURCHASE_COMPLETE;
+            ApprovalDlgData data = new ApprovalDlgData();
+            data.lPurchaseApproval = 12000;
+            data.PrintStage = PrintStage.PrintComplete;
+            data.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_APPROVED);
             data.fApproved = true;
-            data.ResultTitleId = StringIds.STRING_APPROVED;
-            data.PrintTitleId = StringIds.STRING_PRINT_MERCHANT_COPY;
+            data.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_MERCHANT_COPY).ToUpper();
+            data.fCustomerDisplay = false;
+            data.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
+            data.FunctionType = FunctionType.Purchase;
+            data.TransactionTypeStringId = GetStringId(data.FunctionType);
 
-            DialogBuilder.Show(IShellDialog.UNATTENDED_APPROVAL_DIALOG, string.Empty, null, true, false, data);
+            var approvalDialog = new ShellUI.UnattendedApprovalDialog(StringIds.STRING_TRANSACTION, null, data);
+            approvalDialog.OnResult += (iResult, args) =>
+            {
+                approvalDialog.Dismiss();
+            };
+            approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            approvalDialog.Show(this);
+
         }
 
         void ShowUnattendedReceiptOptionDialog()
@@ -6092,9 +6103,7 @@ namespace CloudBanking.UITestApp
                 iCommand = GlobalResource.BUTTON_PRINT_RECEIPT,
             });
 
-            var dialog4 = new UnattendedReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
-            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog4.Show(this);
+            DialogBuilder.Show(IPayDialog.UNATTENDED_RECEIPT_OPTIONS_DIALOG, StringIds.STRING_REVIEW, null, true, false, data);
         }
 
         void ShowUnattendedReviewTransDialog(CaseDialog caseDialog)
@@ -6106,7 +6115,7 @@ namespace CloudBanking.UITestApp
             string Curccency = "ZD";
             float fFuelLitre = 48.2f;
             long lLittreCost = 197;
-            string strFuelType = "RON95";
+            string strFuelType = "95RON";
             UnattendedReviewDlgData dlgDataReview = new UnattendedReviewDlgData();
 
             switch (caseDialog)
@@ -6120,31 +6129,38 @@ namespace CloudBanking.UITestApp
                         strIconResId = IconIds.VECTOR_FUEL
                     };
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Title = StringIds.STRING_FUEL_LITRES,
-                        Value = $"{fFuelLitre}L"
+                        Value = $"{fFuelLitre}L",
+                        IsRightTextBold = true,
                     });
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Title = StringIds.STRING_LITRE_COST,
-                        Value = lLittreCost.ToFormatLocalCurrencyAmount()
+                        Value = lLittreCost.ToFormatLocalCurrencyAmount(),
+                        IsRightTextBold = true,
+
                     });
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Title = StringIds.STRING_FUEL_TYPE,
-                        Value = strFuelType
+                        Value = strFuelType,
+                        IsRightTextBold = true,
+
                     });
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Title = StringIds.STRING_PRE_APPROVED,
-                        Value = lPreApproved.ToFormatLocalCurrencyAmount()
+                        Value = lPreApproved.ToFormatLocalCurrencyAmount(),
+                        IsRightTextBold = true,
+
                     });
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Value = Curccency + Localize.GetString(StringIds.STRING_CURRENCY),
                         IsSpecial = true
@@ -6160,31 +6176,39 @@ namespace CloudBanking.UITestApp
                         strIconResId = IconIds.VECTOR_EV
                     };
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Title = StringIds.STRING_CHARGE_TIME,
-                        Value = chargeTime
+                        Value = chargeTime,
+                        IsRightTextBold = true,
+
                     });
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Title = StringIds.STRING_REMAINING_TIME,
-                        Value = remainingTime
+                        Value = remainingTime,
+                        IsRightTextBold = true,
+
                     });
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Title = StringIds.STRING_COST_PER_KWH,
-                        Value = $"{cost} CENT"
+                        Value = $"{cost} CENT",
+                        IsRightTextBold = true,
+
                     });
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Title = StringIds.STRING_PRE_APPROVED,
-                        Value = lPreApproved.ToFormatLocalCurrencyAmount()
+                        Value = lPreApproved.ToFormatLocalCurrencyAmount(),
+                        IsRightTextBold = true,
+
                     });
 
-                    dlgDataReview.data.Add(new ResultViewModel()
+                    dlgDataReview.listData.Add(new ResultViewModel()
                     {
                         Value = Curccency + Localize.GetString(StringIds.STRING_CURRENCY),
                         IsSpecial = true
@@ -6214,8 +6238,40 @@ namespace CloudBanking.UITestApp
             DialogBuilder.Show(IPayDialog.UNATTENDED_VENDING_STORE_DIALOG, string.Empty, (iResult, args) =>
             {
 
-                //ListCardBrandDialog
+                //UnattendedVendingStoreDialog
             }, true, false, listProductModel);
+        }
+
+        void ShowUnattendAdvertisingDialog()
+        {
+
+            string imagePath = IconIds.IMG_UNATTENDED_FUEL;
+            //imagePaths = IconIds.IMG_UNATTENDED_FUEL;
+            //imagePaths = IconIds.IMG_UNATTENDED_VENDING;
+            //imagePaths = IconIds.IMG_UNATTENDED_EV;
+            
+
+            DialogBuilder.Show(IPayDialog.UNATTENDED_ADVERTISING_DIALOG, string.Empty, (Result, args) =>
+            {
+
+            }, true, false, imagePath);
+        }
+
+        void ShowSelectApplicationTypeDialog()
+        {
+            List<CandidateAid> adis = new List<CandidateAid>();
+
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
+
+            DialogBuilder.Show(IShellDialog.SELECT_APPLICATIONTYPE_DIALOG, StringIds.STRING_EMV_SELECTAPPLICATION, (iResult, args) =>
+            {
+                //SelectApplicationTypeDialog
+            }, true, false, adis);
         }
     }
 }

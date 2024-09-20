@@ -459,6 +459,15 @@
     <AndroidAsset Include="Assets\setupimages\unattended_flat_white.png" />
     <AndroidAsset Include="Assets\setupimages\unattended_oleato_latte.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\unattended_ev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\unattended_fuel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\unattended_vending.png" />
+  </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
     <AndroidSupportedAbis>x86</AndroidSupportedAbis>

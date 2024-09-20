@@ -568,8 +568,38 @@ namespace CloudBanking.UITestApp
         #region InitializeCommonData
         private void InitializeCommonData()
         {
-#if true
+#if false
             #region Unattended Flow
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectApplicationTypeDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSelectApplicationTypeDialog();
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendAdvertisingDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendAdvertisingDialog();
+            //    })
+            //});
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"UnattendedGetAmountDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowUnattendedGetAmountDialog(CaseDialog.CASE1);
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -581,45 +611,45 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedApprovalDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedApprovalDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedReviewTransDialog fuel",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedReviewTransDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedReviewTransDialog fuel",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedReviewTransDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedReviewTransDialog ev",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedReviewTransDialog(CaseDialog.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedReviewTransDialog ev",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedReviewTransDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedReceiptOptionDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedReceiptOptionDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedReceiptOptionDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedReceiptOptionDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -641,7 +671,6 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -765,45 +794,37 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
+
+
             //_lData.Add(new ScreenViewModel()
             //{
-            //    Title = $"UnattendedGetAmountDialog",
+            //    Title = $"SelectManagerMenu",
             //    RightIconResName = "",
             //    ItemAction = new Action(() =>
             //    {
-            //        ShowUnattendedGetAmountDialog(CaseDialog.CASE1);
+            //        ShowSelectManagerMenu();
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectManagerMenu",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectManagerMenu();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedSingleUserLoginDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedSingleUserLoginDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedSingleUserLoginDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedSingleUserLoginDialog();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectUnattendedMode",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectUnattendedMode();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectUnattendedMode",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSelectUnattendedMode();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1546,19 +1567,19 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // 
+#if true // 
 
             #region Main Payment Flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectFunctionDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectFunctionDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectFunctionDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSelectFunctionDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -1753,25 +1774,25 @@ namespace CloudBanking.UITestApp
             //});
 
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"ReceiptEmailAddressDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowReceiptEmailAddressDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ReceiptEmailAddressDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowReceiptEmailAddressDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"EnterCellNumberDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowEnterCellNumberDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterCellNumberDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowEnterCellNumberDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{

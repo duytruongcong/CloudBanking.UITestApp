@@ -80,6 +80,7 @@ namespace CloudBanking.UITestApp
 
             //create UI of shell
             ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
+            ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
 
             if (CrossDeviceInfo.Current.IsPaxTerminal())
                 ServiceLocator.Instance.Register<ITMSService, CloudBanking.PaxSdk.TMSService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<ILoggerService>(), PaxConstants.PAX_SINGLE_APP_KEY, PaxConstants.PAX_SINGLE_APP_SECRET);
@@ -95,7 +96,8 @@ namespace CloudBanking.UITestApp
             ServiceLocator.Instance.Register<IReceiptClient, ReceiptClient>(new Uri("https://receipt.project-jump-start.com/"), "");
 
             ServiceLocator.Instance.Register<IShellClient, ShellClient>(this, ServiceLocator.Instance.Get<IDialogBuilder>());
-           
+            ServiceLocator.Instance.Register<IShellServer, ShellServer>(this, ServiceLocator.Instance.Get<IDialogBuilder>());
+
             //ServiceLocator.Instance.Register<IPosService, POSService>(this, ServiceLocator.Instance.Get<IDialogBuilder>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IPosInterfaceClient>());
 
             ServiceLocator.Instance.Register<IPrinting, DroidPrintingServices>(this);

@@ -239,20 +239,20 @@ namespace CloudBanking.UITestApp
                 }
                 catch (Exception ex)
                 {
-                    //_context.Handler.Post(() =>
-                    //{
-                    //    throw ex;
-                    //});
+                    _context.Handler.Post(() =>
+                    {
+                        throw ex;
+                    });
 
-                    //ServiceLocator.Instance.Get<ILoggerService>().Error(ex, "_paymentFlow.ProcessTrans");
+                    ServiceLocator.Instance.Get<ILoggerService>().Error(ex, "_paymentFlow.ProcessTrans");
 
-                    //tokenSource.Cancel();
+                    tokenSource.Cancel();
 
-                    //if (res == null)
-                    //    res = new TransResponse();
+                    if (res == null)
+                        res = new TransResponse();
 
-                    //res.usResult = TransResponse.SHELLERROR_CANNOTPROCESS;
-                    //res.lzResult = "Payment can't process";
+                    res.usResult = TransResponse.SHELLERROR_CANNOTPROCESS;
+                    res.lzResult = "Payment can't process";
                 }
             }
             else

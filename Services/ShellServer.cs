@@ -49,7 +49,7 @@ namespace CloudBanking.UITestApp
         {
             if (_triggerProcessingData != null)
             {
-                 _triggerProcessingData.hTextOne = msg;
+                _triggerProcessingData.hTextOne = msg;
                 _triggerProcessingData.hTextTwo = submessage;
             }
         }
@@ -77,7 +77,7 @@ namespace CloudBanking.UITestApp
 
         public bool IsShellReady()
         {
-             throw new System.NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public TransResponse GetData(TransData transData, string action)
@@ -92,7 +92,7 @@ namespace CloudBanking.UITestApp
 
         public bool StopTransaction()
         {
-           throw new System.NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1571,6 +1571,16 @@ namespace CloudBanking.UITestApp
 
             #region Main Payment Flow
 
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"NotificationDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowNotificationDialog();
+                })
+            });
+
             //_lData.Add(new ScreenViewModel()
             //{
             //    Title = $"SelectFunctionDialog",
@@ -1611,25 +1621,25 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DigitalSignatureDialog",
-            //    RightIconResName = "DigitalSignatureDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        DigitalSignature();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DigitalSignatureDialog",
+                RightIconResName = "DigitalSignatureDialog",
+                ItemAction = new Action(() =>
+                {
+                    DigitalSignature();
+                })
+            });
 
-            ////_lData.Add(new ScreenViewModel()
-            ////{
-            ////    Title = $"DigitalSignatureConfirmDialog",
-            ////    RightIconResName = "",
-            ////    ItemAction = new Action(() =>
-            ////    {
-            ////        ShowDigitalSignatureConfirmDialog();
-            ////    })
-            ////});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DigitalSignatureConfirmDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowDigitalSignatureConfirmDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -1774,25 +1784,25 @@ namespace CloudBanking.UITestApp
             //});
 
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ReceiptEmailAddressDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowReceiptEmailAddressDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ReceiptEmailAddressDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowReceiptEmailAddressDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"EnterCellNumberDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowEnterCellNumberDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"EnterCellNumberDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowEnterCellNumberDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{

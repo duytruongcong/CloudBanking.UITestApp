@@ -1072,9 +1072,19 @@ namespace CloudBanking.UITestApp
 #endif
 
 
-#if false    //  
+#if true    //  
 
             #region Report Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SalesShiftDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowSalesShiftDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {

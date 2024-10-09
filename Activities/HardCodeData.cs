@@ -6290,5 +6290,44 @@ namespace CloudBanking.UITestApp
                 //NotificationDialog
             }, true, true, strMainResultId, strImageVector, strLeftButtonTextId, strRightButtonTextId);
         }
+
+        void ShowSalesShiftDialog()
+        {
+            SaleShiftDlgData data = new SaleShiftDlgData();
+            data.ReportCategory = ReportCategory.Sales;
+            data.IsShowBottomButton = true;
+            data.RightButtonTitleId = StringIds.STRING_DELETE_ALL;
+
+            data.Items.Add(new SaleShiftTitleModel() {
+                Date = DateTime.Now,
+                IdList = new List<uint> { 1,2,3,4,5,6},
+                IsShowLine = false
+            });
+
+            data.Items.Add(new SaleShiftTitleModel()
+            {
+                Date = DateTime.Now,
+                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            });
+
+            data.Items.Add(new SaleShiftTitleModel()
+            {
+                Date = DateTime.Now,
+                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            });
+
+            data.Items.Add(new SaleShiftTitleModel()
+            {
+                Date = DateTime.Now,
+                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            });
+
+            DialogBuilder.Show(IPayDialog.SELECT_SALE_SHIFT_DIALOG, StringIds.STRING_SHIFT_LIST, (result, args) =>
+            {
+                //SalesShiftDialog
+            }, true, false, data);
+        }
+
+        
     }
 }

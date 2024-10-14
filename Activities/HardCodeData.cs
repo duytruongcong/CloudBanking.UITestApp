@@ -227,7 +227,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; break;
-                case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; break;
+                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; break;
             }
 
             return lszTitle;
@@ -450,7 +450,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -664,7 +664,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -1167,49 +1167,49 @@ namespace CloudBanking.UITestApp
         private void ShowSelectMoto()
         {
             //hardcode dialog here
-            var generalType = new List<GenericType>()
-            {
-                new GenericType()
-                {
-                        Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
-                        lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
-                        Id = GlobalResource.CURRENT_BUTTON,
-                },
-                new GenericType()
-                {
-                        Icon = IconIds.VECTOR_OTHER_DATE,
-                        lszText =  StringIds.STRING_OTHER_DATE,
-                        Id = GlobalResource.OTHER_BUTTON,
-                },
-            };
+            //var generalType = new List<GenericType>()
+            //{
+            //    new GenericType()
+            //    {
+            //            Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
+            //            lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
+            //            Id = GlobalResource.CURRENT_BUTTON,
+            //    },
+            //    new GenericType()
+            //    {
+            //            Icon = IconIds.VECTOR_OTHER_DATE,
+            //            lszText =  StringIds.STRING_OTHER_DATE,
+            //            Id = GlobalResource.OTHER_BUTTON,
+            //    },
+            //};
 
-            var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_SELECTT_MOTO);
-            dialog3.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog3.Show(this);
+            //var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_SELECTT_MOTO);
+            //dialog3.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog3.Show(this);
         }
 
         private void ShowSelectDate()
         {
-            //hardcode dialog here
-            var generalType = new List<GenericType>()
-            {
-                new GenericType()
-                {
-                        Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
-                        lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
-                        Id = GlobalResource.CURRENT_BUTTON,
-                },
-                new GenericType()
-                {
-                        Icon = IconIds.VECTOR_OTHER_DATE,
-                        lszText =  StringIds.STRING_OTHER_DATE,
-                        Id = GlobalResource.OTHER_BUTTON,
-                },
-            };
+            ////hardcode dialog here
+            //var generalType = new List<GenericType>()
+            //{
+            //    new GenericType()
+            //    {
+            //            Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
+            //            lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
+            //            Id = GlobalResource.CURRENT_BUTTON,
+            //    },
+            //    new GenericType()
+            //    {
+            //            Icon = IconIds.VECTOR_OTHER_DATE,
+            //            lszText =  StringIds.STRING_OTHER_DATE,
+            //            Id = GlobalResource.OTHER_BUTTON,
+            //    },
+            //};
 
-            var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
-            dialog3.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog3.Show(this);
+            //var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
+            //dialog3.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog3.Show(this);
         }
 
 
@@ -1434,7 +1434,7 @@ namespace CloudBanking.UITestApp
             selectedPayment.lszEndCardNumber = "7654";
             selectedPayment.CustomerReferenceType = ReferenceType.Room;
             selectedPayment.lszCustomerReference = "6789";
-            selectedPayment.AuthorizationExpiryDate = DateTime.Now;
+            //selectedPayment.AuthorizationExpiryDate = DateTime.Now;
 
             FunctionType functionType;
 
@@ -1463,7 +1463,7 @@ namespace CloudBanking.UITestApp
                 LastFourDigitCardNumber = $"**** **** **** {selectedPayment.lszEndCardNumber}",
                 Reference = selectedPayment.CustomerReferenceType,
                 ReferenceNumber = selectedPayment?.lszCustomerReference,
-                ExpireTime = selectedPayment?.AuthorizationExpiryDate,
+                //ExpireTime = selectedPayment?.AuthorizationExpiryDate,
                 CustomerName = "David",
                 PaymentStatus = Localize.GetString(StringIds.STRING_APPROVED).ToUpper(),
                 AuthCode = selectedPayment?.szApprovalCode,
@@ -2052,7 +2052,7 @@ namespace CloudBanking.UITestApp
             selectedPayment.lszCustomerReference = "123";
             selectedPayment.szSTAN = "2345";
             selectedPayment.szReferenceNumber = "1234";
-            selectedPayment.AuthorizationExpiryDate = DateTime.Now;
+            //selectedPayment.AuthorizationExpiryDate = DateTime.Now;
 
             var data = new PreAuthCompletePreAuthDetailsDlgData()
             {
@@ -2068,7 +2068,7 @@ namespace CloudBanking.UITestApp
                 STAN = selectedPayment.szSTAN,
                 RRNNumber = selectedPayment.szReferenceNumber,
                 TransactionId = selectedPayment.Id.ToString(),
-                ExpireTime = selectedPayment.AuthorizationExpiryDate,
+                //ExpireTime = selectedPayment.AuthorizationExpiryDate,
                 CustomerName = "TRUONG VINH LOI",  //GetCustomerName.OriginalPayment,TODO disabled on certification
             };
 
@@ -2425,7 +2425,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: titleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: titleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: titleId = StringIds.STRING_ADJUST; break;
-                case FunctionType.IncrementalAdjust: titleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                //case FunctionType.IncrementalAdjust: titleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
             dlgData.szTotalTitle = titleId;
 
@@ -3609,7 +3609,7 @@ namespace CloudBanking.UITestApp
                 payment = new Payment()
                 {
                     DateTime = DateTime.Now,
-                    AuthorizationExpiryDate = DateTime.Now,
+                    //AuthorizationExpiryDate = DateTime.Now,
                     szReferenceNumber = "12354",
                     Id = 1,
                     IdProcessor = 1,
@@ -4571,7 +4571,7 @@ namespace CloudBanking.UITestApp
                 Title = StringIds.STRING_OTHERS,
                 idImage = IconIds.VECTOR_OTHER,
                 IdProcessor = 0,
-                iCommand = GlobalResource.OTHER_BUTTON,
+                //iCommand = GlobalResource.OTHER_BUTTON,
             });
 
             DialogBuilder.Show(IPayDialog.REPORT_SELECT_PAYMENT_METHOD_DIALOG, StringIds.STRING_CURRENT_SALES, (iResult, args) =>
@@ -5238,7 +5238,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -5880,7 +5880,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -6293,39 +6293,39 @@ namespace CloudBanking.UITestApp
 
         void ShowSalesShiftDialog()
         {
-            SaleShiftDlgData data = new SaleShiftDlgData();
-            data.ReportCategory = ReportCategory.Sales;
-            data.IsShowBottomButton = true;
-            data.RightButtonTitleId = StringIds.STRING_DELETE_ALL;
+            //SaleShiftDlgData data = new SaleShiftDlgData();
+            //data.ReportCategory = ReportCategory.Sales;
+            //data.IsShowBottomButton = true;
+            //data.RightButtonTitleId = StringIds.STRING_DELETE_ALL;
 
-            data.Items.Add(new SaleShiftTitleModel() {
-                Date = DateTime.Now,
-                IdList = new List<uint> { 1,2,3,4,5,6},
-                IsShowLine = false
-            });
+            //data.Items.Add(new SaleShiftTitleModel() {
+            //    Date = DateTime.Now,
+            //    IdList = new List<uint> { 1,2,3,4,5,6},
+            //    IsShowLine = false
+            //});
 
-            data.Items.Add(new SaleShiftTitleModel()
-            {
-                Date = DateTime.Now,
-                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
-            });
+            //data.Items.Add(new SaleShiftTitleModel()
+            //{
+            //    Date = DateTime.Now,
+            //    IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            //});
 
-            data.Items.Add(new SaleShiftTitleModel()
-            {
-                Date = DateTime.Now,
-                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
-            });
+            //data.Items.Add(new SaleShiftTitleModel()
+            //{
+            //    Date = DateTime.Now,
+            //    IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            //});
 
-            data.Items.Add(new SaleShiftTitleModel()
-            {
-                Date = DateTime.Now,
-                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
-            });
+            //data.Items.Add(new SaleShiftTitleModel()
+            //{
+            //    Date = DateTime.Now,
+            //    IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            //});
 
-            DialogBuilder.Show(IPayDialog.SELECT_SALE_SHIFT_DIALOG, StringIds.STRING_SHIFT_LIST, (result, args) =>
-            {
-                //SalesShiftDialog
-            }, true, false, data);
+            //DialogBuilder.Show(IPayDialog.SELECT_SALE_SHIFT_DIALOG, StringIds.STRING_SHIFT_LIST, (result, args) =>
+            //{
+            //    //SalesShiftDialog
+            //}, true, false, data);
         }
 
         

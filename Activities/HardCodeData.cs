@@ -30,7 +30,7 @@ namespace CloudBanking.UITestApp
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
-            DlgData.lBalance = 111111;
+            DlgData.lBalance = 12000;
 
             DlgData.iEntryMode = ENTRYMODE.EM_MOTO;
 
@@ -86,7 +86,7 @@ namespace CloudBanking.UITestApp
                     DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINT_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszResult = "TRANSACTION CANCELED";
-                    DlgData.lpszSecondaryResult = "Signature didn't match";
+                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
                     DlgData.FunctionType = FunctionType.PurchaseCash;
 
@@ -116,7 +116,7 @@ namespace CloudBanking.UITestApp
                     DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINT_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
                     DlgData.fCustomerDisplay = true;
                     DlgData.lpszResult = "TRANSACTION CANCELED";
-                    DlgData.lpszSecondaryResult = "Signature didn't match";
+                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
                     DlgData.FunctionType = FunctionType.PreAuth;
 
@@ -150,9 +150,10 @@ namespace CloudBanking.UITestApp
                     DlgData.lpszThirdResult = fPrintMerchantFirst ? Localize.GetString(StringIds.STRING_PRINTING_MERCHANT_COPY).ToUpper() : Localize.GetString(StringIds.STRING_PRINTING_CUSTOMER_COPY).ToUpper();
                     DlgData.fCustomerDisplay = true;
                     DlgData.lpszResult = "TRANSACTION CANCELED";
-                    DlgData.lpszSecondaryResult = "Signature didn't match";
+                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
                     DlgData.FunctionType = FunctionType.CardStatusCheck;
+                    DlgData.fCustomerDisplay = true;
 
                     break;
 
@@ -166,11 +167,13 @@ namespace CloudBanking.UITestApp
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_SIGNATURE_REQUIRED);
                     DlgData.IdBitmap = GlobalResource.MB_ICON_SIGNATURE_RESULT;
                     DlgData.FunctionType = FunctionType.Purchase;
+                    DlgData.fCustomerDisplay = false;
 
                     break;
             }
 
             DlgData.TransactionTypeStringId = GetStringId(DlgData.FunctionType);
+            DlgData.AuthCode = "2895647";
 
             var approvalDialog = new ShellUI.ApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
             approvalDialog.OnResult += (iResult, args) =>
@@ -191,13 +194,13 @@ namespace CloudBanking.UITestApp
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
                     DlgData.fApproved = false;
                     DlgData.lpszResult = "CANNOT COMPLETE";
-                    DlgData.lpszSecondaryResult = "Signature didn't match";
+                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     break;
                 case CaseDialog.CASE2:
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_APPROVED);
                     DlgData.fApproved = true;
                     DlgData.lpszResult = "CONNECTION SUCCESSFUL";
-                    DlgData.lpszSecondaryResult = "Access code has been validated";
+                    DlgData.lpszSecondaryResult = "ACCESS CODE HAS BEEN VALIDATED";
                     break;
             }
 
@@ -1145,16 +1148,16 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
-            var data = new CancelPreAuthComfirmDlgData()
-            {
-                lAmount = 488,
-                AuthCode = "287635",
-                CardInfo = string.Format("{0} {1} *{2}", Localize.GetString(StringIds.STRING_CARDTYPE_VISA), Localize.GetString(StringIds.STRING_CREDIT), "8770"),
-            };
+            //var data = new CancelPreAuthComfirmDlgData()
+            //{
+            //    lAmount = 488,
+            //    AuthCode = "287635",
+            //    CardInfo = string.Format("{0} {1} *{2}", Localize.GetString(StringIds.STRING_CARDTYPE_VISA), Localize.GetString(StringIds.STRING_CREDIT), "8770"),
+            //};
 
-            var cancelPreAuthConfirmDialog = new CancelPreAuthConfirmDialog(StringIds.STRING_CANCEL_PRE_AUTH, null, data);
-            cancelPreAuthConfirmDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            cancelPreAuthConfirmDialog.Show(this);
+            //var cancelPreAuthConfirmDialog = new CancelPreAuthConfirmDialog(StringIds.STRING_CANCEL_PRE_AUTH, null, data);
+            //cancelPreAuthConfirmDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //cancelPreAuthConfirmDialog.Show(this);
         }
 
         private void ShowMainDialog()

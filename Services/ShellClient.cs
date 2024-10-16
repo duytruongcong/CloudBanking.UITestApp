@@ -422,6 +422,11 @@ namespace CloudBanking.UITestApp
 
             return null;
         }
+
+        public IList<PrintJobViewModel> GetAllPrintJobRecords(TransData transData, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

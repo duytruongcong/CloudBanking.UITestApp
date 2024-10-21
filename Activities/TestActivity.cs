@@ -1577,7 +1577,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // checked physical keyboard
+#if false // 
 
             #region Main Payment Flow
 
@@ -1924,7 +1924,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  checked physical keyboard
+#if true   //  
 
             #region Preauth Flow
 
@@ -2247,7 +2247,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  checked physical keyboard
+#if true    //  
 
             #region MessageDialog
 
@@ -2461,7 +2461,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  checked physical keyboard
+#if false    //  
 
             #region EnterPinDialog
 
@@ -2507,7 +2507,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  checked physical keyboard
+#if true   //  
 
             #region ApprovalDialog
 

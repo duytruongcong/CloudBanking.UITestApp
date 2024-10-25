@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Service.QuickSettings;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -11,6 +12,7 @@ using CloudBanking.BaseControl;
 using CloudBanking.Entities;
 using CloudBanking.ServiceLocators;
 using CloudBanking.ShellContainers;
+using CloudBanking.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -28,7 +30,9 @@ namespace CloudBanking.UITestApp
         private ApplicationFlow _paymentFlow => ((MainApplication)Application).PaymentFlow;
 
 
-        IDialogBuilder DialogBuilder => ServiceLocator.Instance.Get<IDialogBuilder>();
+        public IDialogBuilder DialogBuilder => ServiceLocator.Instance.Get<IDialogBuilder>();
+
+        public IFileService FileService =>  ServiceLocator.Instance.Get<IFileService>();
 
         string[] PERMISSIONS = new string[]{
                 Android.Manifest.Permission.ReadExternalStorage,
@@ -57,8 +61,10 @@ namespace CloudBanking.UITestApp
                 Window.DecorView.SystemUiVisibility =
                 (StatusBarVisibility)(SystemUiFlags.HideNavigation |
                                  SystemUiFlags.ImmersiveSticky |
-                                 SystemUiFlags.Fullscreen);
+                SystemUiFlags.Fullscreen);
             }
+
+            FileService.CopyFileResource(GlobalConstants.PRESENT_CARD_LOTTIE_FOLDER, false, false);
 
             base.OnCreate(savedInstanceState);
 

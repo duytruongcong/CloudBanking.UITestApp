@@ -1924,7 +1924,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   //  
+#if false   //  
 
             #region Preauth Flow
 
@@ -2043,7 +2043,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  
+#if true   //  
 
             #region Request Card Flow
 
@@ -2210,7 +2210,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  
+#if false   //  done for f600
 
             #region SelectAccountTypeDialog 
 
@@ -2247,7 +2247,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true    //  
+#if false    //  
 
             #region MessageDialog
 
@@ -2507,7 +2507,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   //  
+#if false   //  done for f600, @ThanhNguyen
 
             #region ApprovalDialog
 

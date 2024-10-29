@@ -4698,6 +4698,9 @@ namespace CloudBanking.UITestApp
             var currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
             DCCConfimationData data = new DCCConfimationData();
 
+            if (currency == null)
+                return;
+
             data.FlagImage = currency.iCurrencyCodeFlag;
             data.Currency = currency.wszCurrencyCode;
             data.lAmount = 6420;

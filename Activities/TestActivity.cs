@@ -16,6 +16,8 @@ using CloudBanking.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using CloudBanking.Common;
+using CloudBanking.Repositories;
 
 namespace CloudBanking.UITestApp
 {
@@ -66,6 +68,8 @@ namespace CloudBanking.UITestApp
 
             FileService.CopyFileResource(GlobalConstants.PRESENT_CARD_LOTTIE_FOLDER, false, false);
 
+            InitializationDatabase();
+
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.TestLayout);
@@ -85,6 +89,70 @@ namespace CloudBanking.UITestApp
             {
                 StartApplication();
             }
+        }
+
+        void InitializationDatabase()
+        {
+            CheckCurrencyDatabase();
+        }
+
+        void CheckCurrencyDatabase()
+        {
+            if (CurrencyRepository.Instance.Load() == null)
+            {
+                List<Currency> list = new List<Currency>();
+
+                list.Add(AddCurrency(784, GlobalConstants.ID_CURRENCYFLAG_UAE, 2, "AED", "AED", "UAE Dirham", "United Arab Emirates Dirham"));
+                list.Add(AddCurrency(32, GlobalConstants.ID_CURRENCYFLAG_ARGENTINE, 2, "ARS", "AR$", "Argentine Peso", "Argentine Peso", "$"));
+                list.Add(AddCurrency(36, GlobalConstants.ID_CURRENCYFLAG_AUSTRALIAN, 2, "AUD", "AU$", "Australian Dollar", "Australian Dollar", "$"));
+                list.Add(AddCurrency(986, GlobalConstants.ID_CURRENCYFLAG_BRAZILIAN, 2, "BRL", "R$", "Brazilian Real", "Brazilian Real", "R$"));
+                list.Add(AddCurrency(554, GlobalConstants.ID_CURRENCYFLAG_NEWZEALAND, 2, "NZD", "NZ$", "New Zealand Dollar", "New Zealand Dollar", "$"));
+                list.Add(AddCurrency(901, GlobalConstants.ID_CURRENCYFLAG_TAIWAN, 2, "TWD", "NT$", "Taiwan Dollar", "Taiwan Dollar", "NT$"));
+                list.Add(AddCurrency(840, GlobalConstants.ID_CURRENCYFLAG_US, 2, "USD", "USD$", "US Dollar", "US Dollar", "$"));
+                list.Add(AddCurrency(710, GlobalConstants.ID_CURRENCYFLAG_SOUTHAFRICAN, 2, "ZAR", "ZAR", "South African Rand", "South African Rand", "R"));
+                list.Add(AddCurrency(124, GlobalConstants.ID_CURRENCYFLAG_CANADIAN, 2, "CAD", "CA$", "Canadian Dollar", "Canadian Dollar", "$"));
+                list.Add(AddCurrency(756, GlobalConstants.ID_CURRENCYFLAG_SWISS, 2, "CHF", "CHF", "Swiss Franc", "Swiss Franc", "CHF"));
+                list.Add(AddCurrency(208, GlobalConstants.ID_CURRENCYFLAG_DANISH, 2, "DKK", "Dkr", "Danish Krone", "Danish Krone", "kr"));
+                list.Add(AddCurrency(242, GlobalConstants.ID_CURRENCYFLAG_FIJIAN, 2, "FJD", "FJ$", "Fijian  Dollar", "Fijian  Dollar", "$"));
+                list.Add(AddCurrency(344, GlobalConstants.ID_CURRENCYFLAG_HONGKONG, 2, "HKD", "HK$", "Hong Kong Dollar", "Hong Kong Dollar", "$"));
+                list.Add(AddCurrency(484, GlobalConstants.ID_CURRENCYFLAG_MEXICAN, 2, "MXN", "MX$", "Mexican Peso", "Mexican Peso", "$"));
+                list.Add(AddCurrency(578, GlobalConstants.ID_CURRENCYFLAG_NORWEGIAN, 2, "NOK", "Nkr", "Norwegian Krone", "Norwegian Krone", "kr"));
+                list.Add(AddCurrency(752, GlobalConstants.ID_CURRENCYFLAG_SWEDISH, 2, "SEK", "Skr", "Swedish Krona", "Swedish Krona", "kr"));
+                list.Add(AddCurrency(702, GlobalConstants.ID_CURRENCYFLAG_SINGAPORE, 2, "SGD", "S$", "Singapore Dollar", "Singapore Dollar", "$"));
+                list.Add(AddCurrency(360, GlobalConstants.ID_CURRENCYFLAG_INDONESIAN, 2, "IDR", "Rp", "Indonesian Rupiah", "Indonesian Rupiah", "Rp"));
+                list.Add(AddCurrency(598, GlobalConstants.ID_CURRENCYFLAG_PNG, 2, "PGK", "Kina", "Papua New Guinean Kina", "Papua New Guinean Kina", "K"));
+                list.Add(AddCurrency(458, GlobalConstants.ID_CURRENCYFLAG_MALAYSIAN, 2, "MYR", "RM", "Malaysian Ringgit", "Malaysian Ringgit", "RM"));
+                list.Add(AddCurrency(978, GlobalConstants.ID_CURRENCYFLAG_EURO, 2, "EUR", "\xE2\x82\xAC", "Euro", "Euro", "\xE2\x82\xAC"));
+                list.Add(AddCurrency(826, GlobalConstants.ID_CURRENCYFLAG_POUNDS, 2, "GBP", "\xC2\xA3", "Pound  Stirling", "British Pound  Stirling", "\xC2\xA3"));
+                list.Add(AddCurrency(376, GlobalConstants.ID_CURRENCYFLAG_ISRAELI, 2, "ILS", "\xE2\x82\xAA", "Israeli Sheqel", "Israeli Sheqel", "\xE2\x82\xAA"));
+                list.Add(AddCurrency(356, GlobalConstants.ID_CURRENCYFLAG_INDIAN, 2, "INR", "Rs", "Indian Rupee", "Indian Rupee", "\xE2\x82\xB9"));
+                list.Add(AddCurrency(392, GlobalConstants.ID_CURRENCYFLAG_JAPANESE, 0, "JPY", "\xC2\xA5", "JapaneseYen", "JapaneseYen", "\xEF\xBF\xA5"));
+                list.Add(AddCurrency(410, GlobalConstants.ID_CURRENCYFLAG_SOUTHKOREAN, 0, "KRW", "\xE2\x82\xA9", "South Korean Won", "South Korean Won", "\xE2\x82\xA9"));
+                list.Add(AddCurrency(608, GlobalConstants.ID_CURRENCYFLAG_PHILIPPINE, 2, "PHP", "\xE2\x82\xB1", "Philippine Peso", "Philippine Peso", "\xE2\x82\xB1"));
+                list.Add(AddCurrency(985, GlobalConstants.ID_CURRENCYFLAG_POLISH, 2, "PLN", "\x7A\xC5\x82", "Polish Zloty", "Polish Zloty", "\x7A\xC5\x82"));
+                list.Add(AddCurrency(634, GlobalConstants.ID_CURRENCYFLAG_QATARI, 2, "QAR", "QR", "Qatari Rial", "Qatari Rial", "\xD8\xB1\x2E\xD9\x82"));
+                list.Add(AddCurrency(643, GlobalConstants.ID_CURRENCYFLAG_RUSSIAN, 2, "RUB", "RUB", "Russian Ruble", "Russian Ruble", "\xe2\x82\xbd"));
+                list.Add(AddCurrency(682, GlobalConstants.ID_CURRENCYFLAG_SAUDI, 2, "SAR", "SR", "Saudi Riyal", "Saudi Riyal", "\xd8\xb1\x2e\xd8\xb3"));
+                list.Add(AddCurrency(764, GlobalConstants.ID_CURRENCYFLAG_THAI, 2, "THB", "\xe0\xb8\xbf", "Thai Bhat", "Thai Bhat", "\xe0\xb8\xbf"));
+                list.Add(AddCurrency(704, GlobalConstants.ID_CURRENCYFLAG_VIETNAM, 0, "VND", "VND", "Viet Nam", "Viet Nam", "\xe0\xb8\xbf"));
+                list.Add(AddCurrency(156, GlobalConstants.ID_CURRENCYFLAG_CHINA, 2, "CNY", "CNY", "China", "China", "¥"));
+
+                CurrencyRepository.Instance.InsertAll(list);
+            }
+        }
+
+        Currency AddCurrency(int iCurrencyCode, int iCurrencyCodeFlag, int usMinor, string wszCurrencyCode, string wszCurrencySymbol, string wszCurrencyName, string wszCurrencyFullName, string wszCurrencyNativeSymbol = null)
+        {
+            Currency item = new Currency();
+            item.iCurrencyCode = iCurrencyCode;
+            item.iCurrencyCodeFlag = iCurrencyCodeFlag;
+            item.usMinor = usMinor;
+            item.wszCurrencyCode = wszCurrencyCode;
+            item.wszCurrencySymbol = wszCurrencySymbol;
+            item.wszCurrencyName = wszCurrencyName;
+            item.wszCurrencyFullName = wszCurrencyFullName;
+            item.wszCurrencyNativeSymbol = wszCurrencyNativeSymbol;
+            return item;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

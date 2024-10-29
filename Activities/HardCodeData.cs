@@ -306,7 +306,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
-            //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
+            RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
 
             switch (caseDialog)
             {
@@ -505,7 +505,7 @@ namespace CloudBanking.UITestApp
             {
             }, RequestDlgData);
 
-            //comment out
+            ////comment out
             //var requestCardDialog = new AnimatedRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             //{
             //}, RequestDlgData);
@@ -1148,16 +1148,16 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
-            //var data = new CancelPreAuthComfirmDlgData()
-            //{
-            //    lAmount = 488,
-            //    AuthCode = "287635",
-            //    CardInfo = string.Format("{0} {1} *{2}", Localize.GetString(StringIds.STRING_CARDTYPE_VISA), Localize.GetString(StringIds.STRING_CREDIT), "8770"),
-            //};
+            var data = new CancelPreAuthComfirmDlgData()
+            {
+                lAmount = 488,
+                AuthCode = "287635",
+                CardInfo = string.Format("{0} {1} *{2}", Localize.GetString(StringIds.STRING_CARDTYPE_VISA), Localize.GetString(StringIds.STRING_CREDIT), "8770"),
+            };
 
-            //var cancelPreAuthConfirmDialog = new CancelPreAuthConfirmDialog(StringIds.STRING_CANCEL_PRE_AUTH, null, data);
-            //cancelPreAuthConfirmDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            //cancelPreAuthConfirmDialog.Show(this);
+            var cancelPreAuthConfirmDialog = new CancelPreAuthConfirmDialog(StringIds.STRING_CANCEL_PRE_AUTH, null, data);
+            cancelPreAuthConfirmDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            cancelPreAuthConfirmDialog.Show(this);
         }
 
         private void ShowMainDialog()
@@ -2535,8 +2535,9 @@ namespace CloudBanking.UITestApp
                             ENTRYMODE.EM_RFID,
                             ENTRYMODE.EM_SWIPED,
                             ENTRYMODE.EM_MOTO,
-                            ENTRYMODE.EM_MANUAL
-                        }
+                            ENTRYMODE.EM_MANUAL,
+                        },
+                        CardLocation = CardLocation.All
                     },
                     new SurchargeRule()
                     {
@@ -2554,8 +2555,10 @@ namespace CloudBanking.UITestApp
                             ENTRYMODE.EM_RFID,
                             ENTRYMODE.EM_SWIPED,
                             ENTRYMODE.EM_MOTO,
-                            ENTRYMODE.EM_MANUAL
-                        }
+                            ENTRYMODE.EM_MANUAL,
+                        },
+                        CardLocation = CardLocation.All
+
                     },new SurchargeRule()
                     {
                         Surcharge = new MerchantCardSurcharge()
@@ -2573,7 +2576,9 @@ namespace CloudBanking.UITestApp
                             ENTRYMODE.EM_SWIPED,
                             ENTRYMODE.EM_MOTO,
                             ENTRYMODE.EM_MANUAL
-                        }
+                        },
+                        CardLocation = CardLocation.All
+
                     },new SurchargeRule()
                     {
                         Surcharge = new MerchantCardSurcharge()
@@ -2591,7 +2596,9 @@ namespace CloudBanking.UITestApp
                             ENTRYMODE.EM_SWIPED,
                             ENTRYMODE.EM_MOTO,
                             ENTRYMODE.EM_MANUAL
-                        }
+                        },
+                        CardLocation = CardLocation.All
+
                     },
                 }
 

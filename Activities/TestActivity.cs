@@ -941,15 +941,15 @@ namespace CloudBanking.UITestApp
 #if true   // 
             #region Donation Flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"StandaloneSelectDonationAmountDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowStandaloneSelectDonationAmountDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"StandaloneSelectDonationAmountDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowStandaloneSelectDonationAmountDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -1041,15 +1041,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectOptionDialog",
-                RightIconResName = "SelectOptionDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationSelectOptionDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectOptionDialog",
+            //    RightIconResName = "SelectOptionDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationSelectOptionDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1184,9 +1184,19 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // @thanh.nguyen done // duy checking done
+#if true    // @thanh.nguyen done // duy checking done
 
             #region Setup Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ShellStandardSetupDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowShellStandardSetupDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {

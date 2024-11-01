@@ -6342,6 +6342,46 @@ namespace CloudBanking.UITestApp
             //}, true, false, data);
         }
 
+        void ShowShellStandardSetupDialog()
+        {
+            var noCVVStatusDlgData = new StandardSetupDialogModel()
+            {
+                IsHasListDivider = false,
+                OkBtnTitleId = StringIds.STRING_SELECT,
+                OKBtnCommandId = GlobalResource.OK_BUTTON,
+                Items = new List<BaseEditModel>()
+                {
+                    new RadioEditModel()
+                    {
+                        GroupName = "NoCVV",
+                        TitleId = StringIds.STRING_CVV_NOT_PRESENT,
+                        Identifier = GlobalResource.NOT_PRESENT,
+                        Value =true,
+                        IsHasEndLine = true
+                    },
+                    new RadioEditModel()
+                    {
+                        GroupName = "NoCVV",
+                        TitleId = StringIds.STRING_CVV_UNREADABLE,
+                        Identifier = GlobalResource.CVV_UNREADABLE,
+                        Value = false,
+                        IsHasEndLine = true
+                    },
+                    new RadioEditModel()
+                    {
+                        GroupName = "NoCVV",
+                        TitleId = StringIds.STRING_NO_CVV_ON_CARD,
+                        Identifier = GlobalResource.NO_CVV_ON_CARD,
+                        Value = false,
+                        IsHasEndLine = false
+                    }
+                }
+            };
+
+            DialogBuilder.Show(IShellDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_NO_CVV, (result, args) =>
+            {
+            }, true, false, noCVVStatusDlgData);
+        }
         
     }
 }

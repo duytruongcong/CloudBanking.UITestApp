@@ -2300,21 +2300,21 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectDonationDialog()
         {
-            //var data = new CusDisplaySelectDonationDlgData();
+            var data = new CusDisplaySelectDonationDlgData();
 
-            ////landscape
-            ////data.DonationImgName = "donation_port_demo_02";
+            //landscape
+            //data.DonationImgName = "donation_port_demo_02";
 
-            ////portrait
-            //data.DonationImgName = "donation_small";
+            //portrait
+            data.DonationImgName = "donation_small";
 
-            //var listValue = new List<long>() { 1, 2, 5, 10, 50 };
-            //data.DonationValues = listValue;
+            var listValue = new List<long>() { 1, 2, 5, 10, 50 };
+            data.DonationValues = listValue;
 
-            //DialogBuilder.Show(IPayDialog.SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            {
 
-            //}, true, false, data);
+            }, true, false, data);
         }
 
         void ShowAdjustDonationDialog()
@@ -4947,16 +4947,16 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationEnterAccessCodeDialog()
         {
-            //var dlgData = new DonationEnterAccessCodeDlgData()
-            //{
-            //    AvatarRes = "dr_madison.png",
-            //    MerchantName = "Dr Madison"
-            //};
+            var dlgData = new DonationEnterAccessCodeDlgData()
+            {
+                AvatarRes = "dr_madison.png",
+                MerchantName = "Dr Madison"
+            };
 
-            //DialogBuilder.Show(IPayDialog.DONATION_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.DONATION_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
+            {
 
-            //}, true, false, dlgData);
+            }, true, false, dlgData);
         }
 
         void ShowDonationAdvertising()
@@ -4985,36 +4985,36 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationSelectOptionDialog()
         {
-            //var items = new List<SelectOptionItem>()
-            //{
-            //    new SelectOptionItem()
-            //    {
-            //        Command = GlobalResource.EXIT_BUTTON,
-            //        TitleId = StringIds.STRING_EXIT_CHARITY,
-            //        VectorIconResName = IconIds.VECTOR_USER_LOGOUT,
-            //    },
-            //    new SelectOptionItem()
-            //    {
-            //        //Command = GlobalResource.ADVERTISING_SCREEN_OFF_BUTTON,
-            //        TitleId = StringIds.STRING_ADVERTISING_SCREEN_OFF,
-            //        VectorIconResName = IconIds.VECTOR_SCREEN_GRAY,
-            //    },
-            //     new SelectOptionItem()
-            //    {
-            //        Command = GlobalResource.SYNC_BUTTON,
-            //        TitleId = StringIds.STRING_SYNC_SETTINGS,
-            //        VectorIconResName = IconIds.VECTOR_SYNC,
-            //    },
-            //};
+            var items = new List<SelectOptionItem>()
+            {
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.EXIT_BUTTON,
+                    TitleId = StringIds.STRING_EXIT_CHARITY,
+                    VectorIconResName = IconIds.VECTOR_USER_LOGOUT,
+                },
+                new SelectOptionItem()
+                {
+                    //Command = GlobalResource.ADVERTISING_SCREEN_OFF_BUTTON,
+                    TitleId = StringIds.STRING_ADVERTISING_SCREEN_OFF,
+                    VectorIconResName = IconIds.VECTOR_SCREEN_GRAY,
+                },
+                 new SelectOptionItem()
+                {
+                    Command = GlobalResource.SYNC_BUTTON,
+                    TitleId = StringIds.STRING_SYNC_SETTINGS,
+                    VectorIconResName = IconIds.VECTOR_SYNC,
+                },
+            };
 
-            //var data = new SelectOptionDlgData();
+            var data = new SelectOptionDlgData();
 
-            //data.MenuItems = items;
+            data.MenuItems = items;
 
-            //DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
-            //{
-            //    //SelectOptionDialog
-            //}, true, true, data);
+            DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
+            {
+                //SelectOptionDialog
+            }, true, true, data);
         }
 
         void ShowDonationReceiptOptionsDialog()
@@ -5314,15 +5314,15 @@ namespace CloudBanking.UITestApp
 
         void ShowStandaloneSelectDonationAmountDialog()
         {
-            //CusDisplaySelectDonationDlgData dlgData = new CusDisplaySelectDonationDlgData();
+            CusDisplaySelectDonationDlgData dlgData = new CusDisplaySelectDonationDlgData();
 
-            //dlgData.DonationImgName = "donation_salvation_banner.png";
-            //dlgData.DonationValues = new List<long>() { 200, 500, 1000, 2000, 3000, 5000, 10000 };
+            dlgData.DonationImgName = "donation_salvation_banner.png";
+            dlgData.DonationValues = new List<long>() { 200, 500, 1000, 2000, 3000, 5000, 10000 };
 
-            //DialogBuilder.Show(IPayDialog.STANDALONE_SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
-            //{
-            //    //StandaloneSelectDonationAmountDialog
-            //}, true, false, dlgData);
+            DialogBuilder.Show(IPayDialog.STANDALONE_SELECT_DONATION_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            {
+                //StandaloneSelectDonationAmountDialog
+            }, true, false, dlgData);
         }
 
         void ShowQrCodeReceiptClaimDialog()

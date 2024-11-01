@@ -281,7 +281,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = false;// change to show difference case
+            RequestDlgData.fNoPresentCard = true;// change to show difference case
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -1170,49 +1170,49 @@ namespace CloudBanking.UITestApp
         private void ShowSelectMoto()
         {
             //hardcode dialog here
-            //var generalType = new List<GenericType>()
-            //{
-            //    new GenericType()
-            //    {
-            //            Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
-            //            lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
-            //            Id = GlobalResource.CURRENT_BUTTON,
-            //    },
-            //    new GenericType()
-            //    {
-            //            Icon = IconIds.VECTOR_OTHER_DATE,
-            //            lszText =  StringIds.STRING_OTHER_DATE,
-            //            Id = GlobalResource.OTHER_BUTTON,
-            //    },
-            //};
+            var generalType = new List<GenericType>()
+            {
+                new GenericType()
+                {
+                        Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
+                        lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
+                        Id = GlobalResource.CURRENT_BUTTON,
+                },
+                new GenericType()
+                {
+                        Icon = IconIds.VECTOR_OTHER_DATE,
+                        lszText =  StringIds.STRING_OTHER_DATE,
+                        Id = GlobalResource.OTHER_BUTTON,
+                },
+            };
 
-            //var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_SELECTT_MOTO);
-            //dialog3.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog3.Show(this);
+            var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_SELECTT_MOTO);
+            dialog3.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog3.Show(this);
         }
 
         private void ShowSelectDate()
         {
             ////hardcode dialog here
-            //var generalType = new List<GenericType>()
-            //{
-            //    new GenericType()
-            //    {
-            //            Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
-            //            lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
-            //            Id = GlobalResource.CURRENT_BUTTON,
-            //    },
-            //    new GenericType()
-            //    {
-            //            Icon = IconIds.VECTOR_OTHER_DATE,
-            //            lszText =  StringIds.STRING_OTHER_DATE,
-            //            Id = GlobalResource.OTHER_BUTTON,
-            //    },
-            //};
+            var generalType = new List<GenericType>()
+            {
+                new GenericType()
+                {
+                        Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
+                        lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
+                        Id = GlobalResource.CURRENT_BUTTON,
+                },
+                new GenericType()
+                {
+                        Icon = IconIds.VECTOR_OTHER_DATE,
+                        lszText =  StringIds.STRING_OTHER_DATE,
+                        Id = GlobalResource.OTHER_BUTTON,
+                },
+            };
 
-            //var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
-            //dialog3.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog3.Show(this);
+            var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
+            dialog3.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog3.Show(this);
         }
 
 
@@ -3864,7 +3864,7 @@ namespace CloudBanking.UITestApp
                 ScanTitleId = StringIds.STRING_SCAN_QR_CODE,
                 AboveScanViewTitleId = StringIds.STRING_FIND_PURCHASE,
                 ManualTitleId = StringIds.STRING_MANUAL_ENTER,
-                ManualCommand = GlobalResource.MANUAL_BUTTON,
+                //ManualCommand = GlobalResource.MANUAL_BUTTON,
                 ManualIconId = IconIds.VECTOR_MANUAL_REFUND,
                 fScanAlipayWechat = true
             };
@@ -4919,24 +4919,24 @@ namespace CloudBanking.UITestApp
             charityItem4.DonationAmount.SelectAmountStringIcon = IconIds.IMG_DON_2_SELECT;
 
             ////
-            //var standaloneCharity01 = new StandaloneCharity();
-            //standaloneCharity01.Id = startId++;
-            //standaloneCharity01.Name = "Qatar Charity";
-            //standaloneCharity01.Banner = "don_1_land_poster.png";
-            //standaloneCharity01.AdvertisingImage = "don_1_port_poster.png";
+            var standaloneCharity01 = new StandaloneCharity();
+            standaloneCharity01.Id = startId++;
+            standaloneCharity01.Name = "Qatar Charity";
+            standaloneCharity01.Banner = "don_1_land_poster.png";
+            standaloneCharity01.AdvertisingImage = "don_1_port_poster.png";
 
 
-            //var dlgData = new SelectCharityDlgData()
-            //{
-            //    //Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
-            //    fHideCancelButton = true,
-            //    Items = new List<StandaloneCharity>() { standaloneCharity01 }
-            //};
+            var dlgData = new SelectCharityDlgData()
+            {
+                Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
+                fHideCancelButton = true,
+                //Items = new List<StandaloneCharity>() { standaloneCharity01 }
+            };
 
-            //DialogBuilder.Show(IPayDialog.DONATION_SELECT_FIRST_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.DONATION_SELECT_FIRST_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            {
 
-            //}, true, false, dlgData);
+            }, true, false, dlgData);
         }
 
         void ShowEnterAccesscode()
@@ -6311,9 +6311,10 @@ namespace CloudBanking.UITestApp
             //data.IsShowBottomButton = true;
             //data.RightButtonTitleId = StringIds.STRING_DELETE_ALL;
 
-            //data.Items.Add(new SaleShiftTitleModel() {
+            //data.Items.Add(new SaleShiftTitleModel()
+            //{
             //    Date = DateTime.Now,
-            //    IdList = new List<uint> { 1,2,3,4,5,6},
+            //    IdList = new List<uint> { 1, 2, 3, 4, 5, 6 },
             //    IsShowLine = false
             //});
 

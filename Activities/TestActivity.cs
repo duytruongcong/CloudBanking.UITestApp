@@ -938,108 +938,108 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // 
+#if true   // 
             #region Donation Flow
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"StandaloneSelectDonationAmountDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowStandaloneSelectDonationAmountDialog();
-            //    })
-            //});
-
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"DonationRequestCardDialog CASE1",
-                RightIconResName = "RequestCardDialog_CASE1",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationRequestCardDialog(CaseDialog.CASE1);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationRequestCardDialog CASE2",
-                RightIconResName = "RequestCardDialog_CASE2",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationRequestCardDialog(CaseDialog.CASE2);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationRequestCardDialog CASE3",
-                RightIconResName = "RequestCardDialog_CASE3",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationRequestCardDialog(CaseDialog.CASE3);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationRequestCardDialog CASE4",
-                RightIconResName = "RequestCardDialog_CASE4",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationRequestCardDialog(CaseDialog.CASE4);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationRequestCardDialog CASE5",
-                RightIconResName = "RequestCardDialog_CASE5",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationRequestCardDialog(CaseDialog.CASE5);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationRequestCardDialog CASE6",
-                RightIconResName = "RequestCardDialog_CASE6",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationRequestCardDialog(CaseDialog.CASE6);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationRequestCardDialog CASE7",
-                RightIconResName = "RequestCardDialog_CASE7",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationRequestCardDialog(CaseDialog.CASE7);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationRequestCardDialog CASE8",
-                RightIconResName = "RequestCardDialog_CASE8",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationRequestCardDialog(CaseDialog.CASE8);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationReceiptOptionsDialog",
+                Title = $"StandaloneSelectDonationAmountDialog",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowDonationReceiptOptionsDialog();
+                    ShowStandaloneSelectDonationAmountDialog();
                 })
             });
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationRequestCardDialog CASE1",
+            //    RightIconResName = "RequestCardDialog_CASE1",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationRequestCardDialog(CaseDialog.CASE1);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationRequestCardDialog CASE2",
+            //    RightIconResName = "RequestCardDialog_CASE2",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationRequestCardDialog(CaseDialog.CASE2);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationRequestCardDialog CASE3",
+            //    RightIconResName = "RequestCardDialog_CASE3",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationRequestCardDialog(CaseDialog.CASE3);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationRequestCardDialog CASE4",
+            //    RightIconResName = "RequestCardDialog_CASE4",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationRequestCardDialog(CaseDialog.CASE4);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationRequestCardDialog CASE5",
+            //    RightIconResName = "RequestCardDialog_CASE5",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationRequestCardDialog(CaseDialog.CASE5);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationRequestCardDialog CASE6",
+            //    RightIconResName = "RequestCardDialog_CASE6",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationRequestCardDialog(CaseDialog.CASE6);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationRequestCardDialog CASE7",
+            //    RightIconResName = "RequestCardDialog_CASE7",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationRequestCardDialog(CaseDialog.CASE7);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationRequestCardDialog CASE8",
+            //    RightIconResName = "RequestCardDialog_CASE8",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationRequestCardDialog(CaseDialog.CASE8);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationReceiptOptionsDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationReceiptOptionsDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1061,15 +1061,15 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"DonationAdvertisingDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowDonationAdvertising();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"DonationAdvertisingDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowDonationAdvertising();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1104,7 +1104,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //   
+#if false   //   @DuyTruong done m200
 
             #region DCC
 
@@ -1146,19 +1146,19 @@ namespace CloudBanking.UITestApp
 #endif
 
 
-#if false    //  
+#if false    //  @thanh.nguyen done // duy checking done
 
             #region Report Flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SalesShiftDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSalesShiftDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SalesShiftDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSalesShiftDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1184,7 +1184,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // 
+#if false    // @thanh.nguyen done // duy checking done
 
             #region Setup Flow
 
@@ -1262,7 +1262,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // 
+#if false    // @son.tran
 
             #region Refund flow
 
@@ -1346,15 +1346,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"RefundReasonDialog",
-            //    RightIconResName = "RefundReasonDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowRefundReasonDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RefundReasonDialog",
+                RightIconResName = "RefundReasonDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRefundReasonDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -1651,7 +1651,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // 
+#if false // @duy.truong done
 
             #region Main Payment Flow
 
@@ -1952,7 +1952,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    // 
+#if false    //  @thanh.nguyen done // duy check done
 
             #region Settlement & Reprint
 
@@ -1998,7 +1998,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  
+#if false   //  @son.tran done // duy check done
 
             #region Preauth Flow
 
@@ -2117,7 +2117,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true   //  
+#if false   //  duy done for M200/F20
 
             #region Request Card Flow
 
@@ -2251,15 +2251,16 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ViewLeftIconRightQuadrupleTextOverlayDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowViewLeftIconRightQuadrupleTextOverlayDialog();
-                })
-            });
+            //not used
+            ////_lData.Add(new ScreenViewModel()
+            ////{
+            ////    Title = $"ViewLeftIconRightQuadrupleTextOverlayDialog",
+            ////    RightIconResName = "",
+            ////    ItemAction = new Action(() =>
+            ////    {
+            ////        ShowViewLeftIconRightQuadrupleTextOverlayDialog();
+            ////    })
+            ////});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -2284,7 +2285,8 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  done for f600
+#if false   //  done for f600, @thanh.nguyen done M200 // duy check done
+
 
             #region SelectAccountTypeDialog 
 
@@ -2321,7 +2323,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  
+#if false    //   @thanh.nguyen done M200 // duy check done
 
             #region MessageDialog
 
@@ -2508,7 +2510,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  
+#if false   //  @thanh.nguyen done M200 // duy check done
 
             #region PresentCardErrorDialog
 
@@ -2535,7 +2537,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  
+#if false    //  duy done for M200/F20 // duy check done
 
             #region EnterPinDialog
 
@@ -2581,7 +2583,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  done for f600, @ThanhNguyen
+#if false   //  done for f600, @thanh.nguyen done for M200/F20 //  duy check done
 
             #region ApprovalDialog
 
@@ -2658,7 +2660,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //   
+#if false   //   @thanh.nguyen done M200/F20 //  duy check done
 
             #region SettlementApprovalDialog
 
@@ -2685,7 +2687,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  
+#if false    //  @thanh.nguyen // duy check done
 
             #region MOTO FLOW
 
@@ -2751,7 +2753,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  
+#if true   //  @thanh.nguyen done // duy check fail
 
             #region ProcessMessageDialog
 

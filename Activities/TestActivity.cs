@@ -938,7 +938,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   // 
+#if false   // 
             #region Donation Flow
 
             _lData.Add(new ScreenViewModel()
@@ -1134,7 +1134,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //   @DuyTruong done m200
+#if false   //   
 
             #region DCC
 
@@ -1176,7 +1176,7 @@ namespace CloudBanking.UITestApp
 #endif
 
 
-#if false    //  @thanh.nguyen done // duy checking done
+#if false    //  
 
             #region Report Flow
 
@@ -1214,9 +1214,19 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // @thanh.nguyen done // duy checking done
+#if true    // 
 
             #region Setup Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SetupMerchantAccessDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowSetupMerchantAccessDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1302,7 +1312,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // @son.tran
+#if false    // 
 
             #region Refund flow
 
@@ -1691,7 +1701,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // @duy.truong done
+#if true // 
 
             #region Main Payment Flow
 
@@ -1992,7 +2002,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  @thanh.nguyen done // duy check done
+#if false    //  
 
             #region Settlement & Reprint
 
@@ -2038,7 +2048,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  @son.tran done // duy check done
+#if false   //  
 
             #region Preauth Flow
 
@@ -2157,7 +2167,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  duy done for M200/F20
+#if false   //  
 
             #region Request Card Flow
 
@@ -2325,7 +2335,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  done for f600, @thanh.nguyen done M200 // duy check done
+#if false   //  
 
 
             #region SelectAccountTypeDialog 
@@ -2363,7 +2373,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //   @thanh.nguyen done M200 // duy check done
+#if false    //   
 
             #region MessageDialog
 
@@ -2550,7 +2560,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  @thanh.nguyen done M200 // duy check done
+#if false   //  
 
             #region PresentCardErrorDialog
 
@@ -2577,7 +2587,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  duy done for M200/F20 // duy check done
+#if false    //  
 
             #region EnterPinDialog
 
@@ -2623,7 +2633,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  done for f600, @thanh.nguyen done for M200/F20 //  duy check done
+#if false   //  
 
             #region ApprovalDialog
 
@@ -2700,7 +2710,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //   @thanh.nguyen done M200/F20 //  duy check done
+#if false   //   
 
             #region SettlementApprovalDialog
 
@@ -2727,7 +2737,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  @thanh.nguyen // duy check done
+#if false    //  
 
             #region MOTO FLOW
 
@@ -2793,7 +2803,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   //  @thanh.nguyen done // duy check fail
+#if true   //  
 
             #region ProcessMessageDialog
 

@@ -231,7 +231,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; break;
-                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; break;
+                    //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; break;
             }
 
             return lszTitle;
@@ -454,7 +454,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                    //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -668,7 +668,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                    //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -2429,7 +2429,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: titleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: titleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: titleId = StringIds.STRING_ADJUST; break;
-                //case FunctionType.IncrementalAdjust: titleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                    //case FunctionType.IncrementalAdjust: titleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
             dlgData.szTotalTitle = titleId;
 
@@ -5252,7 +5252,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                    //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -5894,7 +5894,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                    //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -6239,38 +6239,38 @@ namespace CloudBanking.UITestApp
         void ShowUnattendedVendingStoreDialog()
         {
 
-        //    List<UnattendedVendingProductViewModel> listProductModel = new List<UnattendedVendingProductViewModel>();
+            //    List<UnattendedVendingProductViewModel> listProductModel = new List<UnattendedVendingProductViewModel>();
 
-        //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_AMERICANO, ProductName = "Americano", Price = 440 });
-        //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_BREWED_COFFEE, ProductName = "Brewed Coffee", Price = 480 });
-        //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_LATTE, ProductName = "Caffe Latte", Price = 500 });
-        //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_MOCHA, ProductName = "Caffe Mocha", Price = 550 });
-        //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAPPUCCINO, ProductName = "Cappuccino", Price = 500 });
-        //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_ESPRESSO, ProductName = "Flat White", Price = 500 });
-        //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_FLAT_WHITE, ProductName = "Oleato Latte", Price = 550 });
-        //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_OLEATO_LATTE, ProductName = "Espresso", Price = 400 });
+            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_AMERICANO, ProductName = "Americano", Price = 440 });
+            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_BREWED_COFFEE, ProductName = "Brewed Coffee", Price = 480 });
+            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_LATTE, ProductName = "Caffe Latte", Price = 500 });
+            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_MOCHA, ProductName = "Caffe Mocha", Price = 550 });
+            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAPPUCCINO, ProductName = "Cappuccino", Price = 500 });
+            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_ESPRESSO, ProductName = "Flat White", Price = 500 });
+            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_FLAT_WHITE, ProductName = "Oleato Latte", Price = 550 });
+            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_OLEATO_LATTE, ProductName = "Espresso", Price = 400 });
 
 
-        //    DialogBuilder.Show(IPayDialog.UNATTENDED_VENDING_STORE_DIALOG, string.Empty, (iResult, args) =>
-        //    {
+            //    DialogBuilder.Show(IPayDialog.UNATTENDED_VENDING_STORE_DIALOG, string.Empty, (iResult, args) =>
+            //    {
 
-        //        //UnattendedVendingStoreDialog
-        //    }, true, false, listProductModel);
-        //}
+            //        //UnattendedVendingStoreDialog
+            //    }, true, false, listProductModel);
+            //}
 
-        //void ShowUnattendAdvertisingDialog()
-        //{
+            //void ShowUnattendAdvertisingDialog()
+            //{
 
-        //    string imagePath = IconIds.IMG_UNATTENDED_FUEL;
-        //    //imagePaths = IconIds.IMG_UNATTENDED_FUEL;
-        //    //imagePaths = IconIds.IMG_UNATTENDED_VENDING;
-        //    //imagePaths = IconIds.IMG_UNATTENDED_EV;
-            
+            //    string imagePath = IconIds.IMG_UNATTENDED_FUEL;
+            //    //imagePaths = IconIds.IMG_UNATTENDED_FUEL;
+            //    //imagePaths = IconIds.IMG_UNATTENDED_VENDING;
+            //    //imagePaths = IconIds.IMG_UNATTENDED_EV;
 
-        //    DialogBuilder.Show(IPayDialog.UNATTENDED_ADVERTISING_DIALOG, string.Empty, (Result, args) =>
-        //    {
 
-        //    }, true, false, imagePath);
+            //    DialogBuilder.Show(IPayDialog.UNATTENDED_ADVERTISING_DIALOG, string.Empty, (Result, args) =>
+            //    {
+
+            //    }, true, false, imagePath);
         }
 
         void ShowSelectApplicationTypeDialog()
@@ -6347,7 +6347,7 @@ namespace CloudBanking.UITestApp
         {
             var noCVVStatusDlgData = new StandardSetupDialogModel()
             {
-                IsHasListDivider = false,
+                //IsHasListDivider = false,
                 OkBtnTitleId = StringIds.STRING_SELECT,
                 OKBtnCommandId = GlobalResource.OK_BUTTON,
                 Items = new List<BaseEditModel>()
@@ -6358,7 +6358,7 @@ namespace CloudBanking.UITestApp
                         TitleId = StringIds.STRING_CVV_NOT_PRESENT,
                         Identifier = GlobalResource.NOT_PRESENT,
                         Value =true,
-                        IsHasEndLine = true
+                        //IsHasEndLine = true
                     },
                     new RadioEditModel()
                     {
@@ -6366,7 +6366,7 @@ namespace CloudBanking.UITestApp
                         TitleId = StringIds.STRING_CVV_UNREADABLE,
                         Identifier = GlobalResource.CVV_UNREADABLE,
                         Value = false,
-                        IsHasEndLine = true
+                        //IsHasEndLine = true
                     },
                     new RadioEditModel()
                     {
@@ -6374,7 +6374,7 @@ namespace CloudBanking.UITestApp
                         TitleId = StringIds.STRING_NO_CVV_ON_CARD,
                         Identifier = GlobalResource.NO_CVV_ON_CARD,
                         Value = false,
-                        IsHasEndLine = false
+                        //IsHasEndLine = false
                     }
                 }
             };
@@ -6543,12 +6543,12 @@ namespace CloudBanking.UITestApp
                 IsVectorImg = true,
                 Name = "Charity 2",
                 Index = 2,
-                HasBottomLine = false
+                //HasBottomLine = false
             });
 
             DialogBuilder.Show(IPayDialog.DONATION_PAYMENTDONATIONS_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
             {
-               
+
 
             }, true, false, paymentDonations, lTotalDonations);
         }
@@ -6561,6 +6561,72 @@ namespace CloudBanking.UITestApp
             {
                 //DonationAmountEnterDialog
             }, true, false, enteredAmount, true, StringIds.STRING_DONATION, StringIds.STRING_CANCEL, StringIds.STRING_DONATION_OK, false);
+        }
+
+        void ShowSetupMerchantAccessDialog()
+        {
+            var merchantAccessDlgData = new StandardSetupDialogModel()
+            {
+                CancelTitleId = StringIds.STRING_CANCEL,
+                CancelBtnCommandId = GlobalResource.CANCEL_BUTTON,
+                OkBtnTitleId = StringIds.STRING_SAVE,
+                OKBtnCommandId = GlobalResource.SAVE_BUTTON,
+                Items = new List<BaseEditModel>()
+                {
+                    new OnlyTitleModel()
+                    {
+                        TitleId = StringIds.STRING_MERCHANT_SETUP,
+                        SpanSize = 2
+                    },
+                    new SwitcherEditModel()
+                    {
+                        TitleId = StringIds.STRING_ENABLED,
+                        Value = true,
+                        PropertyName = "merchant_setup_enabled",
+                        SpanSize = 2
+                    },
+                    new InputNumberFixedKeyboardEditModel()
+                    {
+                        TitleId = StringIds.STRING_PASSCODE,
+                        PropertyName = "merchant_setup_passcode",
+                        Value = 193217,
+                        SpanSize = 2
+                    },
+                    new OnlyTitleModel()
+                    {
+                        TitleId = StringIds.STRING_STANDARD_PAYMENT_APP,
+                        SpanSize = 2
+                    },
+                    new SwitcherEditModel()
+                    {
+                        TitleId = StringIds.STRING_ENABLED,
+                        Value = true,
+                        PropertyName = "payment_app_enabled",
+                        SpanSize = 2
+
+                    },
+                    new InputNumberFixedKeyboardEditModel()
+                    {
+                        TitleId = StringIds.STRING_PASSCODE,
+                        PropertyName = "payment_app_passcode",
+                        Value = 193217,
+                        SpanSize = 2
+                    },
+                     new AvatarImageModel()
+                    {
+                        AvatarTitleId = StringIds.STRING_MERCHANT_IMAGE,
+                        QrCodeTitleId = StringIds.STRING_MERCHANT_QR,
+                        AvatarImageName = "dr_michael_patterson",
+                        SpanSize = 2,
+                        QrCodeContent = "abcdefdakjkadkahhhh"
+                    },
+                }
+            };
+
+            DialogBuilder.Show(IShellDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_ACCESS_PASSCODE, (result, args) =>
+            {
+                //SetupMerchantAccessDialog
+            }, true, false, merchantAccessDlgData);
         }
     }
 }

@@ -642,6 +642,34 @@ namespace CloudBanking.UITestApp
         #region InitializeCommonData
         private void InitializeCommonData()
         {
+
+#if true
+            #region Epay Multi Issue
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EpayConfirmationDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowEpayConfirmationDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EpayReviewPaymentDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowEpayReviewPaymentDialog();
+                })
+            });
+
+            #endregion
+
+#endif
+
 #if false
             #region Unattended Flow
 
@@ -1214,7 +1242,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true    // 
+#if false    // 
 
             #region Setup Flow
 
@@ -1701,7 +1729,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // 
+#if false // 
 
             #region Main Payment Flow
 

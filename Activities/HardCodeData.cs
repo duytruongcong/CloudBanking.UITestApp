@@ -6625,8 +6625,95 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IShellDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_ACCESS_PASSCODE, (result, args) =>
             {
-                //SetupMerchantAccessDialog
+                //StandardSetupDialog
             }, true, false, merchantAccessDlgData);
+        }
+
+        void ShowEpayReviewPaymentDialog()
+        {
+            long purchase = 10000;
+            var data = new EpayReviewPaymentDlgData()
+            {
+                TotalBalance = 23750,
+                SubHeaderTitle = StringIds.STRING_PURCHASE_AND_FEES
+            };
+
+            data.PaymentItems.Add(new ResultViewModel()
+            {
+                Title = StringIds.STRING_FUNCTIONTYPES_SALE,
+                Value = purchase.ToFormatLocalCurrencyAmount(),
+                IsRightTextBold = true
+            });
+
+            data.PaymentItems.Add(new ResultViewModel()
+            {
+                Title = StringIds.STRING_CASHOUT,
+                Value = purchase.ToFormatLocalCurrencyAmount(),
+                IsRightTextBold = true
+            });
+
+            data.PaymentItems.Add(new ResultViewModel()
+            {
+                Title = StringIds.STRING_CASHOUTFEE,
+                Value = purchase.ToFormatLocalCurrencyAmount(),
+                IsRightTextBold = true
+            });
+
+            data.PaymentItems.Add(new ResultViewModel()
+            {
+                Title = StringIds.STRING_2_DEGREES_FORTNIGHTLY,
+                Value = purchase.ToFormatLocalCurrencyAmount(),
+                IsRightTextBold = true
+            });
+
+            data.PaymentItems.Add(new ResultViewModel()
+            {
+                Title = StringIds.STRING_RESERVE_FUNDS,
+                Value = purchase.ToFormatLocalCurrencyAmount(),
+                IsRightTextBold = true
+            });
+
+            data.PaymentItems.Add(new ResultViewModel()
+            {
+                Title = StringIds.STRING_GIFT_CARD_SALE,
+                Value = purchase.ToFormatLocalCurrencyAmount(),
+                IsRightTextBold = true
+            });
+
+            data.PaymentItems.Add(new ResultViewModel()
+            {
+                Title = StringIds.STRING_GIFT_CARD_SALE,
+                Value = purchase.ToFormatLocalCurrencyAmount(),
+                IsRightTextBold = true
+            });
+
+            data.PaymentItems.Add(new ResultViewModel()
+            {
+                Id = StringIds.STRING_CURRENCY,
+                Value = "NZ Currency",
+                IsSpecial = true,
+                IsRightTextBold = true
+            });
+
+            DialogBuilder.Show(IPayDialog.EPAY_REVIEW_PAYMENT_DIALOG, StringIds.STRING_CONFIRMATION, (iResult, args) =>
+            {
+                //EpayReviewPaymentDialog
+            }, true, false, data);
+        }
+
+        void ShowEpayConfirmationDialog()
+        {
+            EpayConfirmationDlgData dlgData = new EpayConfirmationDlgData() 
+            { 
+                TotalBalance = 10000,
+                MainTitleId = StringIds.STRING_FUNCTIONTYPES_SALE,
+                MessageId = StringIds.STRING_DELETE_THIS_TRANSACTION_
+            };
+
+            DialogBuilder.Show(IPayDialog.EPAY_CONFIRMATION_DIALOG, StringIds.STRING_DELETE_TRANSACTION, (iResult, args) =>
+            {
+                //EpayConfirmationDialog
+            }, true, false, dlgData);
         }
     }
 }

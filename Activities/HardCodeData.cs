@@ -282,7 +282,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = true;// change to show difference case
+            RequestDlgData.fNoPresentCard = false;// change to show difference case
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -4929,9 +4929,9 @@ namespace CloudBanking.UITestApp
 
             var dlgData = new SelectCharityDlgData()
             {
-                Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
+                //Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
                 fHideCancelButton = true,
-                //Items = new List<StandaloneCharity>() { standaloneCharity01 }
+                Items = new List<StandaloneCharity>() { standaloneCharity01 }
             };
 
             DialogBuilder.Show(IPayDialog.DONATION_SELECT_FIRST_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
@@ -6612,14 +6612,14 @@ namespace CloudBanking.UITestApp
                         Value = 193217,
                         SpanSize = 2
                     },
-                     new AvatarImageModel()
-                    {
-                        AvatarTitleId = StringIds.STRING_MERCHANT_IMAGE,
-                        QrCodeTitleId = StringIds.STRING_MERCHANT_QR,
-                        AvatarImageName = "dr_michael_patterson",
-                        SpanSize = 2,
-                        QrCodeContent = "abcdefdakjkadkahhhh"
-                    },
+                    // new AvatarImageModel()
+                    //{
+                    //    AvatarTitleId = StringIds.STRING_MERCHANT_IMAGE,
+                    //    QrCodeTitleId = StringIds.STRING_MERCHANT_QR,
+                    //    AvatarImageName = "dr_michael_patterson",
+                    //    SpanSize = 2,
+                    //    QrCodeContent = "abcdefdakjkadkahhhh"
+                    //},
                 }
             };
 
@@ -6631,89 +6631,107 @@ namespace CloudBanking.UITestApp
 
         void ShowEpayReviewPaymentDialog()
         {
-            long purchase = 10000;
-            var data = new EpayReviewPaymentDlgData()
-            {
-                TotalBalance = 23750,
-                SubHeaderTitle = StringIds.STRING_PURCHASE_AND_FEES
-            };
+            //long purchase = 10000;
+            //var data = new EpayReviewPaymentDlgData()
+            //{
+            //    TotalBalance = 23750,
+            //    SubHeaderTitle = StringIds.STRING_PURCHASE_AND_FEES
+            //};
 
-            data.PaymentItems.Add(new ResultViewModel()
-            {
-                Title = StringIds.STRING_FUNCTIONTYPES_SALE,
-                Value = purchase.ToFormatLocalCurrencyAmount(),
-                IsRightTextBold = true
-            });
+            //data.PaymentItems.Add(new ResultViewModel()
+            //{
+            //    Title = StringIds.STRING_FUNCTIONTYPES_SALE,
+            //    Value = purchase.ToFormatLocalCurrencyAmount(),
+            //    IsRightTextBold = true
+            //});
 
-            data.PaymentItems.Add(new ResultViewModel()
-            {
-                Title = StringIds.STRING_CASHOUT,
-                Value = purchase.ToFormatLocalCurrencyAmount(),
-                IsRightTextBold = true
-            });
+            //data.PaymentItems.Add(new ResultViewModel()
+            //{
+            //    Title = StringIds.STRING_CASHOUT,
+            //    Value = purchase.ToFormatLocalCurrencyAmount(),
+            //    IsRightTextBold = true
+            //});
 
-            data.PaymentItems.Add(new ResultViewModel()
-            {
-                Title = StringIds.STRING_CASHOUTFEE,
-                Value = purchase.ToFormatLocalCurrencyAmount(),
-                IsRightTextBold = true
-            });
+            //data.PaymentItems.Add(new ResultViewModel()
+            //{
+            //    Title = StringIds.STRING_CASHOUTFEE,
+            //    Value = purchase.ToFormatLocalCurrencyAmount(),
+            //    IsRightTextBold = true
+            //});
 
-            data.PaymentItems.Add(new ResultViewModel()
-            {
-                Title = StringIds.STRING_2_DEGREES_FORTNIGHTLY,
-                Value = purchase.ToFormatLocalCurrencyAmount(),
-                IsRightTextBold = true
-            });
+            //data.PaymentItems.Add(new ResultViewModel()
+            //{
+            //    Title = StringIds.STRING_2_DEGREES_FORTNIGHTLY,
+            //    Value = purchase.ToFormatLocalCurrencyAmount(),
+            //    IsRightTextBold = true
+            //});
 
-            data.PaymentItems.Add(new ResultViewModel()
-            {
-                Title = StringIds.STRING_RESERVE_FUNDS,
-                Value = purchase.ToFormatLocalCurrencyAmount(),
-                IsRightTextBold = true
-            });
+            //data.PaymentItems.Add(new ResultViewModel()
+            //{
+            //    Title = StringIds.STRING_RESERVE_FUNDS,
+            //    Value = purchase.ToFormatLocalCurrencyAmount(),
+            //    IsRightTextBold = true
+            //});
 
-            data.PaymentItems.Add(new ResultViewModel()
-            {
-                Title = StringIds.STRING_GIFT_CARD_SALE,
-                Value = purchase.ToFormatLocalCurrencyAmount(),
-                IsRightTextBold = true
-            });
+            //data.PaymentItems.Add(new ResultViewModel()
+            //{
+            //    Title = StringIds.STRING_GIFT_CARD_SALE,
+            //    Value = purchase.ToFormatLocalCurrencyAmount(),
+            //    IsRightTextBold = true
+            //});
 
-            data.PaymentItems.Add(new ResultViewModel()
-            {
-                Title = StringIds.STRING_GIFT_CARD_SALE,
-                Value = purchase.ToFormatLocalCurrencyAmount(),
-                IsRightTextBold = true
-            });
+            //data.PaymentItems.Add(new ResultViewModel()
+            //{
+            //    Title = StringIds.STRING_GIFT_CARD_SALE,
+            //    Value = purchase.ToFormatLocalCurrencyAmount(),
+            //    IsRightTextBold = true
+            //});
 
-            data.PaymentItems.Add(new ResultViewModel()
-            {
-                Id = StringIds.STRING_CURRENCY,
-                Value = "NZ Currency",
-                IsSpecial = true,
-                IsRightTextBold = true
-            });
+            //data.PaymentItems.Add(new ResultViewModel()
+            //{
+            //    Id = StringIds.STRING_CURRENCY,
+            //    Value = "NZ Currency",
+            //    IsSpecial = true,
+            //    IsRightTextBold = true
+            //});
 
-            DialogBuilder.Show(IPayDialog.EPAY_REVIEW_PAYMENT_DIALOG, StringIds.STRING_CONFIRMATION, (iResult, args) =>
-            {
-                //EpayReviewPaymentDialog
-            }, true, false, data);
+            //DialogBuilder.Show(IPayDialog.EPAY_REVIEW_PAYMENT_DIALOG, StringIds.STRING_CONFIRMATION, (iResult, args) =>
+            //{
+            //    //EpayReviewPaymentDialog
+            //}, true, false, data);
         }
 
         void ShowEpayConfirmationDialog()
         {
-            EpayConfirmationDlgData dlgData = new EpayConfirmationDlgData() 
-            { 
-                TotalBalance = 10000,
-                MainTitleId = StringIds.STRING_FUNCTIONTYPES_SALE,
-                MessageId = StringIds.STRING_DELETE_THIS_TRANSACTION_
+            //EpayConfirmationDlgData dlgData = new EpayConfirmationDlgData() 
+            //{ 
+            //    TotalBalance = 10000,
+            //    MainTitleId = StringIds.STRING_FUNCTIONTYPES_SALE,
+            //    MessageId = StringIds.STRING_DELETE_THIS_TRANSACTION_
+            //};
+
+            //DialogBuilder.Show(IPayDialog.EPAY_CONFIRMATION_DIALOG, StringIds.STRING_DELETE_TRANSACTION, (iResult, args) =>
+            //{
+            //    //EpayConfirmationDialog
+            //}, true, false, dlgData);
+        }
+
+        void ShowCheckIdScanQRCodeDialog()
+        {
+
+            CheckIdScanQRCodeDlgData data = new CheckIdScanQRCodeDlgData()
+            {
+                TopIconResId = Resource.Drawable.vector_eighteen_plus,
+                MainTitleId = StringIds.STRING_ALCOHOL_18,
+                ReceiptQrCode = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo"
             };
 
-            DialogBuilder.Show(IPayDialog.EPAY_CONFIRMATION_DIALOG, StringIds.STRING_DELETE_TRANSACTION, (iResult, args) =>
+            
+
+            DialogBuilder.Show(IPayDialog.CHECK_ID_SCAN_QR_CODE_DIALOG, StringIds.STRING_RECEIPT_CLAIM, (iResult, args) =>
             {
-                //EpayConfirmationDialog
-            }, true, false, dlgData);
+
+            }, true, false, data);
         }
     }
 }

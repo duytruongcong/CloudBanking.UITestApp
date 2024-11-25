@@ -6722,13 +6722,77 @@ namespace CloudBanking.UITestApp
             CheckIdScanQRCodeDlgData data = new CheckIdScanQRCodeDlgData()
             {
                 TopIconResId = Resource.Drawable.vector_eighteen_plus,
-                MainTitleId = StringIds.STRING_ALCOHOL_18,
+                MainTitleId = StringIds.STRING_ALCOHOL,
                 ReceiptQrCode = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo"
             };
 
-            
+            DialogBuilder.Show(IPayDialog.CHECK_ID_SCAN_QR_CODE_DIALOG, StringIds.STRING_ID_CHECK, (iResult, args) =>
+            {
 
-            DialogBuilder.Show(IPayDialog.CHECK_ID_SCAN_QR_CODE_DIALOG, StringIds.STRING_RECEIPT_CLAIM, (iResult, args) =>
+            }, true, false, data);
+        }
+
+        void ShowCheckIdResultDialog(CaseDialog caseDialog)
+        {
+            CheckIdResultDlgData data = new CheckIdResultDlgData();
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1://Acolhol_18
+                    data.CheckIdAge = CheckIdAge.Eighteen;
+                    data.MainTitleId = StringIds.STRING_ALCOHOL;
+                    data.IsSuccess = true;
+                    break;
+                case CaseDialog.CASE2://Acolhol_18
+                    data.CheckIdAge = CheckIdAge.Eighteen;
+                    data.MainTitleId = StringIds.STRING_ALCOHOL;
+                    data.IsSuccess = false;
+                    break;
+                case CaseDialog.CASE3://EnergyDrinks_16
+                    data.CheckIdAge = CheckIdAge.Sixteen;
+                    data.MainTitleId = StringIds.STRING_ENERGY_DRINKS;
+                    data.IsSuccess = true;
+                    break;
+                case CaseDialog.CASE4://EnergyDrinks_16
+                    data.MainTitleId = StringIds.STRING_ENERGY_DRINKS;
+                    data.CheckIdAge = CheckIdAge.Sixteen;
+                    data.IsSuccess = false;
+                    break;
+                case CaseDialog.CASE5://EntryRestriction_25
+                    data.CheckIdAge = CheckIdAge.TwentyFive;
+                    data.MainTitleId = StringIds.STRING_ENTRY_RESTRICTION;
+                    data.IsSuccess = true;
+                    break;
+                case CaseDialog.CASE6://EntryRestriction_25
+                    data.CheckIdAge = CheckIdAge.TwentyFive;
+                    data.MainTitleId = StringIds.STRING_ENTRY_RESTRICTION;
+                    data.IsSuccess = false;
+                    break;
+                case CaseDialog.CASE7://SmokingBan_2008
+                    data.CheckIdAge = CheckIdAge.TwoThousandAndEight;
+                    data.MainTitleId = StringIds.STRING_SMOKING_BAN;
+                    data.IsSuccess = true;
+                    break;
+                case CaseDialog.CASE8://SmokingBan_2008
+                    data.CheckIdAge = CheckIdAge.TwoThousandAndEight;
+                    data.MainTitleId = StringIds.STRING_SMOKING_BAN;
+                    data.IsSuccess = false;
+                    break;
+                case CaseDialog.CASE9://Cigarettes_18
+                    data.CheckIdAge = CheckIdAge.Eighteen;
+                    data.MainTitleId = StringIds.STRING_CIGARETTES;
+                    data.IsSuccess = true;
+                    break;
+                case CaseDialog.CASE10://Cigarettes_18
+                    data.CheckIdAge = CheckIdAge.Eighteen;
+                    data.MainTitleId = StringIds.STRING_CIGARETTES;
+                    data.IsSuccess = false;
+                    break;
+                default:
+                    break;
+            }
+
+            DialogBuilder.Show(IPayDialog.CHECK_ID_RESULT_DIALOG, StringIds.STRING_CHECK_ID, (iResult, args) =>
             {
 
             }, true, false, data);

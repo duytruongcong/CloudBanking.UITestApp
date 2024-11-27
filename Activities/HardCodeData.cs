@@ -6721,9 +6721,12 @@ namespace CloudBanking.UITestApp
 
             CheckIdScanQRCodeDlgData data = new CheckIdScanQRCodeDlgData()
             {
-                TopIconResId = Resource.Drawable.vector_eighteen_plus,
+                TopIconResId = IconIds.VECTOR_TWENTY_FIVE_PLUS_GREEN,
                 MainTitleId = StringIds.STRING_ALCOHOL,
-                ReceiptQrCode = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo"
+                BottomButtonTextId = StringIds.STRING_CANCEL,
+                BottomButtonCommand = GlobalResource.BACK_BUTTON,
+                ReceiptQrCode = "siopv2://authorize?response_type=id_token&scope=openid,IdentityOver18Credential&id_token_type=subject_signed&client_id=https%3A%2F%2Frvp9pgvdv6.execute-api.ap-southeast-2.amazonaws.com%2Fpoc%2Fv1%2Foidc4vc%2Fdia%2Fvp-tokens&response_mode=post&redirect_uri=https%3A%2F%2Frvp9pgvdv6.execute-api.ap-southeast-2.amazonaws.com%2Fpoc%2Fv1%2Foidc4vc%2Fdia%2Fvp-tokens%2FRU5USVRZI2NjNjUwY2FiLTY3OGMtNDI2Yy1hNjc2LWJjYmQyNDBmNTk4NX5ESUdJVEFMX0lEX1RSQU5TQUNUSU9OI2VlM2ExNDZhLTM1MmUtNGQzNy04NWUyLTYxNGYzYjNlOGYyYn4yZjA5Y2UzYi1jODE3LTRiNGItOWU4Ni1kZDA4OWQyMTRjNGU%3D&nonce=RU5USVRZI2NjNjUwY2FiLTY3OGMtNDI2Yy1hNjc2LWJjYmQyNDBmNTk4NX5ESUdJVEFMX0lEX1RSQU5TQUNUSU9OI2VlM2ExNDZhLTM1MmUtNGQzNy04NWUyLTYxNGYzYjNlOGYyYn4yZjA5Y2UzYi1jODE3LTRiNGItOWU4Ni1kZDA4OWQyMTRjNGU%3D&client_metadata=%7B%22subject_syntax_types_supported%22%3A%5Bdid%3Ajwk22%5D%2C%22id_token_signed_response_alg%22%3A%22ES256%22%7D",
+                
             };
 
             DialogBuilder.Show(IPayDialog.CHECK_ID_SCAN_QR_CODE_DIALOG, StringIds.STRING_ID_CHECK, (iResult, args) =>
@@ -6792,10 +6795,34 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            DialogBuilder.Show(IPayDialog.CHECK_ID_RESULT_DIALOG, StringIds.STRING_CHECK_ID, (iResult, args) =>
+            DialogBuilder.Show(IPayDialog.CHECK_ID_RESULT_DIALOG, StringIds.STRING_ID_CHECK_TITLE, (iResult, args) =>
             {
 
             }, true, false, data);
+        }
+
+        void ShowCheckIdNotificationDialog(CaseDialog caseDialog)
+        {
+            //var data = new CheckIdNotificationDlgData();
+
+            //switch(caseDialog)
+            //{
+            //    case CaseDialog.CASE1:
+            //        data.TopTitleId = StringIds.STRING_DECLINED_BEEFEATERS_GIN;
+            //        data.BottomTitleId = StringIds.STRING_AGE_18_RESTRICTIONS;
+            //        data.MainIconResId = Resource.Drawable.vector_eighteen_plus_red_no_bg;
+            //        break;
+            //    case CaseDialog.CASE2:
+            //        data.TopTitleId = StringIds.STRING_DECLINED_BORN_AFTER_2008;
+            //        data.BottomTitleId = StringIds.STRING_MARLBORO_CIGARETTES;
+            //        data.MainIconResId = Resource.Drawable.vector_2008_red_no_bg;
+            //        break;
+            //}
+
+            //DialogBuilder.Show(IPayDialog.CHECK_ID_NOTIFICATION_DIALOG, StringIds.STRING_ID_CHECK_TITLE, (iResult, args) =>
+            //{
+            //    //CheckIdNotificationDialog
+            //}, true, false, data);
         }
     }
 }

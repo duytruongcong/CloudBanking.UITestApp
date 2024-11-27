@@ -648,105 +648,125 @@ namespace CloudBanking.UITestApp
 #if true
             #region Id Check Flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE10",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE10);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdNotificationDialog CASE2",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdNotificationDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE9",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE9);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdNotificationDialog CASE1",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdNotificationDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE8",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE8);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE10",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE10);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE7",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE7);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE9",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE9);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE6",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE6);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE8",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE8);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE5",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE5);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE7",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE7);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE4",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE4);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE6",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE6);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE3",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE3);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE5",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE5);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE2",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE4",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE4);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"CheckIdResultDialog CASE1",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowCheckIdResultDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE3",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE3);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE2",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE2);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CheckIdResultDialog CASE1",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCheckIdResultDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {

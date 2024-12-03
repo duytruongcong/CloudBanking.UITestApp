@@ -1888,10 +1888,7 @@ namespace CloudBanking.UITestApp
                         //EmailReceiptSendResultDialog
                     }, true, false, new ReceiptResultDlgData(selectedCellNumber, UtilEnum.ReceiptType.Text, false));
                     break;
-
             }
-
-
         }
 
         void ListPaymentRecordDialog()
@@ -4633,7 +4630,7 @@ namespace CloudBanking.UITestApp
 
         }
 
-        void SelectDCCCurrency()
+        void SelectDCCCurrency(CaseDialog caseDialog)
         {
             Currency currency;
 
@@ -4669,6 +4666,17 @@ namespace CloudBanking.UITestApp
                 DlgData.HomeCurrency = currency.wszCurrencyCode;
                 DlgData.HomeCountry = "USD";
                 DlgData.HomeImage = currency.iCurrencyCodeFlag;
+            }
+
+            switch(caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    DialogBuilder.IsShowHeader = true;
+                    break;
+
+                case CaseDialog.CASE2:
+                    DialogBuilder.IsShowHeader = false;
+                    break;
             }
 
             DialogBuilder.Show(IShellDialog.SELECT_DCCCURRENCY_DIALOG, StringIds.STRING_CURRENCY, (iResult, args) =>
@@ -4931,7 +4939,7 @@ namespace CloudBanking.UITestApp
             {
                 //Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
                 fHideCancelButton = true,
-                Items = new List<StandaloneCharity>() { standaloneCharity01 }
+                //Items = new List<StandaloneCharity>() { standaloneCharity01 }
             };
 
             DialogBuilder.Show(IPayDialog.DONATION_SELECT_FIRST_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
@@ -5667,35 +5675,35 @@ namespace CloudBanking.UITestApp
 
         void ShowUnattendedGetAmountDialog(CaseDialog caseDialog)
         {
-            //var data = new GetAmountDlgData();
+            var data = new GetAmountDlgData();
 
-            //data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
-            //data.EntryAmountTitleId = StringIds.STRING_AMOUNT_PREAPPROVED;
-            //data.plszReference = "123456";
-            //data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
-            ////data.isEnabledEntryAmount = false;
+            data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
+            data.EntryAmountTitleId = StringIds.STRING_AMOUNT_PREAPPROVED;
+            data.plszReference = "123456";
+            data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+            //data.isEnabledEntryAmount = false;
 
-            //switch (caseDialog)
-            //{
-            //    case CaseDialog.CASE1:
-            //        data.fShowReference = false;
-            //        //data.isEnabledEntryAmount = true;
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    data.fShowReference = false;
+                    //data.isEnabledEntryAmount = true;
 
-            //        break;
-            //    case CaseDialog.CASE2:
-            //        data.fShowReference = true;
-            //        //data.isEnabledEntryAmount = false;
-            //        break;
+                    break;
+                case CaseDialog.CASE2:
+                    data.fShowReference = true;
+                    //data.isEnabledEntryAmount = false;
+                    break;
 
-            //    default:
-            //        data.fShowReference = true;
-            //        //data.isEnabledEntryAmount = true;
-            //        break;
-            //}
+                default:
+                    data.fShowReference = true;
+                    //data.isEnabledEntryAmount = true;
+                    break;
+            }
 
-            //var dialog = new UnattendedGetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
-            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog.Show(this);
+            var dialog = new UnattendedGetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
         }
 
         private void ShowUnattendedRequestCardDialog(CaseDialog caseDialog)
@@ -6239,38 +6247,38 @@ namespace CloudBanking.UITestApp
         void ShowUnattendedVendingStoreDialog()
         {
 
-            //    List<UnattendedVendingProductViewModel> listProductModel = new List<UnattendedVendingProductViewModel>();
+            List<UnattendedVendingProductViewModel> listProductModel = new List<UnattendedVendingProductViewModel>();
 
-            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_AMERICANO, ProductName = "Americano", Price = 440 });
-            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_BREWED_COFFEE, ProductName = "Brewed Coffee", Price = 480 });
-            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_LATTE, ProductName = "Caffe Latte", Price = 500 });
-            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_MOCHA, ProductName = "Caffe Mocha", Price = 550 });
-            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAPPUCCINO, ProductName = "Cappuccino", Price = 500 });
-            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_ESPRESSO, ProductName = "Flat White", Price = 500 });
-            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_FLAT_WHITE, ProductName = "Oleato Latte", Price = 550 });
-            //    listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_OLEATO_LATTE, ProductName = "Espresso", Price = 400 });
-
-
-            //    DialogBuilder.Show(IPayDialog.UNATTENDED_VENDING_STORE_DIALOG, string.Empty, (iResult, args) =>
-            //    {
-
-            //        //UnattendedVendingStoreDialog
-            //    }, true, false, listProductModel);
-            //}
-
-            //void ShowUnattendAdvertisingDialog()
-            //{
-
-            //    string imagePath = IconIds.IMG_UNATTENDED_FUEL;
-            //    //imagePaths = IconIds.IMG_UNATTENDED_FUEL;
-            //    //imagePaths = IconIds.IMG_UNATTENDED_VENDING;
-            //    //imagePaths = IconIds.IMG_UNATTENDED_EV;
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_AMERICANO, ProductName = "Americano", Price = 440 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_BREWED_COFFEE, ProductName = "Brewed Coffee", Price = 480 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_LATTE, ProductName = "Caffe Latte", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_MOCHA, ProductName = "Caffe Mocha", Price = 550 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAPPUCCINO, ProductName = "Cappuccino", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_ESPRESSO, ProductName = "Flat White", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_FLAT_WHITE, ProductName = "Oleato Latte", Price = 550 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_OLEATO_LATTE, ProductName = "Espresso", Price = 400 });
 
 
-            //    DialogBuilder.Show(IPayDialog.UNATTENDED_ADVERTISING_DIALOG, string.Empty, (Result, args) =>
-            //    {
+            DialogBuilder.Show(IPayDialog.UNATTENDED_VENDING_STORE_DIALOG, string.Empty, (iResult, args) =>
+            {
 
-            //    }, true, false, imagePath);
+                //UnattendedVendingStoreDialog
+            }, true, false, listProductModel);
+        }
+
+        void ShowUnattendAdvertisingDialog()
+        {
+
+            string imagePath = IconIds.IMG_UNATTENDED_FUEL;
+            //imagePaths = IconIds.IMG_UNATTENDED_FUEL;
+            //imagePaths = IconIds.IMG_UNATTENDED_VENDING;
+            //imagePaths = IconIds.IMG_UNATTENDED_EV;
+
+
+            DialogBuilder.Show(IPayDialog.UNATTENDED_ADVERTISING_DIALOG, string.Empty, (Result, args) =>
+            {
+
+            }, true, false, imagePath);
         }
 
         void ShowSelectApplicationTypeDialog()
@@ -6719,86 +6727,86 @@ namespace CloudBanking.UITestApp
         void ShowCheckIdScanQRCodeDialog()
         {
 
-            CheckIdScanQRCodeDlgData data = new CheckIdScanQRCodeDlgData()
-            {
-                TopIconResId = IconIds.VECTOR_TWENTY_FIVE_PLUS_GREEN,
-                MainTitleId = StringIds.STRING_ALCOHOL,
-                BottomButtonTextId = StringIds.STRING_CANCEL,
-                BottomButtonCommand = GlobalResource.BACK_BUTTON,
-                ReceiptQrCode = "siopv2://authorize?response_type=id_token&scope=openid,IdentityOver18Credential&id_token_type=subject_signed&client_id=https%3A%2F%2Frvp9pgvdv6.execute-api.ap-southeast-2.amazonaws.com%2Fpoc%2Fv1%2Foidc4vc%2Fdia%2Fvp-tokens&response_mode=post&redirect_uri=https%3A%2F%2Frvp9pgvdv6.execute-api.ap-southeast-2.amazonaws.com%2Fpoc%2Fv1%2Foidc4vc%2Fdia%2Fvp-tokens%2FRU5USVRZI2NjNjUwY2FiLTY3OGMtNDI2Yy1hNjc2LWJjYmQyNDBmNTk4NX5ESUdJVEFMX0lEX1RSQU5TQUNUSU9OI2VlM2ExNDZhLTM1MmUtNGQzNy04NWUyLTYxNGYzYjNlOGYyYn4yZjA5Y2UzYi1jODE3LTRiNGItOWU4Ni1kZDA4OWQyMTRjNGU%3D&nonce=RU5USVRZI2NjNjUwY2FiLTY3OGMtNDI2Yy1hNjc2LWJjYmQyNDBmNTk4NX5ESUdJVEFMX0lEX1RSQU5TQUNUSU9OI2VlM2ExNDZhLTM1MmUtNGQzNy04NWUyLTYxNGYzYjNlOGYyYn4yZjA5Y2UzYi1jODE3LTRiNGItOWU4Ni1kZDA4OWQyMTRjNGU%3D&client_metadata=%7B%22subject_syntax_types_supported%22%3A%5Bdid%3Ajwk22%5D%2C%22id_token_signed_response_alg%22%3A%22ES256%22%7D",
+            //CheckIdScanQRCodeDlgData data = new CheckIdScanQRCodeDlgData()
+            //{
+            //    TopIconResId = IconIds.VECTOR_TWENTY_FIVE_PLUS_GREEN,
+            //    MainTitleId = StringIds.STRING_ALCOHOL,
+            //    BottomButtonTextId = StringIds.STRING_CANCEL,
+            //    BottomButtonCommand = GlobalResource.BACK_BUTTON,
+            //    ReceiptQrCode = "siopv2://authorize?response_type=id_token&scope=openid,IdentityOver18Credential&id_token_type=subject_signed&client_id=https%3A%2F%2Frvp9pgvdv6.execute-api.ap-southeast-2.amazonaws.com%2Fpoc%2Fv1%2Foidc4vc%2Fdia%2Fvp-tokens&response_mode=post&redirect_uri=https%3A%2F%2Frvp9pgvdv6.execute-api.ap-southeast-2.amazonaws.com%2Fpoc%2Fv1%2Foidc4vc%2Fdia%2Fvp-tokens%2FRU5USVRZI2NjNjUwY2FiLTY3OGMtNDI2Yy1hNjc2LWJjYmQyNDBmNTk4NX5ESUdJVEFMX0lEX1RSQU5TQUNUSU9OI2VlM2ExNDZhLTM1MmUtNGQzNy04NWUyLTYxNGYzYjNlOGYyYn4yZjA5Y2UzYi1jODE3LTRiNGItOWU4Ni1kZDA4OWQyMTRjNGU%3D&nonce=RU5USVRZI2NjNjUwY2FiLTY3OGMtNDI2Yy1hNjc2LWJjYmQyNDBmNTk4NX5ESUdJVEFMX0lEX1RSQU5TQUNUSU9OI2VlM2ExNDZhLTM1MmUtNGQzNy04NWUyLTYxNGYzYjNlOGYyYn4yZjA5Y2UzYi1jODE3LTRiNGItOWU4Ni1kZDA4OWQyMTRjNGU%3D&client_metadata=%7B%22subject_syntax_types_supported%22%3A%5Bdid%3Ajwk22%5D%2C%22id_token_signed_response_alg%22%3A%22ES256%22%7D",
                 
-            };
+            //};
 
-            DialogBuilder.Show(IPayDialog.CHECK_ID_SCAN_QR_CODE_DIALOG, StringIds.STRING_ID_CHECK, (iResult, args) =>
-            {
+            //DialogBuilder.Show(IPayDialog.CHECK_ID_SCAN_QR_CODE_DIALOG, StringIds.STRING_ID_CHECK, (iResult, args) =>
+            //{
 
-            }, true, false, data);
+            //}, true, false, data);
         }
 
         void ShowCheckIdResultDialog(CaseDialog caseDialog)
         {
-            CheckIdResultDlgData data = new CheckIdResultDlgData();
+            //CheckIdResultDlgData data = new CheckIdResultDlgData();
 
-            switch (caseDialog)
-            {
-                case CaseDialog.CASE1://Acolhol_18
-                    data.CheckIdAge = CheckIdAge.Eighteen;
-                    data.MainTitleId = StringIds.STRING_ALCOHOL;
-                    data.IsSuccess = true;
-                    break;
-                case CaseDialog.CASE2://Acolhol_18
-                    data.CheckIdAge = CheckIdAge.Eighteen;
-                    data.MainTitleId = StringIds.STRING_ALCOHOL;
-                    data.IsSuccess = false;
-                    break;
-                case CaseDialog.CASE3://EnergyDrinks_16
-                    data.CheckIdAge = CheckIdAge.Sixteen;
-                    data.MainTitleId = StringIds.STRING_ENERGY_DRINKS;
-                    data.IsSuccess = true;
-                    break;
-                case CaseDialog.CASE4://EnergyDrinks_16
-                    data.MainTitleId = StringIds.STRING_ENERGY_DRINKS;
-                    data.CheckIdAge = CheckIdAge.Sixteen;
-                    data.IsSuccess = false;
-                    break;
-                case CaseDialog.CASE5://EntryRestriction_25
-                    data.CheckIdAge = CheckIdAge.TwentyFive;
-                    data.MainTitleId = StringIds.STRING_ENTRY_RESTRICTION;
-                    data.IsSuccess = true;
-                    break;
-                case CaseDialog.CASE6://EntryRestriction_25
-                    data.CheckIdAge = CheckIdAge.TwentyFive;
-                    data.MainTitleId = StringIds.STRING_ENTRY_RESTRICTION;
-                    data.IsSuccess = false;
-                    break;
-                case CaseDialog.CASE7://SmokingBan_2008
-                    data.CheckIdAge = CheckIdAge.TwoThousandAndEight;
-                    data.MainTitleId = StringIds.STRING_SMOKING_BAN;
-                    data.IsSuccess = true;
-                    break;
-                case CaseDialog.CASE8://SmokingBan_2008
-                    data.CheckIdAge = CheckIdAge.TwoThousandAndEight;
-                    data.MainTitleId = StringIds.STRING_SMOKING_BAN;
-                    data.IsSuccess = false;
-                    break;
-                case CaseDialog.CASE9://Cigarettes_18
-                    data.CheckIdAge = CheckIdAge.Eighteen;
-                    data.MainTitleId = StringIds.STRING_CIGARETTES;
-                    data.IsSuccess = true;
-                    break;
-                case CaseDialog.CASE10://Cigarettes_18
-                    data.CheckIdAge = CheckIdAge.Eighteen;
-                    data.MainTitleId = StringIds.STRING_CIGARETTES;
-                    data.IsSuccess = false;
-                    break;
-                default:
-                    break;
-            }
+            //switch (caseDialog)
+            //{
+            //    case CaseDialog.CASE1://Acolhol_18
+            //        data.CheckIdAge = CheckIdAge.Eighteen;
+            //        data.MainTitleId = StringIds.STRING_ALCOHOL;
+            //        data.IsSuccess = true;
+            //        break;
+            //    case CaseDialog.CASE2://Acolhol_18
+            //        data.CheckIdAge = CheckIdAge.Eighteen;
+            //        data.MainTitleId = StringIds.STRING_ALCOHOL;
+            //        data.IsSuccess = false;
+            //        break;
+            //    case CaseDialog.CASE3://EnergyDrinks_16
+            //        data.CheckIdAge = CheckIdAge.Sixteen;
+            //        data.MainTitleId = StringIds.STRING_ENERGY_DRINKS;
+            //        data.IsSuccess = true;
+            //        break;
+            //    case CaseDialog.CASE4://EnergyDrinks_16
+            //        data.MainTitleId = StringIds.STRING_ENERGY_DRINKS;
+            //        data.CheckIdAge = CheckIdAge.Sixteen;
+            //        data.IsSuccess = false;
+            //        break;
+            //    case CaseDialog.CASE5://EntryRestriction_25
+            //        data.CheckIdAge = CheckIdAge.TwentyFive;
+            //        data.MainTitleId = StringIds.STRING_ENTRY_RESTRICTION;
+            //        data.IsSuccess = true;
+            //        break;
+            //    case CaseDialog.CASE6://EntryRestriction_25
+            //        data.CheckIdAge = CheckIdAge.TwentyFive;
+            //        data.MainTitleId = StringIds.STRING_ENTRY_RESTRICTION;
+            //        data.IsSuccess = false;
+            //        break;
+            //    case CaseDialog.CASE7://SmokingBan_2008
+            //        data.CheckIdAge = CheckIdAge.TwoThousandAndEight;
+            //        data.MainTitleId = StringIds.STRING_SMOKING_BAN;
+            //        data.IsSuccess = true;
+            //        break;
+            //    case CaseDialog.CASE8://SmokingBan_2008
+            //        data.CheckIdAge = CheckIdAge.TwoThousandAndEight;
+            //        data.MainTitleId = StringIds.STRING_SMOKING_BAN;
+            //        data.IsSuccess = false;
+            //        break;
+            //    case CaseDialog.CASE9://Cigarettes_18
+            //        data.CheckIdAge = CheckIdAge.Eighteen;
+            //        data.MainTitleId = StringIds.STRING_CIGARETTES;
+            //        data.IsSuccess = true;
+            //        break;
+            //    case CaseDialog.CASE10://Cigarettes_18
+            //        data.CheckIdAge = CheckIdAge.Eighteen;
+            //        data.MainTitleId = StringIds.STRING_CIGARETTES;
+            //        data.IsSuccess = false;
+            //        break;
+            //    default:
+            //        break;
+            //}
 
-            DialogBuilder.Show(IPayDialog.CHECK_ID_RESULT_DIALOG, StringIds.STRING_ID_CHECK_TITLE, (iResult, args) =>
-            {
+            //DialogBuilder.Show(IPayDialog.CHECK_ID_RESULT_DIALOG, StringIds.STRING_ID_CHECK_TITLE, (iResult, args) =>
+            //{
 
-            }, true, false, data);
+            //}, true, false, data);
         }
 
         void ShowCheckIdNotificationDialog(CaseDialog caseDialog)
@@ -6823,6 +6831,55 @@ namespace CloudBanking.UITestApp
             //{
             //    //CheckIdNotificationDialog
             //}, true, false, data);
+        }
+
+        void ShowUnattendedRequestAliPayWeChatDialog(string szQRCode, bool fAliPay = true, bool blockUI = false, ResultStatus status = ResultStatus.None)
+        {
+            QrCodeAlipayWeChatDlgData dlgData = new QrCodeAlipayWeChatDlgData();
+
+            FunctionType iFunctionButton;
+
+            iFunctionButton = FunctionType.Purchase;
+
+            var titleId = string.Empty;
+
+            dlgData.lAmount = 13800;
+
+            dlgData.fAliPay = fAliPay;
+
+            dlgData.szQRCode = szQRCode;
+
+            dlgData.status = status;
+
+            dlgData.lSurcharge = 8000;
+
+            switch (iFunctionButton)
+            {
+                case FunctionType.Refund: titleId = StringIds.STRING_FUNCTIONTYPES_REFUND; break;
+                case FunctionType.Purchase: titleId = StringIds.STRING_PURCHASE; break;
+                case FunctionType.PurchaseCash: titleId = StringIds.STRING_PURCHASE_AND_CASH; break;
+                case FunctionType.Deposit: titleId = StringIds.STRING_DEPOSIT; break;
+                case FunctionType.CardAuthentication: titleId = StringIds.STRING_CARD_AUTH; break;
+                case FunctionType.TestComm: titleId = StringIds.STRING_TESTCOMM; break;
+                case FunctionType.CardStatusCheck: titleId = StringIds.STRING_CARD_CHECK_OPTIONS; break;
+                case FunctionType.PreAuth: titleId = StringIds.STRING_PRE_AUTH; break;
+                case FunctionType.CashOut: titleId = StringIds.STRING_CASHOUT; break;
+                case FunctionType.Void: titleId = StringIds.STRING_VOID; break;
+                case FunctionType.Adjust: titleId = StringIds.STRING_ADJUST; break;
+                    //case FunctionType.IncrementalAdjust: titleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+            }
+            dlgData.szTotalTitle = titleId;
+
+            dlgData.CurrencySymbol = "$";
+            dlgData.szContent = StringIds.STRING_TRANSMISSIONERROR;
+
+            DialogBuilder.Show(IPayDialog.UNATTENDED_REQUEST_ALIPAY_WECHAT_DIALOG, StringIds.STRING_QR_PAYMENTS, (iResult, args) =>
+            {
+                //UnattendedRequestAliPayWeChatDialog
+            }, blockUI, false, dlgData);
+
+            //hardcode in dialog to show all case
+            //_data_PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(nameof(_data.status)));
         }
     }
 }

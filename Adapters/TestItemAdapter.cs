@@ -85,7 +85,7 @@ namespace CloudBanking.UITestApp
                 viewHolder.IvIcon.Visibility = ViewStates.Gone;
             }
 
-            viewHolder.TvTitle.SetFont(_context, UIConstants.STRING_FONT_BOLD);
+            viewHolder.TvTitle.SetFont(UIConstants.FontAssets.Roboto_Medium);
 
             return view;
         }

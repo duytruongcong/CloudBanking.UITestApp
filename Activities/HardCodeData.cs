@@ -13,13 +13,10 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static Android.Content.ClipData;
-using System.Windows.Input;
-using static Android.Icu.Text.CaseMap;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
-using static CloudBanking.Entities.Database;
-using Twilio.TwiML.Voice;
+using AccountType = CloudBanking.Entities.AccountType;
+using CardLocation = CloudBanking.Entities.CardLocation;
 
 namespace CloudBanking.UITestApp
 {
@@ -282,7 +279,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = false;// change to show difference case
+            RequestDlgData.fNoPresentCard = true;// change to show difference case
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -307,7 +304,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fDiscover = true;
             RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
-            RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
+            //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
 
             switch (caseDialog)
             {
@@ -2535,7 +2532,13 @@ namespace CloudBanking.UITestApp
                             ENTRYMODE.EM_MOTO,
                             ENTRYMODE.EM_MANUAL,
                         },
-                        CardLocation = CardLocation.All
+                        AccountTypes = new List<ushort>()
+                        {
+                            AccountType.ACCOUNT_TYPE_CREDIT,
+                            AccountType.ACCOUNT_TYPE_CHEQUE,
+                            AccountType.ACCOUNT_TYPE_SAVINGS
+                        },
+                        CardLocation = Entities.CardLocation.All
                     },
                     new SurchargeRule()
                     {
@@ -2555,6 +2558,38 @@ namespace CloudBanking.UITestApp
                             ENTRYMODE.EM_MOTO,
                             ENTRYMODE.EM_MANUAL,
                         },
+                        AccountTypes = new List<ushort>()
+                        {
+                            AccountType.ACCOUNT_TYPE_CREDIT,
+                            AccountType.ACCOUNT_TYPE_CHEQUE,
+                            AccountType.ACCOUNT_TYPE_SAVINGS
+                        },
+                        CardLocation = Entities.CardLocation.All
+
+                    },new SurchargeRule()
+                    {
+                        Surcharge = new MerchantCardSurcharge()
+                        {
+                            lFeeChange = 1000,
+                            usFeeHigh = 40,
+                            usFeeLow = 20,
+                            fPercent = true
+
+                        },
+                        EFTPaymentMethods = new List<ENTRYMODE>()
+                        {
+                            ENTRYMODE.EM_SMC,
+                            ENTRYMODE.EM_RFID,
+                            ENTRYMODE.EM_SWIPED,
+                            ENTRYMODE.EM_MOTO,
+                            ENTRYMODE.EM_MANUAL
+                        },
+                        AccountTypes = new List<ushort>()
+                        {
+                            AccountType.ACCOUNT_TYPE_CREDIT,
+                            AccountType.ACCOUNT_TYPE_CHEQUE,
+                            AccountType.ACCOUNT_TYPE_SAVINGS
+                        },
                         CardLocation = CardLocation.All
 
                     },new SurchargeRule()
@@ -2575,25 +2610,11 @@ namespace CloudBanking.UITestApp
                             ENTRYMODE.EM_MOTO,
                             ENTRYMODE.EM_MANUAL
                         },
-                        CardLocation = CardLocation.All
-
-                    },new SurchargeRule()
-                    {
-                        Surcharge = new MerchantCardSurcharge()
+                        AccountTypes = new List<ushort>()
                         {
-                            lFeeChange = 1000,
-                            usFeeHigh = 40,
-                            usFeeLow = 20,
-                            fPercent = true
-
-                        },
-                        EFTPaymentMethods = new List<ENTRYMODE>()
-                        {
-                            ENTRYMODE.EM_SMC,
-                            ENTRYMODE.EM_RFID,
-                            ENTRYMODE.EM_SWIPED,
-                            ENTRYMODE.EM_MOTO,
-                            ENTRYMODE.EM_MANUAL
+                            AccountType.ACCOUNT_TYPE_CREDIT,
+                            AccountType.ACCOUNT_TYPE_CHEQUE,
+                            AccountType.ACCOUNT_TYPE_SAVINGS
                         },
                         CardLocation = CardLocation.All
 
@@ -3308,66 +3329,66 @@ namespace CloudBanking.UITestApp
 
         void EditTicket()
         {
-            //var viewModel = new StandardSetupDialogModel()
-            //{
-            //    OKBtnCommandId = GlobalResource.SAVE_BUTTON,
-            //    OkBtnTitleId = StringIds.STRING_SAVE,
-            //    CancelBtnCommandId = GlobalResource.CANCEL_SUB_FLOW,
-            //    CancelTitleId = StringIds.STRING_CANCEL
-            //};
+            var viewModel = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.SAVE_BUTTON,
+                OkBtnTitleId = StringIds.STRING_SAVE,
+                CancelBtnCommandId = GlobalResource.CANCEL_SUB_FLOW,
+                CancelTitleId = StringIds.STRING_CANCEL
+            };
 
-            //var data = new POSTicketEditModel()
-            //{
-            //    OriginalTicketNumber = "1234567",
-            //    NewData = new POSTicketInfo()
-            //    {
-            //        TicketNumber = "1234567",
-            //        GuestName = "Smith",
-            //        Reference = "Table 1",
-            //        TableNumber = 1
-            //    }
-            //};
+            var data = new POSTicketEditModel()
+            {
+                OriginalTicketNumber = "1234567",
+                NewData = new POSTicketInfo()
+                {
+                    TicketId = "1234567",
+                    GuestName = "Smith",
+                    Reference = "Table 1",
+                    TableNumber = 1
+                }
+            };
 
-            //viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(data.NewData.TableNumber),
-            //    TitleId = StringIds.STRING_TABLE,
-            //    HeaderTitleId = StringIds.STRING_TABLE,
-            //    FieldTitleId = StringIds.STRING_TABLE,
-            //    Value = data.NewData.TableNumber
-            //});
+            viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(data.NewData.TableNumber),
+                TitleId = StringIds.STRING_TABLE,
+                HeaderTitleId = StringIds.STRING_TABLE,
+                FieldTitleId = StringIds.STRING_TABLE,
+                Value = data.NewData.TableNumber
+            });
 
-            //viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(data.NewData.TicketNumber),
-            //    TitleId = StringIds.STRING_TICKETNO,
-            //    HeaderTitleId = StringIds.STRING_TICKETNO,
-            //    FieldTitleId = StringIds.STRING_TICKETNO,
-            //    Value = data.NewData.TicketNumber
-            //});
+            viewModel.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(data.NewData.TicketId),
+                TitleId = StringIds.STRING_TICKETNO,
+                HeaderTitleId = StringIds.STRING_TICKETNO,
+                FieldTitleId = StringIds.STRING_TICKETNO,
+                Value = data.NewData.TicketId
+            });
 
-            //viewModel.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(data.NewData.GuestName),
-            //    TitleId = StringIds.STRING_GUEST_NAME,
-            //    HeaderTitleId = StringIds.STRING_GUEST_NAME,
-            //    FieldTitleId = StringIds.STRING_GUEST_NAME,
-            //    Value = data.NewData.GuestName
-            //});
+            viewModel.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(data.NewData.GuestName),
+                TitleId = StringIds.STRING_GUEST_NAME,
+                HeaderTitleId = StringIds.STRING_GUEST_NAME,
+                FieldTitleId = StringIds.STRING_GUEST_NAME,
+                Value = data.NewData.GuestName
+            });
 
-            //viewModel.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(data.NewData.Reference),
-            //    TitleId = StringIds.STRING_REFERENCE,
-            //    HeaderTitleId = StringIds.STRING_REFERENCE,
-            //    FieldTitleId = StringIds.STRING_REFERENCE,
-            //    Value = data.NewData.Reference
-            //});
+            viewModel.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(data.NewData.Reference),
+                TitleId = StringIds.STRING_REFERENCE,
+                HeaderTitleId = StringIds.STRING_REFERENCE,
+                FieldTitleId = StringIds.STRING_REFERENCE,
+                Value = data.NewData.Reference
+            });
 
-            //DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_EDIT_DETAILS, (iResult, args) =>
-            //{
-            //    //StandardSetupDialog
-            //}, true, false, viewModel);
+            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_EDIT_DETAILS, (iResult, args) =>
+            {
+                //StandardSetupDialog
+            }, true, false, viewModel);
         }
 
         void ShowConfirmClosingTableDialog()

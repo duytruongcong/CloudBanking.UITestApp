@@ -1403,7 +1403,6 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-
 #if false    //  
 
             #region Report Flow
@@ -1442,7 +1441,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // 
+#if false    //
 
             #region Setup Flow
 
@@ -1723,7 +1722,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false // 
+#if true // Thanh working
 
             #region Table Flow
 
@@ -1929,7 +1928,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // 
+#if true // Duy working 
 
             #region Main Payment Flow
 
@@ -2083,36 +2082,36 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MainDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMainDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MainDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMainDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"AdvertisingDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowAdvertisingDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"AdvertisingDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowAdvertisingDialog();
+                })
+            });
 
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"SurchargeConfirmDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowSurchargeConfirmDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SurchargeConfirmDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowSurchargeConfirmDialog();
+                })
+            });
 #if false
                         _lData.Add(new ScreenViewModel()
                         {
@@ -2125,26 +2124,25 @@ namespace CloudBanking.UITestApp
                         });
 #endif
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"ReceiptOptionsDialog",
-            //    RightIconResName = "ReceiptOptionsDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowReceiptOptionDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ReceiptOptionsDialog",
+                RightIconResName = "ReceiptOptionsDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowReceiptOptionDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"QrCodeReceiptClaimDialog",
-            //    RightIconResName = "QrCodeReceiptClaimDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowQrCodeReceiptClaimDialog();
-            //    })
-            //});
-
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"QrCodeReceiptClaimDialog",
+                RightIconResName = "QrCodeReceiptClaimDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowQrCodeReceiptClaimDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -2276,7 +2274,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  
+#if false   //  Thanh done D8
 
             #region Preauth Flow
 
@@ -2395,89 +2393,89 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true   //  
+#if false   //  Duy done D8
 
             #region Request Card Flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestCardDialog CASE1",
-                RightIconResName = "RequestCardDialog_CASE1",
-                ItemAction = new Action(() =>
-                {
-                    ShowRequestCardDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestCardDialog CASE1",
+            //    RightIconResName = "RequestCardDialog_CASE1",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRequestCardDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestCardDialog CASE2",
-                RightIconResName = "RequestCardDialog_CASE2",
-                ItemAction = new Action(() =>
-                {
-                    ShowRequestCardDialog(CaseDialog.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestCardDialog CASE2",
+            //    RightIconResName = "RequestCardDialog_CASE2",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRequestCardDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestCardDialog CASE3",
-                RightIconResName = "RequestCardDialog_CASE3",
-                ItemAction = new Action(() =>
-                {
-                    ShowRequestCardDialog(CaseDialog.CASE3);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestCardDialog CASE3",
+            //    RightIconResName = "RequestCardDialog_CASE3",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRequestCardDialog(CaseDialog.CASE3);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestCardDialog CASE4",
-                RightIconResName = "RequestCardDialog_CASE4",
-                ItemAction = new Action(() =>
-                {
-                    ShowRequestCardDialog(CaseDialog.CASE4);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestCardDialog CASE4",
+            //    RightIconResName = "RequestCardDialog_CASE4",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRequestCardDialog(CaseDialog.CASE4);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestCardDialog CASE5",
-                RightIconResName = "RequestCardDialog_CASE5",
-                ItemAction = new Action(() =>
-                {
-                    ShowRequestCardDialog(CaseDialog.CASE5);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestCardDialog CASE5",
+            //    RightIconResName = "RequestCardDialog_CASE5",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRequestCardDialog(CaseDialog.CASE5);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestCardDialog CASE6",
-                RightIconResName = "RequestCardDialog_CASE6",
-                ItemAction = new Action(() =>
-                {
-                    ShowRequestCardDialog(CaseDialog.CASE6);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestCardDialog CASE6",
+            //    RightIconResName = "RequestCardDialog_CASE6",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRequestCardDialog(CaseDialog.CASE6);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestCardDialog CASE7",
-                RightIconResName = "RequestCardDialog_CASE7",
-                ItemAction = new Action(() =>
-                {
-                    ShowRequestCardDialog(CaseDialog.CASE7);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestCardDialog CASE7",
+            //    RightIconResName = "RequestCardDialog_CASE7",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRequestCardDialog(CaseDialog.CASE7);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestCardDialog CASE8",
-                RightIconResName = "RequestCardDialog_CASE8",
-                ItemAction = new Action(() =>
-                {
-                    ShowRequestCardDialog(CaseDialog.CASE8);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestCardDialog CASE8",
+            //    RightIconResName = "RequestCardDialog_CASE8",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRequestCardDialog(CaseDialog.CASE8);
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -2552,8 +2550,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false //  
-
+#if false //  Thanh done D8
 
             #region SelectAccountTypeDialog 
 
@@ -2590,7 +2587,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //   
+#if false    //   Thanh done D8
 
             #region MessageDialog
 
@@ -2777,7 +2774,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  
+#if false   //  Thanh done D8
 
             #region PresentCardErrorDialog
 
@@ -2804,7 +2801,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true    //  
+#if false    //  
 
             #region EnterPinDialog
 
@@ -2850,29 +2847,29 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  
+#if false   //  Thanh bug
 
             #region ApprovalDialog
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ApprovalDialog CASE1",
-                RightIconResName = "ApprovalDialog_CASE1",
-                ItemAction = new Action(() =>
-                {
-                    ShowApprovalDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ApprovalDialog CASE1",
+            //    RightIconResName = "ApprovalDialog_CASE1",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowApprovalDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ApprovalDialog CASE2",
-                RightIconResName = "ApprovalDialog_CASE2",
-                ItemAction = new Action(() =>
-                {
-                    ShowApprovalDialog(CaseDialog.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ApprovalDialog CASE2",
+            //    RightIconResName = "ApprovalDialog_CASE2",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowApprovalDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -2884,25 +2881,25 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ApprovalDialog CASE4",
-                RightIconResName = "ApprovalDialog_CASE4",
-                ItemAction = new Action(() =>
-                {
-                    ShowApprovalDialog(CaseDialog.CASE4);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ApprovalDialog CASE4",
+            //    RightIconResName = "ApprovalDialog_CASE4",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowApprovalDialog(CaseDialog.CASE4);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ApprovalDialog CASE5",
-                RightIconResName = "ApprovalDialog_CASE5",
-                ItemAction = new Action(() =>
-                {
-                    ShowApprovalDialog(CaseDialog.CASE5);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ApprovalDialog CASE5",
+            //    RightIconResName = "ApprovalDialog_CASE5",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowApprovalDialog(CaseDialog.CASE5);
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -2927,7 +2924,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //   
+#if false   //   Thanh bug
 
             #region SettlementApprovalDialog
 
@@ -2954,7 +2951,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  
+#if false    //  Thanh done D8
 
             #region MOTO FLOW
 
@@ -3020,7 +3017,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  
+#if false   //  Thanh done D8
 
             #region ProcessMessageDialog
 
@@ -3066,7 +3063,7 @@ namespace CloudBanking.UITestApp
 
              _lData.Add(new ScreenViewModel()
             {
-                Title = $"EOVProcessMessageDialog",
+                Title = $"EOVProcessDialog",
                 RightIconResName = "EOVProcessDialog",
                 ItemAction = new Action(() =>
                 {

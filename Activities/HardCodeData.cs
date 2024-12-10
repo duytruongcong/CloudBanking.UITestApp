@@ -2933,13 +2933,16 @@ namespace CloudBanking.UITestApp
 
             var posSplitItem1 = new POSSplitItem() { Id = 1 };
             posSplitItem1.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Jack Welsh" });
+            posSplitItem1.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Jack Welsh" });
             data.SplitItems.Add(posSplitItem1);
 
             var posSplitItem2 = new POSSplitItem() { Id = 2 };
             posSplitItem2.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Alexie Smith" });
+            posSplitItem2.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Alexie Smith" });
             data.SplitItems.Add(posSplitItem2);
 
             var posSplitItem3 = new POSSplitItem() { Id = 3 };
+            posSplitItem3.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Paul" });
             posSplitItem3.TenderItems.Add(new POSTenderItem() { Amount = 10502, ApprovedTime = DateTime.Now, TenderName = "Paul" });
             data.SplitItems.Add(posSplitItem3);
 

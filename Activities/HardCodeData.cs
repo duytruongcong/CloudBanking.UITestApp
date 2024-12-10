@@ -3406,10 +3406,24 @@ namespace CloudBanking.UITestApp
             //    Stage = TicketStage.Opened
             //};
 
-            //DialogBuilder.Show(IPayDialog.CONFIRM_CLOSING_TABLE_DIALOG, StringIds.STRING_NOTIFICATION, (iResult, args) =>
-            //{
-            //    //ConfirmClosingTableDialog
-            //}, true, false, selectedTicket);
+            TicketResponse selectedTicket = new TicketResponse()
+            {
+                Balance = 35000,
+                EmployeeId = 1,
+                TableNumber = 4,
+                TableAreaId = 1,
+                OrderTypeId = "abc",
+                GuestName = "John",
+                Reference = "Jack Welsh",
+                TicketId = "1234567",
+                GuestAccounts = new List<GuestAccountResponse>() { new GuestAccountResponse() { Id = "1", Avatar = "dr_madison", Name = "Madison", Balance = 10000 } },
+                Payments = new List<POSTicketPayment>() { new POSTicketPayment() { } }
+            };
+
+            DialogBuilder.Show(IPayDialog.CONFIRM_CLOSING_TABLE_DIALOG, StringIds.STRING_NOTIFICATION, (iResult, args) =>
+            {
+                //ConfirmClosingTableDialog
+            }, true, false, selectedTicket);
         }
 
         void ShowGetTenderBalanceDialog()

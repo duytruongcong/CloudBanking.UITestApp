@@ -2975,59 +2975,59 @@ namespace CloudBanking.UITestApp
 
         void ShowTicketSearchOptionsDialog()
         {
-            //POSTicketInfo searchData = new POSTicketInfo();
-            //var pullSetupDlgData = new StandardSetupDialogModel()
-            //{
-            //    OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
-            //    OkBtnTitleId = StringIds.STRING_SEARCH,
-            //};
+            POSTicketInfo searchData = new POSTicketInfo();
+            var pullSetupDlgData = new StandardSetupDialogModel()
+            {
+                OKBtnCommandId = GlobalResource.SEARCH_BUTTON,
+                OkBtnTitleId = StringIds.STRING_SEARCH,
+            };
 
-            //searchData.TicketNumber = "";
-            //searchData.EmployeeId = 1;
-            //searchData.Reference = string.Empty;
-            //searchData.TableNumber = 0;
-            //searchData.GuestName = string.Empty;
+            searchData.TicketId = "12345";
+            searchData.EmployeeId = 1;
+            searchData.Reference = "6789";
+            searchData.TableNumber = 54;
+            searchData.GuestName = "Mr. Smith";
 
-            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(searchData.TableNumber),
-            //    TitleId = StringIds.STRING_TABLENUMBER,
-            //    HeaderTitleId = StringIds.STRING_TABLENUMBER,
-            //    FieldTitleId = StringIds.STRING_TABLENUMBER,
-            //    Value = searchData.TableNumber
-            //});
+            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(searchData.TableNumber),
+                TitleId = StringIds.STRING_TABLENUMBER,
+                HeaderTitleId = StringIds.STRING_TABLENUMBER,
+                FieldTitleId = StringIds.STRING_TABLENUMBER,
+                Value = searchData.TableNumber
+            });
 
-            //pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
-            //{
-            //    PropertyName = nameof(searchData.TicketNumber),
-            //    TitleId = StringIds.STRING_TICKETNO,
-            //    HeaderTitleId = StringIds.STRING_TICKETNO,
-            //    FieldTitleId = StringIds.STRING_TICKETNO,
-            //    Value = searchData.TicketNumber
-            //});
+            pullSetupDlgData.Items.Add(new InputNumberFixedKeyboardEditModel()
+            {
+                PropertyName = nameof(searchData.TicketId),
+                TitleId = StringIds.STRING_TICKETNO,
+                HeaderTitleId = StringIds.STRING_TICKETNO,
+                FieldTitleId = StringIds.STRING_TICKETNO,
+                Value = searchData.TicketId
+            });
 
-            //pullSetupDlgData.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(searchData.GuestName),
-            //    TitleId = StringIds.STRING_GUEST_NAME,
-            //    HeaderTitleId = StringIds.STRING_GUEST_NAME,
-            //    FieldTitleId = StringIds.STRING_GUEST_NAME,
-            //    Value = searchData.GuestName
-            //});
+            pullSetupDlgData.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(searchData.GuestName),
+                TitleId = StringIds.STRING_GUEST_NAME,
+                HeaderTitleId = StringIds.STRING_GUEST_NAME,
+                FieldTitleId = StringIds.STRING_GUEST_NAME,
+                Value = searchData.GuestName
+            });
 
-            //pullSetupDlgData.Items.Add(new InputTextEditModel()
-            //{
-            //    PropertyName = nameof(searchData.Reference),
-            //    TitleId = StringIds.STRING_REFERENCE,
-            //    HeaderTitleId = StringIds.STRING_REFERENCE,
-            //    FieldTitleId = StringIds.STRING_REFERENCE,
-            //    Value = searchData.Reference
-            //});
+            pullSetupDlgData.Items.Add(new InputTextEditModel()
+            {
+                PropertyName = nameof(searchData.Reference),
+                TitleId = StringIds.STRING_REFERENCE,
+                HeaderTitleId = StringIds.STRING_REFERENCE,
+                FieldTitleId = StringIds.STRING_REFERENCE,
+                Value = searchData.Reference
+            });
 
-            //DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
-            //{
-            //    //TicketSearchOptionsDialog
-            //}, true, false, pullSetupDlgData);
+            DialogBuilder.Show(IPayDialog.TICKET_SEARCH_OPTIONS_DIALOG, StringIds.STRING_TABLE_PAY_TICKET, (iResult, args) =>
+            {
+                //TicketSearchOptionsDialog
+            }, true, false, pullSetupDlgData);
         }
 
         void ShowIncreaseSplitDialog()
@@ -4966,7 +4966,7 @@ namespace CloudBanking.UITestApp
             charityItem4.DonationAmount.SelectAmountStringIcon = IconIds.IMG_DON_2_SELECT;
 
             ////
-            var standaloneCharity01 = new StandaloneCharity();
+            StandaloneCharity standaloneCharity01 = new StandaloneCharity();
             standaloneCharity01.Id = startId++;
             standaloneCharity01.Name = "Qatar Charity";
             standaloneCharity01.Banner = "don_1_land_poster.png";
@@ -4977,7 +4977,7 @@ namespace CloudBanking.UITestApp
             {
                 //Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
                 fHideCancelButton = true,
-                //Items = new List<StandaloneCharity>() { standaloneCharity01 }
+                Items = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 }
             };
 
             DialogBuilder.Show(IPayDialog.DONATION_SELECT_FIRST_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
@@ -5008,16 +5008,16 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationAdvertising()
         {
-            //var dlgData = new DonationAdvertisingDlgData()
-            //{
-            //    AdvertisingImgRes = "donation_salvation_ads.png",
-            //    AdvertisingBannerRes = "donation_salvation_banner.png"
-            //};
+            var dlgData = new DonationAdvertisingDlgData()
+            {
+                AdvertisingImgRes = "donation_salvation_ads.png",
+                AdvertisingBannerRes = "donation_salvation_banner.png"
+            };
 
-            //DialogBuilder.Show(IPayDialog.DONATION_ADVERTISING_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.DONATION_ADVERTISING_DIALOG, StringIds.STRING_ENTERACCESSCODE, (iResult, args) =>
+            {
 
-            //}, true, false, dlgData);
+            }, true, false, dlgData);
         }
 
         void ShowDonationSelectAmountDialog()
@@ -5066,40 +5066,40 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationReceiptOptionsDialog()
         {
-            //var data = new ReceiptOptionsDlgData();
+            var data = new ReceiptOptionsDlgData();
 
-            //data.QRReceiptResult = "ReceiptOptionsDialog";
-            //data.fShowQrCode = true;
+            data.QRReceiptResult = "ReceiptOptionsDialog";
+            data.fShowQrCode = true;
 
-            //data.FunctionButtons = new List<SelectButton>();
+            data.FunctionButtons = new List<SelectButton>();
 
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
-            //    idImage = IconIds.VECTOR_EMAIL_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_EMAIL_RECEIPT_LOWCASE,
+                idImage = IconIds.VECTOR_EMAIL_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
 
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_TEXT_RECEIPT,
-            //    idImage = IconIds.VECTOR_TEXT_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_TEXT_RECEIPT,
+                idImage = IconIds.VECTOR_TEXT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
 
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    Title = StringIds.STRING_PRINT_CUSTOMER,
-            //    idImage = IconIds.VECTOR_PRINT_RECEIPT,
-            //    IdProcessor = 0,
-            //    IsVectorDrawble = true
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                Title = StringIds.STRING_PRINT_CUSTOMER,
+                idImage = IconIds.VECTOR_PRINT_RECEIPT,
+                IdProcessor = 0,
+                IsVectorDrawble = true
+            });
 
-            //var dialog4 = new DonationReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
-            //dialog4.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog4.Show(this);
+            var dialog4 = new DonationReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
+            dialog4.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog4.Show(this);
         }
 
         private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
@@ -5346,17 +5346,17 @@ namespace CloudBanking.UITestApp
                 RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
             }
 
-            //var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
-            //{
-            //}, RequestDlgData);
+            var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            {
+            }, RequestDlgData);
 
             ////comment out
             ////var requestCardDialog = new AnimatedRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             ////{
             ////}, RequestDlgData);
 
-            //requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            //requestCardDialog.Show(this);
+            requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            requestCardDialog.Show(this);
         }
 
         void ShowStandaloneSelectDonationAmountDialog()
@@ -5397,6 +5397,7 @@ namespace CloudBanking.UITestApp
 
         void ShowHelpQRDialog()
         {
+            //khong co cho D8
             //HelpQRDialog helpQRDialog = null;
 
             //HelpDlgData _data = new HelpDlgData();
@@ -6561,11 +6562,20 @@ namespace CloudBanking.UITestApp
             MultipleItemsList.Add(charityItem3);
             MultipleItemsList.Add(charityItem4);
 
+            StandaloneCharity standaloneCharity01 = new StandaloneCharity();
+            standaloneCharity01.Id = startId++;
+            standaloneCharity01.Name = "Qatar Charity";
+            standaloneCharity01.Banner = "don_1_land_poster.png";
+            standaloneCharity01.AdvertisingImage = "don_1_port_poster.png";
+
+
+            var listStandaloneCharity = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 };
+
             DialogBuilder.Show(IPayDialog.DONATION_SELECT_ANOTHER_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
             {
+                //SelectOtherCharityDialog
 
-
-            }, true, false, MultipleItemsList, lTotalDonations);
+            }, true, false, listStandaloneCharity, lTotalDonations);
         }
 
         void ShowPaymenDonationsDialog()
@@ -6629,14 +6639,14 @@ namespace CloudBanking.UITestApp
                         TitleId = StringIds.STRING_ENABLED,
                         Value = true,
                         PropertyName = "merchant_setup_enabled",
-                        SpanSize = 2
+                        SpanSize = 1
                     },
                     new InputNumberFixedKeyboardEditModel()
                     {
                         TitleId = StringIds.STRING_PASSCODE,
                         PropertyName = "merchant_setup_passcode",
                         Value = 193217,
-                        SpanSize = 2
+                        SpanSize = 1
                     },
                     new OnlyTitleModel()
                     {
@@ -6648,7 +6658,7 @@ namespace CloudBanking.UITestApp
                         TitleId = StringIds.STRING_ENABLED,
                         Value = true,
                         PropertyName = "payment_app_enabled",
-                        SpanSize = 2
+                        SpanSize = 1
 
                     },
                     new InputNumberFixedKeyboardEditModel()
@@ -6656,7 +6666,7 @@ namespace CloudBanking.UITestApp
                         TitleId = StringIds.STRING_PASSCODE,
                         PropertyName = "payment_app_passcode",
                         Value = 193217,
-                        SpanSize = 2
+                        SpanSize = 1
                     },
                     // new AvatarImageModel()
                     //{

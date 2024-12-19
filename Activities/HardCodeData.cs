@@ -777,7 +777,7 @@ namespace CloudBanking.UITestApp
 
             AccountType temp = null;
 
-            var dynamicOptionDialog = new ShellUI.DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, StringIds.STRING_ACCOUNT_SELECT_TYPE);
+            var dynamicOptionDialog = new ShellUI.DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, StringIds.STRING_ACCOUNT_SELECT_TYPE, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
         }
@@ -4977,7 +4977,7 @@ namespace CloudBanking.UITestApp
             {
                 //Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
                 fHideCancelButton = true,
-                Items = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 }
+                //Items = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 }
             };
 
             DialogBuilder.Show(IPayDialog.DONATION_SELECT_FIRST_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
@@ -5671,21 +5671,21 @@ namespace CloudBanking.UITestApp
 
         void ShowUnattendedSingleUserLoginDialog()
         {
-            //var userId = string.Empty;
-            //var passcode = string.Empty;
-            //var pLogonData = new LogonDlgData()
-            //{
-            //    InitData = new InitLogonModel()
-            //    {
-            //        fLogonPasscode = true,
-            //        fAutoLogin = false,
-            //    }
-            //};
+            var userId = string.Empty;
+            var passcode = string.Empty;
+            var pLogonData = new LogonDlgData()
+            {
+                InitData = new InitLogonModel()
+                {
+                    fLogonPasscode = true,
+                    fAutoLogin = false,
+                }
+            };
 
-            //DialogBuilder.Show(IPayDialog.UNATTENDED_SINGLE_USER_LOGIN_DIALOG, StringIds.STRING_LOGON, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.SINGLE_USER_LOGIN_DIALOG, StringIds.STRING_LOGON, (iResult, args) =>
+            {
 
-            //}, true, false, pLogonData, false);
+            }, true, false, pLogonData, false);
         }
 
         void ShowSelectManagerMenu()
@@ -5714,35 +5714,37 @@ namespace CloudBanking.UITestApp
 
         void ShowUnattendedGetAmountDialog(CaseDialog caseDialog)
         {
-            //var data = new GetAmountDlgData();
+#if false
+            var data = new GetAmountDlgData();
 
-            //data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
-            //data.EntryAmountTitleId = StringIds.STRING_AMOUNT_PREAPPROVED;
-            //data.plszReference = "123456";
-            //data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
-            ////data.isEnabledEntryAmount = false;
+            data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
+            data.EntryAmountTitleId = StringIds.STRING_AMOUNT_PREAPPROVED;
+            data.plszReference = "123456";
+            data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+            //data.isEnabledEntryAmount = false;
 
-            //switch (caseDialog)
-            //{
-            //    case CaseDialog.CASE1:
-            //        data.fShowReference = false;
-            //        //data.isEnabledEntryAmount = true;
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    data.fShowReference = false;
+                    //data.isEnabledEntryAmount = true;
 
-            //        break;
-            //    case CaseDialog.CASE2:
-            //        data.fShowReference = true;
-            //        //data.isEnabledEntryAmount = false;
-            //        break;
+                    break;
+                case CaseDialog.CASE2:
+                    data.fShowReference = true;
+                    //data.isEnabledEntryAmount = false;
+                    break;
 
-            //    default:
-            //        data.fShowReference = true;
-            //        //data.isEnabledEntryAmount = true;
-            //        break;
-            //}
+                default:
+                    data.fShowReference = true;
+                    //data.isEnabledEntryAmount = true;
+                    break;
+            }
 
-            //var dialog = new UnattendedGetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
-            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            //dialog.Show(this);
+            var dialog = new UnattendedGetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
+            dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dialog.Show(this);
+#endif
         }
 
         private void ShowUnattendedRequestCardDialog(CaseDialog caseDialog)
@@ -6171,138 +6173,141 @@ namespace CloudBanking.UITestApp
 
         void ShowUnattendedReviewTransDialog(CaseDialog caseDialog)
         {
-            //string chargeTime = "02:00:00 HR";
-            //string remainingTime = "00:30:00 HR";
-            //float cost = 13.8f;
-            //long lPreApproved = 10000;
-            //string Curccency = "ZD";
-            //float fFuelLitre = 48.2f;
-            //long lLittreCost = 197;
-            //string strFuelType = "95RON";
-            //UnattendedReviewDlgData dlgDataReview = new UnattendedReviewDlgData();
+#if false
+            string chargeTime = "02:00:00 HR";
+            string remainingTime = "00:30:00 HR";
+            float cost = 13.8f;
+            long lPreApproved = 10000;
+            string Curccency = "ZD";
+            float fFuelLitre = 48.2f;
+            long lLittreCost = 197;
+            string strFuelType = "95RON";
+            UnattendedReviewDlgData dlgDataReview = new UnattendedReviewDlgData();
 
-            //switch (caseDialog)
-            //{
-            //    case CaseDialog.CASE1://fuel
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1://fuel
 
-            //        dlgDataReview = new UnattendedReviewDlgData()
-            //        {
-            //            lTotalAmount = 38000,
-            //            TitleId = StringIds.STRING_TOTAL_PAYABLE,
-            //            strIconResId = IconIds.VECTOR_FUEL
-            //        };
+                    dlgDataReview = new UnattendedReviewDlgData()
+                    {
+                        lTotalAmount = 38000,
+                        TitleId = StringIds.STRING_TOTAL_PAYABLE,
+                        strIconResId = IconIds.VECTOR_FUEL
+                    };
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Title = StringIds.STRING_FUEL_LITRES,
-            //            Value = $"{fFuelLitre}L",
-            //            IsRightTextBold = true,
-            //        });
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_FUEL_LITRES,
+                        Value = $"{fFuelLitre}L",
+                        IsRightTextBold = true,
+                    });
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Title = StringIds.STRING_LITRE_COST,
-            //            Value = lLittreCost.ToFormatLocalCurrencyAmount(),
-            //            IsRightTextBold = true,
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_LITRE_COST,
+                        Value = lLittreCost.ToFormatLocalCurrencyAmount(),
+                        IsRightTextBold = true,
 
-            //        });
+                    });
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Title = StringIds.STRING_FUEL_TYPE,
-            //            Value = strFuelType,
-            //            IsRightTextBold = true,
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_FUEL_TYPE,
+                        Value = strFuelType,
+                        IsRightTextBold = true,
 
-            //        });
+                    });
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Title = StringIds.STRING_PRE_APPROVED,
-            //            Value = lPreApproved.ToFormatLocalCurrencyAmount(),
-            //            IsRightTextBold = true,
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_PRE_APPROVED,
+                        Value = lPreApproved.ToFormatLocalCurrencyAmount(),
+                        IsRightTextBold = true,
 
-            //        });
+                    });
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Value = Curccency + Localize.GetString(StringIds.STRING_CURRENCY),
-            //            IsSpecial = true
-            //        });
-            //        break;
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Value = Curccency + Localize.GetString(StringIds.STRING_CURRENCY),
+                        IsSpecial = true
+                    });
+                    break;
 
-            //    case CaseDialog.CASE2://hardcode vending electric
+                case CaseDialog.CASE2://hardcode vending electric
 
-            //        dlgDataReview = new UnattendedReviewDlgData()
-            //        {
-            //            lTotalAmount = 38000,
-            //            TitleId = StringIds.STRING_TOTAL_PAYABLE,
-            //            strIconResId = IconIds.VECTOR_EV
-            //        };
+                    dlgDataReview = new UnattendedReviewDlgData()
+                    {
+                        lTotalAmount = 38000,
+                        TitleId = StringIds.STRING_TOTAL_PAYABLE,
+                        strIconResId = IconIds.VECTOR_EV
+                    };
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Title = StringIds.STRING_CHARGE_TIME,
-            //            Value = chargeTime,
-            //            IsRightTextBold = true,
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_CHARGE_TIME,
+                        Value = chargeTime,
+                        IsRightTextBold = true,
 
-            //        });
+                    });
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Title = StringIds.STRING_REMAINING_TIME,
-            //            Value = remainingTime,
-            //            IsRightTextBold = true,
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_REMAINING_TIME,
+                        Value = remainingTime,
+                        IsRightTextBold = true,
 
-            //        });
+                    });
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Title = StringIds.STRING_COST_PER_KWH,
-            //            Value = $"{cost} CENT",
-            //            IsRightTextBold = true,
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_COST_PER_KWH,
+                        Value = $"{cost} CENT",
+                        IsRightTextBold = true,
 
-            //        });
+                    });
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Title = StringIds.STRING_PRE_APPROVED,
-            //            Value = lPreApproved.ToFormatLocalCurrencyAmount(),
-            //            IsRightTextBold = true,
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Title = StringIds.STRING_PRE_APPROVED,
+                        Value = lPreApproved.ToFormatLocalCurrencyAmount(),
+                        IsRightTextBold = true,
 
-            //        });
+                    });
 
-            //        dlgDataReview.listData.Add(new ResultViewModel()
-            //        {
-            //            Value = Curccency + Localize.GetString(StringIds.STRING_CURRENCY),
-            //            IsSpecial = true
-            //        });
+                    dlgDataReview.listData.Add(new ResultViewModel()
+                    {
+                        Value = Curccency + Localize.GetString(StringIds.STRING_CURRENCY),
+                        IsSpecial = true
+                    });
 
-            //        break;
-            //}
+                    break;
+            }
 
-            //DialogBuilder.Show(IPayDialog.UNATTENDED_REVIEW_TRANS_DIALOG, StringIds.STRING_REVIEW, null, true, false, dlgDataReview);
+            DialogBuilder.Show(IPayDialog.UNATTENDED_REVIEW_TRANS_DIALOG, StringIds.STRING_REVIEW, null, true, false, dlgDataReview);
+#endif
         }
 
         void ShowUnattendedVendingStoreDialog()
         {
+#if false
+            List<UnattendedVendingProductViewModel> listProductModel = new List<UnattendedVendingProductViewModel>();
 
-            //List<UnattendedVendingProductViewModel> listProductModel = new List<UnattendedVendingProductViewModel>();
-
-            //listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_AMERICANO, ProductName = "Americano", Price = 440 });
-            //listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_BREWED_COFFEE, ProductName = "Brewed Coffee", Price = 480 });
-            //listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_LATTE, ProductName = "Caffe Latte", Price = 500 });
-            //listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_MOCHA, ProductName = "Caffe Mocha", Price = 550 });
-            //listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAPPUCCINO, ProductName = "Cappuccino", Price = 500 });
-            //listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_ESPRESSO, ProductName = "Flat White", Price = 500 });
-            //listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_FLAT_WHITE, ProductName = "Oleato Latte", Price = 550 });
-            //listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_OLEATO_LATTE, ProductName = "Espresso", Price = 400 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_AMERICANO, ProductName = "Americano", Price = 440 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_BREWED_COFFEE, ProductName = "Brewed Coffee", Price = 480 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_LATTE, ProductName = "Caffe Latte", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAFFE_MOCHA, ProductName = "Caffe Mocha", Price = 550 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_CAPPUCCINO, ProductName = "Cappuccino", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_ESPRESSO, ProductName = "Flat White", Price = 500 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_FLAT_WHITE, ProductName = "Oleato Latte", Price = 550 });
+            listProductModel.Add(new UnattendedVendingProductViewModel() { ProductImg = IconIds.IMG_UNATTENDED_OLEATO_LATTE, ProductName = "Espresso", Price = 400 });
 
 
-            //DialogBuilder.Show(IPayDialog.UNATTENDED_VENDING_STORE_DIALOG, string.Empty, (iResult, args) =>
-            //{
+            DialogBuilder.Show(IPayDialog.UNATTENDED_VENDING_STORE_DIALOG, string.Empty, (iResult, args) =>
+            {
 
-            //    //UnattendedVendingStoreDialog
-            //}, true, false, listProductModel);
+                //UnattendedVendingStoreDialog
+            }, true, false, listProductModel);
+#endif
         }
 
         void ShowUnattendAdvertisingDialog()
@@ -6322,6 +6327,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectApplicationTypeDialog()
         {
+#if false
             List<CandidateAid> adis = new List<CandidateAid>();
 
             adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
@@ -6331,10 +6337,13 @@ namespace CloudBanking.UITestApp
             adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
             adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
 
+            DialogBuilder.IsShowHeader = false;
+
             DialogBuilder.Show(IShellDialog.SELECT_APPLICATIONTYPE_DIALOG, StringIds.STRING_EMV_SELECTAPPLICATION, (iResult, args) =>
             {
                 //SelectApplicationTypeDialog
             }, true, false, adis);
+#endif
         }
 
         void ShowNotificationDialog()

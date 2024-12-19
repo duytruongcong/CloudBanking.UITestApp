@@ -647,7 +647,7 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if false   // khong lam cho D8
+#if false   //
             #region Id Check Flow
 
             _lData.Add(new ScreenViewModel()
@@ -783,7 +783,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // khong lam cho D8
+#if false   // 
             #region Epay Multi Issue
 
             _lData.Add(new ScreenViewModel()
@@ -810,118 +810,120 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   // khong lam cho D8
+#if false   //
             #region Unattended Flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectDCCCurrencyDialog CASE2 Unattended",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    SelectDCCCurrency(CaseDialog.CASE2);
-                })
-            });
+            this.DialogBuilder.IsShowHeader = false;
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectDCCCurrencyDialog CASE1",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    SelectDCCCurrency(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectDCCCurrencyDialog CASE2 Unattended",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        SelectDCCCurrency(CaseDialog.CASE2);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestAliPayWechatDialog1_None",
-                RightIconResName = "RequestAliPayWechatDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedRequestAliPayWeChatDialog("abcdef1234567889", true, true, Entities.ResultStatus.None);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectDCCCurrencyDialog CASE1",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        SelectDCCCurrency(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestAliPayWechatDialog2_Declined",
-                RightIconResName = "RequestAliPayWechatDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedRequestAliPayWeChatDialog("abcdef1234567889", true, true, Entities.ResultStatus.Declined);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestAliPayWechatDialog1_None",
+            //    RightIconResName = "RequestAliPayWechatDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestAliPayWeChatDialog("abcdef1234567889", true, true, Entities.ResultStatus.None);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestAliPayWechatDialog3_Running",
-                RightIconResName = "RequestAliPayWechatDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedRequestAliPayWeChatDialog("abcdef1234567889", true, true, Entities.ResultStatus.Running);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestAliPayWechatDialog2_Declined",
+            //    RightIconResName = "RequestAliPayWechatDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestAliPayWeChatDialog("abcdef1234567889", true, true, Entities.ResultStatus.Declined);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RequestAliPayWechatDialog4_Approval",
-                RightIconResName = "RequestAliPayWechatDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedRequestAliPayWeChatDialog("abcdef1234567889", true, true, Entities.ResultStatus.Approval);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestAliPayWechatDialog3_Running",
+            //    RightIconResName = "RequestAliPayWechatDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestAliPayWeChatDialog("abcdef1234567889", true, true, Entities.ResultStatus.Running);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectApplicationTypeDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectApplicationTypeDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RequestAliPayWechatDialog4_Approval",
+            //    RightIconResName = "RequestAliPayWechatDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedRequestAliPayWeChatDialog("abcdef1234567889", true, true, Entities.ResultStatus.Approval);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendAdvertisingDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendAdvertisingDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectApplicationTypeDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSelectApplicationTypeDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedGetAmountDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedGetAmountDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendAdvertisingDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendAdvertisingDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedVendingStoreDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedVendingStoreDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedGetAmountDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedGetAmountDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UnattendedApprovalDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUnattendedApprovalDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedVendingStoreDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedVendingStoreDialog();
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UnattendedApprovalDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUnattendedApprovalDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1014,8 +1016,6 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-
-
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"UnattendedRequestCardDialog CASE1",
@@ -1096,8 +1096,6 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-
-
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"SelectManagerMenu",
@@ -1137,10 +1135,13 @@ namespace CloudBanking.UITestApp
                     ShowAttendedMenu();
                 })
             });
+
+            this.DialogBuilder.IsShowHeader = true;
+
             #endregion
 #endif
 
-#if false    // khong lam cho D8
+#if false    // 
             #region Help Flow 
 
             _lData.Add(new ScreenViewModel()
@@ -1166,7 +1167,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // Duy done D8
+#if false   // 
             #region Donation Flow
 
             //_lData.Add(new ScreenViewModel()
@@ -1362,7 +1363,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //   Duy done D8
+#if false   //   
 
             #region DCC
 
@@ -1413,7 +1414,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  Duy done D8
+#if false    //  
 
             #region Report Flow
 
@@ -1452,7 +1453,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // Duy done D8
+#if false    // 
 
             #region Setup Flow
 
@@ -1550,7 +1551,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // Duy done D8
+#if false    // 
 
             #region Refund flow
 
@@ -1732,7 +1733,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false // Duy done D8
+#if false // 
 
             #region Table Flow
 
@@ -1870,7 +1871,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true // Duy done D8
+#if false // 
 
             #region Customer Display
 
@@ -1923,7 +1924,7 @@ namespace CloudBanking.UITestApp
             //        BasketItemSelectOffer();
             //    })
             //});
-            
+
             //_lData.Add(new ScreenViewModel()
             //{
             //    Title = $"CustomerDisplayRequestCardDialog",
@@ -1937,7 +1938,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // Duy done D8 
+#if false //  
 
             #region Main Payment Flow
 
@@ -2143,15 +2144,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"QrCodeReceiptClaimDialog",
-            //    RightIconResName = "QrCodeReceiptClaimDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowQrCodeReceiptClaimDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"QrCodeReceiptClaimDialog",
+                RightIconResName = "QrCodeReceiptClaimDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowQrCodeReceiptClaimDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2237,7 +2238,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  Duy done D8 
+#if false    //   
 
             #region Settlement & Reprint
 
@@ -2283,7 +2284,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  Thanh done D8
+#if false   //  
 
             #region Preauth Flow
 
@@ -2402,7 +2403,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  Duy done D8
+#if false   //  
 
             #region Request Card Flow
 
@@ -2559,7 +2560,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false //  Thanh done D8
+#if true //  
 
             #region SelectAccountTypeDialog 
 
@@ -2596,7 +2597,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //   Thanh done D8
+#if false    //   
 
             #region MessageDialog
 
@@ -2783,7 +2784,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  Thanh done D8
+#if false   //  
 
             #region PresentCardErrorDialog
 
@@ -2810,7 +2811,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  Duy done D8
+#if false    //  
 
             #region EnterPinDialog
 
@@ -2856,7 +2857,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  Duy done D8
+#if false   //  
 
             #region ApprovalDialog
 
@@ -2933,7 +2934,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //  Thanh done D8
+#if false   //  
 
             #region SettlementApprovalDialog
 
@@ -2960,7 +2961,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  Thanh done D8
+#if false    //  
 
             #region MOTO FLOW
 
@@ -3026,7 +3027,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //  Thanh done D8
+#if false   //  
 
             #region ProcessMessageDialog
 

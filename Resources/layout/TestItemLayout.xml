@@ -4,9 +4,9 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/bg"
 	android:layout_width="match_parent"
+	android:layout_height="@dimen/test_item_height"
 	android:background="@drawable/white_radius_background"
-	android:paddingHorizontal="@dimen/base_margin_double"
-	android:layout_height="@dimen/test_item_height">
+	android:paddingHorizontal="@dimen/base_margin_double">
 
 	<CloudBanking.BaseControl.TvLabel
 		android:id="@+id/tv_title"

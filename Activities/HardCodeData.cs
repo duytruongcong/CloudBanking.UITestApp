@@ -6938,5 +6938,102 @@ namespace CloudBanking.UITestApp
             ////hardcode in dialog to show all case
             ////_data_PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(nameof(_data.status)));
         }
+
+        void ShowMiniDonationSelectAmountDialog()
+        {
+            var listValue = new List<long>() { 200, 300, 1000, 2000, 2500, 3000 };
+
+            DialogBuilder.Show(IPayDialog.MINI_DONATION_SELECT_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
+            {
+
+            }, true, false, listValue);
+        }
+
+        private void ShowMiniRequestCardDialog(CaseDialog caseDialog)
+        {
+            var RequestDlgData = new RequestCardDlgData();
+            var pInitProcessData = new ShellInitProcessData()
+            {
+                lAmount = 10000,
+                lDiscount = 0,
+                lDiscountPercent = 0,
+                PaymentDonations = new PaymentDonations()
+                {
+                    lTotalDonations = 0,
+                },
+                lTipAmount = 0,
+                lCashOut = 2000,
+                lCashOutFee = 0,
+                lSurChargeFee = 0,
+                lSurChargePercent = 0,
+                lAccountSurChargeFee = 0,
+                lAccountSurChargePercent = 0,
+                PaymentVouchers = new PaymentVouchers()
+                {
+                },
+            };
+
+            RequestDlgData.fNoPresentCard = false;
+            RequestDlgData.pInitProcessData = pInitProcessData;
+            RequestDlgData.fMultiplePayments = false;
+            RequestDlgData.fCanCancel = true;
+            RequestDlgData.lTotal = pInitProcessData.lAmount
+                                    + pInitProcessData.lTipAmount
+                                    + pInitProcessData.lCashOut
+                                    + (pInitProcessData.PaymentDonations != null ? pInitProcessData.PaymentDonations.lTotalDonations : 0)
+                                    + (pInitProcessData.PaymentVouchers != null ? pInitProcessData.PaymentVouchers.lTotalVouchers : 0);
+
+            RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
+            RequestDlgData.IsEmulator = true;
+            RequestDlgData.fVisa = true;
+            RequestDlgData.fMasterCard = true;
+            RequestDlgData.fDiners = true;
+            RequestDlgData.fAmex = true;
+            RequestDlgData.fJBC = true;
+            RequestDlgData.fUnionPay = true;
+            RequestDlgData.fTroy = true;
+            RequestDlgData.fDiscover = true;
+
+            RequestDlgData.CardIconResId = IconIds.VECTOR_MINI_TAP_INSERT_CARD;
+
+            switch(caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORTAPCARD;
+                    break; 
+
+                case CaseDialog.CASE2:
+                    RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENT_INSERT_OR_SWIPE_CARD_UPCASE;
+
+                    break;   
+                case CaseDialog.CASE3:
+                    RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORSWIPECARD;
+                    break;   
+
+                case CaseDialog.CASE4:
+                    RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTCARD;
+                    break;   
+
+                case CaseDialog.CASE5:
+                    RequestDlgData.PresentCardTitleId = StringIds.STRING_TAPORSWIPECARD;
+                    break;   
+
+                case CaseDialog.CASE6:
+                    RequestDlgData.PresentCardTitleId = StringIds.STRING_PLEASE_PRESENT_CARD_UPCASE;
+                    break; 
+
+                case CaseDialog.CASE7:
+                    RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
+                    break;   
+            }
+           
+
+            var requestCardDialog = new MiniRequestCardDialog(StringIds.STRING_CANCEL_LOWER, (iResult, args) =>
+            {
+            }, RequestDlgData);
+
+            requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            requestCardDialog.Show(this);
+        }
     }
 }

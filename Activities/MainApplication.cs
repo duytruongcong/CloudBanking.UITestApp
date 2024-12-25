@@ -53,7 +53,6 @@ namespace CloudBanking.UITestApp
             ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>();
             //ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>(ServiceLocator.Instance.Get<IUtilityService>());
 
-
             //create smart card
             if (CrossDeviceInfo.Current.IsPaxTerminal())
             {
@@ -82,8 +81,8 @@ namespace CloudBanking.UITestApp
                 CrossDeviceInfo.Current.IsCTLSMagCloser());
 
             //create UI of shell
-            //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(), ServiceLocator.Instance.Get<IDiagnosticService>());
-            ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
+            ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
+            //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
 
 
             if (CrossDeviceInfo.Current.IsPaxTerminal())

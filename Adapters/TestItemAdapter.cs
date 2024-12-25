@@ -75,9 +75,9 @@ namespace CloudBanking.UITestApp
 
             viewHolder.TvTitle.Text = _items[position].Title;
 
-            if (_items[position].RightIconResName != null)
+            if (string.IsNullOrEmpty(_items[position].RightIconResName))
             {
-                viewHolder.IvIcon.Visibility = ViewStates.Visible;
+                viewHolder.IvIcon.Visibility = ViewStates.Gone;
                 viewHolder.IvIcon.LoadImageFromSetupImageName(_items[position].RightIconResName);
             }
             else
@@ -85,7 +85,7 @@ namespace CloudBanking.UITestApp
                 viewHolder.IvIcon.Visibility = ViewStates.Gone;
             }
 
-            viewHolder.TvTitle.SetFont(UIConstants.FontAssets.Roboto_Medium);
+            viewHolder.TvTitle.SetFont(UIConstants.FontAssets.Roboto_Regular);
 
             return view;
         }

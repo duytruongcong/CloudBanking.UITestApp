@@ -5,7 +5,7 @@
 	android:id="@+id/bg"
 	android:layout_width="match_parent"
 	android:background="@drawable/white_radius_background"
-	android:padding="@dimen/base_margin_double"
+	android:paddingHorizontal="@dimen/base_margin_double"
 	android:layout_height="@dimen/test_item_height">
 
 	<CloudBanking.BaseControl.TvLabel
@@ -14,7 +14,7 @@
 		android:layout_width="match_parent"
 		android:layout_alignParentLeft="true"
 		android:layout_toLeftOf="@+id/iv_icon"
-		android:layout_marginRight="@dimen/base_margin_double"
+		android:layout_marginRight="@dimen/base_margin"
 		android:layout_centerVertical="true"
 		android:maxLines="3"
 		android:ellipsize="middle"
@@ -30,7 +30,7 @@
 		android:layout_alignParentRight="true"
 		android:layout_alignWithParentIfMissing="true"
 		android:scaleType="fitEnd"
-		android:visibility="visible"/>
+		android:visibility="gone"/>
 
 
 </CloudBanking.BaseControl.CustomRelativeLayout>

@@ -73,22 +73,8 @@ namespace CloudBanking.UITestApp
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.TestLayout);
-
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
-            {
-                if (!CheckPermission(PERMISSIONS))
-                {
-                    RequestPermission(PERMISSIONS, PERMISSION_ALL);
-                }
-                else
-                {
-                    StartApplication();
-                }
-            }
-            else
-            {
-                StartApplication();
-            }
+         
+            StartApplication();
         }
 
         void InitializationDatabase()
@@ -192,6 +178,7 @@ namespace CloudBanking.UITestApp
             _lData = new List<ScreenViewModel>();
 
             //DialogBuilder.IsShowHeader = false;
+            //DialogBuilder.Theme = UtilEnum.AppTheme.None;
 
             InitializeCommonData();
 
@@ -646,6 +633,92 @@ namespace CloudBanking.UITestApp
         #region InitializeCommonData
         private void InitializeCommonData()
         {
+
+#if true
+            #region Mini Donation Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE7",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE7);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE6",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE6);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE5",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE5);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE4",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE4);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE3",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE2",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE1",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDonationSelectAmountDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDonationSelectAmountDialog();
+                })
+            });
+
+            #endregion
+#endif
 
 #if false   //
             #region Id Check Flow
@@ -1180,15 +1253,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"StandaloneSelectDonationAmountDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowStandaloneSelectDonationAmountDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"StandaloneSelectDonationAmountDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowStandaloneSelectDonationAmountDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -1290,15 +1363,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"DonationSelectAmountDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowDonationSelectAmountDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"DonationSelectAmountDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowDonationSelectAmountDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2560,7 +2633,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true //  
+#if false //  
 
             #region SelectAccountTypeDialog 
 

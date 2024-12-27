@@ -639,73 +639,143 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE7",
-                RightIconResName = "",
+                Title = $"MiniEnterPinDialog CASE1",
+                RightIconResName = "EnterPinDialog_CASE1",
                 ItemAction = new Action(() =>
                 {
-                    ShowMiniRequestCardDialog(CaseDialog.CASE7);
+                    ShowMiniEnterPinDialog(CaseDialog.CASE1);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE6",
-                RightIconResName = "",
+                Title = $"MiniEnterPinDialog CASE2",
+                RightIconResName = "EnterPinDialog_CASE2",
                 ItemAction = new Action(() =>
                 {
-                    ShowMiniRequestCardDialog(CaseDialog.CASE6);
+                    ShowMiniEnterPinDialog(CaseDialog.CASE2);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE5",
-                RightIconResName = "",
+                Title = $"MiniEnterPinDialog CASE3",
+                RightIconResName = "EnterPinDialog_CASE3",
                 ItemAction = new Action(() =>
                 {
-                    ShowMiniRequestCardDialog(CaseDialog.CASE5);
+                    ShowMiniEnterPinDialog(CaseDialog.CASE3);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE4",
-                RightIconResName = "",
+                Title = $"MiniEnterPinDialog CASE4",
+                RightIconResName = "EnterPinDialog_CASE4",
                 ItemAction = new Action(() =>
                 {
-                    ShowMiniRequestCardDialog(CaseDialog.CASE4);
+                    ShowMiniEnterPinDialog(CaseDialog.CASE4);
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"MiniRequestCardDialog CASE3",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowMiniRequestCardDialog(CaseDialog.CASE3);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniDynamicOptionDialog CASE1",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"MiniRequestCardDialog CASE2",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowMiniRequestCardDialog(CaseDialog.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniDynamicOptionDialog CASE2",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE2);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"MiniRequestCardDialog CASE1",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowMiniRequestCardDialog(CaseDialog.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniDynamicOptionDialog CASE3",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE3);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniRequestCardDialog CASE7",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniRequestCardDialog(CaseDialog.CASE7);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniRequestCardDialog CASE6",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniRequestCardDialog(CaseDialog.CASE6);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniRequestCardDialog CASE5",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniRequestCardDialog(CaseDialog.CASE5);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniRequestCardDialog CASE4",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniRequestCardDialog(CaseDialog.CASE4);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniRequestCardDialog CASE3",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniRequestCardDialog(CaseDialog.CASE3);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniRequestCardDialog CASE2",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniRequestCardDialog(CaseDialog.CASE2);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniRequestCardDialog CASE1",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniRequestCardDialog(CaseDialog.CASE1);
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {

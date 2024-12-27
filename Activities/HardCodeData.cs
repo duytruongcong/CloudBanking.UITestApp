@@ -7035,5 +7035,112 @@ namespace CloudBanking.UITestApp
             requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
             requestCardDialog.Show(this);
         }
+
+        private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
+        {
+            var generalType = new List<GenericType>();
+
+            var item1 = new GenericType();
+            var item2 = new GenericType();
+            var item3 = new GenericType();
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
+                    item1.Icon = IconIds.VECTOR_CHEQUE;
+                    item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
+                    generalType.Add(item1);
+
+                    item2.Id = AccountType.ACCOUNT_TYPE_SAVINGS;
+                    item2.Icon = IconIds.VECTOR_SAVINGS;
+                    item2.lszText = StringIds.STRING_ACCOUNTTYPESAVINGS;
+                    generalType.Add(item2);
+
+                    item3.Id = AccountType.ACCOUNT_TYPE_CREDIT;
+                    item3.Icon = IconIds.VECTOR_CREDIT;
+                    item3.lszText = StringIds.STRING_ACCOUNTTYPECREDITCARD;
+                    generalType.Add(item3);
+                    break;
+                case CaseDialog.CASE2:
+
+                    item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
+                    item1.Icon = IconIds.VECTOR_CHEQUE;
+                    item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
+                    generalType.Add(item1);
+
+                    item2.Id = AccountType.ACCOUNT_TYPE_SAVINGS;
+                    item2.Icon = IconIds.VECTOR_SAVINGS;
+                    item2.lszText = StringIds.STRING_ACCOUNTTYPESAVINGS;
+                    generalType.Add(item2);
+                    break;
+
+                case CaseDialog.CASE3:
+
+                    item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
+                    item1.Icon = IconIds.VECTOR_CHEQUE;
+                    item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
+                    generalType.Add(item1);
+                    break;
+
+                default:
+                    break;
+            }
+
+            //ACCOUNT SELECTION CHQ / SAV / CRD is the normal account selection order in NZ
+            var sortedGeneralType = generalType.OrderBy(p => p.Id == AccountType.ACCOUNT_TYPE_CHEQUE ? 0 : p.Id == AccountType.ACCOUNT_TYPE_SAVINGS ? 1 : 2).ToList();
+
+            AccountType temp = null;
+
+            var dynamicOptionDialog = new ShellUI.MiniDynamicOptionDialog(StringIds.STRING_CANCEL_LOWER, null, sortedGeneralType, StringIds.STRING_SELECT_ACCOUNT);
+            dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            dynamicOptionDialog.Show(this);
+        }
+
+        private void ShowMiniEnterPinDialog(CaseDialog caseDialog)
+        {
+            GetPinNumberDlgData data = new GetPinNumberDlgData();
+
+            long lTotal = 12000;
+
+            data.lAmount = lTotal;
+
+            data.fShowBackButton = true;
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+
+                    data.AccountType = AccountType.ACCOUNT_TYPE_CREDIT;
+                    data.IsEmulator = false;
+                    data.fPinByPass = false;
+                    break;
+
+                case CaseDialog.CASE2:
+
+                    data.AccountType = AccountType.ACCOUNT_TYPE_SAVINGS;
+                    data.IsEmulator = false;
+                    data.fPinByPass = true;
+                    break;
+
+                case CaseDialog.CASE3:
+
+                    data.AccountType = 0;
+                    data.IsEmulator = true;
+                    data.fPinByPass = false;
+                    break;
+
+                case CaseDialog.CASE4:
+
+                    data.AccountType = 0;
+                    data.IsEmulator = true;
+                    data.fPinByPass = true;
+                    break;
+            }
+
+            var enterPinDialog = new MiniEnterPinDialog(StringIds.STRING_ENTERPIN, null, data);
+            enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            enterPinDialog.Show(this);
+        }
     }
 }

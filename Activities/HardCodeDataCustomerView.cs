@@ -33,10 +33,10 @@ namespace CloudBanking.UITestApp
                 lTipAmount = 0,
                 lCashOut = 2000,
                 lCashOutFee = 0,
-                lSurChargeFee = 0,
-                lSurChargePercent = 0,
-                lAccountSurChargeFee = 0,
-                lAccountSurChargePercent = 0,
+                //lSurChargeFee = 0,
+                //lSurChargePercent = 0,
+                //lAccountSurChargeFee = 0,
+                //lAccountSurChargePercent = 0,
                 PaymentVouchers = new PaymentVouchers()
                 {
                 },

@@ -270,16 +270,16 @@ namespace CloudBanking.UITestApp
                 lTipAmount = 0,
                 lCashOut = 2000,
                 lCashOutFee = 0,
-                lSurChargeFee = 0,
-                lSurChargePercent = 0,
-                lAccountSurChargeFee = 0,
-                lAccountSurChargePercent = 0,
+                //lSurChargeFee = 0,
+                //lSurChargePercent = 0,
+                //lAccountSurChargeFee = 0,
+                //lAccountSurChargePercent = 0,
                 PaymentVouchers = new PaymentVouchers()
                 {
                 },
             };
 
-            RequestDlgData.fNoPresentCard = true;// change to show difference case
+            RequestDlgData.fNoPresentCard = false;// change to show difference case
             RequestDlgData.pInitProcessData = pInitProcessData;
             RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -527,10 +527,10 @@ namespace CloudBanking.UITestApp
                 lTipAmount = 0,
                 lCashOut = 2000,
                 lCashOutFee = 0,
-                lSurChargeFee = 0,
-                lSurChargePercent = 0,
-                lAccountSurChargeFee = 0,
-                lAccountSurChargePercent = 0,
+                //lSurChargeFee = 0,
+                //lSurChargePercent = 0,
+                //lAccountSurChargeFee = 0,
+                //lAccountSurChargePercent = 0,
                 PaymentVouchers = new PaymentVouchers()
                 {
                 },
@@ -1146,6 +1146,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
+#if false
             var data = new CancelPreAuthComfirmDlgData()
             {
                 lAmount = 488,
@@ -1156,6 +1157,7 @@ namespace CloudBanking.UITestApp
             var cancelPreAuthConfirmDialog = new CancelPreAuthConfirmDialog(StringIds.STRING_CANCEL_PRE_AUTH, null, data);
             cancelPreAuthConfirmDialog.DialogStyle = DialogStyle.FULLSCREEN;
             cancelPreAuthConfirmDialog.Show(this);
+#endif
         }
 
         private void ShowMainDialog()
@@ -1174,13 +1176,13 @@ namespace CloudBanking.UITestApp
                 {
                         Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
                         lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
-                        Id = GlobalResource.CURRENT_BUTTON,
+                        //Id = GlobalResource.CURRENT_BUTTON,
                 },
                 new GenericType()
                 {
                         Icon = IconIds.VECTOR_OTHER_DATE,
                         lszText =  StringIds.STRING_OTHER_DATE,
-                        Id = GlobalResource.OTHER_BUTTON,
+                        //Id = GlobalResource.OTHER_BUTTON,
                 },
             };
 
@@ -1198,13 +1200,13 @@ namespace CloudBanking.UITestApp
                 {
                         Icon = IconIds.VECTOR_CURRENT_SETTLEMENT_DATE,
                         lszText =  StringIds.STRING_CURRENT_SETTLEMENT_DATE,
-                        Id = GlobalResource.CURRENT_BUTTON,
+                        //Id = GlobalResource.CURRENT_BUTTON,
                 },
                 new GenericType()
                 {
                         Icon = IconIds.VECTOR_OTHER_DATE,
                         lszText =  StringIds.STRING_OTHER_DATE,
-                        Id = GlobalResource.OTHER_BUTTON,
+                        //Id = GlobalResource.OTHER_BUTTON,
                 },
             };
 
@@ -1955,13 +1957,13 @@ namespace CloudBanking.UITestApp
             var initData = new ShellInitProcessData();
             initData.lAmount = 13018;
             initData.lCashOut = 1000;
-            initData.lAccountSurChargeFee = 25;
+            //initData.lAccountSurChargeFee = 25;
             initData.lServiceFee = 2000;
             initData.lTotalAmount = 10000;
             initData.lTotalAmountPaid = 5000;
-            initData.lSurChargeFee = 25;
-            initData.lSurChargePercent = 10;
-            initData.lAccountSurChargePercent = 5;
+            //initData.lSurChargeFee = 25;
+            //initData.lSurChargePercent = 10;
+            //initData.lAccountSurChargePercent = 5;
             initData.iFunctionButton = FunctionType.PreAuthComplete;
             initData.ExpandedPayment = new Payment()
             {
@@ -4620,10 +4622,10 @@ namespace CloudBanking.UITestApp
                 //iCommand = GlobalResource.OTHER_BUTTON,
             });
 
-            DialogBuilder.Show(IPayDialog.REPORT_SELECT_PAYMENT_METHOD_DIALOG, StringIds.STRING_CURRENT_SALES, (iResult, args) =>
-            {
-                //MenuDialog
-            }, true, false, selectFuncDialogDta);
+            //DialogBuilder.Show(IPayDialog.REPORT_SELECT_PAYMENT_METHOD_DIALOG, StringIds.STRING_CURRENT_SALES, (iResult, args) =>
+            //{
+            //    //MenuDialog
+            //}, true, false, selectFuncDialogDta);
         }
 
         void SettlementApproval()
@@ -5117,10 +5119,10 @@ namespace CloudBanking.UITestApp
                 lTipAmount = 0,
                 lCashOut = 2000,
                 lCashOutFee = 0,
-                lSurChargeFee = 0,
-                lSurChargePercent = 0,
-                lAccountSurChargeFee = 0,
-                lAccountSurChargePercent = 0,
+                //lSurChargeFee = 0,
+                //lSurChargePercent = 0,
+                //lAccountSurChargeFee = 0,
+                //lAccountSurChargePercent = 0,
                 PaymentVouchers = new PaymentVouchers()
                 {
                 },
@@ -5547,8 +5549,8 @@ namespace CloudBanking.UITestApp
 
             selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
             {
-                iCommandLang = StringIds.STRING_OTHER_PRE_AUTHS,
-                Title = StringIds.STRING_OTHER_PRE_AUTHS,
+                //iCommandLang = StringIds.STRING_OTHER_PRE_AUTHS,
+                //Title = StringIds.STRING_OTHER_PRE_AUTHS,
                 idImage = IconIds.VECTOR_PRE_AUTH_INCREMENT,
                 IdProcessor = 0,
                 iCommand = GlobalResource.FNC_SALE_BUTTON,
@@ -5762,10 +5764,10 @@ namespace CloudBanking.UITestApp
                 lTipAmount = 0,
                 lCashOut = 2000,
                 lCashOutFee = 0,
-                lSurChargeFee = 0,
-                lSurChargePercent = 0,
-                lAccountSurChargeFee = 0,
-                lAccountSurChargePercent = 0,
+                //lSurChargeFee = 0,
+                //lSurChargePercent = 0,
+                //lAccountSurChargeFee = 0,
+                //lAccountSurChargePercent = 0,
                 PaymentVouchers = new PaymentVouchers()
                 {
                 },
@@ -6941,16 +6943,21 @@ namespace CloudBanking.UITestApp
 
         void ShowMiniDonationSelectAmountDialog()
         {
+#if false
+
             var listValue = new List<long>() { 200, 300, 1000, 2000, 2500, 3000 };
 
             DialogBuilder.Show(IPayDialog.MINI_DONATION_SELECT_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
             {
 
             }, true, false, listValue);
+#endif
         }
 
         private void ShowMiniRequestCardDialog(CaseDialog caseDialog)
         {
+#if false
+
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
             {
@@ -7034,10 +7041,13 @@ namespace CloudBanking.UITestApp
 
             requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
             requestCardDialog.Show(this);
+#endif
         }
 
         private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
         {
+#if false
+
             var generalType = new List<GenericType>();
 
             var item1 = new GenericType();
@@ -7095,10 +7105,12 @@ namespace CloudBanking.UITestApp
             var dynamicOptionDialog = new ShellUI.MiniDynamicOptionDialog(StringIds.STRING_CANCEL_LOWER, null, sortedGeneralType, StringIds.STRING_SELECT_ACCOUNT);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
+#endif
         }
 
         private void ShowMiniEnterPinDialog(CaseDialog caseDialog)
         {
+#if true
             GetPinNumberDlgData data = new GetPinNumberDlgData();
 
             long lTotal = 12000;
@@ -7138,9 +7150,83 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            var enterPinDialog = new MiniEnterPinDialog(StringIds.STRING_ENTERPIN, null, data);
+            var enterPinDialog = new MiniEnterPinDialog(StringIds.STRING_CANCEL_LOWER, null, data);
             enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
             enterPinDialog.Show(this);
+#endif
+        }
+
+        private void ShowMiniProcessMessageDialog(CaseDialog caseDialog)
+        {
+            var pProcessingData = new ProcessingData();
+
+            pProcessingData.fAutoClose = true;
+            string cancelBtnTitleId = "";
+
+            long amount = 30;
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+
+                    pProcessingData.hTextTitle =$"{Localize.GetString(StringIds.STRING_DONATION).ToUpperInvariant()} {amount.ToFormatLocalCurrencyAmount()}" ;
+                    pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
+                    pProcessingData.hTextTwo = "";
+                    pProcessingData.hTextThree = "";
+                    break;
+
+                case CaseDialog.CASE2:
+
+                    pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
+                    pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
+                    pProcessingData.hTextTwo = "";
+                    pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
+                    break;
+
+                case CaseDialog.CASE3:
+
+                    pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
+                    pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
+                    pProcessingData.hTextTwo = Localize.GetString(StringIds.STRING_EMV_TERMINALACTIONANALYSIS);
+                    pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
+                    break;
+
+                case CaseDialog.CASE4:
+
+                    pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
+                    pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
+                    pProcessingData.hTextTwo = Localize.GetString(StringIds.STRING_EMV_TERMINALACTIONANALYSIS);
+                    pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
+                    cancelBtnTitleId = StringIds.STRING_TEMPORARILY_HALT_TRANSMISSION;
+                    break;
+            }
+
+            var enterPinDialog = new MiniProcessMessageDialog(StringIds.STRING_PROCESSING_TITLE, null, pProcessingData, cancelBtnTitleId);
+            enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            enterPinDialog.Show(this);
+        }
+
+        private void ShowMiniApprovalDialog()
+        {
+            string lpszEntryModeString = "";
+
+            ApprovalDlgData DlgData = new ApprovalDlgData();
+
+            DlgData.lBalance = 3000;
+
+            DlgData.iEntryMode = ENTRYMODE.EM_MOTO;
+
+            DlgData.fApproved = true;
+            DlgData.lpszAboveMainString =  $"{Localize.GetString(StringIds.STRING_DONATION).ToUpper()} {DlgData.lBalance.ToFormatLocalCurrencyAmount()}";
+            DlgData.lszMainString = Localize.GetString(StringIds.STRING_APPROVED).ToUpper();
+
+            var approvalDialog = new ShellUI.MiniApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
+            approvalDialog.OnResult += (iResult, args) =>
+            {
+                approvalDialog.Dismiss();
+            };
+            approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            approvalDialog.Show(this);
         }
     }
 }

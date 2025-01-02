@@ -7208,8 +7208,6 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniApprovalDialog()
         {
-            string lpszEntryModeString = "";
-
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
             DlgData.lBalance = 3000;
@@ -7227,6 +7225,60 @@ namespace CloudBanking.UITestApp
             };
             approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
             approvalDialog.Show(this);
+        }
+
+        private void ShowMiniEnterAccessCodeDialog()
+        {
+            var miniCustomInputDlgData = new MiniEnterAccessCodeDlgData()
+            {
+                TitleId = StringIds.STRING_ENTERACCESSCODE,
+                Value = string.Empty,
+            };
+
+            DialogBuilder.Show(IPayDialog.MINI_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_DONATION_APP, (iResult, args) =>
+            {
+                //MiniEnterAccessCodeDialog
+            }, true, false, miniCustomInputDlgData);
+        }
+
+        private void ShowMiniDonationSetupMenuDialog()
+        {
+            var accessPasscode = "876543";
+
+            DialogBuilder.Show(IPayDialog.MINI_DONATION_SETUP_MENU_DIALOG, StringIds.STRING_SETUP_MENU, (iResult, args) =>
+            {
+
+            }, true, false, accessPasscode);
+        }
+
+        private void ShowMiniFixedKeyboardInputDialog()
+        {
+            var inputNumber = new InputNumberFixedKeyboardEditModel()
+            {
+                HeaderTitleId = StringIds.STRING_ACCESSCODE,
+                TitleId = StringIds.STRING_ACCESSCODE,
+                Value = "876543",
+                MaxLength = 8,
+                MinLength = 1,
+                LeftTitleId = StringIds.STRING_ACCESSCODE,
+                AboveHeaderAmount = 6000,
+                AboveHeaderTitleId = StringIds.STRING_ACCESSCODE,
+            };
+
+            var dialogNumber = new MiniFixedKeyboardInputDialog(inputNumber, (obj) =>
+            {
+                
+            });
+
+            IDialogEvent releaseDelegate = null;
+            releaseDelegate = () =>
+            {
+                
+            };
+
+            dialogNumber.OnLoadedEvt += releaseDelegate;
+
+            dialogNumber.Show(CrossCurrentActivity.Current.Activity);
         }
     }
 }

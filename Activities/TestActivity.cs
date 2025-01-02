@@ -639,13 +639,43 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniApprovalDialog",
+                Title = $"MiniFixedKeyboardInputDialog",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMiniApprovalDialog();
+                    ShowMiniFixedKeyboardInputDialog();
                 })
             });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDonationSetupMenuDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDonationSetupMenuDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniEnterAccessCodeDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniEnterAccessCodeDialog();
+                })
+            });
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniApprovalDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniApprovalDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{

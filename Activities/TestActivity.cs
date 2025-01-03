@@ -639,6 +639,16 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
+                Title = $"MiniDonationEditAmountMenuDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDonationEditAmountMenuDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
                 Title = $"MiniFixedKeyboardInputDialog",
                 RightIconResName = "",
                 ItemAction = new Action(() =>

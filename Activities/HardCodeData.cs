@@ -4708,7 +4708,7 @@ namespace CloudBanking.UITestApp
                 DlgData.HomeImage = currency.iCurrencyCodeFlag;
             }
 
-            switch(caseDialog)
+            switch (caseDialog)
             {
                 case CaseDialog.CASE1:
                     //DialogBuilder.IsShowHeader = true;
@@ -6793,7 +6793,7 @@ namespace CloudBanking.UITestApp
             //    BottomButtonTextId = StringIds.STRING_CANCEL,
             //    BottomButtonCommand = GlobalResource.BACK_BUTTON,
             //    ReceiptQrCode = "siopv2://authorize?response_type=id_token&scope=openid,IdentityOver18Credential&id_token_type=subject_signed&client_id=https%3A%2F%2Frvp9pgvdv6.execute-api.ap-southeast-2.amazonaws.com%2Fpoc%2Fv1%2Foidc4vc%2Fdia%2Fvp-tokens&response_mode=post&redirect_uri=https%3A%2F%2Frvp9pgvdv6.execute-api.ap-southeast-2.amazonaws.com%2Fpoc%2Fv1%2Foidc4vc%2Fdia%2Fvp-tokens%2FRU5USVRZI2NjNjUwY2FiLTY3OGMtNDI2Yy1hNjc2LWJjYmQyNDBmNTk4NX5ESUdJVEFMX0lEX1RSQU5TQUNUSU9OI2VlM2ExNDZhLTM1MmUtNGQzNy04NWUyLTYxNGYzYjNlOGYyYn4yZjA5Y2UzYi1jODE3LTRiNGItOWU4Ni1kZDA4OWQyMTRjNGU%3D&nonce=RU5USVRZI2NjNjUwY2FiLTY3OGMtNDI2Yy1hNjc2LWJjYmQyNDBmNTk4NX5ESUdJVEFMX0lEX1RSQU5TQUNUSU9OI2VlM2ExNDZhLTM1MmUtNGQzNy04NWUyLTYxNGYzYjNlOGYyYn4yZjA5Y2UzYi1jODE3LTRiNGItOWU4Ni1kZDA4OWQyMTRjNGU%3D&client_metadata=%7B%22subject_syntax_types_supported%22%3A%5Bdid%3Ajwk22%5D%2C%22id_token_signed_response_alg%22%3A%22ES256%22%7D",
-                
+
             //};
 
             //DialogBuilder.Show(IPayDialog.CHECK_ID_SCAN_QR_CODE_DIALOG, StringIds.STRING_ID_CHECK, (iResult, args) =>
@@ -7169,7 +7169,7 @@ namespace CloudBanking.UITestApp
             {
                 case CaseDialog.CASE1:
 
-                    pProcessingData.hTextTitle =$"{Localize.GetString(StringIds.STRING_DONATION).ToUpperInvariant()} {amount.ToFormatLocalCurrencyAmount()}" ;
+                    pProcessingData.hTextTitle = $"{Localize.GetString(StringIds.STRING_DONATION).ToUpperInvariant()} {amount.ToFormatLocalCurrencyAmount()}";
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
                     pProcessingData.hTextTwo = "";
                     pProcessingData.hTextThree = "";
@@ -7215,7 +7215,7 @@ namespace CloudBanking.UITestApp
             DlgData.iEntryMode = ENTRYMODE.EM_MOTO;
 
             DlgData.fApproved = true;
-            DlgData.lpszAboveMainString =  $"{Localize.GetString(StringIds.STRING_DONATION).ToUpper()} {DlgData.lBalance.ToFormatLocalCurrencyAmount()}";
+            DlgData.lpszAboveMainString = $"{Localize.GetString(StringIds.STRING_DONATION).ToUpper()} {DlgData.lBalance.ToFormatLocalCurrencyAmount()}";
             DlgData.lszMainString = Localize.GetString(StringIds.STRING_APPROVED).ToUpper();
 
             var approvalDialog = new ShellUI.MiniApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
@@ -7267,18 +7267,28 @@ namespace CloudBanking.UITestApp
 
             var dialogNumber = new MiniFixedKeyboardInputDialog(inputNumber, (obj) =>
             {
-                
+
             });
 
             IDialogEvent releaseDelegate = null;
             releaseDelegate = () =>
             {
-                
+
             };
 
             dialogNumber.OnLoadedEvt += releaseDelegate;
 
             dialogNumber.Show(CrossCurrentActivity.Current.Activity);
+        }
+
+        private void ShowMiniDonationEditAmountMenuDialog()
+        {
+            IList<long> listAmount = new List<long>() { 200, 300, 1000 };
+
+            DialogBuilder.Show(IPayDialog.MINI_DONATION_EDIT_AMOUNT_MENU_DIALOG, StringIds.STRING_DONATION_AMOUNTS, (iResult, args) =>
+            {
+
+            }, true, false, listAmount);
         }
     }
 }

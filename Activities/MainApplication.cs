@@ -48,21 +48,21 @@ namespace CloudBanking.UITestApp
             ServiceLocator.Instance.Register<IEmbeddedResourceLoader, EmbeddedResourceLoader>();
             ServiceLocator.Instance.Register<IProfileService, DroidProfilesService>(ServiceLocator.Instance.Get<ILoggerService>());
             ServiceLocator.Instance.Register<IPosInterfaceClient, HttpPosInterfaceClient>(new Uri(string.Format("https://{0}:{1}", "127.0.0.1", "5643")), string.Empty);
-            ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>();
-            //ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>(ServiceLocator.Instance.Get<IUtilityService>());
+            //ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>();
+            ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>(ServiceLocator.Instance.Get<IUtilityService>());
 
             //create smart card
-            if (CrossDeviceInfo.Current.IsPaxTerminal())
-            {
-                ServiceLocator.Instance.Register<ISmartDevice, PaxSmartDevice>(this,
-                    ServiceLocator.Instance.Get<ILoggerService>(),
-                    ServiceLocator.Instance.Get<IFileService>(),
-                    ServiceLocator.Instance.Get<IProfileService>(),
-                    CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),
-                    ServiceLocator.Instance.Get<IUtilityService>());
-                ServiceLocator.Instance.Register<IBarcodeService, PaxBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
-            }
-            else
+            //if (CrossDeviceInfo.Current.IsPaxTerminal())
+            //{
+            //    ServiceLocator.Instance.Register<ISmartDevice, PaxSmartDevice>(this,
+            //        ServiceLocator.Instance.Get<ILoggerService>(),
+            //        ServiceLocator.Instance.Get<IFileService>(),
+            //        ServiceLocator.Instance.Get<IProfileService>(),
+            //        CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),
+            //        ServiceLocator.Instance.Get<IUtilityService>());
+            //    ServiceLocator.Instance.Register<IBarcodeService, PaxBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
+            //}
+            //else
             {
                 ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>());
                 ServiceLocator.Instance.Register<IBarcodeService, ZXingBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
@@ -79,13 +79,15 @@ namespace CloudBanking.UITestApp
                 CrossDeviceInfo.Current.IsCTLSMagCloser());
 
             //create UI of shell
-            ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
-            //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
+            //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
+            //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard());
+            //ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(), ServiceLocator.Instance.Get<IDiagnosticService>());
+            ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(), ServiceLocator.Instance.Get<IDiagnosticService>());
 
 
-            if (CrossDeviceInfo.Current.IsPaxTerminal())
-                ServiceLocator.Instance.Register<ITMSService, CloudBanking.PaxSdk.TMSService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<ILoggerService>(), PaxConstants.PAX_SINGLE_APP_KEY, PaxConstants.PAX_SINGLE_APP_SECRET);
-            else
+            //if (CrossDeviceInfo.Current.IsPaxTerminal())
+            //    ServiceLocator.Instance.Register<ITMSService, CloudBanking.PaxSdk.TMSService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<ILoggerService>(), PaxConstants.PAX_SINGLE_APP_KEY, PaxConstants.PAX_SINGLE_APP_SECRET);
+            //else
                 ServiceLocator.Instance.Register<ITMSService, CloudBanking.PhoneSdk.TMSService>();
 
             //ServiceLocator.Instance.Register<IShellClient, ShellContainerClient.ShellClient>(this, ServiceLocator.Instance.Get<IDialogBuilder>());

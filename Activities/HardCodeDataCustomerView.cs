@@ -20,6 +20,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowCusViewRequestCardDialog(CaseDialog caseDialog)
         {
+#if false
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
             {
@@ -226,6 +227,7 @@ namespace CloudBanking.UITestApp
 
             //requestCardDialog.DialogStyle = DialogStyle.FULLSCREEN;
             //requestCardDialog.Show(this);
+#endif
         }
 
         private void ShowCusViewEnterPinDialog(CaseDialog caseDialog)

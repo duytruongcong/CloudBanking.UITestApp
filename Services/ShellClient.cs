@@ -180,10 +180,10 @@ namespace CloudBanking.UITestApp
                 try
                 {
                     //disble thread in processor because we are in a transaction
-                    if (PaymentProcessors.GlobalProcessorTimerChecking != null)
-                    {
-                        PaymentProcessors.GlobalProcessorTimerChecking.Elapsed -= PaymentProcessors.GlobalProcessorTimerChecking_Elapsed;
-                    }
+                    //if (PaymentProcessors.GlobalProcessorTimerChecking != null)
+                    //{
+                    //    PaymentProcessors.GlobalProcessorTimerChecking.Elapsed -= PaymentProcessors.GlobalProcessorTimerChecking_Elapsed;
+                    //}
 
                     res = _applicationFlow.ProcessTrans(request, tokenSource.Token, (m) =>
                     {
@@ -226,11 +226,11 @@ namespace CloudBanking.UITestApp
                     ServiceLocator.Instance.Get<ILoggerService>()?.ClearState();
 
                     //Enable thread in processor because we complete in a transaction
-                    if (PaymentProcessors.GlobalProcessorTimerChecking != null)
-                    {
-                        PaymentProcessors.GlobalProcessorTimerChecking.Elapsed -= PaymentProcessors.GlobalProcessorTimerChecking_Elapsed;
-                        PaymentProcessors.GlobalProcessorTimerChecking.Elapsed += PaymentProcessors.GlobalProcessorTimerChecking_Elapsed;
-                    }
+                    //if (PaymentProcessors.GlobalProcessorTimerChecking != null)
+                    //{
+                    //    PaymentProcessors.GlobalProcessorTimerChecking.Elapsed -= PaymentProcessors.GlobalProcessorTimerChecking_Elapsed;
+                    //    PaymentProcessors.GlobalProcessorTimerChecking.Elapsed += PaymentProcessors.GlobalProcessorTimerChecking_Elapsed;
+                    //}
 
                     GC.Collect();
 
@@ -424,6 +424,66 @@ namespace CloudBanking.UITestApp
         }
 
         public IList<PrintJobViewModel> GetAllPrintJobRecords(TransData transData, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TransResponse DoTransaction(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDictionary<string, string> GetInfo(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsTransactionFound(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<PaymentViewModel> GetPaymentRecords(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<PrintJobViewModel> GetPrintJobRecords(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<PrintJobViewModel> GetAllPrintJobRecords(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PrintJob GetPrintJob(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<RecordViewModel> GetPreAuthPendingRecords(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<BatchReport> GetBatchReport(TransData transData, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsPendingRecordExist(TransData transData, ref string responseMesage, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsAdviceRecordExist(TransData transData, ref string responseMesage, out bool isIdleTimeout, bool fShowMsgBox = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<EnabledMerchant> GetEnabledMerchants(TransData transData, ref ushort usResult, out bool isIdleTimeout)
         {
             throw new NotImplementedException();
         }

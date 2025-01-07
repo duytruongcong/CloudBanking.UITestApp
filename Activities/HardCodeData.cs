@@ -272,10 +272,10 @@ namespace CloudBanking.UITestApp
                 lTipAmount = 0,
                 lCashOut = 2000,
                 lCashOutFee = 0,
-                //lSurChargeFee = 0,
-                //lSurChargePercent = 0,
-                //lAccountSurChargeFee = 0,
-                //lAccountSurChargePercent = 0,
+                lSurChargeFee = 0,
+                lSurChargePercent = 0,
+                lAccountSurChargeFee = 0,
+                lAccountSurChargePercent = 0,
                 PaymentVouchers = new PaymentVouchers()
                 {
                 },
@@ -388,21 +388,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = false;
                     RequestDlgData.fWePay = true;
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_CENTRA_PAY,
-                        IconHorizontal = IconIds.ICON_CENTRALPAY_TEXT,
-                        Icon = IconIds.VECTOR_OTHERPAY_CENTRAPAY,
-                        Title = StringIds.STRING_CENTRAPAY,
-                    };
-
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_GIFT_CARD_PAY,
-                        IconHorizontal = IconIds.ICON_EPAY_TEXT,
-                        Icon = IconIds.ICON_EPAY_PRODUCTS,
-                        Title = StringIds.STRING_EZIPAY_UPCASE,
-                    };
+                   
 
                     break;
 
@@ -424,6 +410,7 @@ namespace CloudBanking.UITestApp
                        Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
                        Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
                        CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                       Icon = IconIds.VECTOR_MANUAL_REFUND,
                        IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
                     };
 
@@ -432,6 +419,7 @@ namespace CloudBanking.UITestApp
                         Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
                         Title = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
                         CommandLang = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                        Icon = IconIds.VECTOR_MANUAL_REFUND,
                         IconHorizontal = false ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
                     };
 
@@ -451,6 +439,28 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fWePay = false;
 
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_OPEN_PREAUTH_UPCASE;
+
+                    RequestDlgData.OtherPayment = new ButtonData()
+                    {
+                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        Title = StringIds.STRING_SWIPE_OR_MANUAL,
+                    };
+
+                    RequestDlgData.FirstTenderType = new ButtonData()
+                    {
+                        Command = TransResponse.APPCOMMAND_CENTRA_PAY,
+                        IconHorizontal = IconIds.ICON_CENTRALPAY_TEXT,
+                        Icon = IconIds.VECTOR_OTHERPAY_CENTRAPAY,
+                        Title = StringIds.STRING_CENTRAPAY,
+                    };
+
+                    RequestDlgData.SecondTenderType = new ButtonData()
+                    {
+                        Command = TransResponse.APPCOMMAND_GIFT_CARD_PAY,
+                        IconHorizontal = IconIds.ICON_EPAY_TEXT,
+                        Icon = IconIds.ICON_EPAY_PRODUCTS,
+                        Title = StringIds.STRING_EZIPAY_UPCASE,
+                    };
 
                     break;
 
@@ -568,9 +578,6 @@ namespace CloudBanking.UITestApp
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
             RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
-
-           
-
             
 
             var requestCardDialog = new RequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
@@ -1223,7 +1230,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
-#if false
+#if true
             var data = new CancelPreAuthComfirmDlgData()
             {
                 lAmount = 488,
@@ -4699,10 +4706,10 @@ namespace CloudBanking.UITestApp
                 //iCommand = GlobalResource.OTHER_BUTTON,
             });
 
-            //DialogBuilder.Show(IPayDialog.REPORT_SELECT_PAYMENT_METHOD_DIALOG, StringIds.STRING_CURRENT_SALES, (iResult, args) =>
-            //{
-            //    //MenuDialog
-            //}, true, false, selectFuncDialogDta);
+            DialogBuilder.Show(IPayDialog.REPORT_SELECT_PAYMENT_METHOD_DIALOG, StringIds.STRING_CURRENT_SALES, (iResult, args) =>
+            {
+                //MenuDialog
+            }, true, false, selectFuncDialogDta);
         }
 
         void SettlementApproval()
@@ -5183,7 +5190,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
             {
@@ -5208,7 +5215,7 @@ namespace CloudBanking.UITestApp
 
             RequestDlgData.fNoPresentCard = false;
             RequestDlgData.pInitProcessData = pInitProcessData;
-            RequestDlgData.fMultiplePayments = false;
+            //RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
             RequestDlgData.lTotal = pInitProcessData.lAmount
                                     + pInitProcessData.lTipAmount
@@ -5219,7 +5226,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
             RequestDlgData.IsEmulator = true;
             RequestDlgData.fShowMenu = false;
-            RequestDlgData.fMultiTender = false;
+            //RequestDlgData.fMultiTender = false;
 
             RequestDlgData.fVisa = true;
             RequestDlgData.fMasterCard = true;
@@ -5249,6 +5256,22 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = false;
                     RequestDlgData.fWePay = false;
 
+                    RequestDlgData.FirstTenderType = new ButtonData()
+                    {
+                        Command = TransResponse.APPCOMMAND_ALI_PAY,
+                        IconHorizontal = IconIds.ICON_ALIPAY_HORIZONTAL_LOGO,
+                        Icon = IconIds.VECTOR_ALI_PAY,
+                        Title = StringIds.STRING_ALIPAY
+                    };
+
+                    RequestDlgData.SecondTenderType = new ButtonData()
+                    {
+                        Command = TransResponse.APPCOMMAND_WE_PAY,
+                        IconHorizontal = IconIds.ICON_WECHAT_HORIZONTAL_LOGO,
+                        Icon = IconIds.VECTOR_WECHAT,
+                        Title = StringIds.STRING_WECHAT_PAY
+                    };
+
                     break;
 
                 case CaseDialog.CASE2:
@@ -5263,6 +5286,22 @@ namespace CloudBanking.UITestApp
 
                     RequestDlgData.fAliPay = true;
                     RequestDlgData.fWePay = false;
+
+                    RequestDlgData.FirstTenderType = new ButtonData()
+                    {
+                        Command = GlobalResource.MANUAL_BUTTON,
+                        Title = StringIds.STRING_MANUAL_ENTER,
+                        CommandLang = StringIds.STRING_MANUAL_ENTER,
+                        IconHorizontal = IconIds.ICON_MANUAL_TEXT,
+                    };
+
+                    RequestDlgData.SecondTenderType = new ButtonData()
+                    {
+                        Command = TransResponse.APPCOMMAND_MULTI_TENDER_PAY,
+                        IconHorizontal = IconIds.ICON_MULTI_TENDER_TEXT,
+                        Icon = IconIds.VECTOR_MENU_MULTI_TENDER,
+                        Title = StringIds.STRING_MULTI_TENDER,
+                    };
 
                     break;
 
@@ -5296,6 +5335,24 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = true;
                     RequestDlgData.fWePay = true;
 
+                    RequestDlgData.FirstTenderType = new ButtonData()
+                    {
+                        Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
+                        Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                        CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
+                    };
+
+                    RequestDlgData.SecondTenderType = new ButtonData()
+                    {
+                        Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
+                        Title = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                        CommandLang = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        IconHorizontal = false ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
+                    };
+
                     break;
 
                 case CaseDialog.CASE5:
@@ -5312,6 +5369,28 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fWePay = false;
 
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_OPEN_PREAUTH_UPCASE;
+
+                    RequestDlgData.OtherPayment = new ButtonData()
+                    {
+                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        Title = StringIds.STRING_SWIPE_OR_MANUAL,
+                    };
+
+                    RequestDlgData.FirstTenderType = new ButtonData()
+                    {
+                        Command = TransResponse.APPCOMMAND_CENTRA_PAY,
+                        IconHorizontal = IconIds.ICON_CENTRALPAY_TEXT,
+                        Icon = IconIds.VECTOR_OTHERPAY_CENTRAPAY,
+                        Title = StringIds.STRING_CENTRAPAY,
+                    };
+
+                    RequestDlgData.SecondTenderType = new ButtonData()
+                    {
+                        Command = TransResponse.APPCOMMAND_GIFT_CARD_PAY,
+                        IconHorizontal = IconIds.ICON_EPAY_TEXT,
+                        Icon = IconIds.ICON_EPAY_PRODUCTS,
+                        Title = StringIds.STRING_EZIPAY_UPCASE,
+                    };
 
                     break;
 
@@ -5425,6 +5504,10 @@ namespace CloudBanking.UITestApp
 
                 RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
             }
+
+            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
+            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
+            RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
 
             var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             {

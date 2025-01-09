@@ -173,7 +173,7 @@ namespace CloudBanking.UITestApp
             DlgData.TransactionTypeStringId = GetStringId(DlgData.FunctionType);
             DlgData.AuthCode = "2895647";
 
-            var approvalDialog = new ShellUI.ApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
+            var approvalDialog = new ApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
             approvalDialog.OnResult += (iResult, args) =>
             {
                 approvalDialog.Dismiss();
@@ -236,23 +236,40 @@ namespace CloudBanking.UITestApp
 
         void ShowSwipeMerchantCardDialog()
         {
-            var data = new SwipeMerchantCardDlgData()
+            string titleId = StringIds.STRING_SWIPE_GIFT_CARD;
+
+            SwipeMerchantCardDlgData initDlgData = new SwipeMerchantCardDlgData();
+
+            initDlgData.lTotal = 13800;
+
+            initDlgData.szTotalTitle = StringIds.STRING_GIFT_CARD_SALE;
+
+            initDlgData.fShowAmount = true;
+
+            initDlgData.fManualEntry = true;
+
+            initDlgData.IsEmulator = false;
+
+            initDlgData.szMainCardTitle = titleId;
+
+            switch (1)
             {
-                lTotal = 2000,
-                IsEmulator = false,
-                szTotalTitle = StringIds.STRING_REFUND_AMOUNT,
-                EventCommand = (ret, args) =>
-                {
+                case 0:
+                    initDlgData.OtherCommand = GlobalResource.VOUCHER_REDEEM;
+                    initDlgData.OtherIconId = IconIds.VECTOR_VOUCHER;
+                    initDlgData.OtherTitleID = StringIds.STRING_VOUCHERS;
+                    break;
+                case 1:
+                    initDlgData.OtherCommand = GlobalResource.SCAN_BUTTON;
+                    initDlgData.OtherIconId = IconIds.VECTOR_QR_PAYMENTS;
+                    initDlgData.OtherTitleID = StringIds.STRING_SCAN_CARD;
+                    break;
+            }
 
-                }
-            };
-            var dlg = new MerchantSwipeCardDialog(StringIds.STRING_SWIPEMERCHANTCARD, (iResult, args) =>
+            DialogBuilder.Show(IShellDialog.SWIPE_MERCHANT_CARD_DIALOG, true, titleId, (iResult, args) =>
             {
 
-            }, data);
-
-            dlg.DialogStyle = DialogStyle.FULLSCREEN;
-            dlg.Show(this);
+            }, false, false, initDlgData);
         }
 
         private void ShowRequestCardDialog(CaseDialog caseDialog)
@@ -361,6 +378,7 @@ namespace CloudBanking.UITestApp
                         Title = StringIds.STRING_MANUAL_ENTER,
                         CommandLang = StringIds.STRING_MANUAL_ENTER,
                         IconHorizontal = IconIds.ICON_MANUAL_TEXT,
+                        Icon = IconIds.VECTOR_MANUAL_CARD
                     };
 
                     RequestDlgData.SecondTenderType = new ButtonData()
@@ -388,7 +406,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = false;
                     RequestDlgData.fWePay = true;
 
-                   
+
 
                     break;
 
@@ -407,11 +425,11 @@ namespace CloudBanking.UITestApp
 
                     RequestDlgData.FirstTenderType = new ButtonData()
                     {
-                       Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
-                       Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                       CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                       Icon = IconIds.VECTOR_MANUAL_REFUND,
-                       IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
+                        Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
+                        Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                        CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                        Icon = IconIds.VECTOR_MANUAL_CARD,
+                        IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
                     };
 
                     RequestDlgData.SecondTenderType = new ButtonData()
@@ -419,7 +437,7 @@ namespace CloudBanking.UITestApp
                         Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
                         Title = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
                         CommandLang = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        Icon = IconIds.VECTOR_MANUAL_CARD,
                         IconHorizontal = false ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
                     };
 
@@ -442,7 +460,7 @@ namespace CloudBanking.UITestApp
 
                     RequestDlgData.OtherPayment = new ButtonData()
                     {
-                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        //Icon = IconIds.VECTOR_MANUAL_REFUND,
                         Title = StringIds.STRING_SWIPE_OR_MANUAL,
                     };
 
@@ -578,7 +596,7 @@ namespace CloudBanking.UITestApp
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
             RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
-            
+
 
             var requestCardDialog = new RequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             {
@@ -3893,6 +3911,7 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundPurchaseListItemsDialog()
         {
+#if false
             long amount = 10000;
             long lCashOut = 10000;
             long lDonation = 10000;
@@ -3949,6 +3968,7 @@ namespace CloudBanking.UITestApp
             {
                 //RefundPurchaseListItemsDialog
             }, true, false, dlgData);
+#endif
         }
 
         void ShowRefundTypes()
@@ -3978,6 +3998,7 @@ namespace CloudBanking.UITestApp
 
         void ShowManualScanQRCodeDialog()
         {
+#if false
             string IdDlgTitle = string.Empty;
 
             ManualScanQRCodeDlgData dlgData = new ManualScanQRCodeDlgData()
@@ -3998,6 +4019,7 @@ namespace CloudBanking.UITestApp
 
                 //ManualScanQRCodeDialog
             }, true, false, dlgData);
+#endif
         }
 
         void ShowFindPurchaseOptionDialog(CaseDialog caseDialog)
@@ -5190,7 +5212,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
             {
@@ -7110,11 +7132,23 @@ namespace CloudBanking.UITestApp
 #if false
 
             var listValue = new List<long>() { 200, 300, 1000, 2000, 2500, 3000 };
+            MiniDonationSelectAmountDlgData dlgData = new MiniDonationSelectAmountDlgData()
+            {
+                Amounts = listValue,
+                fAmex = true,
+                fDiners = true,
+                fDiscover = true,
+                fJBC = true,
+                fMasterCard = true,
+                fTroy = true,
+                fUnionPay = true,
+                fVisa = true,
+            };
 
             DialogBuilder.Show(IPayDialog.MINI_DONATION_SELECT_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
             {
 
-            }, true, false, listValue);
+            }, true, false, dlgData);
 #endif
         }
 
@@ -7146,7 +7180,7 @@ namespace CloudBanking.UITestApp
 
             RequestDlgData.fNoPresentCard = false;
             RequestDlgData.pInitProcessData = pInitProcessData;
-            RequestDlgData.fMultiplePayments = false;
+            //RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
             RequestDlgData.lTotal = pInitProcessData.lAmount
                                     + pInitProcessData.lTipAmount
@@ -7400,16 +7434,10 @@ namespace CloudBanking.UITestApp
         {
 #if false
 
-            var miniCustomInputDlgData = new MiniEnterAccessCodeDlgData()
-            {
-                TitleId = StringIds.STRING_ENTERACCESSCODE,
-                Value = string.Empty,
-            };
-
             DialogBuilder.Show(IPayDialog.MINI_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_DONATION_APP, (iResult, args) =>
             {
                 //MiniEnterAccessCodeDialog
-            }, true, false, miniCustomInputDlgData);
+            }, true, false);
 #endif
         }
 

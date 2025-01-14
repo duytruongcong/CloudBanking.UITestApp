@@ -1,4 +1,5 @@
-﻿using Android.Webkit;
+﻿using Android.App;
+using Android.Webkit;
 using CloudBanking.BaseControl;
 using CloudBanking.BaseHardware;
 using CloudBanking.Common;
@@ -27,6 +28,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(CaseDialog caseDialog)
         {
+#if true
             string lpszEntryModeString = "";
             string lpszTitleString = StringIds.STRING_TRANSACTION;
             var lpszAboveMainString = StringIds.STRING_PURCHASE;
@@ -235,6 +237,7 @@ namespace CloudBanking.UITestApp
             };
             approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
             approvalDialog.Show(this);
+#endif
         }
 
         private void ShowSettlementApprovalDialog(CaseDialog caseDialog)
@@ -5682,6 +5685,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectFunctionDialog()
         {
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 1,
@@ -5784,8 +5788,6 @@ namespace CloudBanking.UITestApp
                 iCommand = GlobalResource.FNC_SALE_BUTTON,
             });
 
-
-
             selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
             {
                 iCommandLang = StringIds.STRING_FUNCTIONTYPES_PREAUTH,
@@ -5803,8 +5805,6 @@ namespace CloudBanking.UITestApp
                 IdProcessor = 0,
                 iCommand = GlobalResource.FNC_SALE_BUTTON,
             });
-
-
 
             selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
             {
@@ -5878,6 +5878,7 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, selectFuncDialogDta);
+#endif
         }
 
         void ShowAttendedMenu()
@@ -7810,5 +7811,41 @@ namespace CloudBanking.UITestApp
                
             }, true, false, menuViewItems);
         }
+
+        private void ShowTMSResultDialog()
+        {
+            var logonResults = new List<TMSResult>();
+
+            logonResults.Add(new TMSResult() { iStatus = ResultStatus.Declined, MerchantName = "Loi", Message = StringIds.STRING_UPDATE_FAILED.GetString()});
+            logonResults.Add(new TMSResult() { iStatus = ResultStatus.Approval, MerchantName = "Kha", Message = StringIds.STRING_UPDATED_SUCCESSFULLY.GetString()});
+
+            DialogBuilder.Show(IShellDialog.TMS_RESULT_DIALOG, true, StringIds.STRING_NOTIFICATION, null, true, false, logonResults);
+        }
+
+        private void ShowSinatureApproval()
+        {
+            ApprovalDlgData hwndApprovalDlg = new ApprovalDlgData();
+            hwndApprovalDlg.PrintStage = PrintStage.Printing;
+            hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);
+            hwndApprovalDlg.lszMainString = Localize.GetString(StringIds.STRING_SIGNATURE_REQUIRED);
+            hwndApprovalDlg.IdBitmap = GlobalResource.MB_ICON_SIGNATURE_RESULT;
+
+            var approvalDialog = new ApprovalDialog(StringIds.STRING_CONFIRM_SIGNATURE, null, hwndApprovalDlg);
+            approvalDialog.OnResult += (iResult, args) =>
+            {
+                approvalDialog.Dismiss();
+            };
+            approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            approvalDialog.Show(this);
+        }
+
+        private void ShowConfirmSignature()
+        {
+            MessageType dialog = null;
+
+            ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_CONFIRM_SIGNATURE, StringIds.STRING_CONFIRM_SIGNATURE_IS_CORRECT_UPCASE, false, GlobalResource.MB_YESNO, ref dialog, GlobalResource.MB_ICON_SIGNATURE_RESULT, aboveMsg: StringIds.STRING_SIGNATURE_REQUIRED, fAboveMsgActualText: false);
+        }
+
+        //end function
     }
 }

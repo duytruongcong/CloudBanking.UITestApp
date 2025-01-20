@@ -20,7 +20,6 @@ using System.Threading;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
-using CardLocation = CloudBanking.Entities.CardLocation;
 
 namespace CloudBanking.UITestApp
 {
@@ -28,7 +27,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             string lpszEntryModeString = "";
             string lpszTitleString = StringIds.STRING_TRANSACTION;
             var lpszAboveMainString = StringIds.STRING_PURCHASE;
@@ -1169,14 +1168,14 @@ namespace CloudBanking.UITestApp
 
                 case CaseDialog.CASE3:
 
-                    data.AccountType = 0;
+                    data.AccountType = AccountType.ACCOUNT_TYPE_UNKNOWN;
                     data.IsEmulator = true;
                     data.fPinByPass = false;
                     break;
 
                 case CaseDialog.CASE4:
 
-                    data.AccountType = 0;
+                    data.AccountType = AccountType.ACCOUNT_TYPE_CHEQUE;
                     data.IsEmulator = true;
                     data.fPinByPass = true;
                     break;
@@ -2695,6 +2694,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSurchargeFeeDetailDialog()
         {
+#if false
             SurchargeFeeDetailDlgData data = new SurchargeFeeDetailDlgData()
             {
                 CardResId = "vector_visa",
@@ -2813,6 +2813,7 @@ namespace CloudBanking.UITestApp
 
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog?.Show(CrossCurrentActivity.Current.Activity);
+#endif
         }
 
         private ViewFourthLineModel SetDataCardFees(MerchantCardType merchantCardType)
@@ -7824,6 +7825,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSinatureApproval()
         {
+#if false
             ApprovalDlgData hwndApprovalDlg = new ApprovalDlgData();
             hwndApprovalDlg.PrintStage = PrintStage.Printing;
             hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);
@@ -7837,6 +7839,7 @@ namespace CloudBanking.UITestApp
             };
             approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
             approvalDialog.Show(this);
+#endif
         }
 
         private void ShowConfirmSignature()

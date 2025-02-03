@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using static CloudBanking.Entities.Database;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
@@ -291,17 +292,15 @@ namespace CloudBanking.UITestApp
             return lszTitle;
         }
 
-        void ShowSwipeMerchantCardDialog()
+        void ShowSwipeMerchantCardDialog(CaseDialog caseDialog)
         {
             string titleId = StringIds.STRING_SWIPE_GIFT_CARD;
 
             SwipeMerchantCardDlgData initDlgData = new SwipeMerchantCardDlgData();
 
-            initDlgData.lTotal = 13800;
 
             initDlgData.szTotalTitle = StringIds.STRING_GIFT_CARD_SALE;
 
-            initDlgData.fShowAmount = true;
 
             initDlgData.fManualEntry = true;
 
@@ -309,17 +308,56 @@ namespace CloudBanking.UITestApp
 
             initDlgData.szMainCardTitle = titleId;
 
-            switch (1)
+            switch (caseDialog)
             {
-                case 0:
+                case CaseDialog.CASE1:
                     initDlgData.OtherCommand = GlobalResource.VOUCHER_REDEEM;
                     initDlgData.OtherIconId = IconIds.VECTOR_VOUCHER;
                     initDlgData.OtherTitleID = StringIds.STRING_VOUCHERS;
+                    initDlgData.lTotal = 13800;
+                    initDlgData.fShowAmount = true;
+
                     break;
-                case 1:
+
+                case CaseDialog.CASE2:
                     initDlgData.OtherCommand = GlobalResource.SCAN_BUTTON;
                     initDlgData.OtherIconId = IconIds.VECTOR_QR_PAYMENTS;
                     initDlgData.OtherTitleID = StringIds.STRING_SCAN_CARD;
+                    initDlgData.lTotal = 13800;
+                    initDlgData.fShowAmount = true;
+
+                    break;
+
+                case CaseDialog.CASE3:
+                    initDlgData.lTotal = 0;
+                    initDlgData.fShowAmount = false;
+                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
+                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
+                    initDlgData.LeftButtonTextId = StringIds.STRING_CANCEL;
+                    initDlgData.LeftButtonCommandId = GlobalResource.CANCEL_BUTTON;
+                    initDlgData.RightButtonTextId = StringIds.STRING_ENTER;
+                    initDlgData.RightButtonCommandId = GlobalResource.ENTER_BUTTON;
+                    titleId = StringIds.STRING_QUICK_ACCESS;
+                    break;
+
+                case CaseDialog.CASE4:
+                    initDlgData.lTotal = 0;
+                    initDlgData.fShowAmount = false;
+                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
+                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
+                    initDlgData.LeftButtonTextId = StringIds.STRING_CANCEL;
+                    initDlgData.LeftButtonCommandId = GlobalResource.CANCEL_BUTTON;
+                    titleId = StringIds.STRING_QUICK_ACCESS;
+                    break;
+
+                case CaseDialog.CASE5:
+                    initDlgData.lTotal = 0;
+                    initDlgData.fShowAmount = false;
+                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
+                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
+                    initDlgData.RightButtonTextId = StringIds.STRING_ENTER;
+                    initDlgData.RightButtonCommandId = GlobalResource.ENTER_BUTTON;
+                    titleId = StringIds.STRING_QUICK_ACCESS;
                     break;
             }
 
@@ -4108,6 +4146,7 @@ namespace CloudBanking.UITestApp
 
         void ShowFindPurchaseOptionDialog(CaseDialog caseDialog)
         {
+#if false
             string IdDlgTitle = string.Empty;
 
             FindPurchaseOptionDlgData dlgData = new FindPurchaseOptionDlgData();
@@ -4352,6 +4391,7 @@ namespace CloudBanking.UITestApp
             {
                 //FindPurchaseOptionDialog
             }, true, false, dlgData, findModel);
+#endif
         }
 
         void ShowSearchFilterOptionsDialog()
@@ -5686,7 +5726,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectFunctionDialog()
         {
-#if false
+#if true
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 1,
@@ -5854,7 +5894,7 @@ namespace CloudBanking.UITestApp
             {
                 iCommandLang = StringIds.STRING_CARD_STATUS_CHECK,
                 Title = StringIds.STRING_CARD_STATUS_CHECK,
-                idImage = IconIds.VECTOR_CARD_STATUS,
+                //idImage = IconIds.VECTOR_CARD_STATUS,
                 IdProcessor = 0,
                 iCommand = GlobalResource.FNC_SALE_BUTTON,
             });
@@ -5871,7 +5911,7 @@ namespace CloudBanking.UITestApp
             {
                 iCommandLang = StringIds.STRING_REPRINT_PREAUTH,
                 Title = StringIds.STRING_REPRINT_PREAUTH,
-                idImage = IconIds.VECTOR_REPRINT_PREAUTH,
+                //idImage = IconIds.VECTOR_REPRINT_PREAUTH,
                 IdProcessor = 0,
             });
 
@@ -7847,6 +7887,77 @@ namespace CloudBanking.UITestApp
             MessageType dialog = null;
 
             ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_CONFIRM_SIGNATURE, StringIds.STRING_CONFIRM_SIGNATURE_IS_CORRECT_UPCASE, false, GlobalResource.MB_YESNO, ref dialog, GlobalResource.MB_ICON_SIGNATURE_RESULT, aboveMsg: StringIds.STRING_SIGNATURE_REQUIRED, fAboveMsgActualText: false);
+        }
+
+        private void ShowUserLoggedInDialog()
+        {
+#if false
+            var items = new List<SelectOptionItem>()
+            {
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.CHANGE_BUTTON,
+                    TitleId = StringIds.CHANGE_MERCHANT,
+                    VectorIconResName = IconIds.VECTOR_CHANGE_MERCHANT
+                },
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.MENU_ITEM_MERCHANT_SHIFTS,
+                    TitleId = StringIds.STRING_MERCHANT_SHIFTS,
+                    VectorIconResName = IconIds.VECTOR_MERCHANT_SHIFT_GRAY
+                },
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.MENU_ITEM_HELP,
+                    TitleId = StringIds.STRING_HELP,
+                    VectorIconResName = IconIds.VECTOR_HELP_GRAY
+                },
+                new SelectOptionItem()
+                {
+                    Command = GlobalResource.MENU_ITEM_USER_LOGOUT,
+                    TitleId = StringIds.STRING_EMPLOYEE_LOGOUT,
+                    VectorIconResName = IconIds.VECTOR_USER_LOGOUT
+                },
+            };
+
+            UserLoggedInDlgData data = new UserLoggedInDlgData()
+            {
+                MenuItems = items,
+                IsShowChangeMerchant = true,
+                MerchantIcon = "madison_picture",
+                MerchantName = "Madison",
+                TitleId = StringIds.CHANGE_MERCHANT,
+                UserPasscode = "123"
+            };
+            string title = StringIds.STRING_USER_LOGGED_IN;
+
+            DialogBuilder.Show(IPayDialog.USER_LOGGED_IN_DIALOG, title, (iResult, args) =>
+            {
+
+            }, true, true, data);
+#endif
+        }
+
+        void ShowReviewTransDialog()
+        {
+            ReviewDlgData dlgDataReview = new ReviewDlgData()
+            {
+                lTotal = 13800,
+                pInitProcessData = new ShellInitProcessData() 
+                {
+                    lAccountSurChargeFee = 1000,
+                    lAccountSurChargePercent = 10,
+                    lAmount = 3800,
+                    lCashOut = 1800,
+                    lCashOutFee = 1700,
+                    lTipAmount = 1800,
+                    lSurChargeFee = 1200
+                },
+                TitleId = StringIds.STRING_PURCHASE
+            };
+
+            //ReviewTransDialog
+            DialogBuilder.Show(IShellDialog.TRANS_REVIEW_DIALOG, StringIds.STRING_REVIEW, null, true, false, dlgDataReview);
         }
 
         //end function

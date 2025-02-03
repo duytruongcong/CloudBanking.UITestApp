@@ -266,10 +266,6 @@
       <Project>{F7207D33-A71B-42C5-866A-E2EFE81A5854}</Project>
       <Name>CloudBanking.PhoneSdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PaxSdk\CloudBanking.PaxSdk.csproj">
-      <Project>{6C42557C-BA63-473A-9247-61E2E6CF6CD4}</Project>
-      <Name>CloudBanking.PaxSdk</Name>
-    </ProjectReference>
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Core\CloudBanking.Common\CloudBanking.Common.csproj">
       <Project>{74736BB9-E38B-4967-92F2-0146B991AC30}</Project>
       <Name>CloudBanking.Common</Name>

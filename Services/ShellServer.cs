@@ -94,6 +94,11 @@ namespace CloudBanking.UITestApp
         {
             throw new System.NotImplementedException();
         }
+
+        public void StartProcessingTrigger(string msg = "", string submessage = "")
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 

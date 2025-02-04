@@ -636,7 +636,7 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if false
+#if true
             #region Mini Donation Flow
 
             _lData.Add(new ScreenViewModel()
@@ -659,155 +659,155 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniFixedKeyboardInputDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniFixedKeyboardInputDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniFixedKeyboardInputDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniFixedKeyboardInputDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniDonationSetupMenuDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniDonationSetupMenuDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDonationSetupMenuDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDonationSetupMenuDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniEnterAccessCodeDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniEnterAccessCodeDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniEnterAccessCodeDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniEnterAccessCodeDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniApprovalDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniApprovalDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniApprovalDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniApprovalDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniProcessMessageDialog CASE1",
-            //    RightIconResName = "ProcessMessageDialog_CASE1",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniProcessMessageDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniProcessMessageDialog CASE1",
+                RightIconResName = "ProcessMessageDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniProcessMessageDialog(CaseDialog.CASE1);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniProcessMessageDialog CASE2",
-            //    RightIconResName = "ProcessMessageDialog_CASE2",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniProcessMessageDialog(CaseDialog.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniProcessMessageDialog CASE2",
+                RightIconResName = "ProcessMessageDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniProcessMessageDialog(CaseDialog.CASE2);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniProcessMessageDialog CASE3",
-            //    RightIconResName = "ProcessMessageDialog_CASE3",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniProcessMessageDialog(CaseDialog.CASE3);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniProcessMessageDialog CASE3",
+                RightIconResName = "ProcessMessageDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniProcessMessageDialog(CaseDialog.CASE3);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniProcessMessageDialog CASE4",
-            //    RightIconResName = "ProcessMessageDialog_CASE4",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniProcessMessageDialog(CaseDialog.CASE4);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniProcessMessageDialog CASE4",
+                RightIconResName = "ProcessMessageDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniProcessMessageDialog(CaseDialog.CASE4);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniEnterPinDialog CASE1",
-            //    RightIconResName = "EnterPinDialog_CASE1",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniEnterPinDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniEnterPinDialog CASE1",
+                RightIconResName = "EnterPinDialog_CASE1",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniEnterPinDialog(CaseDialog.CASE1);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniEnterPinDialog CASE2",
-            //    RightIconResName = "EnterPinDialog_CASE2",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniEnterPinDialog(CaseDialog.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniEnterPinDialog CASE2",
+                RightIconResName = "EnterPinDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniEnterPinDialog(CaseDialog.CASE2);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniEnterPinDialog CASE3",
-            //    RightIconResName = "EnterPinDialog_CASE3",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniEnterPinDialog(CaseDialog.CASE3);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniEnterPinDialog CASE3",
+                RightIconResName = "EnterPinDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniEnterPinDialog(CaseDialog.CASE3);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniEnterPinDialog CASE4",
-            //    RightIconResName = "EnterPinDialog_CASE4",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniEnterPinDialog(CaseDialog.CASE4);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniEnterPinDialog CASE4",
+                RightIconResName = "EnterPinDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniEnterPinDialog(CaseDialog.CASE4);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniDynamicOptionDialog CASE1",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDynamicOptionDialog CASE1",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDynamicOptionDialog(CaseDialog.CASE1);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniDynamicOptionDialog CASE2",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDynamicOptionDialog CASE2",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDynamicOptionDialog(CaseDialog.CASE2);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniDynamicOptionDialog CASE3",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE3);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDynamicOptionDialog CASE3",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDynamicOptionDialog(CaseDialog.CASE3);
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -879,15 +879,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniDonationSelectAmountDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniDonationSelectAmountDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDonationSelectAmountDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDonationSelectAmountDialog();
+                })
+            });
 
             #endregion
 #endif
@@ -2707,7 +2707,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true   //   
+#if false   //   
 
             #region Request Card Flow
 
@@ -3493,7 +3493,7 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-             _lData.Add(new ScreenViewModel()
+            _lData.Add(new ScreenViewModel()
             {
                 Title = $"EOVProcessDialog",
                 RightIconResName = "EOVProcessDialog",

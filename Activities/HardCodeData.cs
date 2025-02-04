@@ -20,6 +20,7 @@ using System.Threading;
 using static CloudBanking.Entities.Database;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
+using static PInvoke.BCrypt;
 using AccountType = CloudBanking.Entities.AccountType;
 
 namespace CloudBanking.UITestApp
@@ -294,6 +295,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSwipeMerchantCardDialog(CaseDialog caseDialog)
         {
+#if false
             string titleId = StringIds.STRING_SWIPE_GIFT_CARD;
 
             SwipeMerchantCardDlgData initDlgData = new SwipeMerchantCardDlgData();
@@ -365,6 +367,7 @@ namespace CloudBanking.UITestApp
             {
 
             }, false, false, initDlgData);
+#endif
         }
 
         private void ShowRequestCardDialog(CaseDialog caseDialog)
@@ -920,6 +923,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDynamicOptionDialog(CaseDialog caseDialog)
         {
+#if false
             var generalType = new List<GenericType>();
 
             var item1 = new GenericType();
@@ -977,6 +981,7 @@ namespace CloudBanking.UITestApp
             var dynamicOptionDialog = new ShellUI.DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, StringIds.STRING_ACCOUNT_SELECT_TYPE, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
+#endif
         }
 
         private void ShowMessageDialogShell(CaseDialog caseDialog)
@@ -1059,7 +1064,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE2:
 
                     mainTitle = StringIds.STRING_BALANCE_ENQUIRY;
-                    mainResult =  StringIds.STRING_DECLINED.GetUpperCaseString();
+                    mainResult = StringIds.STRING_DECLINED.GetUpperCaseString();
 
                     ApplicationBaseFlow.CustomStringMessageBox(true, mainTitle, mainResult, false,
                         GlobalResource.MB_OK, GlobalResource.MB_ICONDECLINED_BMP,
@@ -1391,6 +1396,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
+#if false
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1411,10 +1417,12 @@ namespace CloudBanking.UITestApp
             var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_SELECTT_MOTO);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
+#endif
         }
 
         private void ShowSelectDate()
         {
+#if false
             ////hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1435,11 +1443,13 @@ namespace CloudBanking.UITestApp
             var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
+#endif
         }
 
 
         private void ShowSettlementOptions()
         {
+#if false
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1459,10 +1469,12 @@ namespace CloudBanking.UITestApp
             var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SETTLEMENT_OPTIONS);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
+#endif
         }
 
         private void ShowReprintOptions()
         {
+#if false
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1482,6 +1494,7 @@ namespace CloudBanking.UITestApp
             var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_REPRINT_TITLE, null, generalType, StringIds.STRING_CUSTOMER_REPRINT_OPTION);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
+#endif
         }
 
         private void ShowPreAuthEnterAmountDialog(CaseDialog caseDialog)
@@ -7260,20 +7273,24 @@ namespace CloudBanking.UITestApp
 
         void ShowMiniDonationSelectAmountDialog()
         {
-#if false
+#if true
 
             var listValue = new List<long>() { 200, 300, 1000, 2000, 2500, 3000 };
             MiniDonationSelectAmountDlgData dlgData = new MiniDonationSelectAmountDlgData()
             {
                 Amounts = listValue,
-                fAmex = true,
-                fDiners = true,
-                fDiscover = true,
-                fJBC = true,
-                fMasterCard = true,
-                fTroy = true,
-                fUnionPay = true,
-                fVisa = true,
+                AcceptedCards = new AcceptedCardModel()
+                {
+                    fAmex = true,
+                    fDiners = true,
+                    fDiscover = true,
+                    fJBC = true,
+                    fMasterCard = true,
+                    fTroy = true,
+                    fUnionPay = true,
+                    fVisa = true,
+                }
+
             };
 
             DialogBuilder.Show(IPayDialog.MINI_DONATION_SELECT_AMOUNT_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
@@ -7375,7 +7392,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
 
             var generalType = new List<GenericType>();
 
@@ -7431,7 +7448,7 @@ namespace CloudBanking.UITestApp
 
             AccountType temp = null;
 
-            var dynamicOptionDialog = new ShellUI.MiniDynamicOptionDialog(StringIds.STRING_CANCEL_LOWER, null, sortedGeneralType, StringIds.STRING_SELECT_ACCOUNT);
+            var dynamicOptionDialog = new CloudBanking.ShellUI.DynamicOptionDialog(StringIds.STRING_CANCEL_LOWER, null, sortedGeneralType, StringIds.STRING_SELECT_ACCOUNT);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
 #endif
@@ -7439,7 +7456,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniEnterPinDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             GetPinNumberDlgData data = new GetPinNumberDlgData();
 
             long lTotal = 12000;
@@ -7479,7 +7496,7 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            var enterPinDialog = new MiniEnterPinDialog(StringIds.STRING_CANCEL_LOWER, null, data);
+            var enterPinDialog = new EnterPinDialog(StringIds.STRING_CANCEL_LOWER, null, data);
             enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
             enterPinDialog.Show(this);
 #endif
@@ -7487,7 +7504,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniProcessMessageDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             var pProcessingData = new ProcessingData();
 
             pProcessingData.fAutoClose = true;
@@ -7531,7 +7548,7 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            var enterPinDialog = new MiniProcessMessageDialog(StringIds.STRING_PROCESSING_TITLE, null, pProcessingData, cancelBtnTitleId);
+            var enterPinDialog = new ProcessMessageDialog(StringIds.STRING_PROCESSING_TITLE, null, pProcessingData, cancelBtnTitleId);
             enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
             enterPinDialog.Show(this);
 #endif
@@ -7539,7 +7556,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniApprovalDialog()
         {
-#if false
+#if true
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
@@ -7551,7 +7568,7 @@ namespace CloudBanking.UITestApp
             DlgData.lpszAboveMainString = $"{Localize.GetString(StringIds.STRING_DONATION).ToUpper()} {DlgData.lBalance.ToFormatLocalCurrencyAmount()}";
             DlgData.lszMainString = Localize.GetString(StringIds.STRING_APPROVED).ToUpper();
 
-            var approvalDialog = new ShellUI.MiniApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
+            var approvalDialog = new ShellUI.ApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
             approvalDialog.OnResult += (iResult, args) =>
             {
                 approvalDialog.Dismiss();
@@ -7587,7 +7604,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniFixedKeyboardInputDialog()
         {
-#if false
+#if true
 
             var inputNumber = new InputNumberFixedKeyboardEditModel()
             {
@@ -7601,7 +7618,7 @@ namespace CloudBanking.UITestApp
                 AboveHeaderTitleId = StringIds.STRING_ACCESSCODE,
             };
 
-            var dialogNumber = new MiniFixedKeyboardInputDialog(inputNumber, (obj) =>
+            var dialogNumber = new FixedKeyboardInputDialog(inputNumber, (obj) =>
             {
 
             });
@@ -7620,14 +7637,33 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniDonationEditAmountMenuDialog()
         {
-#if false
+#if true
+
+            var donationAmountsDlgData = new StandardSetupDialogModel();
+
+            int index = 0;
 
             IList<long> listAmount = new List<long>() { 200, 300, 1000, 2000, 3000, 5000 };
 
-            DialogBuilder.Show(IPayDialog.MINI_DONATION_EDIT_AMOUNT_MENU_DIALOG, StringIds.STRING_DONATION_AMOUNTS, (iResult, args) =>
+            foreach (long amount in listAmount)
+            {
+                string propertyName = $"{Localize.GetString(StringIds.STRING_AMOUNT)} {index + 1}";
+
+                donationAmountsDlgData.Items.Add(new InputAmountEditModel()
+                {
+                    PropertyName = propertyName,
+                    TitleId = propertyName,
+                    Value = amount,
+                    HeaderTitleId = StringIds.STRING_DONATION_AMOUNT
+                });
+
+                index++;
+            }
+
+            DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_DONATION_AMOUNTS, (iResult, args) =>
             {
 
-            }, true, false, listAmount);
+            }, true, false, donationAmountsDlgData);
 #endif
         }
 
@@ -7849,7 +7885,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.MENU_DIALOG, menuTitleId, (iResult, args) =>
             {
-               
+
             }, true, false, menuViewItems);
         }
 
@@ -7857,8 +7893,8 @@ namespace CloudBanking.UITestApp
         {
             var logonResults = new List<TMSResult>();
 
-            logonResults.Add(new TMSResult() { iStatus = ResultStatus.Declined, MerchantName = "Loi", Message = StringIds.STRING_UPDATE_FAILED.GetString()});
-            logonResults.Add(new TMSResult() { iStatus = ResultStatus.Approval, MerchantName = "Kha", Message = StringIds.STRING_UPDATED_SUCCESSFULLY.GetString()});
+            logonResults.Add(new TMSResult() { iStatus = ResultStatus.Declined, MerchantName = "Loi", Message = StringIds.STRING_UPDATE_FAILED.GetString() });
+            logonResults.Add(new TMSResult() { iStatus = ResultStatus.Approval, MerchantName = "Kha", Message = StringIds.STRING_UPDATED_SUCCESSFULLY.GetString() });
 
             DialogBuilder.Show(IShellDialog.TMS_RESULT_DIALOG, true, StringIds.STRING_NOTIFICATION, null, true, false, logonResults);
         }
@@ -7943,7 +7979,7 @@ namespace CloudBanking.UITestApp
             ReviewDlgData dlgDataReview = new ReviewDlgData()
             {
                 lTotal = 13800,
-                pInitProcessData = new ShellInitProcessData() 
+                pInitProcessData = new ShellInitProcessData()
                 {
                     lAccountSurChargeFee = 1000,
                     lAccountSurChargePercent = 10,

@@ -923,7 +923,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             var generalType = new List<GenericType>();
 
             var item1 = new GenericType();
@@ -978,7 +978,7 @@ namespace CloudBanking.UITestApp
 
             AccountType temp = null;
 
-            var dynamicOptionDialog = new ShellUI.DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, StringIds.STRING_ACCOUNT_SELECT_TYPE, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
+            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, StringIds.STRING_ACCOUNT_SELECT_TYPE, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
 #endif
@@ -1034,6 +1034,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMessageDialogDroid(CaseDialog caseDialog)
         {
+#if false
             MessageType messageData = new MessageType();
             long lBalance = 13800;
             string mainTitle, mainResult, secondaryRes;
@@ -1118,6 +1119,7 @@ namespace CloudBanking.UITestApp
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_SHIFT, StringIds.STRING_SHIFTHASALREADYSTARTED, false, GlobalResource.MB_OK, ref messageData);
                     break;
             }
+#endif
         }
 
 
@@ -1414,7 +1416,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_SELECTT_MOTO);
+            var dialog3 = new DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_SELECTT_MOTO);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1440,7 +1442,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
+            var dialog3 = new DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -7273,7 +7275,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMiniDonationSelectAmountDialog()
         {
-#if true
+#if false
 
             var listValue = new List<long>() { 200, 300, 1000, 2000, 2500, 3000 };
             MiniDonationSelectAmountDlgData dlgData = new MiniDonationSelectAmountDlgData()
@@ -7381,7 +7383,7 @@ namespace CloudBanking.UITestApp
             }
            
 
-            var requestCardDialog = new MiniRequestCardDialog(StringIds.STRING_CANCEL_LOWER, (iResult, args) =>
+            var requestCardDialog = new RequestCardDialog(StringIds.STRING_CANCEL_LOWER, (iResult, args) =>
             {
             }, RequestDlgData);
 
@@ -7392,7 +7394,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
 
             var generalType = new List<GenericType>();
 
@@ -7448,7 +7450,7 @@ namespace CloudBanking.UITestApp
 
             AccountType temp = null;
 
-            var dynamicOptionDialog = new CloudBanking.ShellUI.DynamicOptionDialog(StringIds.STRING_CANCEL_LOWER, null, sortedGeneralType, StringIds.STRING_SELECT_ACCOUNT);
+            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_CANCEL_LOWER, null, sortedGeneralType, StringIds.STRING_SELECT_ACCOUNT);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
 #endif
@@ -7556,7 +7558,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniApprovalDialog()
         {
-#if true
+#if false
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
@@ -7591,14 +7593,44 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniDonationSetupMenuDialog()
         {
-#if false
+#if true
 
-            var accessPasscode = "876543";
+            var menuItems = new SelFncDlgData()
+            {
+                iPage = 0,
+                iMaxPage = 4,
+                iMinPage = 1,
+                pIdProcessor = 0,
+                fShowLogout = false,
+                fGrid = false,
+                fModeDisplay = false,
+                pIdSecurityUser = 0,
+            };
 
-            DialogBuilder.Show(IPayDialog.MINI_DONATION_SETUP_MENU_DIALOG, StringIds.STRING_SETUP_MENU, (iResult, args) =>
+            menuItems.FunctionButtons = new List<SelectButton>();
+
+            menuItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_DONATION_AMOUNTS,
+                Title = StringIds.STRING_DONATION_AMOUNTS,
+                idImage = IconIds.VECTOR_DONATION_PAYMENTS,
+                IdProcessor = 0,
+                iCommand = GlobalResource.OK_BUTTON
+            });
+
+            menuItems.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_ADMIN_SETUP,
+                Title = StringIds.STRING_ADMIN_SETUP,
+                idImage = IconIds.VECTOR_SETUP,
+                IdProcessor = 0,
+                iCommand = GlobalResource.SETUP_BUTTON
+            });
+
+            DialogBuilder.Show(IPayDialog.MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
             {
 
-            }, true, false, accessPasscode);
+            }, true, false, menuItems);
 #endif
         }
 
@@ -7662,7 +7694,7 @@ namespace CloudBanking.UITestApp
 
             DialogBuilder.Show(IPayDialog.STANDARD_SETUP_DIALOG, StringIds.STRING_DONATION_AMOUNTS, (iResult, args) =>
             {
-
+                //StandardSetupDialog
             }, true, false, donationAmountsDlgData);
 #endif
         }

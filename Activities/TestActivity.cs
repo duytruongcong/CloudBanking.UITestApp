@@ -636,18 +636,18 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if true
+#if false
             #region Mini Donation Flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"TMSResultDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowTMSResultDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"TMSResultDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowTMSResultDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -779,105 +779,105 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniDynamicOptionDialog CASE1",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE1);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniDynamicOptionDialog CASE2",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE2);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MiniDynamicOptionDialog CASE3",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE3);
+            //    })
+            //});
+
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniDynamicOptionDialog CASE1",
+                Title = $"MiniRequestCardDialog CASE7",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMiniDynamicOptionDialog(CaseDialog.CASE1);
+                    ShowMiniRequestCardDialog(CaseDialog.CASE7);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniDynamicOptionDialog CASE2",
+                Title = $"MiniRequestCardDialog CASE6",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMiniDynamicOptionDialog(CaseDialog.CASE2);
+                    ShowMiniRequestCardDialog(CaseDialog.CASE6);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniDynamicOptionDialog CASE3",
+                Title = $"MiniRequestCardDialog CASE5",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowMiniDynamicOptionDialog(CaseDialog.CASE3);
+                    ShowMiniRequestCardDialog(CaseDialog.CASE5);
                 })
             });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniRequestCardDialog CASE7",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniRequestCardDialog(CaseDialog.CASE7);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE4",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE4);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniRequestCardDialog CASE6",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniRequestCardDialog(CaseDialog.CASE6);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE3",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE3);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniRequestCardDialog CASE5",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniRequestCardDialog(CaseDialog.CASE5);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE2",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE2);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniRequestCardDialog CASE4",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniRequestCardDialog(CaseDialog.CASE4);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniRequestCardDialog CASE3",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniRequestCardDialog(CaseDialog.CASE3);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniRequestCardDialog CASE2",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniRequestCardDialog(CaseDialog.CASE2);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniRequestCardDialog CASE1",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniRequestCardDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniRequestCardDialog CASE1",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniRequestCardDialog(CaseDialog.CASE1);
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1432,7 +1432,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // working
+#if false   //
             #region Donation Flow
 
             //_lData.Add(new ScreenViewModel()
@@ -2952,7 +2952,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false //    
+#if true //    
 
             #region SelectAccountTypeDialog 
 
@@ -3449,7 +3449,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   //
+#if false   //
 
             #region ProcessMessageDialog
 

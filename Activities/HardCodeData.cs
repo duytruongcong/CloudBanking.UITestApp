@@ -7275,7 +7275,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMiniDonationSelectAmountDialog()
         {
-#if false
+#if true
 
             var listValue = new List<long>() { 200, 300, 1000, 2000, 2500, 3000 };
             MiniDonationSelectAmountDlgData dlgData = new MiniDonationSelectAmountDlgData()
@@ -7304,7 +7304,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniRequestCardDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
 
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
@@ -7394,7 +7394,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
 
             var generalType = new List<GenericType>();
 
@@ -7558,7 +7558,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniApprovalDialog()
         {
-#if false
+#if true
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
@@ -7582,7 +7582,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniEnterAccessCodeDialog()
         {
-#if false
+#if true
 
             DialogBuilder.Show(IPayDialog.MINI_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_DONATION_APP, (iResult, args) =>
             {

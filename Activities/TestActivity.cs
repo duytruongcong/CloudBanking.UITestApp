@@ -636,7 +636,7 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if false
+#if true
             #region Mini Donation Flow
 
             //_lData.Add(new ScreenViewModel()
@@ -649,35 +649,35 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"MiniDonationEditAmountMenuDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowMiniDonationEditAmountMenuDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"StandardSetupDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniDonationEditAmountMenuDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"MiniFixedKeyboardInputDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowMiniFixedKeyboardInputDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"FixedKeyboardInputDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniFixedKeyboardInputDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"MiniDonationSetupMenuDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowMiniDonationSetupMenuDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"MenuDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowMiniDonationSetupMenuDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -691,7 +691,7 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniApprovalDialog",
+                Title = $"ApprovalDialog",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -779,39 +779,39 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniDynamicOptionDialog CASE1",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE1);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniDynamicOptionDialog CASE2",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE2);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MiniDynamicOptionDialog CASE3",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMiniDynamicOptionDialog(CaseDialog.CASE3);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDynamicOptionDialog CASE1",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDynamicOptionDialog(CaseDialog.CASE1);
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE7",
+                Title = $"MiniDynamicOptionDialog CASE2",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDynamicOptionDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MiniDynamicOptionDialog CASE3",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniDynamicOptionDialog(CaseDialog.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RequestCardDialog CASE7",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -821,7 +821,7 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE6",
+                Title = $"RequestCardDialog CASE6",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -831,7 +831,7 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE5",
+                Title = $"RequestCardDialog CASE5",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -841,7 +841,7 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE4",
+                Title = $"RequestCardDialog CASE4",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -851,7 +851,7 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE3",
+                Title = $"RequestCardDialog CASE3",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -861,7 +861,7 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE2",
+                Title = $"RequestCardDialog CASE2",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -871,7 +871,7 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"MiniRequestCardDialog CASE1",
+                Title = $"RequestCardDialog CASE1",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
@@ -2952,7 +2952,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true //    
+#if false //    
 
             #region SelectAccountTypeDialog 
 

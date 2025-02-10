@@ -636,7 +636,7 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if true
+#if false
             #region Mini Donation Flow
 
             //_lData.Add(new ScreenViewModel()
@@ -2989,9 +2989,69 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //  
+#if true    //  
 
             #region MessageDialog
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog GiftRedeem",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogGiftRedeem();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog GiftCardSale",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogGiftCardSale();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog GiftCardBalance",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogGiftCardBalance();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog VoidTransaction",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogVoidTransaction();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog InvalidAmount",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogInvalidAmount(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Droid CASE1",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogDroid(CaseDialog.CASE1);
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {

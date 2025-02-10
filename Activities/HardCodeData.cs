@@ -1,7 +1,4 @@
-﻿using Android.App;
-using Android.Webkit;
-using CloudBanking.BaseControl;
-using CloudBanking.BaseHardware;
+﻿using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -16,11 +13,8 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using static CloudBanking.Entities.Database;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
-using static PInvoke.BCrypt;
 using AccountType = CloudBanking.Entities.AccountType;
 
 namespace CloudBanking.UITestApp
@@ -7275,7 +7269,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMiniDonationSelectAmountDialog()
         {
-#if true
+#if false
 
             var listValue = new List<long>() { 200, 300, 1000, 2000, 2500, 3000 };
             MiniDonationSelectAmountDlgData dlgData = new MiniDonationSelectAmountDlgData()
@@ -7304,7 +7298,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniRequestCardDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
 
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
@@ -7394,7 +7388,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
 
             var generalType = new List<GenericType>();
 
@@ -7558,7 +7552,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniApprovalDialog()
         {
-#if true
+#if false
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
@@ -7582,7 +7576,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniEnterAccessCodeDialog()
         {
-#if true
+#if false
 
             DialogBuilder.Show(IPayDialog.MINI_ENTER_ACCESS_CODE_DIALOG, StringIds.STRING_DONATION_APP, (iResult, args) =>
             {

@@ -58,13 +58,14 @@ namespace CloudBanking.UITestApp
                 //Window.SetStatusBarColor(this.Resources.GetColor(Resource.Color.setup_status_bar_color));
                 //Window.SetNavigationBarColor(this.Resources.GetColor(Resource.Color.setup_status_bar_color));
 
+                Window.AddFlags(WindowManagerFlags.LayoutNoLimits);
+                Window.AddFlags(Android.Views.WindowManagerFlags.Fullscreen);
                 Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
+                Window.AddFlags(WindowManagerFlags.LayoutNoLimits);
 
-                // hide navigation bar
                 Window.DecorView.SystemUiVisibility = (StatusBarVisibility)(
                     SystemUiFlags.HideNavigation |
                     SystemUiFlags.ImmersiveSticky);
-                Window.AddFlags(WindowManagerFlags.LayoutNoLimits);
             }
 
             FileService.CopyFileResource(GlobalConstants.PRESENT_CARD_LOTTIE_FOLDER, false, false);

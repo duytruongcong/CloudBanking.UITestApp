@@ -1028,7 +1028,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMessageDialogDroid(CaseDialog caseDialog)
         {
-#if false
+#if true
             MessageType messageData = new MessageType();
             long lBalance = 13800;
             string mainTitle, mainResult, secondaryRes;
@@ -1088,7 +1088,7 @@ namespace CloudBanking.UITestApp
                     messageData = new MessageType();
                     messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
                     messageData.SubMessage = StringIds.STRING_ACCESS_CODE_HAS_BEEN_VALIDATED;
-                    messageData.strSubMessageColor = GlobalConstants.STRING_PRIMARY_COLOR;
+                    //messageData.strSubMessageColor = GlobalConstants.STRING_PRIMARY_COLOR;
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_ACCESSCODE, StringIds.STRING_CONNECTION_SUCCESSFULL, false, GlobalResource.MB_OK, ref messageData);
                     break;
 

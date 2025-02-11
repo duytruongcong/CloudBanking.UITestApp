@@ -1,7 +1,9 @@
 using CloudBanking.BaseControl;
+using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
 using CloudBanking.Language;
 using CloudBanking.Utilities;
+using System.Linq;
 
 namespace CloudBanking.UITestApp
 {
@@ -10,7 +12,7 @@ namespace CloudBanking.UITestApp
         void ShowMessageDialogInvalidAmount(CaseDialog caseDialog)
         {
             //MessageDialog
-#if true
+#if false
             var lMinAmount = 2000;
             var lMaxAmount = 100000;
             var msg = $"{Localize.GetString(StringIds.STRING_REQUIRED_AMOUNT_RANGE_COLON).ToUpperInvariant()}\n {lMinAmount.ToFormatLocalCurrencyAmount()} - {lMaxAmount.ToFormatLocalCurrencyAmount()}";
@@ -28,7 +30,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogVoidTransaction()
         {
-#if true
+#if false
             var mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
             var fCustomerPrint = true;
 
@@ -48,7 +50,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftCardBalance()
         {
-#if true
+#if false
 
             var mainTitle = StringIds.STRING_BALANCE_ENQUIRY;
             var mainResult = string.Empty;
@@ -73,7 +75,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftCardSale()
         {
-#if true
+#if false
 
             var mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
             var fCustomerPrint = true;
@@ -98,7 +100,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftRedeem()
         {
-#if true
+#if false
 
             var lTotalAmount = 38000;
             var fCustomerPrint = true;
@@ -117,6 +119,16 @@ namespace CloudBanking.UITestApp
                 isShowBackBtn: false,
                 textLeftButton: StringIds.STRING_NO_RECEIPT,
                 textRightButton: StringIds.STRING_PRINT_RECEIPT);
+#endif
+        }
+
+        void ShowMiniDonationEnterAmountDialog()
+        {
+#if false
+            DialogBuilder.Show(IPayDialog.MINI_DONATION_ENTER_AMOUNT_DIALOG, null, (iDialogResult, args) =>
+            {
+                
+            }, true, false,  null);
 #endif
         }
     }

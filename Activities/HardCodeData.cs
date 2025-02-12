@@ -289,7 +289,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSwipeMerchantCardDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             string titleId = StringIds.STRING_SWIPE_GIFT_CARD;
 
             SwipeMerchantCardDlgData initDlgData = new SwipeMerchantCardDlgData();
@@ -324,37 +324,37 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE3:
-                    initDlgData.lTotal = 0;
-                    initDlgData.fShowAmount = false;
-                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
-                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
-                    initDlgData.LeftButtonTextId = StringIds.STRING_CANCEL;
-                    initDlgData.LeftButtonCommandId = GlobalResource.CANCEL_BUTTON;
-                    initDlgData.RightButtonTextId = StringIds.STRING_ENTER;
-                    initDlgData.RightButtonCommandId = GlobalResource.ENTER_BUTTON;
-                    titleId = StringIds.STRING_QUICK_ACCESS;
-                    break;
+                //case CaseDialog.CASE3:
+                //    initDlgData.lTotal = 0;
+                //    initDlgData.fShowAmount = false;
+                //    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
+                //    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
+                //    initDlgData.LeftButtonTextId = StringIds.STRING_CANCEL;
+                //    initDlgData.LeftButtonCommandId = GlobalResource.CANCEL_BUTTON;
+                //    initDlgData.RightButtonTextId = StringIds.STRING_ENTER;
+                //    initDlgData.RightButtonCommandId = GlobalResource.ENTER_BUTTON;
+                //    titleId = StringIds.STRING_QUICK_ACCESS;
+                //    break;
 
-                case CaseDialog.CASE4:
-                    initDlgData.lTotal = 0;
-                    initDlgData.fShowAmount = false;
-                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
-                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
-                    initDlgData.LeftButtonTextId = StringIds.STRING_CANCEL;
-                    initDlgData.LeftButtonCommandId = GlobalResource.CANCEL_BUTTON;
-                    titleId = StringIds.STRING_QUICK_ACCESS;
-                    break;
+                //case CaseDialog.CASE4:
+                //    initDlgData.lTotal = 0;
+                //    initDlgData.fShowAmount = false;
+                //    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
+                //    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
+                //    initDlgData.LeftButtonTextId = StringIds.STRING_CANCEL;
+                //    initDlgData.LeftButtonCommandId = GlobalResource.CANCEL_BUTTON;
+                //    titleId = StringIds.STRING_QUICK_ACCESS;
+                //    break;
 
-                case CaseDialog.CASE5:
-                    initDlgData.lTotal = 0;
-                    initDlgData.fShowAmount = false;
-                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
-                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
-                    initDlgData.RightButtonTextId = StringIds.STRING_ENTER;
-                    initDlgData.RightButtonCommandId = GlobalResource.ENTER_BUTTON;
-                    titleId = StringIds.STRING_QUICK_ACCESS;
-                    break;
+                //case CaseDialog.CASE5:
+                //    initDlgData.lTotal = 0;
+                //    initDlgData.fShowAmount = false;
+                //    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
+                //    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
+                //    initDlgData.RightButtonTextId = StringIds.STRING_ENTER;
+                //    initDlgData.RightButtonCommandId = GlobalResource.ENTER_BUTTON;
+                //    titleId = StringIds.STRING_QUICK_ACCESS;
+                //    break;
             }
 
             DialogBuilder.Show(IShellDialog.SWIPE_MERCHANT_CARD_DIALOG, true, titleId, (iResult, args) =>
@@ -464,22 +464,28 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = true;
                     RequestDlgData.fWePay = false;
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
+                    RequestDlgData.OtherPayment = new ButtonData()
                     {
-                        Command = GlobalResource.MANUAL_BUTTON,
-                        Title = StringIds.STRING_MANUAL_ENTER,
-                        CommandLang = StringIds.STRING_MANUAL_ENTER,
-                        IconHorizontal = IconIds.ICON_MANUAL_TEXT,
-                        Icon = IconIds.VECTOR_MANUAL_CARD
+                        Icon = IconIds.VECTOR_OTHERS_PAY,
+                        Title = StringIds.STRING_OTHER_PAYMENTS,
                     };
 
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_MULTI_TENDER_PAY,
-                        IconHorizontal = IconIds.ICON_MULTI_TENDER_TEXT,
-                        Icon = IconIds.VECTOR_MENU_MULTI_TENDER,
-                        Title = StringIds.STRING_MULTI_TENDER,
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = GlobalResource.MANUAL_BUTTON,
+                    //    Title = StringIds.STRING_MANUAL_ENTER,
+                    //    CommandLang = StringIds.STRING_MANUAL_ENTER,
+                    //    IconHorizontal = IconIds.ICON_MANUAL_TEXT,
+                    //    Icon = IconIds.VECTOR_MANUAL_CARD
+                    //};
+
+                    //RequestDlgData.SecondTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_MULTI_TENDER_PAY,
+                    //    IconHorizontal = IconIds.ICON_MULTI_TENDER_TEXT,
+                    //    Icon = IconIds.VECTOR_MENU_MULTI_TENDER,
+                    //    Title = StringIds.STRING_MULTI_TENDER,
+                    //};
 
                     break;
 
@@ -515,23 +521,29 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = true;
                     RequestDlgData.fWePay = true;
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
+                    RequestDlgData.OtherPayment = new ButtonData()
                     {
-                        Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
-                        Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        Icon = IconIds.VECTOR_MANUAL_CARD,
-                        IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
+                        Icon = IconIds.VECTOR_OTHERS_PAY,
+                        Title = StringIds.STRING_OTHER_PAYMENTS,
                     };
 
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
-                        Title = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        CommandLang = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        Icon = IconIds.VECTOR_MANUAL_CARD,
-                        IconHorizontal = false ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
+                    //    Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                    //    CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                    //    Icon = IconIds.VECTOR_MANUAL_CARD,
+                    //    IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
+                    //};
+
+                    //RequestDlgData.SecondTenderType = new ButtonData()
+                    //{
+                    //    Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
+                    //    Title = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                    //    CommandLang = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                    //    Icon = IconIds.VECTOR_MANUAL_CARD,
+                    //    IconHorizontal = false ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
+                    //};
 
                     break;
 
@@ -552,8 +564,8 @@ namespace CloudBanking.UITestApp
 
                     RequestDlgData.OtherPayment = new ButtonData()
                     {
-                        //Icon = IconIds.VECTOR_MANUAL_REFUND,
-                        Title = StringIds.STRING_SWIPE_OR_MANUAL,
+                        Icon = IconIds.VECTOR_OTHERS_PAY,
+                        Title = StringIds.STRING_OTHER_PAYMENTS,
                     };
 
                     RequestDlgData.FirstTenderType = new ButtonData()
@@ -685,9 +697,9 @@ namespace CloudBanking.UITestApp
                 RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
             }
 
-            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
+            RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
-            RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
+            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
 
 
             var requestCardDialog = new RequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
@@ -2741,7 +2753,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSurchargeFeeDetailDialog()
         {
-#if false
+#if true
             SurchargeFeeDetailDlgData data = new SurchargeFeeDetailDlgData()
             {
                 CardResId = "vector_visa",
@@ -2772,7 +2784,8 @@ namespace CloudBanking.UITestApp
                             AccountType.ACCOUNT_TYPE_CHEQUE,
                             AccountType.ACCOUNT_TYPE_SAVINGS
                         },
-                        CardLocation = Entities.CardLocation.All
+
+                        CardLocation = CardLocation.All
                     },
                     new SurchargeRule()
                     {
@@ -2798,7 +2811,7 @@ namespace CloudBanking.UITestApp
                             AccountType.ACCOUNT_TYPE_CHEQUE,
                             AccountType.ACCOUNT_TYPE_SAVINGS
                         },
-                        CardLocation = Entities.CardLocation.All
+                        CardLocation = CardLocation.All
 
                     },new SurchargeRule()
                     {

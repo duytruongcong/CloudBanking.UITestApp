@@ -30,7 +30,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogVoidTransaction()
         {
-#if false
+#if true
             var mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
             var fCustomerPrint = true;
 
@@ -50,7 +50,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftCardBalance()
         {
-#if false
+#if true
 
             var mainTitle = StringIds.STRING_BALANCE_ENQUIRY;
             var mainResult = string.Empty;
@@ -75,7 +75,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftCardSale()
         {
-#if false
+#if true
 
             var mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
             var fCustomerPrint = true;
@@ -100,7 +100,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftRedeem()
         {
-#if false
+#if true
 
             var lTotalAmount = 38000;
             var fCustomerPrint = true;

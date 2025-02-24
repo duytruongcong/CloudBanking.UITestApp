@@ -23,7 +23,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             string lpszEntryModeString = "";
             string lpszTitleString = StringIds.STRING_TRANSACTION;
             var lpszAboveMainString = StringIds.STRING_PURCHASE;
@@ -1303,6 +1303,8 @@ namespace CloudBanking.UITestApp
 
             entryDlgData.fShowBackButton = true;
 
+            entryDlgData.fAlphaNumKeyboard = false;
+
             var entryCardNumberDialog = new ShellUI.EntryCardNumberDialog(StringIds.STRING_MANUAL_PAY, null, entryDlgData);
             entryCardNumberDialog.DialogStyle = DialogStyle.FULLSCREEN;
             entryCardNumberDialog.Show(this);
@@ -1404,7 +1406,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
-#if false
+#if true
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1430,7 +1432,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectDate()
         {
-#if false
+#if true
             ////hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -2597,14 +2599,37 @@ namespace CloudBanking.UITestApp
             dialog.Show(this);
         }
 
-        void ShowReceiptOptionDialog()
+        void ShowReceiptOptionDialog(CaseDialog caseDialog)
         {
             var data = new ReceiptOptionsDlgData();
 
             data.QRReceiptResult = "ReceiptOptionsDialog";
-            data.fShowQrCode = true;
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    data.fShowQrCode = true;
+                    break;
+
+                case CaseDialog.CASE2:
+                    data.fShowQrCode = false;
+                    break;
+
+                default:
+                    break;
+            }
 
             data.FunctionButtons = new List<SelectButton>();
+
+            if (!data.fShowQrCode)
+            {
+                data.FunctionButtons.Add(new SelectButton()
+                {
+                    Title = StringIds.STRING_QR_CODE,
+                    idImage = IconIds.VECTOR_QR_CODE_RECEIPT,
+                    IdProcessor = 0,
+                    iCommand = GlobalResource.BUTTON_QR_CODE_RECEIPT,
+                });
+            }
 
             data.FunctionButtons.Add(new SelectButton()
             {
@@ -3910,7 +3935,7 @@ namespace CloudBanking.UITestApp
                     lAmount = (int)10000,
                     lCashOut = (int)5000,
                     lTipAmount = (int)1000,
-                    iCardType = CARDTYPE.CARD_AMEX,
+                    iCardType = CARDTYPE.CARD_VISA,
                     iAccountTypeCode = 2,
                     lszEndCardNumber = "1234",
                     szApprovalCode = "5544",
@@ -3933,7 +3958,7 @@ namespace CloudBanking.UITestApp
                     szAuthorizationResponseCode = "1234",
                     szTransactionId = "4567",
                 },
-                cardIconString = CARDTYPE.CARD_AMEX.GetIconDrawable(),
+                cardIconString = CARDTYPE.CARD_VISA.GetIconDrawable(),
             };
 
             DialogBuilder.Show(IPayDialog.REFUND_LIST_CARD_DIALOG, StringIds.STRING_REFUND_PURCHASE, (iResult, args) =>
@@ -4055,7 +4080,7 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundPurchaseListItemsDialog()
         {
-#if false
+#if true
             long amount = 10000;
             long lCashOut = 10000;
             long lDonation = 10000;
@@ -4069,7 +4094,7 @@ namespace CloudBanking.UITestApp
                     {
                         Id = 1,
                         Title = StringIds.STRING_PURCHASE,
-                        Value = amount.ToFormatLocalCurrencyAmount(),
+                        Value = amount,
                         IsChecked = true,
                         IsTopRadiusBackground = true
                     },
@@ -4077,7 +4102,7 @@ namespace CloudBanking.UITestApp
                     {
                         Id = 2,
                         Title = StringIds.STRING_CASHOUT,
-                        Value = lCashOut.ToFormatCurrency(),
+                        Value = lCashOut,
                         IsChecked = true
                     },
                     new LeftRightTextCheckIconModel()
@@ -4085,21 +4110,21 @@ namespace CloudBanking.UITestApp
                         Id = 3,
                         IsActualTitle = false,
                         Title = StringIds.STRING_DONATION,
-                        Value = lDonation.ToFormatCurrency(),
+                        Value = lDonation,
                         IsChecked = true
                     },
                     new LeftRightTextCheckIconModel()
                     {
                         Id = 4,
                         Title = StringIds.STRING_TIP,
-                        Value = lTipAmount.ToFormatCurrency(),
+                        Value = lTipAmount,
                         IsChecked = true
                     },
                     new LeftRightTextCheckIconModel()
                     {
                         IsActualTitle = true,
                         Title = Localize.GetString(StringIds.STRING_SALESSUMMARY_TOTALREFUND).ToUpper(),
-                        Value = amount.ToFormatCurrency(),
+                        Value = amount,
                         HasCheckbox = false,
                         HasBottomLine = false,
                         IsBoldAll = true,
@@ -4142,7 +4167,7 @@ namespace CloudBanking.UITestApp
 
         void ShowManualScanQRCodeDialog()
         {
-#if false
+#if true
             string IdDlgTitle = string.Empty;
 
             ManualScanQRCodeDlgData dlgData = new ManualScanQRCodeDlgData()
@@ -4151,8 +4176,8 @@ namespace CloudBanking.UITestApp
                 ScanTitleId = StringIds.STRING_SCAN_QR_CODE,
                 AboveScanViewTitleId = StringIds.STRING_FIND_PURCHASE,
                 ManualTitleId = StringIds.STRING_MANUAL_ENTER,
-                //ManualCommand = GlobalResource.MANUAL_BUTTON,
-                ManualIconId = IconIds.VECTOR_MANUAL_REFUND,
+                ManualCommand = GlobalResource.MANUAL_BUTTON,
+                ManualIconId = IconIds.VECTOR_MANUAL_CARD,
                 fScanAlipayWechat = true
             };
 
@@ -4168,7 +4193,7 @@ namespace CloudBanking.UITestApp
 
         void ShowFindPurchaseOptionDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             string IdDlgTitle = string.Empty;
 
             FindPurchaseOptionDlgData dlgData = new FindPurchaseOptionDlgData();
@@ -5358,7 +5383,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
             {
@@ -7311,7 +7336,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniRequestCardDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
 
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
@@ -7356,7 +7381,7 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fTroy = true;
             RequestDlgData.fDiscover = true;
 
-            RequestDlgData.CardIconResId = IconIds.VECTOR_MINI_TAP_INSERT_CARD;
+            //RequestDlgData.CardIconResId = IconIds.VECTOR_MINI_TAP_INSERT_CARD;
 
             switch(caseDialog)
             {
@@ -7401,7 +7426,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
 
             var generalType = new List<GenericType>();
 
@@ -7457,7 +7482,7 @@ namespace CloudBanking.UITestApp
 
             AccountType temp = null;
 
-            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_CANCEL_LOWER, null, sortedGeneralType, StringIds.STRING_SELECT_ACCOUNT);
+            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_CANCEL_LOWER, null, sortedGeneralType, string.Empty);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
 #endif
@@ -7565,7 +7590,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniApprovalDialog()
         {
-#if false
+#if true
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
@@ -7577,7 +7602,7 @@ namespace CloudBanking.UITestApp
             DlgData.lpszAboveMainString = $"{Localize.GetString(StringIds.STRING_DONATION).ToUpper()} {DlgData.lBalance.ToFormatLocalCurrencyAmount()}";
             DlgData.lszMainString = Localize.GetString(StringIds.STRING_APPROVED).ToUpper();
 
-            var approvalDialog = new ShellUI.ApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
+            var approvalDialog = new ApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
             approvalDialog.OnResult += (iResult, args) =>
             {
                 approvalDialog.Dismiss();
@@ -7940,7 +7965,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSinatureApproval()
         {
-#if false
+#if true
             ApprovalDlgData hwndApprovalDlg = new ApprovalDlgData();
             hwndApprovalDlg.PrintStage = PrintStage.Printing;
             hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);
@@ -7966,7 +7991,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowUserLoggedInDialog()
         {
-#if false
+#if true
             var items = new List<SelectOptionItem>()
             {
                 new SelectOptionItem()
@@ -7985,7 +8010,7 @@ namespace CloudBanking.UITestApp
                 {
                     Command = GlobalResource.MENU_ITEM_HELP,
                     TitleId = StringIds.STRING_HELP,
-                    VectorIconResName = IconIds.VECTOR_HELP_GRAY
+                    VectorIconResName = IconIds.VECTOR_HELP
                 },
                 new SelectOptionItem()
                 {
@@ -8009,7 +8034,7 @@ namespace CloudBanking.UITestApp
             DialogBuilder.Show(IPayDialog.USER_LOGGED_IN_DIALOG, title, (iResult, args) =>
             {
 
-            }, true, true, data);
+            }, true, false, data);
 #endif
         }
 

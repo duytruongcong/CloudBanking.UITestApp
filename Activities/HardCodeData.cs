@@ -1459,7 +1459,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSettlementOptions()
         {
-#if false
+#if true
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1476,7 +1476,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SETTLEMENT_OPTIONS);
+            var dialog3 = new DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SETTLEMENT_OPTIONS);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1484,7 +1484,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowReprintOptions()
         {
-#if false
+#if true
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1501,7 +1501,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new UI.DynamicOptionDialog(StringIds.STRING_REPRINT_TITLE, null, generalType, StringIds.STRING_CUSTOMER_REPRINT_OPTION);
+            var dialog3 = new DynamicOptionDialog(StringIds.STRING_REPRINT_TITLE, null, generalType, StringIds.STRING_CUSTOMER_REPRINT_OPTION);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -5254,7 +5254,7 @@ namespace CloudBanking.UITestApp
 
             var dlgData = new SelectCharityDlgData()
             {
-                //Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
+                Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
                 fHideCancelButton = true,
                 //Items = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 }
             };
@@ -5340,7 +5340,7 @@ namespace CloudBanking.UITestApp
             DialogBuilder.Show(IPayDialog.ACCESS_MENU_DIALOG, StringIds.STRING_MENU, (iResult, args) =>
             {
                 //SelectOptionDialog
-            }, true, true, data);
+            }, true, false, data);
         }
 
         void ShowDonationReceiptOptionsDialog()
@@ -5533,7 +5533,7 @@ namespace CloudBanking.UITestApp
                         Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
                         Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
                         CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        //Icon = IconIds.VECTOR_MANUAL_REFUND,
                         IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
                     };
 
@@ -5542,7 +5542,7 @@ namespace CloudBanking.UITestApp
                         Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
                         Title = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
                         CommandLang = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        //Icon = IconIds.VECTOR_MANUAL_REFUND,
                         IconHorizontal = false ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
                     };
 
@@ -5565,7 +5565,7 @@ namespace CloudBanking.UITestApp
 
                     RequestDlgData.OtherPayment = new ButtonData()
                     {
-                        Icon = IconIds.VECTOR_MANUAL_REFUND,
+                        //Icon = IconIds.VECTOR_MANUAL_REFUND,
                         Title = StringIds.STRING_SWIPE_OR_MANUAL,
                     };
 
@@ -5699,8 +5699,8 @@ namespace CloudBanking.UITestApp
             }
 
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
-            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
-            RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
+            RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
+            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
 
             var requestCardDialog = new DonationRequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             {
@@ -6950,7 +6950,7 @@ namespace CloudBanking.UITestApp
             {
                 //SelectOtherCharityDialog
 
-            }, true, false, listStandaloneCharity, lTotalDonations);
+            }, true, false, MultipleItemsList, lTotalDonations);
         }
 
         void ShowPaymenDonationsDialog()
@@ -7134,8 +7134,8 @@ namespace CloudBanking.UITestApp
 
         void ShowEpayConfirmationDialog()
         {
-            //EpayConfirmationDlgData dlgData = new EpayConfirmationDlgData() 
-            //{ 
+            //EpayConfirmationDlgData dlgData = new EpayConfirmationDlgData()
+            //{
             //    TotalBalance = 10000,
             //    MainTitleId = StringIds.STRING_FUNCTIONTYPES_SALE,
             //    MessageId = StringIds.STRING_DELETE_THIS_TRANSACTION_

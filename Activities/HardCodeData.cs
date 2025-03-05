@@ -7823,7 +7823,7 @@ namespace CloudBanking.UITestApp
 
             dlgData.SaleItems.Add(new SaleItemViewModel()
             {
-                Name = "Mics",
+                Name = "Misc",
                 ItemType = SaleItemViewModel.ViewType.Category
             });
 
@@ -7851,7 +7851,7 @@ namespace CloudBanking.UITestApp
 
             dlgData.SaleItems.Add(new SaleItemViewModel()
             {
-                Name = "Drink",
+                Name = "Drinks",
                 ItemType = SaleItemViewModel.ViewType.Category
             });
 

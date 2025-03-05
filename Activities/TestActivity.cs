@@ -2155,7 +2155,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true // 
+#if false // 
 
             #region Table Flow
 
@@ -2201,8 +2201,8 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"SelectTablePayTicketsDialog",
-                RightIconResName = "SelectTablePayTicketsDialog",
+                Title = $"SelectTablePayTicketDialog",
+                RightIconResName = "SelectTablePayTicketDialog",
                 ItemAction = new Action(() =>
                 {
                     ShowSelectTablePayTicketsDialog();
@@ -2252,7 +2252,7 @@ namespace CloudBanking.UITestApp
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"TicketSearchOptionsDialog",
-                RightIconResName = "TicketSearchOptionsDialog",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
                     ShowTicketSearchOptionsDialog();

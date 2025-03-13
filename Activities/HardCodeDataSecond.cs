@@ -56,7 +56,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftCardBalance()
         {
-#if true
+#if false
 
             var mainTitle = StringIds.STRING_BALANCE_ENQUIRY;
             var mainResult = string.Empty;
@@ -81,7 +81,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftCardSale()
         {
-#if true
+#if false
 
             var mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
             var fCustomerPrint = true;
@@ -106,7 +106,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogGiftRedeem()
         {
-#if true
+#if false
 
             var lTotalAmount = 38000;
             var fCustomerPrint = true;
@@ -140,7 +140,7 @@ namespace CloudBanking.UITestApp
 
         void ShowEnterPlanTextPinDialog()
         {
-#if true
+#if false
             long lamount = 13800;
 
             DialogBuilder.Show(IPayDialog.PLAIN_TEXT_ENTER_PIN_DIALOG, StringIds.STRING_GIFT_CARD_PIN, (result, args) =>
@@ -152,7 +152,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSoftKeyboardInputDialog()
         {
-#if true
+#if false
             DialogBuilder.Show(IPayDialog.SOFT_KEYBOARD_INPUT_DIALOG, StringIds.STRING_WALLETID, (result, args) =>
             {
                 //SoftKeyboardInputDialog
@@ -162,7 +162,7 @@ namespace CloudBanking.UITestApp
 
         void ShowManualEntryCardNumberDialog()
         {
-#if true
+#if false
             var entryDlgData = new EntryCardNumberDlgData();
 
             entryDlgData.fShowExpiry = true;
@@ -194,7 +194,7 @@ namespace CloudBanking.UITestApp
 
         void ShowEzipayTransactions()
         {
-#if true
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 0,
@@ -269,7 +269,7 @@ namespace CloudBanking.UITestApp
 
         void ShowEzipayManagers()
         {
-#if true
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 0,
@@ -323,6 +323,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectProcessorDialog()
         {
+#if false
             List<GenericType> _processorIdList = new List<GenericType>();
 
             _processorIdList.Add(new GenericType
@@ -362,6 +363,7 @@ namespace CloudBanking.UITestApp
 
                 //SelectProcessorDialog
             }, true, false, _processorIdList);
+#endif
         }
     }
 }

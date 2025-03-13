@@ -3,11 +3,13 @@ using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
 using CloudBanking.Language;
+using CloudBanking.ShellContainers;
 using CloudBanking.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using static Java.Util.Concurrent.Flow;
+using Command = CloudBanking.Flow.Base.Command;
 
 namespace CloudBanking.UITestApp
 {
@@ -34,7 +36,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogVoidTransaction()
         {
-#if true
+#if false
             var mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
             var fCustomerPrint = true;
 
@@ -177,13 +179,13 @@ namespace CloudBanking.UITestApp
 
             entryDlgData.fAnyProcessorsUsingTokens = false;
 
-            entryDlgData.fAlphaNumKeyboard = true;
+            entryDlgData.fAlphaNumKeyboard = false;
 
             entryDlgData.fValidating = false;
 
             entryDlgData.iMinLength = 11;
 
-            DialogBuilder.Show(ICommonDialog.MANUAL_PAY_ENTRY_CARD_NUMBER_DIALOG, StringIds.STRING_CARD_MANUAL_ENTRY, (iResult, args) =>
+            DialogBuilder.Show(IShellDialog.MANUAL_PAY_ENTRY_CARD_NUMBER_DIALOG, StringIds.STRING_CARD_MANUAL_ENTRY, (iResult, args) =>
             {
                 //EntryCardNumberDialog
             }, true, false, entryDlgData);
@@ -355,7 +357,7 @@ namespace CloudBanking.UITestApp
                 Icon = IconIds.VECTOR_PROCESSOR
             });
 
-            var result = DialogBuilder.Show(ICommonDialog.SELECT_PROCESSOR_DIALOG, StringIds.STRING_PROCESSOR_OPTIONS, (iResult, args) =>
+            var result = DialogBuilder.Show(IShellDialog.SELECT_PROCESSOR_DIALOG, StringIds.STRING_PROCESSOR_OPTIONS, (iResult, args) =>
             {
 
                 //SelectProcessorDialog

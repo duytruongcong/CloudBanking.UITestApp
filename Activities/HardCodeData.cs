@@ -23,7 +23,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             string lpszEntryModeString = "";
             string lpszTitleString = StringIds.STRING_TRANSACTION;
             var lpszAboveMainString = StringIds.STRING_PURCHASE;
@@ -289,7 +289,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSwipeMerchantCardDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             string titleId = StringIds.STRING_SWIPE_GIFT_CARD;
 
             SwipeMerchantCardDlgData initDlgData = new SwipeMerchantCardDlgData();
@@ -433,21 +433,21 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = false;
                     RequestDlgData.fWePay = false;
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_ALI_PAY,
-                        IconHorizontal = IconIds.ICON_ALIPAY_HORIZONTAL_LOGO,
-                        Icon = IconIds.VECTOR_ALI_PAY,
-                        Title = StringIds.STRING_ALIPAY
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_ALI_PAY,
+                    //    IconHorizontal = IconIds.ICON_ALIPAY_HORIZONTAL_LOGO,
+                    //    Icon = IconIds.VECTOR_ALI_PAY,
+                    //    Title = StringIds.STRING_ALIPAY
+                    //};
 
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_WE_PAY,
-                        IconHorizontal = IconIds.ICON_WECHAT_HORIZONTAL_LOGO,
-                        Icon = IconIds.VECTOR_WECHAT,
-                        Title = StringIds.STRING_WECHAT_PAY
-                    };
+                    //RequestDlgData.SecondTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_WE_PAY,
+                    //    IconHorizontal = IconIds.ICON_WECHAT_HORIZONTAL_LOGO,
+                    //    Icon = IconIds.VECTOR_WECHAT,
+                    //    Title = StringIds.STRING_WECHAT_PAY
+                    //};
 
                     break;
 
@@ -464,11 +464,11 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = true;
                     RequestDlgData.fWePay = false;
 
-                    RequestDlgData.OtherPayment = new ButtonData()
-                    {
-                        Icon = IconIds.VECTOR_OTHERS_PAY,
-                        Title = StringIds.STRING_OTHER_PAYMENTS,
-                    };
+                    //RequestDlgData.OtherPayment = new ButtonData()
+                    //{
+                    //    Icon = IconIds.VECTOR_OTHERS_PAY,
+                    //    Title = StringIds.STRING_OTHER_PAYMENTS,
+                    //};
 
                     //RequestDlgData.FirstTenderType = new ButtonData()
                     //{
@@ -521,11 +521,11 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fAliPay = true;
                     RequestDlgData.fWePay = true;
 
-                    RequestDlgData.OtherPayment = new ButtonData()
-                    {
-                        Icon = IconIds.VECTOR_OTHERS_PAY,
-                        Title = StringIds.STRING_OTHER_PAYMENTS,
-                    };
+                    //RequestDlgData.OtherPayment = new ButtonData()
+                    //{
+                    //    Icon = IconIds.VECTOR_OTHERS_PAY,
+                    //    Title = StringIds.STRING_OTHER_PAYMENTS,
+                    //};
 
                     //RequestDlgData.FirstTenderType = new ButtonData()
                     //{
@@ -562,27 +562,27 @@ namespace CloudBanking.UITestApp
 
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_OPEN_PREAUTH_UPCASE;
 
-                    RequestDlgData.OtherPayment = new ButtonData()
-                    {
-                        Icon = IconIds.VECTOR_OTHERS_PAY,
-                        Title = StringIds.STRING_OTHER_PAYMENTS,
-                    };
+                    //RequestDlgData.OtherPayment = new ButtonData()
+                    //{
+                    //    Icon = IconIds.VECTOR_OTHERS_PAY,
+                    //    Title = StringIds.STRING_OTHER_PAYMENTS,
+                    //};
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_CENTRA_PAY,
-                        IconHorizontal = IconIds.ICON_CENTRALPAY_TEXT,
-                        Icon = IconIds.VECTOR_OTHERPAY_CENTRAPAY,
-                        Title = StringIds.STRING_CENTRAPAY,
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_CENTRA_PAY,
+                    //    IconHorizontal = IconIds.ICON_CENTRALPAY_TEXT,
+                    //    Icon = IconIds.VECTOR_OTHERPAY_CENTRAPAY,
+                    //    Title = StringIds.STRING_CENTRAPAY,
+                    //};
 
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_GIFT_CARD_PAY,
-                        IconHorizontal = IconIds.ICON_EPAY_TEXT,
-                        Icon = IconIds.ICON_EPAY_PRODUCTS,
-                        Title = StringIds.STRING_EZIPAY_UPCASE,
-                    };
+                    //RequestDlgData.SecondTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_GIFT_CARD_PAY,
+                    //    IconHorizontal = IconIds.ICON_EPAY_TEXT,
+                    //    Icon = IconIds.ICON_EPAY_PRODUCTS,
+                    //    Title = StringIds.STRING_EZIPAY_UPCASE,
+                    //};
 
                     break;
 
@@ -697,7 +697,7 @@ namespace CloudBanking.UITestApp
                 RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
             }
 
-            RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
+            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
 
@@ -929,7 +929,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             var generalType = new List<GenericType>();
 
             var item1 = new GenericType();
@@ -1040,7 +1040,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMessageDialogDroid(CaseDialog caseDialog)
         {
-#if true
+#if false
             MessageType messageData = new MessageType();
             long lBalance = 13800;
             string mainTitle, mainResult, secondaryRes;
@@ -1287,6 +1287,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowEntryCardNumberDialog()
         {
+#if false
             var entryDlgData = new EntryCardNumberDlgData();
 
             entryDlgData.fShowExpiry = true;
@@ -1308,6 +1309,7 @@ namespace CloudBanking.UITestApp
             var entryCardNumberDialog = new ShellUI.EntryCardNumberDialog(StringIds.STRING_MANUAL_PAY, null, entryDlgData);
             entryCardNumberDialog.DialogStyle = DialogStyle.FULLSCREEN;
             entryCardNumberDialog.Show(this);
+#endif
         }
 
         private void ShowEntryExpiryDateDialog()
@@ -1406,7 +1408,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
-#if true
+#if false
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1432,7 +1434,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectDate()
         {
-#if true
+#if false
             ////hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1459,7 +1461,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSettlementOptions()
         {
-#if true
+#if false
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1484,7 +1486,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowReprintOptions()
         {
-#if true
+#if false
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -2542,6 +2544,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectDonationDialog()
         {
+#if false
             var data = new CusDisplaySelectDonationDlgData();
 
             //landscape
@@ -2557,6 +2560,7 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, data);
+#endif
         }
 
         void ShowAdjustDonationDialog()
@@ -3248,6 +3252,7 @@ namespace CloudBanking.UITestApp
 
         void ShowTicketSearchOptionsDialog()
         {
+#if false
             POSTicketInfo searchData = new POSTicketInfo();
             var pullSetupDlgData = new StandardSetupDialogModel()
             {
@@ -3301,6 +3306,7 @@ namespace CloudBanking.UITestApp
             {
                 //TicketSearchOptionsDialog
             }, true, false, pullSetupDlgData);
+#endif
         }
 
         void ShowIncreaseSplitDialog()
@@ -3605,6 +3611,7 @@ namespace CloudBanking.UITestApp
 
         void EditTicket()
         {
+#if false
             var viewModel = new StandardSetupDialogModel()
             {
                 OKBtnCommandId = GlobalResource.SAVE_BUTTON,
@@ -3665,10 +3672,12 @@ namespace CloudBanking.UITestApp
             {
                 //StandardSetupDialog
             }, true, false, viewModel);
+#endif
         }
 
         void ShowConfirmClosingTableDialog()
         {
+#if false
             //TicketSearchItemModel selectedTicket = new TicketSearchItemModel()
             //{
             //    Balance = 35000,
@@ -3700,6 +3709,7 @@ namespace CloudBanking.UITestApp
             {
                 //ConfirmClosingTableDialog
             }, true, false, selectedTicket);
+#endif
         }
 
         void ShowGetTenderBalanceDialog()
@@ -4080,7 +4090,7 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundPurchaseListItemsDialog()
         {
-#if true
+#if false
             long amount = 10000;
             long lCashOut = 10000;
             long lDonation = 10000;
@@ -5122,6 +5132,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectCharityDialog()
         {
+#if false
             uint startId = 0;
             var charityItem1 = new CharityItem();
             charityItem1.PortraitPoster = "don_1_port_poster.png";
@@ -5254,7 +5265,7 @@ namespace CloudBanking.UITestApp
 
             var dlgData = new SelectCharityDlgData()
             {
-                Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
+                //Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
                 fHideCancelButton = true,
                 //Items = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 }
             };
@@ -5263,6 +5274,7 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, dlgData);
+#endif
         }
 
         void ShowEnterAccesscode()
@@ -5273,6 +5285,8 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationEnterAccessCodeDialog()
         {
+#if false
+
             var dlgData = new DonationEnterAccessCodeDlgData()
             {
                 AvatarRes = "dr_madison.png",
@@ -5283,10 +5297,12 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, dlgData);
+#endif
         }
 
         void ShowDonationAdvertising()
         {
+#if false
             var dlgData = new DonationAdvertisingDlgData()
             {
                 AdvertisingImgRes = "donation_salvation_ads.png",
@@ -5297,6 +5313,7 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, dlgData);
+#endif
         }
 
         void ShowDonationSelectAmountDialog()
@@ -5311,6 +5328,7 @@ namespace CloudBanking.UITestApp
 
         void ShowDonationSelectOptionDialog()
         {
+#if false
             var items = new List<SelectOptionItem>()
             {
                 new SelectOptionItem()
@@ -5341,10 +5359,12 @@ namespace CloudBanking.UITestApp
             {
                 //SelectOptionDialog
             }, true, false, data);
+#endif
         }
 
         void ShowDonationReceiptOptionsDialog()
         {
+#if false
             var data = new ReceiptOptionsDlgData();
 
             data.QRReceiptResult = "ReceiptOptionsDialog";
@@ -5379,11 +5399,12 @@ namespace CloudBanking.UITestApp
             var dialog4 = new DonationReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
             dialog4.DialogStyle = DialogStyle.FULLSCREEN;
             dialog4.Show(this);
+#endif
         }
 
         private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
             {
@@ -5718,6 +5739,7 @@ namespace CloudBanking.UITestApp
 
         void ShowStandaloneSelectDonationAmountDialog()
         {
+#if false
             CusDisplaySelectDonationDlgData dlgData = new CusDisplaySelectDonationDlgData();
 
             dlgData.DonationImgName = "donation_salvation_banner.png";
@@ -5727,6 +5749,7 @@ namespace CloudBanking.UITestApp
             {
                 //StandaloneSelectDonationAmountDialog
             }, true, false, dlgData);
+#endif
         }
 
         void ShowQrCodeReceiptClaimDialog()
@@ -5773,7 +5796,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectFunctionDialog()
         {
-#if true
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 1,
@@ -5941,7 +5964,7 @@ namespace CloudBanking.UITestApp
             {
                 iCommandLang = StringIds.STRING_CARD_STATUS_CHECK,
                 Title = StringIds.STRING_CARD_STATUS_CHECK,
-                //idImage = IconIds.VECTOR_CARD_STATUS,
+                idImage = IconIds.VECTOR_TAB_CARD_STATUS,
                 IdProcessor = 0,
                 iCommand = GlobalResource.FNC_SALE_BUTTON,
             });
@@ -5958,7 +5981,7 @@ namespace CloudBanking.UITestApp
             {
                 iCommandLang = StringIds.STRING_REPRINT_PREAUTH,
                 Title = StringIds.STRING_REPRINT_PREAUTH,
-                //idImage = IconIds.VECTOR_REPRINT_PREAUTH,
+                idImage = IconIds.VECTOR_REPRINT_RECEIPT,
                 IdProcessor = 0,
             });
 
@@ -6808,6 +6831,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectOtherCharityDialog()
         {
+#if false
             List<CharityItem> MultipleItemsList = new List<CharityItem>();
             long lTotalDonations = 13800;
             uint startId = 1;
@@ -6951,6 +6975,7 @@ namespace CloudBanking.UITestApp
                 //SelectOtherCharityDialog
 
             }, true, false, MultipleItemsList, lTotalDonations);
+#endif
         }
 
         void ShowPaymenDonationsDialog()
@@ -7426,7 +7451,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
 
             var generalType = new List<GenericType>();
 
@@ -7590,7 +7615,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniApprovalDialog()
         {
-#if true
+#if false
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
@@ -7745,6 +7770,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowEpayProducts()
         {
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 0,
@@ -7808,10 +7834,12 @@ namespace CloudBanking.UITestApp
 
 
             }, true, false, selectFuncDialogDta);
+#endif
         }
 
         private void ShowCheckItemsDialog()
         {
+#if false
             CheckItemsDlgData dlgData;
             dlgData = new CheckItemsDlgData()
             {
@@ -7871,10 +7899,12 @@ namespace CloudBanking.UITestApp
             {
                 //CheckItemsDialog
             }, true, false, dlgData);
+#endif
         }
 
         private void ShowVoucherOptions()
         {
+#if false
             string menuTitleId = StringIds.STRING_VOUCHER_SALE;
 
             var menuViewItems = new SelFncDlgData()
@@ -7951,6 +7981,7 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, menuViewItems);
+#endif
         }
 
         private void ShowTMSResultDialog()
@@ -7965,7 +7996,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSinatureApproval()
         {
-#if true
+#if false
             ApprovalDlgData hwndApprovalDlg = new ApprovalDlgData();
             hwndApprovalDlg.PrintStage = PrintStage.Printing;
             hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);
@@ -7991,7 +8022,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowUserLoggedInDialog()
         {
-#if true
+#if false
             var items = new List<SelectOptionItem>()
             {
                 new SelectOptionItem()

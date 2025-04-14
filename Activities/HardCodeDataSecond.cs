@@ -4,7 +4,9 @@ using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
 using CloudBanking.Language;
 using CloudBanking.ShellContainers;
+using CloudBanking.ShellModels;
 using CloudBanking.Utilities;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +38,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogVoidTransaction()
         {
-#if false
+#if true
             var mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
             var fCustomerPrint = true;
 
@@ -45,7 +47,7 @@ namespace CloudBanking.UITestApp
             ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_VOID_TRANSACTION, mainResult, false,
                 GlobalResource.MB_OKCANCEL, GlobalResource.MB_ICONAPPROVAL_BMP,
                 subMsg: secondaryRes,
-                strSubMessageColor: GlobalConstants.STRING_APPROVAL_COLOR,
+                strSubMessageColor: GlobalConstants.STRING_PRIMARY_COLOR,
                 aboveMsg: StringIds.STRING_VOIDTRANSACTION,
                 isShowBackBtn: false,
                 //subMsg: lamount > 0 ? lamount.ToFormatLocalCurrencyAmount() : string.Empty,
@@ -363,6 +365,37 @@ namespace CloudBanking.UITestApp
 
                 //SelectProcessorDialog
             }, true, false, _processorIdList);
+#endif
+        }
+
+        void ShowRemoveSurchargeDialog()
+        {
+#if false
+            SurchargeConfirmationDlgData dlgSurchargeConfirmData = new SurchargeConfirmationDlgData();
+
+            dlgSurchargeConfirmData.pInitProcessData = new ShellInitProcessData() 
+            { 
+                lSurChargeFee = 6800,
+                lAccountSurChargeFee = 3000,
+                lCashOutFee = 7800
+            };
+
+            dlgSurchargeConfirmData.iCardType = CARDTYPE.CARD_AMEX;
+
+            dlgSurchargeConfirmData.wszCurrencyCode = GlobalData.GlobalCurrency.wszCurrencyCode;
+
+            dlgSurchargeConfirmData.iAccountTypeCode = AccountType.ACCOUNT_TYPE_UNKNOWN;
+
+            dlgSurchargeConfirmData.szCardHolderName = "Mr. Smith";
+
+            dlgSurchargeConfirmData.szCardNumber = "*****8765";
+
+            dlgSurchargeConfirmData.fCTLS = false;
+
+            var ret = DialogBuilder.Show(IShellDialog.REMOVE_SURCHARGE_DIALOG, StringIds.STRING_REMOVE_SURCHARGE, (iResult, args) =>
+            {
+              
+            }, true, false, dlgSurchargeConfirmData);
 #endif
         }
     }

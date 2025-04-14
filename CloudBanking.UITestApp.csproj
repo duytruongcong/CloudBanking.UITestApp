@@ -46,7 +46,7 @@
     <BundleAssemblies>false</BundleAssemblies>
     <Debugger>Xamarin</Debugger>
     <MandroidI18n />
-    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -231,9 +231,29 @@
       <Project>{426901F1-19C0-4370-A1ED-E03B3B09949A}</Project>
       <Name>CloudBanking.PaymentLoyalty</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.HttpPosInterfaceClient\CloudBanking.HttpPosInterfaceClient.csproj">
+      <Project>{47808B94-27CC-4A85-85EE-82B32FB95473}</Project>
+      <Name>CloudBanking.HttpPosInterfaceClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Module\CloudBanking.WebSocket\CloudBanking.WebSocket.csproj">
+      <Project>{73ECD58E-07B1-4B7D-9BE7-6BFD123CC146}</Project>
+      <Name>CloudBanking.WebSocket</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.POS\CloudBanking.POSContainer\CloudBanking.POSContainer.csproj">
+      <Project>{1815ECF2-DFB0-429B-9E28-0D66972C473F}</Project>
+      <Name>CloudBanking.POSContainer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.BaseHardware\CloudBanking.BaseHardware.csproj">
       <Project>{11E62D69-78C8-45D6-B00C-02E6E8D24152}</Project>
       <Name>CloudBanking.BaseHardware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.FeitianSdk\CloudBanking.FeitianSdk.csproj">
+      <Project>{A8BB4218-54D2-4BDB-94C6-2BB6903A52AF}</Project>
+      <Name>CloudBanking.FeitianSdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PaxSdk\CloudBanking.PaxSdk.csproj">
+      <Project>{6C42557C-BA63-473A-9247-61E2E6CF6CD4}</Project>
+      <Name>CloudBanking.PaxSdk</Name>
     </ProjectReference>
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Standard\CloudBanking.Entities\CloudBanking.Entities.csproj">
       <Project>{2e30abf3-2123-43eb-bb4b-20beb18801e3}</Project>

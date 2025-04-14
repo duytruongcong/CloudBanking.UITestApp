@@ -170,9 +170,9 @@ namespace CloudBanking.UITestApp
             float xdpi = displayMetrics.Xdpi;
             float ydpi = displayMetrics.Ydpi;
 
-            Console.WriteLine($"density = {density}");
-            Console.WriteLine($"widthPixels = {widthPixels}");
-            Console.WriteLine($"heightPixels = {heightPixels}");
+            Console.WriteLine($"\n density = {density}");
+            Console.WriteLine($"\n widthPixels = {widthPixels}");
+            Console.WriteLine($"\n heightPixels = {heightPixels}");
 
             list_view = FindViewById<ListView>(Resource.Id.list_view);
 

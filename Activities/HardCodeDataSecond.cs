@@ -39,10 +39,10 @@ namespace CloudBanking.UITestApp
         void ShowMessageDialogVoidTransaction()
         {
 #if true
-            var mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
+            var mainResult = StringIds.STRING_APPROVED.GetString();
             var fCustomerPrint = true;
 
-            var secondaryRes = Localize.GetString(fCustomerPrint ? StringIds.STRING_PRINTCUSTOMERRECEIPT : StringIds.STRING_PRINTMERCHANTRECEIPT).ToUpperInvariant();
+            var secondaryRes = Localize.GetString(fCustomerPrint ? StringIds.STRING_PRINTCUSTOMERRECEIPT : StringIds.STRING_PRINTMERCHANTRECEIPT);
 
             ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_VOID_TRANSACTION, mainResult, false,
                 GlobalResource.MB_OKCANCEL, GlobalResource.MB_ICONAPPROVAL_BMP,

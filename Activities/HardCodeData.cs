@@ -23,16 +23,16 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             string lpszEntryModeString = "";
             string lpszTitleString = StringIds.STRING_TRANSACTION;
             var lpszAboveMainString = StringIds.STRING_PURCHASE;
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
 
-            lpszEntryModeString = Localize.GetString(StringIds.STRING_EM_MANUAL).ToUpper() + " ";
+            lpszEntryModeString = Localize.GetString(StringIds.STRING_EM_MANUAL) + " ";
 
-            DlgData.lpszAboveMainString = lpszEntryModeString + Localize.GetString(lpszAboveMainString).ToUpper();
+            DlgData.lpszAboveMainString = lpszEntryModeString + Localize.GetString(lpszAboveMainString);
             DlgData.lBalance = 20000;
             DlgData.iEntryMode = ENTRYMODE.EM_MOTO;
 
@@ -54,8 +54,8 @@ namespace CloudBanking.UITestApp
                     DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
                     DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
-                    DlgData.fCustomerDisplay = true;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
+                    DlgData.fCustomerDisplay = false;
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
                     DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
                     DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
@@ -76,8 +76,8 @@ namespace CloudBanking.UITestApp
                     DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
                     DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
-                    DlgData.fCustomerDisplay = true;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
+                    DlgData.fCustomerDisplay = false;
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
                     DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
                     DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
@@ -101,7 +101,7 @@ namespace CloudBanking.UITestApp
                     DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
                     DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
                     DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
@@ -123,8 +123,8 @@ namespace CloudBanking.UITestApp
                     DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
                     DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
-                    DlgData.fCustomerDisplay = true;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
+                    DlgData.fCustomerDisplay = false;
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
                     DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
                     DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
@@ -146,8 +146,8 @@ namespace CloudBanking.UITestApp
                     DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
                     DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
-                    DlgData.fCustomerDisplay = true;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
+                    DlgData.fCustomerDisplay = false;
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
                     DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
                     DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
@@ -170,7 +170,7 @@ namespace CloudBanking.UITestApp
                     DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
                     DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
                     DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
@@ -192,7 +192,7 @@ namespace CloudBanking.UITestApp
                     DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
                     DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
                     DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
@@ -214,7 +214,7 @@ namespace CloudBanking.UITestApp
                     DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpper();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
                     DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
                     DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
@@ -388,7 +388,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            RequestDlgData.fNoPresentCard = false;// change to show difference case
+            RequestDlgData.fNoPresentCard = true;// change to show difference case
             RequestDlgData.pInitProcessData = pInitProcessData;
             //RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -433,7 +433,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowSwipeCardIcon = true;
                     RequestDlgData.fShowTapCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENT_INSERT_OR_SWIPE_CARD_UPCASE;
-                    RequestDlgData.fShowCardAnimation = true;
+                    RequestDlgData.fShowCardAnimation = false;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE;
 
                     RequestDlgData.FirstTenderType = new ButtonData()
@@ -470,12 +470,12 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowTapCardIcon = true;
                     RequestDlgData.fShowSwipeCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORTAPCARD;
-                    RequestDlgData.fShowCardAnimation = true;
+                    RequestDlgData.fShowCardAnimation = false;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_TAP;
 
                     RequestDlgData.OtherPayment = new ButtonData()
                     {
-                        Icon = IconIds.VECTOR_CREDIT,
+                        Icon = IconIds.VECTOR_OTHER_PAYMENTS,
                         Title = StringIds.STRING_OTHER_PAYMENTS,
                     };
 
@@ -516,7 +516,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowSwipeCardIcon = true;
                     RequestDlgData.fShowTapCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORSWIPECARD;
-                    RequestDlgData.fShowCardAnimation = true;
+                    RequestDlgData.fShowCardAnimation = false;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE;
 
                     break;
@@ -537,12 +537,12 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowTapCardIcon = false;
                     RequestDlgData.fShowSwipeCardIcon= false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTCARD;
-                    RequestDlgData.fShowCardAnimation = true;
+                    RequestDlgData.fShowCardAnimation = false;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT;
 
                     RequestDlgData.OtherPayment = new ButtonData()
                     {
-                        Icon = IconIds.VECTOR_CREDIT,
+                        Icon = IconIds.VECTOR_OTHER_PAYMENTS,
                         Title = StringIds.STRING_OTHER_PAYMENTS,
                     };
 
@@ -584,12 +584,12 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowSwipeCardIcon = true;
                     RequestDlgData.fShowInsertCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_TAPORSWIPECARD;
-                    RequestDlgData.fShowCardAnimation = true;
+                    RequestDlgData.fShowCardAnimation = false;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_SWIPE_TAP;
 
                     RequestDlgData.OtherPayment = new ButtonData()
                     {
-                        Icon = IconIds.VECTOR_CREDIT,
+                        Icon = IconIds.VECTOR_OTHER_PAYMENTS,
                         Title = StringIds.STRING_OTHER_PAYMENTS,
                     };
 
@@ -627,7 +627,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowInsertCardIcon = false;
                     RequestDlgData.fShowSwipeCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_PLEASE_PRESENT_CARD_UPCASE;
-                    RequestDlgData.fShowCardAnimation = true;
+                    RequestDlgData.fShowCardAnimation = false;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_TAP;
 
                     break;
@@ -648,7 +648,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowInsertCardIcon = false;
                     RequestDlgData.fShowTapCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
-                    RequestDlgData.fShowCardAnimation = true;
+                    RequestDlgData.fShowCardAnimation = false;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_SWIPE;
 
                     break;
@@ -669,7 +669,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowTapCardIcon = true;
                     RequestDlgData.fShowInsertCardIcon = true;
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_CARD_STATUS_CHECK_UPCASE;
-                    RequestDlgData.fShowCardAnimation = true;
+                    RequestDlgData.fShowCardAnimation = false;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
 
                     break;
@@ -982,7 +982,7 @@ namespace CloudBanking.UITestApp
 
             AccountType temp = null;
 
-            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, StringIds.STRING_ACCOUNT_SELECT_TYPE, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
+            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, string.Empty, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
 #endif
@@ -1049,7 +1049,7 @@ namespace CloudBanking.UITestApp
                     mainTitle = StringIds.STRING_BALANCE_ENQUIRY;
                     mainResult = string.Empty;
 
-                    mainResult = StringIds.STRING_APPROVED.GetUpperCaseString();
+                    mainResult = StringIds.STRING_APPROVED;
 
                     secondaryRes = StringIds.STRING_PRINTMERCHANTRECEIPT;
 
@@ -1069,7 +1069,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE2:
 
                     mainTitle = StringIds.STRING_BALANCE_ENQUIRY;
-                    mainResult = StringIds.STRING_DECLINED.GetUpperCaseString();
+                    mainResult = StringIds.STRING_DECLINED;
 
                     ApplicationBaseFlow.CustomStringMessageBox(true, mainTitle, mainResult, false,
                         GlobalResource.MB_OK, GlobalResource.MB_ICONDECLINED_BMP,
@@ -2169,11 +2169,14 @@ namespace CloudBanking.UITestApp
         void ShowSelectTipDialog()
         {
             double x = 5.00;
-            long y = 1000;
+            long y = 500;
             long originalAmount = 90000;
             long amount = 10000;
-            var keyValue = new KeyValuePair<double, long>(x, y);
-            var data = new List<KeyValuePair<double, long>>() { keyValue, keyValue, keyValue, keyValue };
+            var keyValue01 = new KeyValuePair<double, long>(x, y);
+            var keyValue02 = new KeyValuePair<double, long>(10.00, 1000);
+            var keyValue03 = new KeyValuePair<double, long>(15.00, 1500);
+            var keyValue04 = new KeyValuePair<double, long>(20.00, 2000);
+            var data = new List<KeyValuePair<double, long>>() { keyValue01, keyValue02, keyValue03, keyValue04 };
 
             var dialog = new SelectTipDialog(StringIds.STRING_SELECT_TIP_AMOUNT, null, data, true, amount, originalAmount);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
@@ -4088,7 +4091,7 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundPurchaseListItemsDialog()
         {
-#if false
+#if true
             long amount = 10000;
             long lCashOut = 10000;
             long lDonation = 10000;
@@ -4102,7 +4105,7 @@ namespace CloudBanking.UITestApp
                     {
                         Id = 1,
                         Title = StringIds.STRING_PURCHASE,
-                        Value = amount,
+                        Value = amount.ToFormatLocalCurrencyAmount(),
                         IsChecked = true,
                         IsTopRadiusBackground = true
                     },
@@ -4110,7 +4113,7 @@ namespace CloudBanking.UITestApp
                     {
                         Id = 2,
                         Title = StringIds.STRING_CASHOUT,
-                        Value = lCashOut,
+                        Value = lCashOut.ToFormatLocalCurrencyAmount(),
                         IsChecked = true
                     },
                     new LeftRightTextCheckIconModel()
@@ -4118,21 +4121,21 @@ namespace CloudBanking.UITestApp
                         Id = 3,
                         IsActualTitle = false,
                         Title = StringIds.STRING_DONATION,
-                        Value = lDonation,
+                        Value = lDonation.ToFormatLocalCurrencyAmount(),
                         IsChecked = true
                     },
                     new LeftRightTextCheckIconModel()
                     {
                         Id = 4,
                         Title = StringIds.STRING_TIP,
-                        Value = lTipAmount,
+                        Value = lTipAmount.ToFormatLocalCurrencyAmount(),
                         IsChecked = true
                     },
                     new LeftRightTextCheckIconModel()
                     {
                         IsActualTitle = true,
                         Title = Localize.GetString(StringIds.STRING_SALESSUMMARY_TOTALREFUND).ToUpper(),
-                        Value = amount,
+                        Value = amount.ToFormatLocalCurrencyAmount(),
                         HasCheckbox = false,
                         HasBottomLine = false,
                         IsBoldAll = true,
@@ -5794,7 +5797,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectFunctionDialog()
         {
-#if false
+#if true
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 1,
@@ -7994,7 +7997,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSinatureApproval()
         {
-#if false
+#if true
             ApprovalDlgData hwndApprovalDlg = new ApprovalDlgData();
             hwndApprovalDlg.PrintStage = PrintStage.Printing;
             hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);

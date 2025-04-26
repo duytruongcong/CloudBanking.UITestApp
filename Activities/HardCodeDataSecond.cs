@@ -1,8 +1,10 @@
+using Android.Icu.Util;
 using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
 using CloudBanking.Language;
+using CloudBanking.Repositories.Users;
 using CloudBanking.ShellContainers;
 using CloudBanking.ShellModels;
 using CloudBanking.Utilities;
@@ -397,6 +399,111 @@ namespace CloudBanking.UITestApp
               
             }, true, false, dlgSurchargeConfirmData);
 #endif
+        }
+
+        void ShowAddCustomerDialog()
+        {
+            DialogBuilder.ShowSubFlowDialog(IPayDialog.ADD_CUSTOMER_DIALOG,
+                                StringIds.STRING_NEW_CUSTOMER,
+                                (result, args) =>
+                                {
+
+                                });
+        }
+
+        void ShowSelectCustomerDialog()
+        {
+            List<Customer> customerList = new List<Customer>();
+
+            customerList.Add(new Customer()
+            {
+                FirstName = "Bob",
+                LastName = "Smith"
+            });
+
+            customerList.Add(new Customer()
+            {
+                FirstName = "Bob",
+                LastName = "Smith"
+            });
+
+            customerList.Add(new Customer()
+            {
+                FirstName = "Bob",
+                LastName = "Smith"
+            });
+
+            customerList.Add(new Customer()
+            {
+                FirstName = "Bob",
+                LastName = "Smith"
+            });
+
+
+            var dlgData = new SelectCustomerDlgData()
+            {
+                ListCustomers = customerList,
+                strListTitle = StringIds.STRING_RECENTLY_ADDED
+            };
+
+            DialogBuilder.ShowSubFlowDialog(IPayDialog.SELECT_CUSTOMER_DIALOG,
+                StringIds.STRING_CUSTOMER,
+                (result, args) =>
+                {
+
+                }, dlgData);
+        }
+
+        void ShowReviewCustomerDialog()
+        {
+            var customer = new Customer();
+            customer.FirstName = "Bob";
+            customer.LastName = "Smith";
+            customer.Email = "bob@gmail.com";
+            customer.PhoneNumber = "1234567890";
+            customer.Address = "456 Landy street";
+            customer.Birthday = DateTime.Now;
+            customer.CreatedAt = DateTime.Now;
+
+            DialogBuilder.ShowSubFlowDialog(IPayDialog.REVIEW_CUSTOMER_DIALOG,
+                                    StringIds.STRING_CUSTOMER,
+                                    (result, args) =>
+                                    {
+
+                                    }, customer);
+        }
+
+        void ShowAddNoteDialog()
+        {
+            var addNoteDlgData = new AddNoteDlgData()
+            {
+                CurrentNote = "Please note here!",
+                Amount = 13800
+            };
+
+            DialogBuilder.ShowSubFlowDialog(IPayDialog.ADD_NOTE_DIALOG,
+                StringIds.STRING_ADD_NOTE,
+                (result, args) =>
+                {
+
+                }, addNoteDlgData);
+        }
+
+        void ShowSendReceiptCustomerDialog()
+        {
+            var customer = new Customer();
+            customer.FirstName = "Bob";
+            customer.LastName = "Smith";
+            customer.Email = "bob@gmail.com";
+            customer.PhoneNumber = "1234567890";
+            customer.Address = "456 Landy street";
+            customer.Birthday = DateTime.Now;
+            customer.CreatedAt = DateTime.Now;
+
+            DialogBuilder.Show(IPayDialog.SEND_RECEIPT_CUSTOMER_DIALOG, StringIds.STRING_RECEIPT, (iResult, args) =>
+            {
+               
+            }, true, false, customer);
         }
     }
 }

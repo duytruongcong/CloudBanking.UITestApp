@@ -42,7 +42,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE1:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetUpperCaseString();
+                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
                     DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
@@ -64,7 +64,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE2:
 
                     DlgData.PrintStage = PrintStage.Printing;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetUpperCaseString();
+                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
                     DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
@@ -88,7 +88,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE3:
 
                     DlgData.PrintStage = PrintStage.PrintPrompt;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetUpperCaseString();
+                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
                     DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
@@ -111,7 +111,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE4:
                     
                     DlgData.PrintStage = PrintStage.PrintPrompt;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetUpperCaseString();
+                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
                     DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
@@ -134,7 +134,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE5:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetUpperCaseString();
+                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
                     DlgData.lpszSecondaryResult = string.Empty;
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
@@ -157,7 +157,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE6:
 
                     DlgData.PrintStage = PrintStage.Printing;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetUpperCaseString();
+                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
                     DlgData.lpszSecondaryResult = string.Empty;
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
@@ -179,7 +179,7 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE7:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetUpperCaseString();
+                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
                     DlgData.lpszSecondaryResult = string.Empty;
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
@@ -201,7 +201,7 @@ namespace CloudBanking.UITestApp
 
                 case CaseDialog.CASE8:
                     DlgData.PrintStage = PrintStage.PrintPrompt;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetUpperCaseString();
+                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
                     DlgData.lpszSecondaryResult = string.Empty;
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
@@ -8023,7 +8023,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowUserLoggedInDialog()
         {
-#if false
+#if true
             var items = new List<SelectOptionItem>()
             {
                 new SelectOptionItem()
@@ -8042,7 +8042,7 @@ namespace CloudBanking.UITestApp
                 {
                     Command = GlobalResource.MENU_ITEM_HELP,
                     TitleId = StringIds.STRING_HELP,
-                    VectorIconResName = IconIds.VECTOR_HELP
+                    VectorIconResName = IconIds.VECTOR_HELP_GRAY
                 },
                 new SelectOptionItem()
                 {

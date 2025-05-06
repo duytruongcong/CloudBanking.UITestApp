@@ -1,19 +1,10 @@
-using Android.Icu.Util;
 using CloudBanking.BaseControl;
-using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
 using CloudBanking.Language;
-using CloudBanking.Repositories.Users;
-using CloudBanking.ShellContainers;
-using CloudBanking.ShellModels;
 using CloudBanking.Utilities;
-using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using static Java.Util.Concurrent.Flow;
-using Command = CloudBanking.Flow.Base.Command;
 
 namespace CloudBanking.UITestApp
 {
@@ -403,16 +394,20 @@ namespace CloudBanking.UITestApp
 
         void ShowAddCustomerDialog()
         {
+#if true
             DialogBuilder.ShowSubFlowDialog(IPayDialog.ADD_CUSTOMER_DIALOG,
                                 StringIds.STRING_NEW_CUSTOMER,
                                 (result, args) =>
                                 {
 
                                 });
+#endif
         }
 
         void ShowSelectCustomerDialog()
         {
+#if true
+
             List<Customer> customerList = new List<Customer>();
 
             customerList.Add(new Customer()
@@ -452,10 +447,13 @@ namespace CloudBanking.UITestApp
                 {
 
                 }, dlgData);
+#endif
+
         }
 
         void ShowReviewCustomerDialog()
         {
+#if true
             var customer = new Customer();
             customer.FirstName = "Bob";
             customer.LastName = "Smith";
@@ -471,10 +469,13 @@ namespace CloudBanking.UITestApp
                                     {
 
                                     }, customer);
+#endif
         }
 
         void ShowAddNoteDialog()
         {
+#if true
+
             var addNoteDlgData = new AddNoteDlgData()
             {
                 CurrentNote = "Please note here!",
@@ -487,10 +488,12 @@ namespace CloudBanking.UITestApp
                 {
 
                 }, addNoteDlgData);
+#endif
         }
 
         void ShowSendReceiptCustomerDialog()
         {
+#if true
             var customer = new Customer();
             customer.FirstName = "Bob";
             customer.LastName = "Smith";
@@ -504,6 +507,7 @@ namespace CloudBanking.UITestApp
             {
                
             }, true, false, customer);
+#endif
         }
     }
 }

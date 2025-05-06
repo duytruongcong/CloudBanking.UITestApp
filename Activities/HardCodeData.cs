@@ -13,6 +13,8 @@ using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Android.Icu.Text.CaseMap;
+using static Android.Media.MediaParser;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
@@ -433,7 +435,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowSwipeCardIcon = true;
                     RequestDlgData.fShowTapCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENT_INSERT_OR_SWIPE_CARD_UPCASE;
-                    RequestDlgData.fShowCardAnimation = false;
+                    RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE;
 
                     RequestDlgData.FirstTenderType = new ButtonData()
@@ -470,7 +472,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowTapCardIcon = true;
                     RequestDlgData.fShowSwipeCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORTAPCARD;
-                    RequestDlgData.fShowCardAnimation = false;
+                    RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_TAP;
 
                     RequestDlgData.OtherPayment = new ButtonData()
@@ -516,7 +518,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowSwipeCardIcon = true;
                     RequestDlgData.fShowTapCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORSWIPECARD;
-                    RequestDlgData.fShowCardAnimation = false;
+                    RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE;
 
                     break;
@@ -537,7 +539,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowTapCardIcon = false;
                     RequestDlgData.fShowSwipeCardIcon= false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTCARD;
-                    RequestDlgData.fShowCardAnimation = false;
+                    RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT;
 
                     RequestDlgData.OtherPayment = new ButtonData()
@@ -584,7 +586,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowSwipeCardIcon = true;
                     RequestDlgData.fShowInsertCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_TAPORSWIPECARD;
-                    RequestDlgData.fShowCardAnimation = false;
+                    RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_SWIPE_TAP;
 
                     RequestDlgData.OtherPayment = new ButtonData()
@@ -627,7 +629,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowInsertCardIcon = false;
                     RequestDlgData.fShowSwipeCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_PLEASE_PRESENT_CARD_UPCASE;
-                    RequestDlgData.fShowCardAnimation = false;
+                    RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_TAP;
 
                     break;
@@ -648,7 +650,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowInsertCardIcon = false;
                     RequestDlgData.fShowTapCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
-                    RequestDlgData.fShowCardAnimation = false;
+                    RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_SWIPE;
 
                     break;
@@ -669,7 +671,7 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowTapCardIcon = true;
                     RequestDlgData.fShowInsertCardIcon = true;
                     RequestDlgData.PresentCardSubTitleId = StringIds.STRING_CARD_STATUS_CHECK_UPCASE;
-                    RequestDlgData.fShowCardAnimation = false;
+                    RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE_TAP;
 
                     break;
@@ -695,10 +697,41 @@ namespace CloudBanking.UITestApp
 
             RequestDlgData.szTotalTitle = totalTitleId;
 
-            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
+            RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
-            RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
+            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
 
+            //var menuItems = new List<MenuDlgData>()
+            //{
+            //};
+
+            //if (true)
+            //{
+            //    menuItems.Add(new MenuDlgData()
+            //    {
+            //        Command = TransResponse.APPCOMMAND_CENTRA_PAY,
+            //        TitleId = StringIds.STRING_CENTRAPAY,
+            //        IconName = IconIds.VECTOR_OTHERPAY_CENTRAPAY
+            //    });
+            //}
+
+            //if (true)
+            //{
+            //    menuItems.Add(new MenuDlgData()
+            //    {
+            //        Command = TransResponse.APPCOMMAND_GIFT_CARD_PAY,
+            //        TitleId = "Ezipay",
+            //        IconName = IconIds.VECTOR_OTHERPAY_EZIPAY
+            //    });
+            //}
+
+            //List<MerchantCreditCardsAccepted> _creditCardsAccepteds = new List<MerchantCreditCardsAccepted>();
+            //List<MerchantDebitCardsAccepted> _debitCardAccepteds = new List<MerchantDebitCardsAccepted>();
+
+            //DialogBuilder.Show(IShellDialog.REQUEST_CARD_DIALOG, StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
+            //{
+
+            //}, true, false, RequestDlgData, menuItems, _creditCardsAccepteds, _debitCardAccepteds);
 
             var requestCardDialog = new RequestCardDialog(StringIds.STRING_PAYMENT_METHODS, (iResult, args) =>
             {
@@ -5035,9 +5068,10 @@ namespace CloudBanking.UITestApp
             var currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
             DCCConfimationData data = new DCCConfimationData();
 
-            if (currency == null)
-                return;
-
+            data.LocalCountry = "NZD";
+            data.HomeCountry = "USD";
+            data.szConversionRate = "1.08234";
+            data.szMarginPercentage = "3.3162";
             data.FlagImage = currency.iCurrencyCodeFlag;
             data.Currency = currency.wszCurrencyCode;
             data.lAmount = 6420;
@@ -7997,7 +8031,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSinatureApproval()
         {
-#if true
+#if false
             ApprovalDlgData hwndApprovalDlg = new ApprovalDlgData();
             hwndApprovalDlg.PrintStage = PrintStage.Printing;
             hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);
@@ -8066,7 +8100,7 @@ namespace CloudBanking.UITestApp
             DialogBuilder.Show(IPayDialog.USER_LOGGED_IN_DIALOG, title, (iResult, args) =>
             {
 
-            }, true, false, data);
+            }, true, true, data);
 #endif
         }
 

@@ -172,10 +172,15 @@ namespace CloudBanking.UITestApp
             int apiLevel = (int)Build.VERSION.SdkInt;
 
             Console.WriteLine($"\n------------------DUYTRUONG-------------------");
-            Console.WriteLine($"\n || density = {density} ||");
-            Console.WriteLine($"\n || widthPixels = {widthPixels} ||");
-            Console.WriteLine($"\n || heightPixels = {heightPixels} ||");
-            Console.WriteLine($"\n || API Level = {apiLevel} ||");
+            Console.WriteLine($"\n || density = {density} ");
+            Console.WriteLine($"\n || widthPixels = {widthPixels} ");
+            Console.WriteLine($"\n || heightPixels = {heightPixels} ");
+            Console.WriteLine($"\n || API Level = {apiLevel} ");
+
+            var config = Resources.Configuration;
+            Log.Debug("App", $"|| Screen width: {config.ScreenWidthDp}dp, height: {config.ScreenHeightDp}dp ");
+            Log.Debug("App", $"|| Smallest width: {config.SmallestScreenWidthDp}dp ||");
+
 
             list_view = FindViewById<ListView>(Resource.Id.list_view);
 
@@ -639,7 +644,7 @@ namespace CloudBanking.UITestApp
         private void InitializeCommonData()
         {
 
-#if true
+#if false
             #region Customer
             
             _lData.Add(new ScreenViewModel()
@@ -1843,7 +1848,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //   son
+#if false   //   son done for castle
 
             #region DCC
 
@@ -1933,7 +1938,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  
+#if false    //  son done for a920pro
 
             #region Setup Flow
 
@@ -2833,7 +2838,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //   
+#if true   //   
 
             #region Preauth Flow
 
@@ -2938,6 +2943,7 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+            //duy done
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"CancelPreAuthConfirmDialog",
@@ -2952,7 +2958,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //   duy
+#if false   //   duy done castle
 
             #region Request Card Flow
 
@@ -3159,7 +3165,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false //   son
+#if false //   son done castle
 
             #region DynamicOptionDialog 
 
@@ -3435,7 +3441,7 @@ namespace CloudBanking.UITestApp
 #endif
 
 
-#if false    //  
+#if false    //  duy done for castle
 
             #region EnterPinDialog
 
@@ -3481,7 +3487,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // 
+#if false   // duy done for castle
 
             #region ApprovalDialog
 
@@ -3654,7 +3660,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // 
+#if false   // duy done for castle
 
             #region ProcessMessageDialog
 
@@ -3697,7 +3703,7 @@ namespace CloudBanking.UITestApp
                     ShowProcessMessageDialog(CaseDialog.CASE4);
                 })
             });
-
+#if false
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"EOVProcessDialog",
@@ -3707,7 +3713,7 @@ namespace CloudBanking.UITestApp
                     ShowEOVProcessingDialog();
                 })
             });
-
+#endif
             #endregion
 #endif
         }

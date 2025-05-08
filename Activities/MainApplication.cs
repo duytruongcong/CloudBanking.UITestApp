@@ -6,6 +6,7 @@ using CloudBanking.BaseHardware;
 using CloudBanking.Common;
 using CloudBanking.DroidCommon;
 using CloudBanking.HttpPosInterfaceClient;
+using CloudBanking.Logger;
 using CloudBanking.PaxSdk;
 using CloudBanking.PaymentLoyalty;
 using CloudBanking.PhoneSdk;
@@ -27,8 +28,6 @@ namespace CloudBanking.UITestApp
     {
         public ApplicationFlow PaymentFlow { get; set; }
 
-        protected override string APPCENTER_SECRET => "e8ceea17-3a80-4681-8bb3-a68fe5796970";
-
         public MainApplication(IntPtr handle, JniHandleOwnership ownerShip) : base(handle, ownerShip)
         {
 
@@ -44,7 +43,7 @@ namespace CloudBanking.UITestApp
         {
             ServiceLocator.Instance.Register<IUtilityService, PaymentAppUtilityService>(this, CrossDeviceInfo.Current.IsLargeScreen());
             ServiceLocator.Instance.Register<IFileService, DroidFileService>(this, ServiceLocator.Instance.Get<IUtilityService>(), GlobalConstants.FOLDER_SINGLEAPP);
-            ServiceLocator.Instance.Register<ILoggerService, DroidLoggerService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>());
+            ServiceLocator.Instance.Register<ILoggerService, LoggerService>(this, ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IFileService>());
             ServiceLocator.Instance.Register<ISecureStorageService, DroidSharePreferenceSecureStorageService>(this);
             ServiceLocator.Instance.Register<IDatabaseService, DroidDatabaseService>(ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>());
             ServiceLocator.Instance.Register<IEmbeddedResourceLoader, EmbeddedResourceLoader>();
@@ -69,7 +68,11 @@ namespace CloudBanking.UITestApp
                 ServiceLocator.Instance.Register<IBarcodeService, ZXingBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
             }
 
-            ServiceLocator.Instance.Get<ISmartDevice>().SetHardwareModule(
+            var smartDeviceService = ServiceLocator.Instance.Get<ISmartDevice>();
+
+            ServiceLocator.Instance.Get<ILoggerService>().UpdateClientInfo(smartDeviceService.GetFullSeriNumber());
+
+            smartDeviceService.SetHardwareModule(
                 CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),
                 CrossDeviceInfo.Current.IsTerminalHasBattery(),
                 CrossDeviceInfo.Current.IsSwipeSupported(),
@@ -80,7 +83,7 @@ namespace CloudBanking.UITestApp
                 CrossDeviceInfo.Current.IsCTLSMagCloser());
 
             //create UI of shell
-            ServiceLocator.Instance.Register<IWebSocketService, SignalRService>(ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ICloudPOSInterfaceClient>());
+            ServiceLocator.Instance.Register<ICloudPOS, CloudPOS>(ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ICloudPOSInterfaceClient>());
             ServiceLocator.Instance.Register<IReceiptClient, ReceiptClient>(new Uri("https://receipt.project-jump-start.com/"), "");
             ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IReceiptClient>(), ServiceLocator.Instance.Get<IBarcodeService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(), ServiceLocator.Instance.Get<IDiagnosticService>());
 
@@ -97,13 +100,11 @@ namespace CloudBanking.UITestApp
 
             ServiceLocator.Instance.Register<IPosService, POSService>(this, ServiceLocator.Instance.Get<IDialogBuilder>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IPosInterfaceClient>());
 
-            ServiceLocator.Instance.Register<IPrinting, DroidPrintingServices>(this);
+            ServiceLocator.Instance.Register<IPrinting, DroidPrintingServices>();
 
             ServiceLocator.Instance.Register<IPaymentLoyaltyService, PaymentLoyaltyService>(this, ServiceLocator.Instance.Get<ILoggerService>());
 
             ServiceLocator.Instance.Register<IRebootWarningService, RebootWarningService>(this, ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISecureStorageService>(), ServiceLocator.Instance.Get<IDialogBuilder>());
-
-            ServiceLocator.Instance.Register<ILogUploadSchedule, DroidLogUploadSchedule>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>());
         }
     }
 }

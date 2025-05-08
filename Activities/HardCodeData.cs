@@ -228,7 +228,7 @@ namespace CloudBanking.UITestApp
             DlgData.AuthCode = "2895647";
 
             var approvalDialog = new ApprovalDialog(lpszTitleString, null, DlgData);
-            approvalDialog.OnResult += (iResult, args) =>
+            approvalDialog.Evt += (iResult, args) =>
             {
                 approvalDialog.Dismiss();
             };
@@ -258,7 +258,7 @@ namespace CloudBanking.UITestApp
             }
 
             var approvalDialog = new ShellUI.SettlementApprovalDialog(StringIds.STRING_TRANSACTION, null, DlgData);
-            approvalDialog.OnResult += (iResult, args) =>
+            approvalDialog.Evt += (iResult, args) =>
             {
                 approvalDialog.Dismiss();
             };
@@ -1318,7 +1318,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowEntryCardNumberDialog()
         {
-#if false
+#if true
             var entryDlgData = new EntryCardNumberDlgData();
 
             entryDlgData.fShowExpiry = true;
@@ -1439,7 +1439,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
-#if false
+#if true
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1465,7 +1465,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectDate()
         {
-#if false
+#if true
             ////hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -4119,7 +4119,7 @@ namespace CloudBanking.UITestApp
             return DialogBuilder.Show(IPayDialog.REFUND_REASON_DIALOG, StringIds.STRING_REFUND_REASON, (iResult, args) =>
             {
                 //RefundReasonDialog
-            }, true, true, dlgData);
+            }, true, false, dlgData);
         }
 
         void ShowRefundPurchaseListItemsDialog()
@@ -8090,7 +8090,7 @@ namespace CloudBanking.UITestApp
             {
                 MenuItems = items,
                 IsShowChangeMerchant = true,
-                MerchantIcon = "madison_picture",
+                //MerchantIcon = "madison_picture",
                 MerchantName = "Madison",
                 TitleId = StringIds.CHANGE_MERCHANT,
                 UserPasscode = "123"

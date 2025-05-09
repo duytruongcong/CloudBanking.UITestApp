@@ -1492,7 +1492,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSettlementOptions()
         {
-#if false
+#if true
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1517,7 +1517,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowReprintOptions()
         {
-#if false
+#if true
             var generalType = new List<GenericType>()
             {
                 new GenericType()

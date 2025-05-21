@@ -36,7 +36,6 @@ namespace CloudBanking.UITestApp
         public override void OnCreate()
         {
             base.OnCreate();
-            CrossCurrentActivity.Current.Init(this);
         }
 
         protected override void RegisterServices()

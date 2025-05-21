@@ -8,13 +8,12 @@ using Android.Widget;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
 using CloudBanking.BaseControl;
-using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Repositories;
 using CloudBanking.ServiceLocators;
 using CloudBanking.ShellContainers;
-using CloudBanking.UI;
 using CloudBanking.Utilities;
+using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -63,7 +62,11 @@ namespace CloudBanking.UITestApp
                     SystemUiFlags.ImmersiveSticky);
             }
 
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+
             FileService.CopyFileResource(GlobalConstants.PRESENT_CARD_LOTTIE_FOLDER, false, false);
+
+            FileService.CopyAdvertisingFileResource();
 
             InitializationDatabase();
 
@@ -2433,7 +2436,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false //  done for castle
+#if true //  done for castle
 
             #region Main Payment Flow
 
@@ -2447,15 +2450,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"UserLoggedInDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowUserLoggedInDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"UserLoggedInDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowUserLoggedInDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2617,15 +2620,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"AdvertisingDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowAdvertisingDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"AdvertisingDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowAdvertisingDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -3489,7 +3492,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true   // duy done for castle
+#if false   // duy done for castle
 
             #region ApprovalDialog
 

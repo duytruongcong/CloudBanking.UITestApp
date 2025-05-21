@@ -287,6 +287,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowCusViewApprovalDialog(CaseDialog caseDialog)
         {
+#if false
             string lpszEntryModeString = "";
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
@@ -441,6 +442,7 @@ namespace CloudBanking.UITestApp
             //};
             //approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
             //approvalDialog.Show(this);
+#endif
         }
 
         void ShowCusViewSelectTipDialog()

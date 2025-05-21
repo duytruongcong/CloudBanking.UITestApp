@@ -12,9 +12,11 @@ using CloudBanking.Utilities;
 using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using static Android.Icu.Text.CaseMap;
 using static Android.Media.MediaParser;
+using static CloudBanking.Entities.Database;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
@@ -25,7 +27,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             string lpszEntryModeString = "";
             string lpszTitleString = StringIds.STRING_TRANSACTION;
             var lpszAboveMainString = StringIds.STRING_PURCHASE;
@@ -1416,7 +1418,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
-#if true
+#if false
             var data = new CancelPreAuthComfirmDlgData()
             {
                 lAmount = 488,
@@ -1439,7 +1441,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
-#if true
+#if false
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -2622,8 +2624,10 @@ namespace CloudBanking.UITestApp
             IList<string> imagePaths = new List<string>();
 
             //portrait
-            imagePaths.Add("ads_1.png");
-            imagePaths.Add("ads_2.png");
+            for (int index = 1; index <= GlobalConstants.INIT_POS_ADVERTISING_ADS_COUNT; index++)
+            {
+                imagePaths.Add(Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_POS_ADVERTISING), $"ads_{index}.jpg"));
+            }
 
             //landspace
             //imagePaths.Add("land_avertising_1.png");
@@ -7793,6 +7797,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowPrintPreviewDialog()
         {
+#if false
             var printPreviewDlgData = new PrintPreviewDlgData();
 
             printPreviewDlgData.Content = "GetHtmlReviewReceipt(pPrintJobRec, fCustomer)";
@@ -7801,6 +7806,7 @@ namespace CloudBanking.UITestApp
             printPreviewDlgData.fWaitFinishAnimation = true;
 
             DialogBuilder.Show(IShellDialog.PRINT_PREVIEW_DIALOG, false, StringIds.STRING_REVIEW_RECEIPT, null, false, false, printPreviewDlgData);
+#endif
         }
 
         private void ShowEpayProducts()

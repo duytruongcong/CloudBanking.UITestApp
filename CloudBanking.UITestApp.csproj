@@ -87,9 +87,10 @@
     <AndroidSigningKeyPass>CCT_2022</AndroidSigningKeyPass>
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
     <AndroidUseDefaultAotProfile>false</AndroidUseDefaultAotProfile>
-    <AotAssemblies>true</AotAssemblies>
-    <EnableLLVM>true</EnableLLVM>
-    <AndroidSupportedAbis>x86</AndroidSupportedAbis>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CloudBanking.Logger">
@@ -304,10 +305,6 @@
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Base\CloudBanking.Flow.Base.csproj">
       <Project>{5D692013-C029-4CDE-BC0D-4F3724346CC2}</Project>
       <Name>CloudBanking.Flow.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Setup\CloudBanking.Flow.Setup.csproj">
-      <Project>{A4945252-5915-4E00-81CD-DDBDA3AF2916}</Project>
-      <Name>CloudBanking.Flow.Setup</Name>
     </ProjectReference>
     <ProjectReference Include="..\xcrpos-android\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Standalone\CloudBanking.Flow.Standalone.csproj">
       <Project>{5CCF45A4-0C36-43B9-A11C-2589BB54B5C6}</Project>

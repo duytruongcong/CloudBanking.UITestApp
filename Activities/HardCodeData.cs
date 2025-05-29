@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using static Android.Icu.Text.CaseMap;
 using static Android.Media.MediaParser;
 using static CloudBanking.Entities.Database;
@@ -969,6 +970,9 @@ namespace CloudBanking.UITestApp
             var item2 = new GenericType();
             var item3 = new GenericType();
 
+            int bottomButtonId = -1;
+            string bottomButtonStringId = string.Empty;
+
             switch (caseDialog)
             {
                 case CaseDialog.CASE1:
@@ -986,6 +990,9 @@ namespace CloudBanking.UITestApp
                     item3.Icon = IconIds.VECTOR_CREDIT;
                     item3.lszText = StringIds.STRING_ACCOUNTTYPECREDITCARD;
                     generalType.Add(item3);
+
+                    bottomButtonId = GlobalResource.CANCEL_BUTTON;
+                    bottomButtonStringId = StringIds.STRING_CANCEL;
                     break;
                 case CaseDialog.CASE2:
 
@@ -998,9 +1005,51 @@ namespace CloudBanking.UITestApp
                     item2.Icon = IconIds.VECTOR_SAVINGS;
                     item2.lszText = StringIds.STRING_ACCOUNTTYPESAVINGS;
                     generalType.Add(item2);
+                    bottomButtonId = GlobalResource.CANCEL_BUTTON;
+                    bottomButtonStringId = StringIds.STRING_CANCEL;
                     break;
 
                 case CaseDialog.CASE3:
+
+                    item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
+                    item1.Icon = IconIds.VECTOR_CHEQUE;
+                    item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
+                    generalType.Add(item1);
+                    bottomButtonId = GlobalResource.CANCEL_BUTTON;
+                    bottomButtonStringId = StringIds.STRING_CANCEL;
+                    break;
+
+                case CaseDialog.CASE4:
+                    item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
+                    item1.Icon = IconIds.VECTOR_CHEQUE;
+                    item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
+                    generalType.Add(item1);
+
+                    item2.Id = AccountType.ACCOUNT_TYPE_SAVINGS;
+                    item2.Icon = IconIds.VECTOR_SAVINGS;
+                    item2.lszText = StringIds.STRING_ACCOUNTTYPESAVINGS;
+                    generalType.Add(item2);
+
+                    item3.Id = AccountType.ACCOUNT_TYPE_CREDIT;
+                    item3.Icon = IconIds.VECTOR_CREDIT;
+                    item3.lszText = StringIds.STRING_ACCOUNTTYPECREDITCARD;
+                    generalType.Add(item3);
+                    break;
+
+                case CaseDialog.CASE5:
+
+                    item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
+                    item1.Icon = IconIds.VECTOR_CHEQUE;
+                    item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
+                    generalType.Add(item1);
+
+                    item2.Id = AccountType.ACCOUNT_TYPE_SAVINGS;
+                    item2.Icon = IconIds.VECTOR_SAVINGS;
+                    item2.lszText = StringIds.STRING_ACCOUNTTYPESAVINGS;
+                    generalType.Add(item2);
+                    break;
+
+                case CaseDialog.CASE6:
 
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
@@ -1015,9 +1064,7 @@ namespace CloudBanking.UITestApp
             //ACCOUNT SELECTION CHQ / SAV / CRD is the normal account selection order in NZ
             var sortedGeneralType = generalType.OrderBy(p => p.Id == AccountType.ACCOUNT_TYPE_CHEQUE ? 0 : p.Id == AccountType.ACCOUNT_TYPE_SAVINGS ? 1 : 2).ToList();
 
-            AccountType temp = null;
-
-            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, string.Empty, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
+            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, string.Empty, bottomButtonId, bottomButtonStringId);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
 #endif
@@ -2231,9 +2278,20 @@ namespace CloudBanking.UITestApp
         void ShowSurchargeConfirmDialog()
         {
             var data = new SurchargeConfirmationDlgData();
+            StringBuilder cardNumber = new StringBuilder("6789876534567654");
+
             data.iCardType = CARDTYPE.CARD_VISA;
-            data.szCardNumber = "**** **** **** 7654";
-            data.szCardHolderName = "David Smith";
+
+            if (cardNumber.Length > 4)
+            {
+                for (int i = 0; i < cardNumber.Length - 4; i++)
+                {
+                    cardNumber[i] = '*';
+                }
+            }
+
+            data.szCardNumber = cardNumber.ToString().FormatCardNumber(true);
+            data.szCardHolderName = "PAX MASTERCARD TEST CARD";
             data.fRemoveSurchargeFee = false;
             data.wszCurrencyCode = "NZD Currency";
 
@@ -5069,6 +5127,7 @@ namespace CloudBanking.UITestApp
 
         void DCCConfirmation()
         {
+#if false
             var currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
             DCCConfimationData data = new DCCConfimationData();
 
@@ -5085,6 +5144,7 @@ namespace CloudBanking.UITestApp
             {
                 //DCCConfirmationDialog
             }, true, false, data);
+#endif
         }
 
         void ShowConfirmPreauthAutoTopUpDialog()
@@ -6526,6 +6586,7 @@ namespace CloudBanking.UITestApp
 
         void ShowUnattendedDCCConfirmation()
         {
+#if false
             var currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
             DCCConfimationData data = new DCCConfimationData();
 
@@ -6538,6 +6599,7 @@ namespace CloudBanking.UITestApp
             //{
             //    //UnattendedDCCConfirmation
             //}, true, false, data);
+#endif
         }
 
         private void ShowUnattendedApprovalDialog()

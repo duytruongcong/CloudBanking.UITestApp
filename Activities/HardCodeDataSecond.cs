@@ -157,7 +157,7 @@ namespace CloudBanking.UITestApp
 
         void ShowManualEntryCardNumberDialog()
         {
-#if false
+#if true
             var entryDlgData = new EntryCardNumberDlgData();
 
             entryDlgData.fShowExpiry = true;
@@ -180,7 +180,7 @@ namespace CloudBanking.UITestApp
 
             entryDlgData.iMinLength = 11;
 
-            DialogBuilder.Show(IShellDialog.MANUAL_PAY_ENTRY_CARD_NUMBER_DIALOG, StringIds.STRING_CARD_MANUAL_ENTRY, (iResult, args) =>
+            DialogBuilder.Show(IPayDialog.MANUAL_PAY_ENTRY_CARD_NUMBER_DIALOG, StringIds.STRING_CARD_MANUAL_ENTRY, (iResult, args) =>
             {
                 //EntryCardNumberDialog
             }, true, false, entryDlgData);
@@ -508,6 +508,16 @@ namespace CloudBanking.UITestApp
                
             }, true, false, customer);
 #endif
+        }
+
+        void ShowReprintMessageBox01()
+        {
+            ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_REPRINT_TITLE, (false) ? StringIds.STRING_REPRINTED_SUCCESSFULLY_UPCASE : StringIds.STRING_REPORT_PRINTED_FAILED, false, GlobalResource.MB_OK, (false) ? GlobalResource.MB_ICONAPPROVAL_BMP : GlobalResource.MB_ICONDECLINED_BMP, aboveMsg: StringIds.STRING_REPRINT_RECEIPT);
+        }
+
+        void ShowReprintMessageBox02()
+        {
+            ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_REPRINT_TITLE, (true) ? StringIds.STRING_REPRINTED_SUCCESSFULLY_UPCASE : StringIds.STRING_REPORT_PRINTED_FAILED, false, GlobalResource.MB_OK, (true) ? GlobalResource.MB_ICONAPPROVAL_BMP : GlobalResource.MB_ICONDECLINED_BMP, aboveMsg: StringIds.STRING_REPRINT_RECEIPT);
         }
     }
 }

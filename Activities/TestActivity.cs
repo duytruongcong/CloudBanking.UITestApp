@@ -2540,25 +2540,25 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"GetAmountDialog CASE1",
-            //    RightIconResName = "GetAmountDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowGetAmountDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog CASE1",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog(CaseDialog.CASE1);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"GetAmountDialog CASE2",
-            //    RightIconResName = "GetAmountDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowGetAmountDialog(CaseDialog.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog CASE2",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog(CaseDialog.CASE2);
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2630,15 +2630,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SurchargeConfirmDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSurchargeConfirmDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SurchargeConfirmDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSurchargeConfirmDialog();
+            //    })
+            //});
 #if false
                         _lData.Add(new ScreenViewModel()
                         {
@@ -3170,7 +3170,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true //   
+#if false //   
 
             #region DynamicOptionDialog 
 
@@ -3506,7 +3506,7 @@ namespace CloudBanking.UITestApp
 #endif
 
 
-#if false    //  
+#if true    //  
 
             #region EnterPinDialog
 

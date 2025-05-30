@@ -5,6 +5,7 @@ using CloudBanking.BaseControl;
 using CloudBanking.BaseHardware;
 using CloudBanking.Common;
 using CloudBanking.DroidCommon;
+using CloudBanking.Flow.Base;
 using CloudBanking.HttpPosInterfaceClient;
 using CloudBanking.Logger;
 using CloudBanking.PaxSdk;
@@ -104,6 +105,8 @@ namespace CloudBanking.UITestApp
             ServiceLocator.Instance.Register<IPaymentLoyaltyService, PaymentLoyaltyService>(this, ServiceLocator.Instance.Get<ILoggerService>());
 
             ServiceLocator.Instance.Register<IRebootWarningService, RebootWarningService>(this, ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISecureStorageService>(), ServiceLocator.Instance.Get<IDialogBuilder>());
+
+            ServiceLocator.Instance.Register<ICustomerSubFlow, CustomerSubFlow>();
         }
     }
 }

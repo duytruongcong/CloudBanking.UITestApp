@@ -1,4 +1,5 @@
-﻿using CloudBanking.BaseControl;
+﻿using Android.Telephony.Data;
+using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -1312,9 +1313,14 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            var enterPinDialog = new EnterPinDialog(StringIds.STRING_ENTERPIN, null, data);
-            enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            enterPinDialog.Show(this);
+            //var enterPinDialog = new EnterPinDialog(StringIds.STRING_ENTERPIN, null, data);
+            //enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //enterPinDialog.Show(this);
+
+            DialogBuilder.Show(IShellDialog.ENTER_PIN_DIALOG, StringIds.STRING_ENTERPIN, (iResult, args) =>
+            {
+
+            }, true, false, data);
         }
 
         private void ShowProcessMessageDialog(CaseDialog caseDialog)
@@ -2354,9 +2360,13 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            var dialog = new GetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
+            //var dialog = new GetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
+            //dialog.DialogStyle = DialogStyle.FULLSCREEN;
+            //dialog.Show(this);
+
+            DialogBuilder.Show(IPayDialog.GET_AMOUNT_DIALOG, StringIds.STRING_PURCHASE_UPCASE, (iResult, args) =>
+            {
+            }, true, false, data);
         }
 
         void ShowCustomerDisplayGetCashOutDialog()

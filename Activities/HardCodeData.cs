@@ -29,7 +29,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             string lpszEntryModeString = "";
             string lpszTitleString = StringIds.STRING_TRANSACTION;
             var lpszAboveMainString = StringIds.STRING_PURCHASE;
@@ -57,8 +57,8 @@ namespace CloudBanking.UITestApp
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.Purchase);
                     DlgData.FunctionType = FunctionType.Purchase;
                     DlgData.Amount = 8000;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *8765";
+                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+                    DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
@@ -79,8 +79,8 @@ namespace CloudBanking.UITestApp
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PurchaseCash);
                     DlgData.FunctionType = FunctionType.PurchaseCash;
                     DlgData.Amount = 8000;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *8765";
+                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+                    DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
@@ -103,8 +103,8 @@ namespace CloudBanking.UITestApp
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.Refund);
                     DlgData.FunctionType = FunctionType.Refund;
                     DlgData.Amount = 8000;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *8765";
+                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+                    DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
@@ -126,8 +126,8 @@ namespace CloudBanking.UITestApp
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount = 8000;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *8765";
+                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+                    DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
@@ -149,8 +149,8 @@ namespace CloudBanking.UITestApp
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount = 8000;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *8765";
+                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+                    DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
@@ -172,8 +172,8 @@ namespace CloudBanking.UITestApp
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount = 8000;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *8765";
+                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+                    DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
@@ -194,8 +194,8 @@ namespace CloudBanking.UITestApp
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount = 8000;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *8765";
+                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+                    DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
@@ -216,8 +216,8 @@ namespace CloudBanking.UITestApp
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount =  8000;
-                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardInfo += $" *8765";
+                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
+                    DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
                     DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
@@ -701,8 +701,8 @@ namespace CloudBanking.UITestApp
 
             RequestDlgData.szTotalTitle = totalTitleId;
 
-            RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
-            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
+            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
+            RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
 
             //var menuItems = new List<MenuDlgData>()
@@ -1338,6 +1338,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
                     pProcessingData.hTextTwo = "";
                     pProcessingData.hTextThree = "";
+                    pProcessingData.cancelText = StringIds.STRING_CANCEL;
                     break;
 
                 case CaseDialog.CASE2:
@@ -1346,6 +1347,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
                     pProcessingData.hTextTwo = "";
                     pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
+                    pProcessingData.cancelText = StringIds.STRING_CANCEL;
                     break;
 
                 case CaseDialog.CASE3:
@@ -1354,6 +1356,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
                     pProcessingData.hTextTwo = Localize.GetString(StringIds.STRING_EMV_TERMINALACTIONANALYSIS);
                     pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
+                    pProcessingData.cancelText = StringIds.STRING_CANCEL;
                     break;
 
                 case CaseDialog.CASE4:
@@ -1366,7 +1369,7 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            var enterPinDialog = new ProcessMessageDialog(StringIds.STRING_PROCESSING_TITLE, null, pProcessingData, cancelBtnTitleId);
+            var enterPinDialog = new ProcessMessageDialog(StringIds.STRING_PROCESSING_TITLE, null, pProcessingData, 0);
             enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
             enterPinDialog.Show(this);
         }
@@ -1471,17 +1474,18 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
-#if false
+#if true
             var data = new CancelPreAuthComfirmDlgData()
             {
                 lAmount = 488,
                 AuthCode = "287635",
-                CardInfo = string.Format("{0} {1} *{2}", Localize.GetString(StringIds.STRING_CARDTYPE_VISA), Localize.GetString(StringIds.STRING_CREDIT), "8770"),
+                CardType = string.Format("{0} {1}", Localize.GetString(StringIds.STRING_CARDTYPE_VISA), Localize.GetString(StringIds.STRING_CREDIT)),
+                CardNumber = $"**** 8770"
             };
 
-            var cancelPreAuthConfirmDialog = new CancelPreAuthConfirmDialog(StringIds.STRING_CANCEL_PRE_AUTH, null, data);
-            cancelPreAuthConfirmDialog.DialogStyle = DialogStyle.FULLSCREEN;
-            cancelPreAuthConfirmDialog.Show(this);
+            DialogBuilder.Show(IPayDialog.PREAUTH_CANCEL_CONFIRM_DIALOG, StringIds.STRING_CANCEL_PRE_AUTH, (iResult, args) =>
+            {
+            }, true, false, data);
 #endif
         }
 
@@ -1611,9 +1615,16 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            var dialog = new PreAuthEnterAmountDialog(StringIds.STRING_PRE_AUTH, null, amount, fReferenceEnable);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
+            GetAmountDlgData data = new GetAmountDlgData()
+            {
+                plAmount = 13800,
+                fShowReference = fReferenceEnable,
+                EntryAmountTitleId = DialogBuilder.IsSmallScreen ? StringIds.STRING_PRE_AUTH : StringIds.STRING_PRE_AUTH_AMOUNT
+            };
+            
+            DialogBuilder.Show(IPayDialog.PREAUTH_ENTER_AMOUNT_DIALOG, StringIds.STRING_PRE_AUTH, (result, args) =>
+            {
+            }, true, false, data);
         }
 
         private void ShowSettlementGetDateDialog()
@@ -1770,7 +1781,7 @@ namespace CloudBanking.UITestApp
             selectedPayment.lszEndCardNumber = "7654";
             selectedPayment.CustomerReferenceType = ReferenceType.Room;
             selectedPayment.lszCustomerReference = "6789";
-            //selectedPayment.AuthorizationExpiryDate = DateTime.Now;
+            selectedPayment.AuthorizationExpiryDate = DateTime.Now;
 
             FunctionType functionType;
 
@@ -1796,12 +1807,12 @@ namespace CloudBanking.UITestApp
                 CustomAmount = 38000,
                 Amount = selectedPayment.lAmount,
                 OriginalCardType = string.Format("{0} {1}", Localize.GetString(StringIds.STRING_CARDTYPE_AMEX), Localize.GetString(StringIds.STRING_ACCOUNTTYPESAVINGS)),
-                LastFourDigitCardNumber = $"**** **** **** {selectedPayment.lszEndCardNumber}",
+                LastFourDigitCardNumber = "6787",
                 Reference = selectedPayment.CustomerReferenceType,
                 ReferenceNumber = selectedPayment?.lszCustomerReference,
                 //ExpireTime = selectedPayment?.AuthorizationExpiryDate,
                 CustomerName = "David",
-                PaymentStatus = Localize.GetString(StringIds.STRING_APPROVED).ToUpper(),
+                PaymentStatus = Localize.GetString(StringIds.STRING_APPROVED),
                 AuthCode = selectedPayment?.szApprovalCode,
                 CardBrandIconResName = CARDTYPE.CARD_AMEX.GetIconDrawable(),
                 FunctionType = functionType
@@ -2231,6 +2242,7 @@ namespace CloudBanking.UITestApp
             item1.AuthNumber = "87654";
             item1.CardType = "Visa Debit";
             item1.CardInfo = "****7654";
+            item1.CardNumber = "6787";
             var date = new XDateTime();
             date.Year = 2023;
             date.Month = 6;
@@ -2257,7 +2269,7 @@ namespace CloudBanking.UITestApp
         void ShowSelectTipDialog()
         {
             double x = 5.00;
-            long y = 500;
+            long y = 500000;
             long originalAmount = 90000;
             long amount = 10000;
             var keyValue01 = new KeyValuePair<double, long>(x, y);
@@ -2273,12 +2285,9 @@ namespace CloudBanking.UITestApp
 
         void ShowEnterTipAmountDialog()
         {
-            object[] data = new object[2];
-            data[0] = false;
-            data[1] = "Enter Tip Amount";
-            var dialog = new GetTipAmountDialog("Enter Tip", null, data);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
+            DialogBuilder.Show(IPayDialog.GETTIPS_AMOUNT_DIALOG, StringIds.STRING_TIP_OPTION, (iResult, args) =>
+            {
+            }, true, false, false);
         }
 
         void ShowSurchargeConfirmDialog()
@@ -2722,6 +2731,7 @@ namespace CloudBanking.UITestApp
 
                 case CaseDialog.CASE2:
                     data.fShowQrCode = false;
+                    data.fShowNewSaleButton = true;
                     break;
 
                 default:
@@ -5137,15 +5147,12 @@ namespace CloudBanking.UITestApp
 
         void DCCConfirmation()
         {
-#if false
+#if true
             var currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
-            DCCConfimationData data = new DCCConfimationData();
+            DCCConfirmationData data = new DCCConfirmationData();
 
-            data.LocalCountry = "NZD";
-            data.HomeCountry = "USD";
             data.szConversionRate = "1.08234";
             data.szMarginPercentage = "3.3162";
-            data.FlagImage = currency.iCurrencyCodeFlag;
             data.Currency = currency.wszCurrencyCode;
             data.lAmount = 6420;
             data.Content = "I declare i have been given a choice in payment currency and i agree to pay the above amount. ";
@@ -5863,12 +5870,14 @@ namespace CloudBanking.UITestApp
 
         void ShowQrCodeReceiptClaimDialog()
         {
-            string QRReceiptResult = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
+            QrCodeReceiptClaimDlgData data = new QrCodeReceiptClaimDlgData();
+            data.ReceiptQrCode = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
+            data.Amount = 10500;
 
             DialogBuilder.Show(IPayDialog.RECEIPT_QR_CODE_DIALOG, StringIds.STRING_RECEIPT_CLAIM, (iResult, args) =>
             {
 
-            }, true, false, QRReceiptResult);
+            }, true, false, data);
         }
 
         void ShowHelpDialog()
@@ -7869,10 +7878,10 @@ namespace CloudBanking.UITestApp
 
         private void ShowPrintPreviewDialog()
         {
-#if false
+#if true
             var printPreviewDlgData = new PrintPreviewDlgData();
 
-            printPreviewDlgData.Content = "GetHtmlReviewReceipt(pPrintJobRec, fCustomer)";
+            //printPreviewDlgData.Content = "GetHtmlReviewReceipt(pPrintJobRec, fCustomer)";
             printPreviewDlgData.fAutoRun = false;
             printPreviewDlgData.fRunPrintingAnimation = false;
             printPreviewDlgData.fWaitFinishAnimation = true;
@@ -8109,7 +8118,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSinatureApproval()
         {
-#if false
+#if true
             ApprovalDlgData hwndApprovalDlg = new ApprovalDlgData();
             hwndApprovalDlg.PrintStage = PrintStage.Printing;
             hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);
@@ -8117,10 +8126,10 @@ namespace CloudBanking.UITestApp
             hwndApprovalDlg.IdBitmap = GlobalResource.MB_ICON_SIGNATURE_RESULT;
 
             var approvalDialog = new ApprovalDialog(StringIds.STRING_CONFIRM_SIGNATURE, null, hwndApprovalDlg);
-            approvalDialog.OnResult += (iResult, args) =>
-            {
-                approvalDialog.Dismiss();
-            };
+            //approvalDialog.OnResult += (iResult, args) =>
+            //{
+            //    approvalDialog.Dismiss();
+            //};
             approvalDialog.DialogStyle = DialogStyle.FULLSCREEN;
             approvalDialog.Show(this);
 #endif

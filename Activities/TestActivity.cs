@@ -1892,7 +1892,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  
+#if true    //  
 
             #region Report Flow
 
@@ -2039,59 +2039,59 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true    //
+#if false    // duy done s1p2
 
             #region Refund flow
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"SearchFilterOptionsDialog",
-            //    RightIconResName = "SearchFilterOptionsDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowSearchFilterOptionsDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SearchFilterOptionsDialog",
+                RightIconResName = "SearchFilterOptionsDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSearchFilterOptionsDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"RefundOptionsDialog",
-            //    RightIconResName = "RefundOptionsDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        RefundOptions();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RefundOptionsDialog",
+                RightIconResName = "RefundOptionsDialog",
+                ItemAction = new Action(() =>
+                {
+                    RefundOptions();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"REFUND_SELECT_TYPE_DIALOG",
-            //    RightIconResName = "REFUND_SELECT_TYPE_DIALOG",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowRefundTypes();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"REFUND_SELECT_TYPE_DIALOG",
+                RightIconResName = "REFUND_SELECT_TYPE_DIALOG",
+                ItemAction = new Action(() =>
+                {
+                    ShowRefundTypes();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"FindPurchaseOptionDialog_CASE01",
-            //    RightIconResName = "FindPurchaseOptionDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowFindPurchaseOptionDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"FindPurchaseOptionDialog_CASE01",
+                RightIconResName = "FindPurchaseOptionDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowFindPurchaseOptionDialog(CaseDialog.CASE1);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"FindPurchaseOptionDialog_CASE02",
-            //    RightIconResName = "FindPurchaseOptionDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowFindPurchaseOptionDialog(CaseDialog.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"FindPurchaseOptionDialog_CASE02",
+                RightIconResName = "FindPurchaseOptionDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowFindPurchaseOptionDialog(CaseDialog.CASE2);
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -2103,25 +2103,25 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"ListPaymentDialog",
-            //    RightIconResName = "ListPaymentDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowListPaymentDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"ListPaymentDialog",
+                RightIconResName = "ListPaymentDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowListPaymentDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"RefundPurchaseListItemsDialog",
-            //    RightIconResName = "RefundPurchaseListItemsDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowRefundPurchaseListItemsDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"RefundPurchaseListItemsDialog",
+                RightIconResName = "RefundPurchaseListItemsDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowRefundPurchaseListItemsDialog();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -3667,7 +3667,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  
+#if false    // thanh done s1p2
 
             #region MOTO FLOW
 

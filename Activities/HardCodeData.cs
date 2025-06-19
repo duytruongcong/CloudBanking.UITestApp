@@ -1498,7 +1498,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
-#if false
+#if true
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1516,7 +1516,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_SELECTT_MOTO);
+            var dialog3 = new DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_MOTO);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif

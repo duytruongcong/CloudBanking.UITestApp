@@ -98,7 +98,7 @@ namespace CloudBanking.UITestApp
             ServiceLocator.Instance.Register<ISendEmailService, SendGridService>(ServiceLocator.Instance.Get<ILoggerService>());
             ServiceLocator.Instance.Register<ISendSMSService, TwilioService>(ServiceLocator.Instance.Get<ILoggerService>());
 
-            ServiceLocator.Instance.Register<IPosService, POSService>(this, ServiceLocator.Instance.Get<IDialogBuilder>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IPosInterfaceClient>());
+            ServiceLocator.Instance.Register<IPosService, POSService>(this, ServiceLocator.Instance.Get<IDialogBuilder>());
 
             ServiceLocator.Instance.Register<IPrinting, DroidPrintingServices>();
 

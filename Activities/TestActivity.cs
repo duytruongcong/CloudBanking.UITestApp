@@ -1892,7 +1892,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if true    //  
+#if false    //  
 
             #region Report Flow
 
@@ -2774,19 +2774,19 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //   duy done s1p2  
+#if true    //   duy done s1p2  
 
             #region Settlement & Reprint
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"PrintPreviewDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowPrintPreviewDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"PrintPreviewDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowPrintPreviewDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {

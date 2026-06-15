@@ -66,8 +66,6 @@ namespace CloudBanking.UITestApp
 
             FileService.CopyFileResource(GlobalConstants.PRESENT_CARD_LOTTIE_FOLDER, false, false);
 
-            FileService.CopyAdvertisingFileResource();
-
             InitializationDatabase();
 
             base.OnCreate(savedInstanceState);

@@ -14,7 +14,7 @@ namespace CloudBanking.UITestApp
     {
         public override bool IsSingleApp => true;
 
-        public PaymentAppUtilityService(Context context, bool isLargeScreen) : base(context, isLargeScreen)
+        public PaymentAppUtilityService(BaseApplication context, bool isLargeScreen) : base(context, isLargeScreen)
         {
 
         }
@@ -39,11 +39,6 @@ namespace CloudBanking.UITestApp
                 default:
                     throw new Exception("Class not found");
             }
-        }
-
-        public override void ToggleMainLauncher(bool isMainLauncher)
-        {
-           
         }
     }
 }

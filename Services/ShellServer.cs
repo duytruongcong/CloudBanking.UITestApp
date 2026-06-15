@@ -99,6 +99,16 @@ namespace CloudBanking.UITestApp
         {
             throw new System.NotImplementedException();
         }
+
+        public void SetProcessingData(ProcessingData processingDataShowing)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void StartProcessingTrigger(string message = "STRING_PROCESSING_NOW")
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
 

@@ -78,7 +78,7 @@ namespace CloudBanking.UITestApp
             if (string.IsNullOrEmpty(_items[position].RightIconResName))
             {
                 viewHolder.IvIcon.Visibility = ViewStates.Gone;
-                viewHolder.IvIcon.LoadImageFromSetupImageName(_items[position].RightIconResName);
+                //viewHolder.IvIcon.LoadImageFromSetupImageName(_items[position].RightIconResName);
             }
             else
             {

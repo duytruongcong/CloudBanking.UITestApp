@@ -234,7 +234,7 @@ namespace CloudBanking.UITestApp
 
                     GC.Collect();
 
-                    ServiceLocator.Instance.Get<ILoggerService>()?.TrackMemory("Complete a transaction");
+                    ServiceLocator.Instance.Get<ILoggerService>()?.Trace("Complete a transaction");
 
                 }
                 catch (Exception ex)

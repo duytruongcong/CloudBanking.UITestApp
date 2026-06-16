@@ -36,10 +36,24 @@ namespace CloudBanking.UITestApp
         public override void OnCreate()
         {
             base.OnCreate();
+            RegisterServices();
         }
 
         protected override void RegisterServices()
         {
+
+            ServiceLocator.Instance.Register<IUtilityService, PaymentAppUtilityService>(this, CrossDeviceInfo.Current.IsLargeScreen());
+            ServiceLocator.Instance.Register<IFileService, DroidFileService>(this, ServiceLocator.Instance.Get<IUtilityService>(), GlobalConstants.FOLDER_SINGLEAPP);
+            ServiceLocator.Instance.Register<ILoggerService, LoggerService>(this, ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<IFileService>());
+            ServiceLocator.Instance.Register<IProfileService, DroidProfilesService>(ServiceLocator.Instance.Get<ILoggerService>());
+            ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>(ServiceLocator.Instance.Get<IUtilityService>());
+            ServiceLocator.Instance.Register<ISecureStorageService, DroidSharePreferenceSecureStorageService>(this);
+
+            if (CrossDeviceInfo.Current.IsPaxTerminal())
+                ServiceLocator.Instance.Register<ITMSService, CloudBanking.PaxSdk.TMSService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISecureStorageService>(), PaxConstants.PAX_SINGLE_APP_KEY, PaxConstants.PAX_SINGLE_APP_SECRET);
+            else
+                ServiceLocator.Instance.Register<ITMSService, CloudBanking.PhoneSdk.TMSService>();
+
             //create smart card
             if (CrossDeviceInfo.Current.IsPaxTerminal())
             {

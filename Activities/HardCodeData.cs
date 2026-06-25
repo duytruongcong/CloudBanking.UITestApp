@@ -1,5 +1,4 @@
-﻿using Android.Telephony.Data;
-using CloudBanking.BaseControl;
+﻿using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -13,12 +12,9 @@ using CloudBanking.Utilities;
 using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using static Android.Icu.Text.CaseMap;
-using static Android.Media.MediaParser;
-using static CloudBanking.Entities.Database;
+using static Android.Content.ClipData;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
@@ -115,7 +111,7 @@ namespace CloudBanking.UITestApp
                     break;
 
                 case CaseDialog.CASE4:
-                    
+
                     DlgData.PrintStage = PrintStage.PrintPrompt;
                     DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
                     lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
@@ -215,7 +211,7 @@ namespace CloudBanking.UITestApp
                     DlgData.lPurchaseApproval = 13800;
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
-                    DlgData.Amount =  8000;
+                    DlgData.Amount = 8000;
                     DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
                     DlgData.CardNumber += $" *8765";
                     DlgData.AuthCode = "8569";
@@ -370,7 +366,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowRequestCardDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             bool fMultitender = true;
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
@@ -964,7 +960,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             var generalType = new List<GenericType>();
 
             var item1 = new GenericType();
@@ -1474,7 +1470,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
-#if true
+#if false
             var data = new CancelPreAuthComfirmDlgData()
             {
                 lAmount = 488,
@@ -1498,7 +1494,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
-#if true
+#if false
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1524,7 +1520,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectDate()
         {
-#if true
+#if false
             ////hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1551,7 +1547,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSettlementOptions()
         {
-#if true
+#if false
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1576,7 +1572,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowReprintOptions()
         {
-#if true
+#if false
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1601,6 +1597,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowPreAuthEnterAmountDialog(CaseDialog caseDialog)
         {
+#if false
             long amount = 10000;
 
             bool fReferenceEnable = false;
@@ -1625,6 +1622,7 @@ namespace CloudBanking.UITestApp
             DialogBuilder.Show(IPayDialog.PREAUTH_ENTER_AMOUNT_DIALOG, StringIds.STRING_PRE_AUTH, (result, args) =>
             {
             }, true, false, data);
+#endif
         }
 
         private void ShowSettlementGetDateDialog()
@@ -1773,6 +1771,7 @@ namespace CloudBanking.UITestApp
 
         private void PreAuthItemGetNewAmount(CaseDialog caseDialog)
         {
+#if false
             RecordViewModel selectedPayment = new RecordViewModel();
             selectedPayment.iCardType = CARDTYPE.CARD_AMEX;
             selectedPayment.iAccountTypeCode = AccountType.ACCOUNT_TYPE_SAVINGS;
@@ -1854,6 +1853,7 @@ namespace CloudBanking.UITestApp
             {
                 //PreAuthCompleGetNewAmountDialog
             }, true, false, data);
+#endif
         }
 
         private void ShowListPaymentDialog()
@@ -2345,35 +2345,49 @@ namespace CloudBanking.UITestApp
         {
             var data = new GetAmountDlgData();
 
-            data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
-            data.EntryAmountTitleId = StringIds.STRING_PURCHASE;
-            data.plszReference = "123456";
-            data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
-            //data.isEnabledEntryAmount = false;
+            data.SubHeaderTitleId = StringIds.STRING_TENDER;
+            data.lszPayButtonText = StringIds.STRING_NEXT;
+            data.fShowAmountRightButton = false;
+            data.EntryAmountTitleId = StringIds.STRING_CREDIT_REFUND;
+            data.plTotalAmount = 13800;
+            data.fTitleRawText = false;
+            data.fSubTitleRawText = false;
+            string title = StringIds.STRING_CREDIT_REFUND;
 
             switch (caseDialog)
             {
                 case CaseDialog.CASE1:
+                    data.fShowSubHeader = true;
                     data.fShowReference = false;
-                    //data.isEnabledEntryAmount = true;
-
+                    data.fInstoreCashoutFeeEnable = true;
                     break;
+
                 case CaseDialog.CASE2:
+                    data.fShowSubHeader = false;
                     data.fShowReference = true;
-                    //data.isEnabledEntryAmount = false;
+                    data.fInstoreCashoutFeeEnable = false;
+                    data.plszReference = "BA17865";
+                    data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+                    break;
+
+                case CaseDialog.CASE3:
+                    data.fShowSubHeader = true;
+                    data.fShowReference = true;
+                    data.plszReference = "BA17865";
+                    data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
                     break;
 
                 default:
                     data.fShowReference = true;
-                    //data.isEnabledEntryAmount = true;
+                    data.fInstoreCashoutFeeEnable = false;
                     break;
             }
 
-            //var dialog = new GetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, null, data);
+            //var dialog = new GetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, 13800, amount => { });
             //dialog.DialogStyle = DialogStyle.FULLSCREEN;
             //dialog.Show(this);
 
-            DialogBuilder.Show(IPayDialog.GET_AMOUNT_DIALOG, StringIds.STRING_PURCHASE_UPCASE, (iResult, args) =>
+            DialogBuilder.Show(IPayDialog.GET_AMOUNT_DIALOG, title, (iResult, args) =>
             {
             }, true, false, data);
         }
@@ -2698,6 +2712,7 @@ namespace CloudBanking.UITestApp
 
         void ShowAdvertisingDialog()
         {
+#if false
             IList<string> imagePaths = new List<string>();
 
             //portrait
@@ -2716,10 +2731,12 @@ namespace CloudBanking.UITestApp
             var dialog = new AdvertisingDialog(StringIds.STRING_ANDROID_PAYMENTS, null, imagePaths, ellapseSeconds, GlobalResource.NEXT_BUTTON, true);
             dialog.DialogStyle = DialogStyle.FULLSCREEN;
             dialog.Show(this);
+#endif
         }
 
         void ShowReceiptOptionDialog(CaseDialog caseDialog)
         {
+#if false
             var data = new ReceiptOptionsDlgData();
 
             data.QRReceiptResult = "ReceiptOptionsDialog";
@@ -2778,6 +2795,7 @@ namespace CloudBanking.UITestApp
             var dialog4 = new ReceiptOptionsDialog(StringIds.STRING_RECEIPT_OPTIONS, null, data);
             dialog4.DialogStyle = DialogStyle.FULLSCREEN;
             dialog4.Show(this);
+#endif
         }
 
         void ShowRequestAliPayWechat(string szQRCode, bool fAliPay = true, bool blockUI = false, ResultStatus status = ResultStatus.None)
@@ -4268,7 +4286,7 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundTypes()
         {
-
+#if false
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -4289,6 +4307,7 @@ namespace CloudBanking.UITestApp
             {
                 //DynamicOptionDialog
             }, true, false, generalType);
+#endif
         }
 
         void ShowManualScanQRCodeDialog()
@@ -4977,7 +4996,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectPaymentMethod()
         {
-
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 0,
@@ -5029,6 +5048,7 @@ namespace CloudBanking.UITestApp
             {
                 //MenuDialog
             }, true, false, selectFuncDialogDta);
+#endif
         }
 
         void SettlementApproval()
@@ -5870,6 +5890,7 @@ namespace CloudBanking.UITestApp
 
         void ShowQrCodeReceiptClaimDialog()
         {
+#if false
             QrCodeReceiptClaimDlgData data = new QrCodeReceiptClaimDlgData();
             data.ReceiptQrCode = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
             data.Amount = 10500;
@@ -5878,6 +5899,7 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, data);
+#endif
         }
 
         void ShowHelpDialog()
@@ -5914,7 +5936,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectFunctionDialog()
         {
-#if true
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 1,
@@ -7481,7 +7503,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowMiniRequestCardDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
 
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
@@ -8191,26 +8213,351 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        void ShowReviewTransDialog()
+        void ShowIShellDialog_ReviewTransDialog()
         {
+#if true
             ReviewDlgData dlgDataReview = new ReviewDlgData()
             {
                 lTotal = 13800,
                 pInitProcessData = new ShellInitProcessData()
                 {
-                    lAccountSurChargeFee = 1000,
-                    lAccountSurChargePercent = 10,
+                    //lAccountSurChargeFee = 1000,
+                    //lAccountSurChargePercent = 10,
                     lAmount = 3800,
                     lCashOut = 1800,
                     lCashOutFee = 1700,
                     lTipAmount = 1800,
-                    lSurChargeFee = 1200
+                    //lSurChargeFee = 1200
                 },
                 TitleId = StringIds.STRING_PURCHASE
             };
 
             //ReviewTransDialog
             DialogBuilder.Show(IShellDialog.TRANS_REVIEW_DIALOG, StringIds.STRING_REVIEW, null, true, false, dlgDataReview);
+#endif
+
+        }
+
+        void ShowPaymentEntryListDialog(CaseDialog caseDialog)
+        {
+            PaymentEntryListDlgData data = new PaymentEntryListDlgData();
+            data.SubHeaderTitleId = StringIds.STRING_BALANCE;
+            data.BalanceAmount = 5300;
+            string headerTitleId = string.Empty;
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_visa_bg,
+                CustomerName = "",
+                Amount = 500,
+                IsPaid = true,
+                ItemName = "Tender 1"
+            });
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_eft_pos_bg,
+                CustomerName = "",
+                Amount = 1000,
+                IsPaid = true,
+                ItemName = "Tender 2"
+            });
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_cash_only,
+                CustomerName = "",
+                Amount = 1500,
+                IsPaid = true,
+                ItemName = "Tender 3"
+            });
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_american_express_bg,
+                CustomerName = "",
+                Amount = 2000,
+                IsPaid = true,
+                ItemName = "Tender 4"
+            });
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_no_payment_type_bg,
+                CustomerName = "",
+                Amount = 2500,
+                IsPaid = false,
+                ItemName = "Tender 5"
+            });
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    data.IsShowReducePurchaseAmountButton = false;
+                    headerTitleId = StringIds.STRING_SPLIT_PAY;
+                    break;
+
+                case CaseDialog.CASE2:
+                    data.IsShowReducePurchaseAmountButton = true;
+                    headerTitleId = StringIds.STRING_MULTI_TENDER;
+                    break;
+            }
+
+            DialogBuilder.Show(IPayDialog.PAYMENT_ENTRY_LIST_DIALOG, headerTitleId, (iResult, args) =>
+            {
+
+                //PaymentEntryListDialog
+            }, true, false, data);
+        }
+
+        void ShowSplitPayReviewDialog()
+        {
+            SplitPayReviewDlgData data = new SplitPayReviewDlgData();
+            data.SubHeaderTitleId = StringIds.STRING_BALANCE;
+            data.TotalAmount = 10000;
+            data.BalanceAmount = 5300;
+            string headerTitleId = StringIds.STRING_SPLIT_REVIEW;
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_visa_bg,
+                CustomerName = "David Smith",
+                Amount = 500,
+                IsPaid = true,
+                ItemName = "SP 1",
+                IsShowInfoBtn = true
+            });
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_eft_pos_bg,
+                CustomerName = "",
+                Amount = 1000,
+                IsPaid = true,
+                ItemName = "SP 2",
+                IsShowInfoBtn = true
+
+            });
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_cash_only,
+                CustomerName = "Sandra Davis",
+                Amount = 1500,
+                IsPaid = true,
+                ItemName = "SP 3",
+                IsShowInfoBtn = true
+
+            });
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_american_express_bg,
+                CustomerName = "",
+                Amount = 2000,
+                IsPaid = true,
+                ItemName = "SP 4",
+                IsShowInfoBtn = true
+
+            });
+
+            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            {
+                ImageResId = Resource.Drawable.vector_no_payment_type_bg,
+                CustomerName = "",
+                Amount = 2500,
+                IsPaid = true,
+                ItemName = "SP 5",
+                IsShowInfoBtn = true
+
+            });
+
+            DialogBuilder.Show(IPayDialog.SPLIT_PAY_REVIEW_DIALOG, headerTitleId, (iResult, args) =>
+            {
+
+                //PaymentEntryListDialog
+            }, true, false, data);
+        }
+
+        protected int ShowIPayDialog_ReviewTransDialog()
+        {
+            string dlgTitleId = StringIds.STRING_CONFIRMATION;
+            InitProcessData pInitProcessData = new InitProcessData();
+
+            ReviewTransDlgData dlgData = new ReviewTransDlgData();
+            dlgData.TotalAmount = 13800;
+            dlgData.IsShowEditButton = true;
+            dlgData.IsShowCurrencyBottomButton = true;
+            dlgData.LeftButtonTitleId = StringIds.STRING_USERS_CANCELTRANS;
+
+            switch (pInitProcessData.iFunctionButton)
+            {
+                case GlobalResource.FNC_BANKCASHADVANCE_BUTTON:
+
+                    dlgData.TitleId = StringIds.STRING_CASHOUT_AND_FEES;
+
+                    break;
+
+                case GlobalResource.FNC_REFUND_ONLY:
+                case GlobalResource.FNC_REFUND_BUTTON:
+                case GlobalResource.FNC_REFUND_PURCHASE:
+
+                    dlgData.TitleId = StringIds.STRING_REFUND_AND_FEES;
+
+                    break;
+
+                default:
+
+                    dlgData.TitleId = StringIds.STRING_PURCHASE_AND_EXTRAS;
+
+                    break;
+            }
+
+            pInitProcessData.lAmount = 10000;
+            if (pInitProcessData.lAmount > 0)
+            {
+                dlgData.ListResult.Add(new ResultViewModel()
+                {
+                    Title = StringIds.STRING_PURCHASE,
+                    Value = pInitProcessData.lAmount.ToFormatLocalCurrencyAmount(),
+                    IsRightTextBold = true
+                });
+            }
+
+            pInitProcessData.PaymentVouchers.Vouchers.Add(new PaymentVoucher() { lVoucher = 100, Name = "Voucher01" });
+            pInitProcessData.PaymentVouchers.Vouchers.Add(new PaymentVoucher() { lVoucher = 200, Name = "Voucher02" });
+            if (pInitProcessData.PaymentVouchers != null && pInitProcessData.PaymentVouchers.Vouchers != null && pInitProcessData.PaymentVouchers.Vouchers.Any())
+            {
+                foreach (var item in pInitProcessData.PaymentVouchers.Vouchers)
+                {
+                    dlgData.ListResult.Add(new ResultViewModel()
+                    {
+                        Title = $"{StringIds.STRING_VOUCHER.GetString()} {item.Name}",
+                        Value = item.lVoucher.ToFormatLocalCurrencyAmount(),
+                        IsRightTextBold = true
+                    });
+                }
+            }
+
+            pInitProcessData.lCashOut = 500;
+            if (pInitProcessData.lCashOut > 0)
+            {
+                dlgData.ListResult.Add(new ResultViewModel()
+                {
+                    Title = StringIds.STRING_CASH_OUT,
+                    Value = pInitProcessData.lCashOut.ToFormatLocalCurrencyAmount(),
+                    IsRightTextBold = true
+                });
+            }
+
+            pInitProcessData.lCashOutFee = 600;
+            if (pInitProcessData.lCashOutFee > 0)
+            {
+                dlgData.ListResult.Add(new ResultViewModel()
+                {
+                    Title = StringIds.STRING_CASHOUTFEE,
+                    Value = pInitProcessData.lCashOutFee.ToFormatLocalCurrencyAmount(),
+                    IsRightTextBold = true
+                });
+            }
+
+            pInitProcessData.Donations = new PaymentDonations()
+            {
+                lTotalDonations = 500
+            };
+
+            pInitProcessData.Donations.Donations.Add(new PaymentDonation() { Name="Donation 1", lDonation = 100});
+            pInitProcessData.Donations.Donations.Add(new PaymentDonation() { Name="Donation 2", lDonation = 200});
+
+            if (pInitProcessData.Donations?.lTotalDonations > 0)
+            {
+                foreach (var item in pInitProcessData.Donations.Donations)
+                {
+                    dlgData.ListResult.Add(new ResultViewModel()
+                    {
+                        Id = StringIds.STRING_DONATION,
+                        Title = StringIds.STRING_DONATION,
+                        DataValueString = item.Name,
+                        Value = item.lDonation.ToFormatLocalCurrencyAmount(),
+                        IsActualTitle = true,
+                        IsRightTextBold = true
+                    });
+                }
+            }
+
+            pInitProcessData.lTipAmount = 200;
+            if (pInitProcessData.lTipAmount > 0)
+            {
+                dlgData.ListResult.Add(new ResultViewModel()
+                {
+                    Title = StringIds.STRING_TIP,
+                    Value = pInitProcessData.lTipAmount.ToFormatLocalCurrencyAmount(),
+                    IsRightTextBold = true
+                });
+            }
+
+            pInitProcessData.dPreCashOutSurchargePercent = 2;
+            if (pInitProcessData.dPreCashOutSurchargePercent > 0)
+            {
+                dlgData.ListResult.Add(new ResultViewModel()
+                {
+                    Id = StringIds.STRING_PRE_CASHOUT_SURCHARGE,
+                    Title = StringIds.STRING_SERVICE_FEE,
+                    Value = ((long)((((double)pInitProcessData.lCashOut) / 100) * pInitProcessData.dPreCashOutSurchargePercent)).ToFormatLocalCurrencyAmount(),
+                    DataValueString = pInitProcessData.dPreCashOutSurchargePercent.ToString(),
+                    IsActualTitle = true,
+                    IsRightTextBold = true
+                });
+            }
+
+            pInitProcessData.lPreCashOutSurcharge = 100;
+            if (pInitProcessData.lPreCashOutSurcharge > 0)
+            {
+                dlgData.ListResult.Add(new ResultViewModel()
+                {
+                    Title = StringIds.STRING_SERVICE_FEE,
+                    Value = pInitProcessData.lPreCashOutSurcharge.ToFormatLocalCurrencyAmount(),
+                    IsRightTextBold = true
+                });
+            }
+
+            var tax = 100;
+
+            if (tax > 0)
+            {
+                dlgData.ListResult.Add(new ResultViewModel()
+                {
+                    Title = StringIds.STRING_TAX,
+                    Value = tax.ToFormatLocalCurrencyAmount(),
+                    IsRightTextBold = true
+                });
+            }
+
+            var surcharge = 100;
+
+            if (surcharge > 0)
+            {
+                dlgData.ListResult.Add(new ResultViewModel()
+                {
+                    Title = StringIds.STRING_SURCHARGE,
+                    Value = surcharge.ToFormatLocalCurrencyAmount(),
+                    IsRightTextBold = true
+                });
+            }
+
+            dlgData.ListResult.Add(new ResultViewModel()
+            {
+                Id = StringIds.STRING_CURRENCY,
+                DataValueString = GlobalData.GlobalCurrency.wszCurrencyCode,
+                IsSpecial = true,
+                IsRightTextBold = true,
+                IsTitlePrimaryColor = true
+            });
+            
+
+            return DialogBuilder.Show(IPayDialog.REVIEW_TRANS_DIALOG, dlgTitleId, (iResult, args) =>
+            {
+            }, true, false, dlgData, GlobalResource.CANCEL_TRANS);
         }
 
         //end function

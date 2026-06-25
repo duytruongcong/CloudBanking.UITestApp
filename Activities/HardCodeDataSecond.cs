@@ -394,7 +394,7 @@ namespace CloudBanking.UITestApp
 
         void ShowAddCustomerDialog()
         {
-#if true
+#if false
             DialogBuilder.ShowSubFlowDialog(IPayDialog.ADD_CUSTOMER_DIALOG,
                                 StringIds.STRING_NEW_CUSTOMER,
                                 (result, args) =>
@@ -406,7 +406,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectCustomerDialog()
         {
-#if true
+#if false
 
             List<Customer> customerList = new List<Customer>();
 
@@ -453,7 +453,7 @@ namespace CloudBanking.UITestApp
 
         void ShowReviewCustomerDialog()
         {
-#if true
+#if false
             var customer = new Customer();
             customer.FirstName = "Bob";
             customer.LastName = "Smith";
@@ -474,7 +474,7 @@ namespace CloudBanking.UITestApp
 
         void ShowAddNoteDialog()
         {
-#if true
+#if false
 
             var addNoteDlgData = new AddNoteDlgData()
             {
@@ -493,7 +493,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSendReceiptCustomerDialog()
         {
-#if true
+#if false
             var customer = new Customer();
             customer.FirstName = "Bob";
             customer.LastName = "Smith";

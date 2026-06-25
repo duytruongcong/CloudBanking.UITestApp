@@ -60,6 +60,8 @@ namespace CloudBanking.UITestApp
                 Window.DecorView.SystemUiVisibility = (StatusBarVisibility)(
                     SystemUiFlags.HideNavigation |
                     SystemUiFlags.ImmersiveSticky);
+
+                Window.AddFlags(Android.Views.WindowManagerFlags.Fullscreen);
             }
 
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
@@ -2434,7 +2436,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false // duy done s1p2  
+#if true // 
 
             #region Main Payment Flow
 
@@ -2448,15 +2450,25 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"ReviewTransDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowReviewTransDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"IShellDialog_ReviewTransDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowIShellDialog_ReviewTransDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"IPayDialog_ReviewTransDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowIPayDialog_ReviewTransDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2538,15 +2550,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectTipDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectTipDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SelectTipDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSelectTipDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2570,6 +2582,16 @@ namespace CloudBanking.UITestApp
 
             //_lData.Add(new ScreenViewModel()
             //{
+            //    Title = $"GetAmountDialog CASE3",
+            //    RightIconResName = "GetAmountDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowGetAmountDialog(CaseDialog.CASE3);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
             //    Title = $"GetAmountCashOutDialog CASE1",
             //    RightIconResName = "GetAmountCashOutDialog",
             //    ItemAction = new Action(() =>
@@ -2588,15 +2610,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SingleUserLoginDialog",
-                RightIconResName = "SingleUserLoginDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowSingleUserLoginDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SingleUserLoginDialog",
+            //    RightIconResName = "SingleUserLoginDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSingleUserLoginDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2772,7 +2794,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true    //   duy done s1p2  
+#if false    //    
 
             #region Settlement & Reprint
 
@@ -2850,7 +2872,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //   duy done s1p2
+#if false   //  
 
             #region Preauth Flow
 
@@ -2969,7 +2991,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false   //   pending s1p2
+#if false   //  
 
             #region Request Card Flow
 
@@ -3176,7 +3198,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false //   thanh done s1p2
+#if false //  
 
             #region DynamicOptionDialog 
 
@@ -3243,7 +3265,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false    //   done s1p2
+#if false    //  
 
             #region MessageDialog
 
@@ -3512,7 +3534,7 @@ namespace CloudBanking.UITestApp
 #endif
 
 
-#if false    // duy done s1p2  
+#if false    //
 
             #region EnterPinDialog
 
@@ -3558,7 +3580,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // duy done s1p2  
+#if false   // 
 
             #region ApprovalDialog
 
@@ -3665,7 +3687,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // thanh done s1p2
+#if false    //
 
             #region MOTO FLOW
 
@@ -3721,7 +3743,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   // duy done s1p2
+#if false   //
 
             #region ProcessMessageDialog
 
@@ -3775,6 +3797,43 @@ namespace CloudBanking.UITestApp
                 })
             });
 #endif
+            #endregion
+#endif
+
+#if true
+
+            #region SplitPay Flow
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"PaymentEntryListDialog Case01",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowPaymentEntryListDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"PaymentEntryListDialog Case02",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowPaymentEntryListDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SplitPayReviewDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowSplitPayReviewDialog();
+                })
+            });
+
             #endregion
 #endif
         }

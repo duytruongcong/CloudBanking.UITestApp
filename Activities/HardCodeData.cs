@@ -8229,11 +8229,11 @@ namespace CloudBanking.UITestApp
                     lTipAmount = 1800,
                     //lSurChargeFee = 1200
                 },
-                TitleId = StringIds.STRING_PURCHASE
+                TitleId = StringIds.STRING_PURCHASE_FEES
             };
 
             //ReviewTransDialog
-            DialogBuilder.Show(IShellDialog.TRANS_REVIEW_DIALOG, StringIds.STRING_REVIEW, null, true, false, dlgDataReview);
+            DialogBuilder.Show(IShellDialog.TRANS_REVIEW_DIALOG, StringIds.STRING_TENDER_REVIEW, null, true, false, dlgDataReview);
 #endif
 
         }
@@ -8310,15 +8310,29 @@ namespace CloudBanking.UITestApp
             }, true, false, data);
         }
 
-        void ShowSplitPayReviewDialog()
+        void ShowCommonReviewDialog(CaseDialog caseDialog)
         {
-            SplitPayReviewDlgData data = new SplitPayReviewDlgData();
-            data.SubHeaderTitleId = StringIds.STRING_BALANCE;
-            data.TotalAmount = 10000;
-            data.BalanceAmount = 5300;
-            string headerTitleId = StringIds.STRING_SPLIT_REVIEW;
+            CommonReviewDlgData dlgData = new CommonReviewDlgData();
+            dlgData.TotalAmount = 10000;
+            string headerTitleId = string.Empty;
 
-            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    dlgData.SubHeaderTitleId = StringIds.STRING_PURCHASE_FEES;
+                    headerTitleId = StringIds.STRING_SPLIT_REVIEW;
+                    dlgData.BalanceAmount = 5300;
+                    dlgData.ReviewType = ReviewType.SPLIT_PAY;
+                    break;
+                case CaseDialog.CASE2:
+                    dlgData.SubHeaderTitleId = StringIds.STRING_PURCHASE_FEES;
+                    headerTitleId = StringIds.STRING_TENDER_REVIEW;
+                    dlgData.TotalAmount = 5200;
+                    dlgData.ReviewType = ReviewType.TENDER;
+                    break;
+            }
+
+            dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_visa_bg,
                 CustomerName = "David Smith",
@@ -8328,7 +8342,7 @@ namespace CloudBanking.UITestApp
                 IsShowInfoBtn = true
             });
 
-            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_eft_pos_bg,
                 CustomerName = "",
@@ -8339,7 +8353,7 @@ namespace CloudBanking.UITestApp
 
             });
 
-            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_cash_only,
                 CustomerName = "Sandra Davis",
@@ -8350,7 +8364,7 @@ namespace CloudBanking.UITestApp
 
             });
 
-            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_american_express_bg,
                 CustomerName = "",
@@ -8361,7 +8375,7 @@ namespace CloudBanking.UITestApp
 
             });
 
-            data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
+            dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_no_payment_type_bg,
                 CustomerName = "",
@@ -8372,14 +8386,22 @@ namespace CloudBanking.UITestApp
 
             });
 
-            DialogBuilder.Show(IPayDialog.SPLIT_PAY_REVIEW_DIALOG, headerTitleId, (iResult, args) =>
+            //
+            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T1", TenderName = Localize.GetString(StringIds.STRING_VISA_CREDIT), Amount = 1500, IsValuePrimaryColor = false });
+            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T2", TenderName = Localize.GetString(StringIds.STRING_EFT_POS), Amount = 1500, IsValuePrimaryColor = false });
+            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T3", TenderName = Localize.GetString(StringIds.STRING_CASH), Amount = 1500, IsValuePrimaryColor = false });
+            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T4", TenderName = Localize.GetString(StringIds.STRING_AMEX), Amount = 1500, IsValuePrimaryColor = false });
+            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T5", TenderName = Localize.GetString(StringIds.STRING_VOUCHER), Amount = 1500, IsValuePrimaryColor = false });
+            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "", TenderName = Localize.GetString(StringIds.STRING_BALANCE), Amount = 500, IsValuePrimaryColor = true });
+
+            DialogBuilder.Show(IPayDialog.COMMON_REVIEW_DIALOG, headerTitleId, (iResult, args) =>
             {
 
-                //PaymentEntryListDialog
-            }, true, false, data);
+                //CommonReviewDialog
+            }, true, false, dlgData);
         }
 
-        protected int ShowIPayDialog_ReviewTransDialog()
+        void ShowIPayDialog_ReviewTransDialog()
         {
             string dlgTitleId = StringIds.STRING_CONFIRMATION;
             InitProcessData pInitProcessData = new InitProcessData();
@@ -8548,18 +8570,18 @@ namespace CloudBanking.UITestApp
             dlgData.ListResult.Add(new ResultViewModel()
             {
                 Id = StringIds.STRING_CURRENCY,
-                DataValueString = GlobalData.GlobalCurrency.wszCurrencyCode,
+                DataValueString = "$",
                 IsSpecial = true,
                 IsRightTextBold = true,
                 IsTitlePrimaryColor = true
             });
-            
 
-            return DialogBuilder.Show(IPayDialog.REVIEW_TRANS_DIALOG, dlgTitleId, (iResult, args) =>
+            DialogBuilder.Show(IPayDialog.REVIEW_TRANS_DIALOG, dlgTitleId, (iResult, args) =>
             {
             }, true, false, dlgData, GlobalResource.CANCEL_TRANS);
         }
 
+      
         //end function
     }
 }

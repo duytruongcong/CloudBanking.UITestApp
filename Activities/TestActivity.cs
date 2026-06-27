@@ -3804,33 +3804,43 @@ namespace CloudBanking.UITestApp
 
             #region SplitPay Flow
 
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"PaymentEntryListDialog Case01",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowPaymentEntryListDialog(CaseDialog.CASE1);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"PaymentEntryListDialog Case02",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowPaymentEntryListDialog(CaseDialog.CASE2);
+            //    })
+            //});
+
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"PaymentEntryListDialog Case01",
+                Title = $"CommonReviewDialog SplitPay",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowPaymentEntryListDialog(CaseDialog.CASE1);
+                    ShowCommonReviewDialog(CaseDialog.CASE1);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"PaymentEntryListDialog Case02",
+                Title = $"CommonReviewDialog MultiTender",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowPaymentEntryListDialog(CaseDialog.CASE2);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SplitPayReviewDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowSplitPayReviewDialog();
+                    ShowCommonReviewDialog( CaseDialog.CASE2);
                 })
             });
 

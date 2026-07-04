@@ -1,4 +1,6 @@
-﻿using CloudBanking.BaseControl;
+﻿using Android.Views;
+using Android.Webkit;
+using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -2350,9 +2352,7 @@ namespace CloudBanking.UITestApp
             data.fShowAmountRightButton = false;
             data.EntryAmountTitleId = StringIds.STRING_CREDIT_REFUND;
             data.plTotalAmount = 13800;
-            data.fTitleRawText = false;
-            data.fSubTitleRawText = false;
-            string title = StringIds.STRING_CREDIT_REFUND;
+            string title = string.Empty;
 
             switch (caseDialog)
             {
@@ -2360,6 +2360,7 @@ namespace CloudBanking.UITestApp
                     data.fShowSubHeader = true;
                     data.fShowReference = false;
                     data.fInstoreCashoutFeeEnable = true;
+                    title = $"{StringIds.STRING_TENDER.GetString()} 5 - {StringIds.STRING_AMOUNT.GetString()}";
                     break;
 
                 case CaseDialog.CASE2:
@@ -2368,6 +2369,7 @@ namespace CloudBanking.UITestApp
                     data.fInstoreCashoutFeeEnable = false;
                     data.plszReference = "BA17865";
                     data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+                    title = StringIds.STRING_TENDER;
                     break;
 
                 case CaseDialog.CASE3:
@@ -8215,7 +8217,7 @@ namespace CloudBanking.UITestApp
 
         void ShowIShellDialog_ReviewTransDialog()
         {
-#if true
+#if false
             ReviewDlgData dlgDataReview = new ReviewDlgData()
             {
                 lTotal = 13800,
@@ -8240,6 +8242,7 @@ namespace CloudBanking.UITestApp
 
         void ShowPaymentEntryListDialog(CaseDialog caseDialog)
         {
+#if true
             PaymentEntryListDlgData data = new PaymentEntryListDlgData();
             data.SubHeaderTitleId = StringIds.STRING_BALANCE;
             data.BalanceAmount = 5300;
@@ -8308,10 +8311,13 @@ namespace CloudBanking.UITestApp
 
                 //PaymentEntryListDialog
             }, true, false, data);
+#endif
         }
 
         void ShowCommonReviewDialog(CaseDialog caseDialog)
         {
+#if false
+
             CommonReviewDlgData dlgData = new CommonReviewDlgData();
             dlgData.TotalAmount = 10000;
             string headerTitleId = string.Empty;
@@ -8399,6 +8405,7 @@ namespace CloudBanking.UITestApp
 
                 //CommonReviewDialog
             }, true, false, dlgData);
+#endif
         }
 
         void ShowIPayDialog_ReviewTransDialog()
@@ -8488,8 +8495,8 @@ namespace CloudBanking.UITestApp
                 lTotalDonations = 500
             };
 
-            pInitProcessData.Donations.Donations.Add(new PaymentDonation() { Name="Donation 1", lDonation = 100});
-            pInitProcessData.Donations.Donations.Add(new PaymentDonation() { Name="Donation 2", lDonation = 200});
+            pInitProcessData.Donations.Donations.Add(new PaymentDonation() { Name = "Donation 1", lDonation = 100 });
+            pInitProcessData.Donations.Donations.Add(new PaymentDonation() { Name = "Donation 2", lDonation = 200 });
 
             if (pInitProcessData.Donations?.lTotalDonations > 0)
             {
@@ -8581,7 +8588,173 @@ namespace CloudBanking.UITestApp
             }, true, false, dlgData, GlobalResource.CANCEL_TRANS);
         }
 
-      
+        void ShowCustomerDetailsDialog()
+        {
+            var dlgData = new CustomerDetailsDlgData()
+            {
+                Name = "Split 1 Payment",
+                CellNumber = "099356876",
+                AreaCode = "+64",
+                Email = "davidsmith@gmail.com",
+                LeftBtnStringId = StringIds.STRING_PRINT_UPCASE,
+                LeftBtnCommand = GlobalResource.CANCEL_BUTTON,
+                IsReadOnly = true
+            };
+
+            DialogBuilder.Show(IPayDialog.VIEW_CUSTOMER_DETAILS_DIALOG, StringIds.STRING_CUSTOMER_DETAILS, (iResult, args) =>
+            {
+                //CustomerDetailsDialog
+            }, true, false, dlgData);
+        }
+
+        void ShowCustomerDetailsMenuDialog(CaseDialog caseDialog)
+        {
+#if true
+            var dlgData = new CustomerDetailsMenuDlgData()
+            {
+                AmountTitleId = StringIds.STRING_PURCHASE.GetString(),
+                Amount = 2000,
+                CustomerName = "David Smith",
+            };
+
+            bool isShowRefundReasonButton = false;
+
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    dlgData.AmountTitleId = string.Format(Localize.GetString(StringIds.STRING_SPLIT_PAYMENT), "1");
+                    dlgData.IsShowCustomerName = true;
+                    dlgData.IsShowAdjustAmount = true;
+                    break;
+                case CaseDialog.CASE2:
+                    dlgData.AmountTitleId = Localize.GetString(StringIds.STRING_PRE_AUTH_AMOUNT);
+                    dlgData.IsShowCustomerName = false;
+                    dlgData.IsShowAdjustAmount = false;
+                    break;
+                case CaseDialog.CASE3:
+                    dlgData.AmountTitleId = Localize.GetString(StringIds.STRING_VISA_DEBIT);
+                    dlgData.IsShowCustomerName = false;
+                    dlgData.IsShowAdjustAmount = false;
+                    isShowRefundReasonButton = true;
+                    break;
+                case CaseDialog.CASE4: break;
+            }
+
+            dlgData.FunctionButtons = new List<SelectButton>();
+
+            dlgData.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_NOTES,
+                Title = StringIds.STRING_NOTES,
+                idImage = IconIds.VECTOR_NOTE,
+                IdProcessor = 0,
+                iCommand = GlobalResource.NOTE_BUTTON,
+                IsVectorDrawble = true
+            });
+
+            dlgData.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_CUSTOMER_ID,
+                Title = StringIds.STRING_CUSTOMER_ID,
+                idImage = IconIds.VECTOR_CUSTOMER_DETAILS_GRAY_BG,
+                IdProcessor = 0,
+                iCommand = GlobalResource.ICUSTOMER_ID_BUTTON,
+                IsVectorDrawble = true
+
+            });
+
+            dlgData.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_REFERENCE_DETAILS,
+                Title = StringIds.STRING_REFERENCE_DETAILS,
+                idImage = IconIds.VECTOR_DIAGNOSTIC_ENQUIRY,
+                IdProcessor = 0,
+                iCommand = GlobalResource.REFERENCE_BUTTON,
+                IsVectorDrawble = true
+
+            });
+
+            if (isShowRefundReasonButton)
+            {
+                dlgData.FunctionButtons.Add(new SelectButton()
+                {
+                    iCommandLang = StringIds.STRING_REFUND_REASON,
+                    Title = StringIds.STRING_REFUND_REASON,
+                    idImage = IconIds.VECTOR_REFUND_REASON,
+                    IdProcessor = 0,
+                    iCommand = GlobalResource.REFERENCE_BUTTON,
+                    IsVectorDrawble = true
+
+                });
+            }
+
+            DialogBuilder.Show(IPayDialog.CUSTOMER_DETAILS_MENU_DIALOG, StringIds.STRING_CUSTOMER_DETAILS, (iResult, args) =>
+            {
+                //CustomerDetailsMenuDialog
+            }, true, false, dlgData);
+#endif
+        }
+
+        void ShowCommonCustomerDetailsMenu()
+        {
+            CustomerDetailsContext context = new CustomerDetailsContext();
+
+            context.Amount = 2000;
+            context.AmountTitleId = string.Format(Localize.GetString(StringIds.STRING_SPLIT_PAYMENT), "1");
+            context.TransactionTypeTitleId = StringIds.STRING_PURCHASE;
+            context.ReferenceType = ReferenceType.Invoice;
+            context.FunctionType = FunctionType.Refund;
+
+            var dlgData = new CustomerDetailsMenuDlgData()
+            {
+                Amount = context.Amount,
+                AmountTitleId = context.AmountTitleId,
+                TransactionTypeTitleId = context.TransactionTypeTitleId,
+                ReferenceNumber = context.ReferenceNumber ?? string.Empty,
+                ReferenceType = context.ReferenceType,
+                ReferenceVMs = DataHelper.GetReferenceVMs(),
+                IsShowAdjustAmount = true,
+                IsShowCustomerName = true,
+                CustomerName = "David",
+                FunctionButtons = new List<SelectButton>()
+                {
+                    new SelectButton()
+                    {
+                        Title = StringIds.STRING_NOTES_DETAILS,
+                        idImage = IconIds.VECTOR_NOTE,
+                        iCommand = GlobalResource.NOTE_BUTTON
+                    },
+                    new SelectButton()
+                    {
+                        Title = StringIds.STRING_CUSTOMER_ID,
+                        idImage = IconIds.VECTOR_CUSTOMER_DETAILS_GRAY_BG,
+                        iCommand = GlobalResource.PREAUTH_ID_PHOTO_BUTTON
+                    },
+                    new SelectButton()
+                    {
+                        Title = StringIds.STRING_REFERENCE_DETAILS,
+                        idImage = IconIds.VECTOR_PRE_AUTH_REFERENCES,
+                        iCommand = GlobalResource.REFERENCE_BUTTON
+                    }
+                }
+            };
+
+            if (context.FunctionType == FunctionType.Refund)
+            {
+                dlgData.FunctionButtons.Add(new SelectButton()
+                {
+                    Title = StringIds.STRING_REFUND_REASON,
+                    idImage = IconIds.VECTOR_REFUND_REASON,
+                    iCommand = GlobalResource.REFUND_REASON_BUTTON
+                });
+            }
+
+            DialogBuilder.Show(IPayDialog.CUSTOMER_DETAILS_MENU_DIALOG, StringIds.STRING_CUSTOMER_DETAILS, (iResult, args) =>
+            {
+                //CustomerDetailsMenuDialog
+            }, true, false, dlgData);
+        }
+
         //end function
     }
 }

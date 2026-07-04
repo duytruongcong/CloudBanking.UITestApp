@@ -2436,7 +2436,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true // 
+#if false // 
 
             #region Main Payment Flow
 
@@ -2450,25 +2450,25 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"IShellDialog_ReviewTransDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowIShellDialog_ReviewTransDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"IShellDialog_ReviewTransDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowIShellDialog_ReviewTransDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"IPayDialog_ReviewTransDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowIPayDialog_ReviewTransDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"IPayDialog_ReviewTransDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowIPayDialog_ReviewTransDialog();
+            //    })
+            //});
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2560,35 +2560,35 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"GetAmountDialog CASE1",
-            //    RightIconResName = "GetAmountDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowGetAmountDialog(CaseDialog.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog CASE1",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog(CaseDialog.CASE1);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"GetAmountDialog CASE2",
-            //    RightIconResName = "GetAmountDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowGetAmountDialog(CaseDialog.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog CASE2",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog(CaseDialog.CASE2);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"GetAmountDialog CASE3",
-            //    RightIconResName = "GetAmountDialog",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowGetAmountDialog(CaseDialog.CASE3);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog CASE3",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog(CaseDialog.CASE3);
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2897,15 +2897,15 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"PreAuthCompletePreAuthInfoDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowPreAuthCompletePreAuthInfoDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"PreAuthCompletePreAuthInfoDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowPreAuthCompletePreAuthInfoDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -3824,23 +3824,74 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CommonReviewDialog SplitPay",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCommonReviewDialog(CaseDialog.CASE1);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CommonReviewDialog MultiTender",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCommonReviewDialog(CaseDialog.CASE2);
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"CustomerDetailsDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowCustomerDetailsDialog();
+            //    })
+            //});
+
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"CommonReviewDialog SplitPay",
+                Title = $"CustomerDetailsMenuDialog Split",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowCommonReviewDialog(CaseDialog.CASE1);
+                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE1);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"CommonReviewDialog MultiTender",
+                Title = $"CustomerDetailsMenuDialog PreAuth",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowCommonReviewDialog( CaseDialog.CASE2);
+                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CustomerDetailsMenuDialog VisaDebit",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE3);
+                })
+            });
+
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"PreAuthReferencesDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowCommonCustomerDetailsMenu();
                 })
             });
 

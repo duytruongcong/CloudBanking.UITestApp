@@ -1,6 +1,4 @@
-﻿using Android.Views;
-using Android.Webkit;
-using CloudBanking.BaseControl;
+﻿using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -16,7 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using static Android.Content.ClipData;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
@@ -8316,7 +8313,7 @@ namespace CloudBanking.UITestApp
 
         void ShowCommonReviewDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
 
             CommonReviewDlgData dlgData = new CommonReviewDlgData();
             dlgData.TotalAmount = 10000;
@@ -8609,7 +8606,7 @@ namespace CloudBanking.UITestApp
 
         void ShowCustomerDetailsMenuDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             var dlgData = new CustomerDetailsMenuDlgData()
             {
                 AmountTitleId = StringIds.STRING_PURCHASE.GetString(),
@@ -8697,6 +8694,7 @@ namespace CloudBanking.UITestApp
 
         void ShowCommonCustomerDetailsMenu()
         {
+#if false
             CustomerDetailsContext context = new CustomerDetailsContext();
 
             context.Amount = 2000;
@@ -8753,6 +8751,126 @@ namespace CloudBanking.UITestApp
             {
                 //CustomerDetailsMenuDialog
             }, true, false, dlgData);
+#endif
+        }
+
+        void ShowTenderOptionsDialog()
+        {
+#if true
+            TenderOptionsDlgData dlgData = new TenderOptionsDlgData();
+            dlgData.TopTitleId = StringIds.STRING_TENDER_OPTIONS;
+            //row1
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_VISA_BG,
+                ItemName = StringIds.STRING_CARDTYPE_VISA,
+                FeeNotification = Localize.GetString(StringIds.STRING_NO_FEE),
+                IsShowEyeBtn = false
+            });
+
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_MASTER_CARD_BG_WITH_TEXT,
+                ItemName = StringIds.STRING_CARDTYPE_MASTERCARD,
+                FeeNotification = Localize.GetString(StringIds.STRING_NO_FEE),
+                IsShowEyeBtn = false
+            });
+
+            //row2
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_AMERICAN_EXPRESS_BG,
+                ItemName = StringIds.STRING_AMERICAN,
+                FeeNotification = "1.85%",
+                IsShowEyeBtn = false
+            });
+
+            
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_JBC_SQUARE_BACKGROUND,
+                ItemName = StringIds.STRING_CARDTYPE_JCB,
+                FeeNotification = "1.75%",
+                IsShowEyeBtn = false
+            });
+
+            //row3
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_DINERS_SQUARE_BG,
+                ItemName = StringIds.STRING_CARDTYPE_DINERS,
+                FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
+                IsShowEyeBtn = true
+            });
+
+            
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_EFT_POS_BG,
+                ItemName = StringIds.STRING_EFTPOS,
+                FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
+                IsShowEyeBtn = true
+            });
+
+            //row4
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_WECHAT_ICON_TEXT_BG,
+                ItemName = StringIds.STRING_WECHAT,
+                FeeNotification = Localize.GetString(StringIds.STRING_NO_FEE),
+                IsShowEyeBtn = true
+            });
+
+            
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_ALIPAY_ICON_TEXT_BG,
+                ItemName = StringIds.STRING_ALIPAY,
+                FeeNotification = Localize.GetString(StringIds.STRING_NO_FEE),
+                IsShowEyeBtn = true
+            });
+
+            //row5
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_REWARDS,
+                ItemName = StringIds.STRING_REWARDS,
+                FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
+                IsShowEyeBtn = true
+            });
+
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_CENTRA_PAY_ICON_TEXT_BG,
+                ItemName = StringIds.STRING_CENTRAPAY,
+                FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
+                IsShowEyeBtn = true
+            });
+
+            //row6
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_BNPL_BG,
+                ItemName = StringIds.STRING_BNPL,
+                FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
+                IsShowEyeBtn = true
+            });
+
+            dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
+            {
+                TypeImageResId = IconIds.VECTOR_CRYPTO_BG,
+                ItemName = StringIds.STRING_CRYPTO,
+                FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
+                IsShowEyeBtn = true
+            });
+
+            string headerTitle = string.Format(StringIds.STRING_TENDER_NUMBER_OPTION.GetString(), 5);
+
+            DialogBuilder.Show(IPayDialog.TENDER_OPTIONS_DIALOG, headerTitle, (iResult, args) =>
+            {
+                //TenderOptionsDialog
+            }, true, false, dlgData);
+#endif
         }
 
         //end function

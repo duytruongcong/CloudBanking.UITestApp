@@ -271,7 +271,6 @@ namespace CloudBanking.UITestApp
             CASE10
         }
 
-        #region InitializeCusViewData
         private void InitializeCusViewData()
         {
 
@@ -641,7 +640,117 @@ namespace CloudBanking.UITestApp
 
             #endregion
         }
-        #endregion
+        
+        private void InitCustomerDetailFlowData()
+        {
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CustomerDetailsDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowCustomerDetailsDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CustomerDetailsMenuDialog Split",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CustomerDetailsMenuDialog PreAuth",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CustomerDetailsMenuDialog VisaDebit",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE3);
+                })
+            });
+
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"CustomerDetailsMenuDialog Common",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowCommonCustomerDetailsMenu();
+                })
+            });
+        }
+
+
+        private void InitPurchaseMainFlowData()
+        {
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog CASE1",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog(CaseDialog.CASE1);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog CASE2",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog(CaseDialog.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GetAmountDialog CASE3",
+                RightIconResName = "GetAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowGetAmountDialog(CaseDialog.CASE3);
+                })
+            });
+        }
+
+        private void InitMutiTenderFlowData()
+        {
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"TenderOptionsDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowTenderOptionsDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"SelectTenderExtraAmountDialog",
+                RightIconResName = "SelectTenderExtraAmountDialog",
+                ItemAction = new Action(() =>
+                {
+                    ShowSelectTenderExtraAmountDialog();
+                })
+            });
+        }
 
         #region InitializeCommonData
         private void InitializeCommonData()
@@ -1841,7 +1950,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false   //   duy done s1p2
+#if false   //   
 
             #region DCC
 
@@ -1931,7 +2040,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // duy done s1p2  
+#if false    // 
 
             #region Setup Flow
 
@@ -2039,7 +2148,7 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    // duy done s1p2
+#if false    // 
 
             #region Refund flow
 
@@ -2254,16 +2363,7 @@ namespace CloudBanking.UITestApp
                     EditTicket();
                 })
             });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SelectTenderExtraAmountDialog",
-                RightIconResName = "SelectTenderExtraAmountDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowSelectTenderExtraAmountDialog();
-                })
-            });
+            
 
             _lData.Add(new ScreenViewModel()
             {
@@ -2438,7 +2538,9 @@ namespace CloudBanking.UITestApp
 
 #if false // 
 
-            #region Main Payment Flow
+            #region Purchase Main Flow
+
+            InitPurchaseMainFlowData();
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2560,35 +2662,7 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountDialog CASE1",
-                RightIconResName = "GetAmountDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountDialog(CaseDialog.CASE1);
-                })
-            });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountDialog CASE2",
-                RightIconResName = "GetAmountDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountDialog(CaseDialog.CASE2);
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountDialog CASE3",
-                RightIconResName = "GetAmountDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountDialog(CaseDialog.CASE3);
-                })
-            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -3800,100 +3874,67 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true
+#if false
 
             #region SplitPay Flow
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"PaymentEntryListDialog Case01",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowPaymentEntryListDialog(CaseDialog.CASE1);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"PaymentEntryListDialog Case02",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowPaymentEntryListDialog(CaseDialog.CASE2);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"CommonReviewDialog SplitPay",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowCommonReviewDialog(CaseDialog.CASE1);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"CommonReviewDialog MultiTender",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowCommonReviewDialog(CaseDialog.CASE2);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"CustomerDetailsDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowCustomerDetailsDialog();
-            //    })
-            //});
-
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"CustomerDetailsMenuDialog Split",
+                Title = $"PaymentEntryListDialog Case01",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE1);
+                    ShowPaymentEntryListDialog(CaseDialog.CASE1);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"CustomerDetailsMenuDialog PreAuth",
+                Title = $"PaymentEntryListDialog Case02",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE2);
+                    ShowPaymentEntryListDialog(CaseDialog.CASE2);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"CustomerDetailsMenuDialog VisaDebit",
+                Title = $"CommonReviewDialog SplitPay",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowCustomerDetailsMenuDialog(CaseDialog.CASE3);
+                    ShowCommonReviewDialog(CaseDialog.CASE1);
                 })
             });
-
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"PreAuthReferencesDialog",
+                Title = $"CommonReviewDialog MultiTender",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowCommonCustomerDetailsMenu();
+                    ShowCommonReviewDialog(CaseDialog.CASE2);
                 })
             });
+
+
+
+            #endregion
+#endif
+
+#if false
+            #region CustomerDetail
+
+            InitCustomerDetailFlowData();
+
+            #endregion
+#endif
+
+#if true
+            #region MultiTender
+
+            InitMutiTenderFlowData();
 
             #endregion
 #endif

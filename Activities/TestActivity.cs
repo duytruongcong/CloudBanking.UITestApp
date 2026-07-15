@@ -731,23 +731,33 @@ namespace CloudBanking.UITestApp
 
         private void InitMutiTenderFlowData()
         {
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"TenderOptionsDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowTenderOptionsDialog();
+            //    })
+            //});
+
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"TenderOptionsDialog",
-                RightIconResName = "",
+                Title = $"SelectTenderExtraAmountDialog case01",
+                RightIconResName = "SelectTenderExtraAmountDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowTenderOptionsDialog();
+                    ShowSelectTenderExtraAmountDialog(CaseDialog.CASE1);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"SelectTenderExtraAmountDialog",
+                Title = $"SelectTenderExtraAmountDialog case02",
                 RightIconResName = "SelectTenderExtraAmountDialog",
                 ItemAction = new Action(() =>
                 {
-                    ShowSelectTenderExtraAmountDialog();
+                    ShowSelectTenderExtraAmountDialog(CaseDialog.CASE2);
                 })
             });
         }

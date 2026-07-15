@@ -1875,7 +1875,7 @@ namespace CloudBanking.UITestApp
             item1.FunctionType = "Refund";
             item1.TransactionNumber = "4200000027201709294868542706";
             item1.FunctionType = Localize.GetString(FunctionType.Wechat.ToStringId());
-            item1.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
+            //item1.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
             item1.ReferenceNumber = "123";
             item1.IconId = IconIds.VECTOR_REFUNDED;
             item1.Status = PaymentStatus.Refunded;
@@ -1898,7 +1898,7 @@ namespace CloudBanking.UITestApp
             item2.FunctionType = "Refund";
             item2.TransactionNumber = "4200000027201709294868542706";
             item2.FunctionType = Localize.GetString(FunctionType.Wechat.ToStringId());
-            item2.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
+            //item2.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
             item2.ReferenceNumber = "123";
             item2.IconId = IconIds.VECTOR_REFUNDED;
             item2.Status = PaymentStatus.Refunded;
@@ -1920,7 +1920,7 @@ namespace CloudBanking.UITestApp
             item3.FunctionType = "Refund";
             item3.TransactionNumber = "4200000027201709294868542706";
             item3.FunctionType = Localize.GetString(FunctionType.Wechat.ToStringId());
-            item3.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
+            //item3.ReferenceTypeStringIds = ReferenceType.Invoice.ToStringId();
             item3.ReferenceNumber = "123";
             item3.IconId = IconIds.VECTOR_REFUNDED;
             item3.Status = PaymentStatus.Refunded;
@@ -2365,7 +2365,7 @@ namespace CloudBanking.UITestApp
                     data.fShowReference = true;
                     data.fInstoreCashoutFeeEnable = false;
                     data.plszReference = "BA17865";
-                    data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+                    //data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
                     title = StringIds.STRING_TENDER;
                     break;
 
@@ -2373,7 +2373,7 @@ namespace CloudBanking.UITestApp
                     data.fShowSubHeader = true;
                     data.fShowReference = true;
                     data.plszReference = "BA17865";
-                    data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+                    //data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
                     break;
 
                 default:
@@ -2396,7 +2396,7 @@ namespace CloudBanking.UITestApp
             GetAmountDlgData dlgData = new GetAmountDlgData();
 
             dlgData.plszReference = "7654";
-            dlgData.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Employee);
+            //dlgData.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Employee);
             dlgData.plAmount = 38000;
             dlgData.fCalculator = false;
             dlgData.fShowReference = true;
@@ -2421,7 +2421,7 @@ namespace CloudBanking.UITestApp
             selectedPayment.lAmount = 10000;
             selectedPayment.DateTime = DateTime.Now.ToXDateTime();
             selectedPayment.lszEndCardNumber = "7654";
-            selectedPayment.CustomerReferenceType = ReferenceType.Room;
+            //selectedPayment.CustomerReferenceType = ReferenceType.Room;
             selectedPayment.lszCustomerReference = "123";
             selectedPayment.szSTAN = "2345";
             selectedPayment.szReferenceNumber = "1234";
@@ -3684,7 +3684,7 @@ namespace CloudBanking.UITestApp
             }, true, false, data);
         }
 
-        void ShowSelectTenderExtraAmountDialog()
+        void ShowSelectTenderExtraAmountDialog(CaseDialog caseDialog)
         {
             var dlgData = new SelectTenderExtraAmountDlgData();
 
@@ -3692,17 +3692,36 @@ namespace CloudBanking.UITestApp
 
             dlgData.lAmount = 36000;
 
-            dlgData.lCashout = 5000;
+            dlgData.lCashout = 6000;
 
-            //dlgData.lPreCashout = 4000;
+            dlgData.lPreCashout = 2000;
 
-            dlgData.lTip = 1000;
+            dlgData.lTip = 500;
 
-            dlgData.Donations = new PaymentDonations() { lTotalDonations = 1000 };
+            dlgData.Donations = new PaymentDonations();
+            dlgData.Donations.AddCharityItem("Charity 1", null, 100, 1);
+            dlgData.Donations.AddCharityItem("Charity 2", null, 150, 1);
 
             //dlgData.PaymentVouchers = new PaymentVouchers() { lTotalVouchers = 1000 };
 
-            DialogBuilder.Show(IPayDialog.SELECT_TENDER_EXTRA_AMOUNT_DIALOG, StringIds.STRING_MULTI_TENDER, (int iResult, object[] args) =>
+            switch (caseDialog)
+            {
+                case CaseDialog.CASE1:
+                    dlgData.fApply = true;
+                    dlgData.TenderImgResId = IconIds.VECTOR_MASTER_CARD_BG_WITH_TEXT;
+
+                    break;
+                case CaseDialog.CASE2:
+                    dlgData.fApply = false;
+                    dlgData.TenderImgResId = IconIds.VECTOR_CENTRA_PAY_ICON_TEXT_BG;
+
+                    break;
+            }
+
+            string headerTitle = string.Format( $"{StringIds.STRING_TENDER.GetString()} {dlgData.TenderNumber}");
+
+
+            DialogBuilder.Show(IPayDialog.SELECT_TENDER_EXTRA_AMOUNT_DIALOG, headerTitle, (int iResult, object[] args) =>
             {
                 //SelectTenderExtraAmountDialog
             }, true, false, dlgData);
@@ -4040,7 +4059,7 @@ namespace CloudBanking.UITestApp
                 OriginalRRNNumber = "1234",
                 OriginalSTAN = "1234",
                 OriginalTransactionId = "4200000027201709294868542706",
-                Reference = ReferenceType.Invoice,
+               // Reference = ReferenceType.Invoice,
                 ReferenceNumber = "1234",
                 RefundedAmount = 2000,
                 RefundedAuthCode = "3344",
@@ -4082,7 +4101,7 @@ namespace CloudBanking.UITestApp
                     iAccountTypeCode = 2,
                     lszEndCardNumber = "1234",
                     szApprovalCode = "5544",
-                    CustomerReferenceType = ReferenceType.Customer,
+                    //CustomerReferenceType = ReferenceType.Customer,
                     lszCustomerReference = "3456",
                     fRefunded = true,
                     szSTAN = "4455",
@@ -4114,7 +4133,7 @@ namespace CloudBanking.UITestApp
         {
             TransactionFindModel model = new TransactionFindModel()
             {
-                Reference = ReferenceType.Invoice,
+                //Reference = ReferenceType.Invoice,
                 ReferenceNumber = "12345",
                 Amount = 50000,
                 IsExactAmount = false,
@@ -4337,7 +4356,7 @@ namespace CloudBanking.UITestApp
 
         void ShowFindPurchaseOptionDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             string IdDlgTitle = string.Empty;
 
             FindPurchaseOptionDlgData dlgData = new FindPurchaseOptionDlgData();
@@ -4364,7 +4383,7 @@ namespace CloudBanking.UITestApp
 
             TransactionFindModel findModel = new TransactionFindModel()
             {
-                Reference = ReferenceType.Invoice,
+                //Reference = ReferenceType.Invoice,
                 ReferenceNumber = "1234",
                 TransactionId = "12",
                 Amount = 13000,
@@ -4380,8 +4399,8 @@ namespace CloudBanking.UITestApp
                 var referenceTypeModel = new SingleSelectEditModel()
                 {
                     TitleId = StringIds.STRING_REFERENCE_TYPE,
-                    Value = findModel.Reference,
-                    PropertyName = nameof(TransactionFindModel.Reference),
+                    //Value = findModel.Reference,
+                    //PropertyName = nameof(TransactionFindModel.Reference),
                 };
 
                 var referenceTypes = new List<RadioEditModel>();
@@ -4390,7 +4409,7 @@ namespace CloudBanking.UITestApp
                 {
                     referenceTypes.Add(new RadioEditModel()
                     {
-                        GroupName = nameof(TransactionFindModel.Reference),
+                        //GroupName = nameof(TransactionFindModel.Reference),
                         TitleId = DataHelper.GetRefName(type),
                         Identifier = type,
                     });
@@ -8765,7 +8784,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_VISA_BG,
                 ItemName = StringIds.STRING_CARDTYPE_VISA,
                 FeeNotification = Localize.GetString(StringIds.STRING_NO_FEE),
-                IsShowEyeBtn = false
+                IsShowEyeBtn = false,
+                CommandId = GlobalResource.VISA_BUTTON
             });
 
             dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
@@ -8773,7 +8793,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_MASTER_CARD_BG_WITH_TEXT,
                 ItemName = StringIds.STRING_CARDTYPE_MASTERCARD,
                 FeeNotification = Localize.GetString(StringIds.STRING_NO_FEE),
-                IsShowEyeBtn = false
+                IsShowEyeBtn = false,
+                CommandId = GlobalResource.MASTER_CARD_BUTTON
             });
 
             //row2
@@ -8782,7 +8803,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_AMERICAN_EXPRESS_BG,
                 ItemName = StringIds.STRING_AMERICAN,
                 FeeNotification = "1.85%",
-                IsShowEyeBtn = false
+                IsShowEyeBtn = false,
+                CommandId = GlobalResource.AMERICAN_BUTTON
             });
 
             
@@ -8791,7 +8813,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_JBC_SQUARE_BACKGROUND,
                 ItemName = StringIds.STRING_CARDTYPE_JCB,
                 FeeNotification = "1.75%",
-                IsShowEyeBtn = false
+                IsShowEyeBtn = false,
+                CommandId = GlobalResource.JCB_BUTTON
             });
 
             //row3
@@ -8800,7 +8823,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_DINERS_SQUARE_BG,
                 ItemName = StringIds.STRING_CARDTYPE_DINERS,
                 FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
-                IsShowEyeBtn = true
+                IsShowEyeBtn = true,
+                CommandId = GlobalResource.DINERS_BUTTON
             });
 
             
@@ -8809,7 +8833,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_EFT_POS_BG,
                 ItemName = StringIds.STRING_EFTPOS,
                 FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
-                IsShowEyeBtn = true
+                IsShowEyeBtn = true,
+                CommandId = GlobalResource.EFTPOS_BUTTON
             });
 
             //row4
@@ -8818,16 +8843,17 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_WECHAT_ICON_TEXT_BG,
                 ItemName = StringIds.STRING_WECHAT,
                 FeeNotification = Localize.GetString(StringIds.STRING_NO_FEE),
-                IsShowEyeBtn = true
+                IsShowEyeBtn = true,
+                CommandId = GlobalResource.WECHAT_BUTTON
             });
-
             
             dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
             {
                 TypeImageResId = IconIds.VECTOR_ALIPAY_ICON_TEXT_BG,
                 ItemName = StringIds.STRING_ALIPAY,
                 FeeNotification = Localize.GetString(StringIds.STRING_NO_FEE),
-                IsShowEyeBtn = true
+                IsShowEyeBtn = true,
+                CommandId = GlobalResource.ALIPAY_BUTTON
             });
 
             //row5
@@ -8836,7 +8862,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_REWARDS,
                 ItemName = StringIds.STRING_REWARDS,
                 FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
-                IsShowEyeBtn = true
+                IsShowEyeBtn = true,
+                CommandId = GlobalResource.REWARDS_BUTTON
             });
 
             dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
@@ -8844,7 +8871,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_CENTRA_PAY_ICON_TEXT_BG,
                 ItemName = StringIds.STRING_CENTRAPAY,
                 FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
-                IsShowEyeBtn = true
+                IsShowEyeBtn = true,
+                CommandId = GlobalResource.CENTRAL_PAY_BUTTON
             });
 
             //row6
@@ -8853,7 +8881,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_BNPL_BG,
                 ItemName = StringIds.STRING_BNPL,
                 FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
-                IsShowEyeBtn = true
+                IsShowEyeBtn = true,
+                CommandId = GlobalResource.BNPL_BUTTON
             });
 
             dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
@@ -8861,7 +8890,8 @@ namespace CloudBanking.UITestApp
                 TypeImageResId = IconIds.VECTOR_CRYPTO_BG,
                 ItemName = StringIds.STRING_CRYPTO,
                 FeeNotification = Localize.GetString(StringIds.STRING_VIEW_FEES),
-                IsShowEyeBtn = true
+                IsShowEyeBtn = true,
+                CommandId = GlobalResource.CRYPTO_BUTTON
             });
 
             string headerTitle = string.Format(StringIds.STRING_TENDER_NUMBER_OPTION.GetString(), 5);
@@ -8873,6 +8903,6 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        //end function
+        //end functiondddddddddddddddddd
     }
 }

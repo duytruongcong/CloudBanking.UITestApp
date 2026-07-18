@@ -123,6 +123,7 @@
     <Compile Include="Services\ShellServer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\lottieanimations\loading.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
@@ -523,6 +524,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\POSAdvertising\H1600\ads_5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\setupimages\trisha_barnett.png" />
   </ItemGroup>
   <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
     <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>

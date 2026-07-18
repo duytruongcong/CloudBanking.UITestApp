@@ -1,4 +1,5 @@
-﻿using CloudBanking.BaseControl;
+﻿using Android.Webkit;
+using CloudBanking.BaseControl;
 using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
@@ -12,8 +13,10 @@ using CloudBanking.Utilities;
 using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using static CloudBanking.Entities.Database;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
@@ -365,7 +368,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowRequestCardDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             bool fMultitender = true;
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
@@ -380,10 +383,10 @@ namespace CloudBanking.UITestApp
                 lTipAmount = 0,
                 lCashOut = 2000,
                 lCashOutFee = 0,
-                lSurChargeFee = 0,
-                lSurChargePercent = 0,
-                lAccountSurChargeFee = 0,
-                lAccountSurChargePercent = 0,
+                //lSurChargeFee = 0,
+                //lSurChargePercent = 0,
+                //lAccountSurChargeFee = 0,
+                //lAccountSurChargePercent = 0,
                 PaymentVouchers = new PaymentVouchers()
                 {
                 },
@@ -404,16 +407,47 @@ namespace CloudBanking.UITestApp
             RequestDlgData.fShowMenu = false;
             //RequestDlgData.fMultiTender = false;
 
-            RequestDlgData.fVisa = true;
-            RequestDlgData.fMasterCard = true;
-            RequestDlgData.fDiners = true;
-            RequestDlgData.fAmex = true;
-            RequestDlgData.fJBC = true;
-            RequestDlgData.fUnionPay = true;
-            RequestDlgData.fTroy = true;
-            RequestDlgData.fDiscover = true;
-            RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
+            //RequestDlgData.fVisa = true;
+            //RequestDlgData.fMasterCard = true;
+            //RequestDlgData.fDiners = true;
+            //RequestDlgData.fAmex = true;
+            //RequestDlgData.fJBC = true;
+            //RequestDlgData.fUnionPay = true;
+            //RequestDlgData.fTroy = true;
+            //RequestDlgData.fDiscover = true;
+            //RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
+
+            var brandsToCheck = new List<(CARDTYPE Type, MerchantCreditCardType CreditType, MerchantDebitCardType DebitType, string IconName, bool IsVector)>
+                {
+                    (CARDTYPE.CARD_VISA, MerchantCreditCardType.Visa, MerchantDebitCardType.Visa, IconIds.VECTOR_VISA, true),
+                    (CARDTYPE.CARD_MASTER, MerchantCreditCardType.MasterCard, MerchantDebitCardType.MasterCard, IconIds.VECTOR_MASTER_CARD, true),
+                    (CARDTYPE.CARD_UNIONPAY, MerchantCreditCardType.UnionPay, MerchantDebitCardType.UnionPay, IconIds.VECTOR_UNION_PAY, true),
+                    (CARDTYPE.CARD_AMEX, MerchantCreditCardType.Amex, MerchantDebitCardType.Amex, IconIds.VECTOR_AMERICAN_EXPRESS, false),
+                    (CARDTYPE.CARD_JCB, MerchantCreditCardType.JCB, MerchantDebitCardType.JCB, IconIds.VECTOR_JBC, true),
+                    (CARDTYPE.CARD_DISCOVER, MerchantCreditCardType.Discover, MerchantDebitCardType.Discover, IconIds.VECTOR_DISCOVER_NETWORK, true),
+                    (CARDTYPE.CARD_DINERS, MerchantCreditCardType.Diners, MerchantDebitCardType.Diners, IconIds.VECTOR_DINNERS, true),
+                    (CARDTYPE.CARD_TROY, MerchantCreditCardType.Troy, MerchantDebitCardType.Troy, IconIds.VECTOR_CARD_TROY, true),
+                    (CARDTYPE.CARD_EFTPOS, MerchantCreditCardType.EFTPOS, MerchantDebitCardType.EFTPOS, IconIds.VECTOR_CARD_EFTPOS, true)
+                };
+
+            RequestDlgData.CardBrandLogoList = new List<CardBrandLogoDisplayData>();
+
+            foreach (var brand in brandsToCheck)
+            {
+                if (true)
+                {
+                    RequestDlgData.CardBrandLogoList.Add(new CardBrandLogoDisplayData
+                    {
+                        CardType = brand.Type,
+                        IsSupported = true,
+                        RateDisplay = "0.5%",
+                        IconName = brand.IconName,
+                        IsVector = brand.IsVector
+                    });
+                }
+            }
+
 
             switch (caseDialog)
             {
@@ -631,6 +665,20 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_TAP;
 
+                    RequestDlgData.OtherPayment = new ButtonData()
+                    {
+                        Icon = IconIds.VECTOR_OTHER_PAYMENTS,
+                        Title = StringIds.STRING_OTHER_PAYMENTS,
+                    };
+
+                    RequestDlgData.FirstTenderType = new ButtonData()
+                    {
+                        Command = TransResponse.APPCOMMAND_ALI_PAY,
+                        IconHorizontal = IconIds.ICON_ALIPAY_HORIZONTAL_LOGO,
+                        Icon = IconIds.VECTOR_ALI_PAY,
+                        Title = StringIds.STRING_ALIPAY
+                    };
+
                     break;
 
                 case CaseDialog.CASE7:
@@ -691,7 +739,7 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
@@ -1324,6 +1372,17 @@ namespace CloudBanking.UITestApp
 
             pProcessingData.fAutoClose = true;
             string cancelBtnTitleId = "";
+
+            pProcessingData.AnimationFilePath = Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_LOTTIE_ANIMATIONS), Path.GetFileName(GlobalConstants.LOADING_LOTTIE_ANIMATION));
+
+            if(File.Exists(pProcessingData.AnimationFilePath))
+            {
+                Console.WriteLine("Da thay file!!");
+            }
+            else
+            {
+                Console.WriteLine("Khong thay file!!");
+            }
 
             switch (caseDialog)
             {
@@ -8903,6 +8962,119 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        //end functiondddddddddddddddddd
+        void ShowEnterUserPasscodeDialog()
+        {
+            DialogBuilder.Show(IPayDialog.ENTER_ACCESS_CODE_TO_PROCESS_DIALOG, StringIds.STRING_ACCESSCODE, (iResult, args) =>
+            {
+                //if (iResult == GlobalResource.DONE_BUTTON)
+                //{
+                //    enteredPassCode = args?.GetDataOfIndex<string>(0);
+                //}
+
+            }, true, false, new UserDlgData()
+            {
+                //GuestIcon = GlobalUserRec.lszPicture,
+                //GuestName = GlobalUserRec.lszUserName
+            });
+        }
+
+        void ShowLogonDialog()
+        {
+            var pLogonData = new LogonDlgData()
+            {
+                InitData = new InitLogonModel()
+                {
+                    fLogonPasscode = true,
+                    fAutoLogin = false,
+                    User = new User() { lszPicture = "trisha_barnett.png" }
+                },
+                IsShowIDField = false,
+                IsShowLoginModeButtons = false,
+                //UserNameLabel = StringIds.STRING_ADMINISTRATOR,
+                PasswordLabel = StringIds.STRING_ADMINISTRATOR_CODE,
+                CorrectPasscode = "1234"
+            };
+
+            DialogBuilder.Show(IPayDialog.LOGON_DIALOG, StringIds.STRING_ACCESSCODE, null, true, false, pLogonData, false);
+        }
+
+        private SelFncDlgData CreatePaymentMethodOptions()
+        {
+            return new SelFncDlgData()
+            {
+                iPage = 0,
+                iMaxPage = 4,
+                iMinPage = 1,
+                pIdProcessor = 0,
+                fShowLogout = false,
+                fGrid = false,
+                fModeDisplay = false,
+                pIdSecurityUser = 0,
+                FunctionButtons = new List<SelectButton>()
+                {
+                    new SelectButton()
+                    {
+                        iCommandLang = StringIds.STRING_SPLIT_PAY,
+                        Title = StringIds.STRING_SPLIT_PAY,
+                        idImage = IconIds.VECTOR_MENU_SPLIT_PAY,
+                        IdProcessor = 0,
+                        iCommand = GlobalResource.SPLIT_PAY_BUTTON
+                    },
+                    new SelectButton()
+                    {
+                        iCommandLang = StringIds.STRING_SHARE_PAY,
+                        Title = StringIds.STRING_SHARE_PAY,
+                        idImage = IconIds.VECTOR_MENU_MY_SHARE,
+                        IdProcessor = 0,
+                        iCommand = GlobalResource.MY_SHARE_BUTTON
+                    },
+                    new SelectButton()
+                    {
+                        iCommandLang = StringIds.STRING_MULTI_TENDER,
+                        Title = StringIds.STRING_MULTI_TENDER,
+                        idImage = IconIds.VECTOR_MENU_MULTI_TENDER,
+                        IdProcessor = 0,
+                        iCommand = GlobalResource.MULTI_TENDER_BUTTON
+                    },
+                    new SelectButton()
+                    {
+                        iCommandLang = StringIds.STRING_CARD_MANUAL_ENTRY,
+                        Title = StringIds.STRING_CARD_MANUAL_ENTRY,
+                        idImage = IconIds.VECTOR_MANUAL_CARD,
+                        IdProcessor = 0,
+                        iCommand = GlobalResource.MANUAL_BUTTON
+                    },
+                    new SelectButton()
+                    {
+                        iCommandLang = StringIds.STRING_SOFTPOS,
+                        Title = StringIds.STRING_SOFTPOS,
+                        idImage = IconIds.VECTOR_MOBILE,
+                        IdProcessor = 0,
+                        iCommand = GlobalResource.SOFTPOS_BUTTON
+                    },
+                    new SelectButton()
+                    {
+                        iCommandLang = StringIds.STRING_ECOMMERCE,
+                        Title = StringIds.STRING_ECOMMERCE,
+                        idImage = IconIds.VECTOR_ECOMMERCE_PAYMENTS,
+                        IdProcessor = 0,
+                        iCommand = GlobalResource.ECOMMERCE_BUTTON
+                    }
+                }
+            };
+        }
+
+        void ShowPaymentOptions()
+        {
+
+            var paymentMethodOptions = CreatePaymentMethodOptions();
+
+            DialogBuilder.Show(IShellDialog.MENU_DIALOG, StringIds.STRING_PAYMENT_OPTIONS, (iResult, args) =>
+            {
+
+            }, true, false, paymentMethodOptions);
+        }
+
+        //end function
     }
 }

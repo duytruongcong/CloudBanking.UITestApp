@@ -1,10 +1,12 @@
 using CloudBanking.BaseControl;
+using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
 using CloudBanking.Language;
 using CloudBanking.Utilities;
 using System;
 using System.Collections.Generic;
+using static CloudBanking.Utilities.UtilEnum;
 
 namespace CloudBanking.UITestApp
 {
@@ -31,13 +33,13 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogVoidTransaction()
         {
-#if true
+#if false
             var mainResult = StringIds.STRING_APPROVED.GetString();
             var fCustomerPrint = true;
 
             var secondaryRes = Localize.GetString(fCustomerPrint ? StringIds.STRING_PRINTCUSTOMERRECEIPT : StringIds.STRING_PRINTMERCHANTRECEIPT);
 
-            ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_VOID_TRANSACTION, mainResult, false,
+            ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_VOID_TITLE, mainResult, false,
                 GlobalResource.MB_OKCANCEL, GlobalResource.MB_ICONAPPROVAL_BMP,
                 subMsg: secondaryRes,
                 strSubMessageColor: GlobalConstants.STRING_PRIMARY_COLOR,
@@ -157,7 +159,7 @@ namespace CloudBanking.UITestApp
 
         void ShowManualEntryCardNumberDialog()
         {
-#if true
+#if false
             var entryDlgData = new EntryCardNumberDlgData();
 
             entryDlgData.fShowExpiry = true;
@@ -519,5 +521,52 @@ namespace CloudBanking.UITestApp
         {
             ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_REPRINT_TITLE, (true) ? StringIds.STRING_REPRINTED_SUCCESSFULLY_UPCASE : StringIds.STRING_REPORT_PRINTED_FAILED, false, GlobalResource.MB_OK, (true) ? GlobalResource.MB_ICONAPPROVAL_BMP : GlobalResource.MB_ICONDECLINED_BMP, aboveMsg: StringIds.STRING_REPRINT_RECEIPT);
         }
+
+        void ShowCommonSplitPayDialog()
+        {
+#if false
+            ApplicationBaseFlow.GlobalInitProcessData = new InitProcessData();
+
+            ApplicationBaseFlow.GlobalInitProcessData.iFunctionButton = GlobalResource.FNC_SALE_BUTTON;
+
+            ApplicationBaseFlow.GlobalInitProcessData.SplitPayModel = new SplitModel()
+            {
+                TotalAmount = 10000,
+            };
+            ApplicationBaseFlow.GlobalInitProcessData.SplitPayModel.Items = new List<SplitItem>();
+            ApplicationBaseFlow.GlobalInitProcessData.SplitPayModel.Items.Add(new SplitItem() 
+            { 
+                Id=1, 
+                Amount=3000, 
+                SplitId="1", 
+                CardType = "Visa", 
+                CustomerDetailsData = new CustomerDetailsData(),
+                GuestName="David",
+                GuestNumber=4,
+                IsAdjusted=false,
+                IsCustomerDetailsInitialized=false,
+                IsMultipleTender=false,
+                IsPaid=false,
+                PosTicketId="1",
+                Reference="4324",
+                ReferenceType=3,
+                TransactionNote="no action",
+                PayItems=new List<PayItem>()
+                {
+                    new PayItem(){Amount = 1000, AuthCode="1234", CardHolderName="David Smith", CardNumber="1234"}
+                }
+            });
+
+            GlobalData.CurrentNote = "Please turn on the app";
+
+            DialogBuilder.Show(IPayDialog.COMMON_SPLIT_PAY_DIALOG, StringIds.STRING_SPLIT_PAY, (iResult, args) =>
+            {
+                if (iResult == GlobalResource.OK_BUTTON || iResult == GlobalResource.SELECT_BUTTON || iResult == GlobalResource.ADJUST_BUTTON || iResult == GlobalResource.MENU_BUTTON || iResult == GlobalResource.INFO_BUTTON)
+                {
+                }
+            }, true, false, ApplicationBaseFlow.GlobalInitProcessData, SubFlow.Standalone);
+#endif
+        }
+
     }
 }

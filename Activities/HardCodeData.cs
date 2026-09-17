@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using static CloudBanking.Entities.Database;
 using static CloudBanking.Entities.RefundReasonDlgData;
@@ -46,190 +47,188 @@ namespace CloudBanking.UITestApp
                 case CaseDialog.CASE1:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
-                    lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
-                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
+                    lpszTitleString = StringIds.STRING_PURCHASE;
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED).ToUpperInvariant();
+                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpperInvariant();
                     DlgData.fApproved = true;
                     DlgData.lPurchaseApproval = 13800;
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.Purchase);
                     DlgData.FunctionType = FunctionType.Purchase;
                     DlgData.Amount = 8000;
-                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardNumber += $" *8765";
+                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA).ToUpperInvariant();
+                    DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
-                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
-                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
+                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED).ToUpperInvariant();
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_APPROVED).ToUpperInvariant();
                     break;
 
                 case CaseDialog.CASE2:
 
                     DlgData.PrintStage = PrintStage.Printing;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
-                    lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
-                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
+                    lpszTitleString = StringIds.STRING_PURCHASE;
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED).ToUpperInvariant();
+                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpperInvariant();
                     DlgData.fApproved = true;
                     DlgData.lPurchaseApproval = 13800;
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PurchaseCash);
                     DlgData.FunctionType = FunctionType.PurchaseCash;
                     DlgData.Amount = 8000;
-                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardNumber += $" *8765";
+                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA).ToUpperInvariant();
+                    DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
-                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
-                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
-
+                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED).ToUpperInvariant();
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED).ToUpperInvariant();
 
                     break;
 
                 case CaseDialog.CASE3:
 
                     DlgData.PrintStage = PrintStage.PrintPrompt;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
-                    lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
-                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
+                    lpszTitleString = StringIds.STRING_PURCHASE;
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_APPROVED).ToUpperInvariant();
+                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED).ToUpperInvariant();
+                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED).ToUpperInvariant();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_MERCHANT_COPY).ToUpperInvariant();
                     DlgData.fApproved = true;
                     DlgData.lPurchaseApproval = 13800;
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.Refund);
                     DlgData.FunctionType = FunctionType.Refund;
                     DlgData.Amount = 8000;
-                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardNumber += $" *8765";
+                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA).ToUpperInvariant();
+                    DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
-                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
-                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
 
                     break;
 
                 case CaseDialog.CASE4:
 
                     DlgData.PrintStage = PrintStage.PrintPrompt;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
-                    lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
-                    DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
+                    lpszTitleString = StringIds.STRING_PURCHASE;
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED).ToUpperInvariant();
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED).ToUpperInvariant();
+                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED).ToUpperInvariant();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpperInvariant();
                     DlgData.fApproved = true;
                     DlgData.lPurchaseApproval = 13800;
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount = 8000;
-                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardNumber += $" *8765";
+                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA).ToUpperInvariant();
+                    DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
-                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
-                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
 
                     break;
 
                 case CaseDialog.CASE5:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
-                    lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
-                    DlgData.lpszSecondaryResult = string.Empty;
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
+                    lpszTitleString = StringIds.STRING_PURCHASE;
                     DlgData.IdBitmap = GlobalResource.MB_ICONAPPROVAL_BMP;
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED).ToUpperInvariant();
+                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED).ToUpperInvariant();
+                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED).ToUpperInvariant();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpperInvariant();
                     DlgData.fApproved = true;
                     DlgData.lPurchaseApproval = 13800;
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount = 8000;
-                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardNumber += $" *8765";
+                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA).ToUpperInvariant();
+                    DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
-                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
-                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
 
                     break;
 
                 case CaseDialog.CASE6:
 
                     DlgData.PrintStage = PrintStage.Printing;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
-                    lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
-                    DlgData.lpszSecondaryResult = string.Empty;
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpper();
+                    lpszTitleString = StringIds.STRING_PURCHASE;
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED).ToUpperInvariant();
+                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED).ToUpperInvariant();
+                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED).ToUpperInvariant();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpperInvariant();
                     DlgData.fApproved = false;
                     DlgData.lPurchaseApproval = 13800;
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount = 8000;
-                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardNumber += $" *8765";
+                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA).ToUpperInvariant();
+                    DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
-                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
-                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
                     break;
 
                 case CaseDialog.CASE7:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
-                    lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
-                    DlgData.lpszSecondaryResult = string.Empty;
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpper();
+                    lpszTitleString = StringIds.STRING_PURCHASE;
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED).ToUpperInvariant();
+                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED).ToUpperInvariant();
+                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED).ToUpperInvariant();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpperInvariant();
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
                     DlgData.fApproved = false;
                     DlgData.lPurchaseApproval = 13800;
                     DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
                     DlgData.FunctionType = FunctionType.PreAuth;
                     DlgData.Amount = 8000;
-                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardNumber += $" *8765";
+                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA).ToUpperInvariant();
+                    DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
-                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
-                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
 
                     break;
 
                 case CaseDialog.CASE8:
                     DlgData.PrintStage = PrintStage.PrintPrompt;
-                    DlgData.lpszAboveMainString = StringIds.STRING_RESERVE_FUNDS.GetString();
-                    lpszTitleString = StringIds.STRING_RESERVE_FUNDS;
-                    DlgData.lpszSecondaryResult = string.Empty;
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpper();
+                    lpszTitleString = StringIds.STRING_PURCHASE;
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED).ToUpperInvariant();
+                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED).ToUpperInvariant();
+                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED).ToUpperInvariant();
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY).ToUpperInvariant();
                     DlgData.IdBitmap = GlobalResource.MB_ICONDECLINED_BMP;
                     DlgData.fApproved = false;
                     DlgData.lPurchaseApproval = 13800;
-                    DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuth);
-                    DlgData.FunctionType = FunctionType.PreAuth;
+                    DlgData.TransactionTypeStringId = GetStringId(FunctionType.PreAuthCancel);
+                    DlgData.FunctionType = FunctionType.PreAuthCancel;
                     DlgData.Amount = 8000;
-                    DlgData.CardType = Localize.GetString(StringIds.STRING_CARDTYPE_VISA);
-                    DlgData.CardNumber += $" *8765";
+                    DlgData.CardInfo = Localize.GetString(StringIds.STRING_CARDTYPE_VISA).ToUpperInvariant();
+                    DlgData.CardInfo += $" *8765";
                     DlgData.AuthCode = "8569";
                     DlgData.fCustomerDisplay = false;
-                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINT_CUSTOMER_COPY);
-                    DlgData.lpszResult = Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED);
-                    DlgData.lpszSecondaryResult = Localize.GetString(StringIds.STRING_GATEWAY_ERR_TRANSNOTSUPPORTED);
-                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
 
                     break;
             }
 
             DlgData.TransactionTypeStringId = GetStringId(DlgData.FunctionType);
-            DlgData.AuthCode = "2895647";
+            //DlgData.AuthCode = "8569";
+            //     DlgData.CardInfo = DlgData.CardType;
 
-            var approvalDialog = new ApprovalDialog(lpszTitleString, null, DlgData);
+            //if (!string.IsNullOrEmpty(DlgData.CardNumber))
+            //    DlgData.CardInfo += $" *{DlgData.CardNumber}";
+
+            var approvalDialog = new ShellUI.ApprovalDialog(lpszTitleString, null, DlgData);
+
             approvalDialog.Evt += (iResult, args) =>
             {
                 approvalDialog.Dismiss();
@@ -404,7 +403,12 @@ namespace CloudBanking.UITestApp
 
             RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENTCARD_TITLE;
             RequestDlgData.IsEmulator = true;
-            RequestDlgData.fShowMenu = false;
+            RequestDlgData.fShowMenu = true;
+            RequestDlgData.IsAccessibilityFlowEnabled = false;
+            RequestDlgData.IsInAccessibilityMode = false;
+            //RequestDlgData.lszSurcharge = StringIds.STRING_SURCHARGE_MAY_APPLY;
+            RequestDlgData.lszSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
+            RequestDlgData.ErrorMessageId = StringIds.STRING_CANNOTREADCARD;
             //RequestDlgData.fMultiTender = false;
 
             //RequestDlgData.fVisa = true;
@@ -415,8 +419,8 @@ namespace CloudBanking.UITestApp
             //RequestDlgData.fUnionPay = true;
             //RequestDlgData.fTroy = true;
             //RequestDlgData.fDiscover = true;
-            //RequestDlgData.lszPreSurcharge = StringIds.STRING_SURCHARGE_CREDIT___DEBIT_FEES_APPLY;
             //RequestDlgData.fAlipayWechatLogo = true;
+
 
             var brandsToCheck = new List<(CARDTYPE Type, MerchantCreditCardType CreditType, MerchantDebitCardType DebitType, string IconName, bool IsVector)>
                 {
@@ -424,30 +428,39 @@ namespace CloudBanking.UITestApp
                     (CARDTYPE.CARD_MASTER, MerchantCreditCardType.MasterCard, MerchantDebitCardType.MasterCard, IconIds.VECTOR_MASTER_CARD, true),
                     (CARDTYPE.CARD_UNIONPAY, MerchantCreditCardType.UnionPay, MerchantDebitCardType.UnionPay, IconIds.VECTOR_UNION_PAY, true),
                     (CARDTYPE.CARD_AMEX, MerchantCreditCardType.Amex, MerchantDebitCardType.Amex, IconIds.VECTOR_AMERICAN_EXPRESS, false),
-                    (CARDTYPE.CARD_JCB, MerchantCreditCardType.JCB, MerchantDebitCardType.JCB, IconIds.VECTOR_JBC, true),
+                    //(CARDTYPE.CARD_JCB, MerchantCreditCardType.JCB, MerchantDebitCardType.JCB, IconIds.VECTOR_JBC, true),
                     (CARDTYPE.CARD_DISCOVER, MerchantCreditCardType.Discover, MerchantDebitCardType.Discover, IconIds.VECTOR_DISCOVER_NETWORK, true),
-                    (CARDTYPE.CARD_DINERS, MerchantCreditCardType.Diners, MerchantDebitCardType.Diners, IconIds.VECTOR_DINNERS, true),
-                    (CARDTYPE.CARD_TROY, MerchantCreditCardType.Troy, MerchantDebitCardType.Troy, IconIds.VECTOR_CARD_TROY, true),
-                    (CARDTYPE.CARD_EFTPOS, MerchantCreditCardType.EFTPOS, MerchantDebitCardType.EFTPOS, IconIds.VECTOR_CARD_EFTPOS, true)
+                    //(CARDTYPE.CARD_DINERS, MerchantCreditCardType.Diners, MerchantDebitCardType.Diners, IconIds.VECTOR_DINNERS, true),
+                    //(CARDTYPE.CARD_TROY, MerchantCreditCardType.Troy, MerchantDebitCardType.Troy, IconIds.VECTOR_CARD_TROY, true),
+                    //(CARDTYPE.CARD_EFTPOS, MerchantCreditCardType.EFTPOS, MerchantDebitCardType.EFTPOS, IconIds.VECTOR_CARD_EFTPOS, true)
                 };
 
-            RequestDlgData.CardBrandLogoList = new List<CardBrandLogoDisplayData>();
+            //RequestDlgData.CardBrandLogoList = new List<CardBrandLogoDisplayData>();
 
-            foreach (var brand in brandsToCheck)
-            {
-                if (true)
-                {
-                    RequestDlgData.CardBrandLogoList.Add(new CardBrandLogoDisplayData
-                    {
-                        CardType = brand.Type,
-                        IsSupported = true,
-                        RateDisplay = "0.5%",
-                        IconName = brand.IconName,
-                        IsVector = brand.IsVector
-                    });
-                }
-            }
+            //foreach (var brand in brandsToCheck)
+            //{
+            //    if (true)
+            //    {
+            //        RequestDlgData.CardBrandLogoList.Add(new CardBrandLogoDisplayData
+            //        {
+            //            CardType = brand.Type,
+            //            IsSupported = true,
+            //            RateDisplay = "0.5%",
+            //            IconName = brand.IconName,
+            //            IsVector = brand.IsVector
+            //        });
+            //    }
+            //}
 
+            RequestDlgData.CardLogo = new CardLogo();
+            RequestDlgData.CardLogo.fVisa = true;
+            RequestDlgData.CardLogo.fMasterCard = true;
+            RequestDlgData.CardLogo.fUnionPay = true;
+            RequestDlgData.CardLogo.fAmex = true;
+            RequestDlgData.CardLogo.fJCB = true;
+            RequestDlgData.CardLogo.fDiscover = true;
+            RequestDlgData.CardLogo.fDiners = true;
+            RequestDlgData.CardLogo.fTroy = true;
 
             switch (caseDialog)
             {
@@ -471,21 +484,21 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_SWIPE;
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_ALI_PAY,
-                        IconHorizontal = IconIds.ICON_ALIPAY_HORIZONTAL_LOGO,
-                        Icon = IconIds.VECTOR_ALI_PAY,
-                        Title = StringIds.STRING_ALIPAY
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_ALI_PAY,
+                    //    IconHorizontal = IconIds.ICON_ALIPAY_HORIZONTAL_LOGO,
+                    //    Icon = IconIds.VECTOR_ALI_PAY,
+                    //    Title = StringIds.STRING_ALIPAY
+                    //};
 
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_WE_PAY,
-                        IconHorizontal = IconIds.ICON_WECHAT_HORIZONTAL_LOGO,
-                        Icon = IconIds.VECTOR_WECHAT,
-                        Title = StringIds.STRING_WECHAT_PAY
-                    };
+                    //RequestDlgData.SecondTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_WE_PAY,
+                    //    IconHorizontal = IconIds.ICON_WECHAT_HORIZONTAL_LOGO,
+                    //    Icon = IconIds.VECTOR_WECHAT,
+                    //    Title = StringIds.STRING_WECHAT_PAY
+                    //};
 
                     break;
 
@@ -508,28 +521,28 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT_TAP;
 
-                    RequestDlgData.OtherPayment = new ButtonData()
-                    {
-                        Icon = IconIds.VECTOR_OTHER_PAYMENTS,
-                        Title = StringIds.STRING_OTHER_PAYMENTS,
-                    };
+                    //RequestDlgData.OtherPayment = new ButtonData()
+                    //{
+                    //    Icon = IconIds.VECTOR_OTHER_PAYMENTS,
+                    //    Title = StringIds.STRING_OTHER_PAYMENTS,
+                    //};
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
-                    {
-                        Command = GlobalResource.MANUAL_BUTTON,
-                        Title = StringIds.STRING_MANUAL_ENTER,
-                        CommandLang = StringIds.STRING_MANUAL_ENTER,
-                        IconHorizontal = IconIds.ICON_MANUAL_TEXT,
-                        Icon = IconIds.VECTOR_MANUAL_CARD
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = GlobalResource.MANUAL_BUTTON,
+                    //    Title = StringIds.STRING_MANUAL_ENTER,
+                    //    CommandLang = StringIds.STRING_MANUAL_ENTER,
+                    //    IconHorizontal = IconIds.ICON_MANUAL_TEXT,
+                    //    Icon = IconIds.VECTOR_MANUAL_CARD
+                    //};
 
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_MULTI_TENDER_PAY,
-                        IconHorizontal = IconIds.ICON_MULTI_TENDER_TEXT,
-                        Icon = IconIds.VECTOR_MENU_MULTI_TENDER,
-                        Title = StringIds.STRING_MULTI_TENDER,
-                    };
+                    //RequestDlgData.SecondTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_MULTI_TENDER_PAY,
+                    //    IconHorizontal = IconIds.ICON_MULTI_TENDER_TEXT,
+                    //    Icon = IconIds.VECTOR_MENU_MULTI_TENDER,
+                    //    Title = StringIds.STRING_MULTI_TENDER,
+                    //};
 
                     break;
 
@@ -570,34 +583,34 @@ namespace CloudBanking.UITestApp
 
                     RequestDlgData.fShowInsertCardIcon = true;
                     RequestDlgData.fShowTapCardIcon = false;
-                    RequestDlgData.fShowSwipeCardIcon= false;
+                    RequestDlgData.fShowSwipeCardIcon = false;
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTCARD;
                     RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_INSERT;
 
-                    RequestDlgData.OtherPayment = new ButtonData()
-                    {
-                        Icon = IconIds.VECTOR_OTHER_PAYMENTS,
-                        Title = StringIds.STRING_OTHER_PAYMENTS,
-                    };
+                    //RequestDlgData.OtherPayment = new ButtonData()
+                    //{
+                    //    Icon = IconIds.VECTOR_OTHER_PAYMENTS,
+                    //    Title = StringIds.STRING_OTHER_PAYMENTS,
+                    //};
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
-                    {
-                        Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
-                        Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        Icon = IconIds.VECTOR_MANUAL_CARD,
-                        IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
+                    //    Title = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                    //    CommandLang = true ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                    //    Icon = IconIds.VECTOR_MANUAL_CARD,
+                    //    IconHorizontal = true ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
+                    //};
 
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
-                        Title = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        CommandLang = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
-                        Icon = IconIds.VECTOR_MANUAL_CARD,
-                        IconHorizontal = false ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
-                    };
+                    //RequestDlgData.SecondTenderType = new ButtonData()
+                    //{
+                    //    Command = GlobalResource.MSR_READER_ENABLED_BUTTON,
+                    //    Title = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                    //    CommandLang = false ? StringIds.STRING_SWIPE_OR_MANUAL : StringIds.STRING_SWIPECARD,
+                    //    Icon = IconIds.VECTOR_MANUAL_CARD,
+                    //    IconHorizontal = false ? IconIds.ICON_SWIPE_OR_MANUAL_TEXT : IconIds.ICON_SWIPE_CARD_TEXT,
+                    //};
 
                     break;
 
@@ -622,27 +635,27 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_SWIPE_TAP;
 
-                    RequestDlgData.OtherPayment = new ButtonData()
-                    {
-                        Icon = IconIds.VECTOR_OTHER_PAYMENTS,
-                        Title = StringIds.STRING_OTHER_PAYMENTS,
-                    };
+                    //RequestDlgData.OtherPayment = new ButtonData()
+                    //{
+                    //    Icon = IconIds.VECTOR_OTHER_PAYMENTS,
+                    //    Title = StringIds.STRING_OTHER_PAYMENTS,
+                    //};
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_CENTRA_PAY,
-                        IconHorizontal = IconIds.ICON_CENTRALPAY_TEXT,
-                        Icon = IconIds.VECTOR_OTHERPAY_CENTRAPAY,
-                        Title = StringIds.STRING_CENTRAPAY,
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_CENTRA_PAY,
+                    //    IconHorizontal = IconIds.ICON_CENTRALPAY_TEXT,
+                    //    Icon = IconIds.VECTOR_OTHERPAY_CENTRAPAY,
+                    //    Title = StringIds.STRING_CENTRAPAY,
+                    //};
 
-                    RequestDlgData.SecondTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_GIFT_CARD_PAY,
-                        IconHorizontal = IconIds.ICON_EPAY_TEXT,
-                        Icon = IconIds.ICON_EPAY_PRODUCTS,
-                        Title = StringIds.STRING_EZIPAY_UPCASE,
-                    };
+                    //RequestDlgData.SecondTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_GIFT_CARD_PAY,
+                    //    IconHorizontal = IconIds.ICON_EPAY_TEXT,
+                    //    Icon = IconIds.ICON_EPAY_PRODUCTS,
+                    //    Title = StringIds.STRING_EZIPAY_UPCASE,
+                    //};
 
                     break;
 
@@ -665,19 +678,19 @@ namespace CloudBanking.UITestApp
                     RequestDlgData.fShowCardAnimation = true;
                     //RequestDlgData.PresentCardAnimFileName = GlobalConstants.PRESENT_CARD_LOTTIE_TAP;
 
-                    RequestDlgData.OtherPayment = new ButtonData()
-                    {
-                        Icon = IconIds.VECTOR_OTHER_PAYMENTS,
-                        Title = StringIds.STRING_OTHER_PAYMENTS,
-                    };
+                    //RequestDlgData.OtherPayment = new ButtonData()
+                    //{
+                    //    Icon = IconIds.VECTOR_OTHER_PAYMENTS,
+                    //    Title = StringIds.STRING_OTHER_PAYMENTS,
+                    //};
 
-                    RequestDlgData.FirstTenderType = new ButtonData()
-                    {
-                        Command = TransResponse.APPCOMMAND_ALI_PAY,
-                        IconHorizontal = IconIds.ICON_ALIPAY_HORIZONTAL_LOGO,
-                        Icon = IconIds.VECTOR_ALI_PAY,
-                        Title = StringIds.STRING_ALIPAY
-                    };
+                    //RequestDlgData.FirstTenderType = new ButtonData()
+                    //{
+                    //    Command = TransResponse.APPCOMMAND_ALI_PAY,
+                    //    IconHorizontal = IconIds.ICON_ALIPAY_HORIZONTAL_LOGO,
+                    //    Icon = IconIds.ICON_ALIPAY_WITH_BOTTOM_TEXT,
+                    //    Title = string.Empty
+                    //};
 
                     break;
 
@@ -739,13 +752,13 @@ namespace CloudBanking.UITestApp
                 case FunctionType.CashOut: lszTitle = StringIds.STRING_CASHOUT; totalTitleId = StringIds.STRING_CASHOUT; break;
                 case FunctionType.Void: lszTitle = StringIds.STRING_FUNCTIONTYPES_VOID; totalTitleId = StringIds.STRING_VOID; break;
                 case FunctionType.Adjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_ADJUST; totalTitleId = StringIds.STRING_ADJUST; break;
-                //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
+                    //case FunctionType.IncrementalAdjust: lszTitle = StringIds.STRING_FUNCTIONTYPES_INCREMENTALADJUST; totalTitleId = StringIds.STRING_INCREMENTAL_ADJUST; break;
             }
 
             RequestDlgData.szTotalTitle = totalTitleId;
 
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.OnlyPresentCard;
-            RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
+            //RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
             //RequestDlgData.RequestCardScreenType = RequestCardScreenType.NoPresentCard;
 
             //var menuItems = new List<MenuDlgData>()
@@ -1007,7 +1020,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             var generalType = new List<GenericType>();
 
             var item1 = new GenericType();
@@ -1108,7 +1121,7 @@ namespace CloudBanking.UITestApp
             //ACCOUNT SELECTION CHQ / SAV / CRD is the normal account selection order in NZ
             var sortedGeneralType = generalType.OrderBy(p => p.Id == AccountType.ACCOUNT_TYPE_CHEQUE ? 0 : p.Id == AccountType.ACCOUNT_TYPE_SAVINGS ? 1 : 2).ToList();
 
-            var dynamicOptionDialog = new DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, string.Empty, bottomButtonId, bottomButtonStringId);
+            var dynamicOptionDialog = new ShellUI.DynamicOptionDialog(StringIds.STRING_ACCOUNT_TYPES, null, sortedGeneralType, string.Empty, bottomButtonId, bottomButtonStringId);
             dynamicOptionDialog.DialogStyle = DialogStyle.FULLSCREEN;
             dynamicOptionDialog.Show(this);
 #endif
@@ -1179,17 +1192,17 @@ namespace CloudBanking.UITestApp
 
                     secondaryRes = StringIds.STRING_PRINTMERCHANTRECEIPT;
 
-                    ApplicationBaseFlow.CustomStringMessageBox(true, mainTitle, mainResult, false,
-                        GlobalResource.MB_OKCANCEL, GlobalResource.MB_ICONAPPROVAL_BMP,
-                        bottomWarningId: secondaryRes, fThirdActualText: false,
-                        aboveMsg: mainTitle,
-                        subMsg: lBalance.ToFormatLocalCurrencyAmount(),
-                        textLeftButton: StringIds.STRING_NO_RECEIPT,
-                        textRightButton: StringIds.STRING_PRINT_RECEIPT);
+                    //ApplicationBaseFlow.CustomStringMessageBox(true, mainTitle, mainResult, false,
+                    //    GlobalResource.MB_OKCANCEL, GlobalResource.MB_ICONAPPROVAL_BMP,
+                    //    bottomWarningId: secondaryRes, fThirdActualText: false,
+                    //    aboveMsg: mainTitle,
+                    //    subMsg: lBalance.ToFormatLocalCurrencyAmount(),
+                    //    textLeftButton: StringIds.STRING_NO_RECEIPT,
+                    //    textRightButton: StringIds.STRING_PRINT_RECEIPT);
 
-                    //messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
-                    //messageData.BottomWarningId = StringIds.STRING_PRINT_MERCHANT_COPY;
-                    //ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_ERROR, StringIds.STRING_ERRORDATA, false, GlobalResource.MB_OK, ref messageData);
+                    messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
+                    messageData.BottomWarningId = StringIds.STRING_PRINT_MERCHANT_COPY;
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_ERROR, StringIds.STRING_ERRORDATA, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
                 case CaseDialog.CASE2:
@@ -1368,21 +1381,22 @@ namespace CloudBanking.UITestApp
 
         private void ShowProcessMessageDialog(CaseDialog caseDialog)
         {
+#if true
             var pProcessingData = new ProcessingData();
 
             pProcessingData.fAutoClose = true;
             string cancelBtnTitleId = "";
 
-            pProcessingData.AnimationFilePath = Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_LOTTIE_ANIMATIONS), Path.GetFileName(GlobalConstants.LOADING_LOTTIE_ANIMATION));
+            //pProcessingData.AnimationFilePath = Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_LOTTIE_ANIMATIONS), Path.GetFileName(GlobalConstants.LOADING_LOTTIE_ANIMATION));
 
-            if(File.Exists(pProcessingData.AnimationFilePath))
-            {
-                Console.WriteLine("Da thay file!!");
-            }
-            else
-            {
-                Console.WriteLine("Khong thay file!!");
-            }
+            //if (File.Exists(pProcessingData.AnimationFilePath))
+            //{
+            //    Console.WriteLine("Da thay file!!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Khong thay file!!");
+            //}
 
             switch (caseDialog)
             {
@@ -1392,7 +1406,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
                     pProcessingData.hTextTwo = "";
                     pProcessingData.hTextThree = "";
-                    pProcessingData.cancelText = StringIds.STRING_CANCEL;
+                    //pProcessingData.cancelText = StringIds.STRING_CANCEL;
                     break;
 
                 case CaseDialog.CASE2:
@@ -1426,6 +1440,7 @@ namespace CloudBanking.UITestApp
             var enterPinDialog = new ProcessMessageDialog(StringIds.STRING_PROCESSING_TITLE, null, pProcessingData, 0);
             enterPinDialog.DialogStyle = DialogStyle.FULLSCREEN;
             enterPinDialog.Show(this);
+#endif
         }
 
         private void ShowEntryCardNumberDialog()
@@ -1447,7 +1462,7 @@ namespace CloudBanking.UITestApp
 
             entryDlgData.fShowBackButton = true;
 
-            entryDlgData.fAlphaNumKeyboard = false;
+            //entryDlgData.fAlphaNumKeyboard = false;
 
             var entryCardNumberDialog = new ShellUI.EntryCardNumberDialog(StringIds.STRING_MANUAL_PAY, null, entryDlgData);
             entryCardNumberDialog.DialogStyle = DialogStyle.FULLSCREEN;
@@ -1528,15 +1543,16 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
-#if false
+#if true
             var data = new CancelPreAuthComfirmDlgData()
             {
                 lAmount = 488,
                 AuthCode = "287635",
-                CardType = string.Format("{0} {1}", Localize.GetString(StringIds.STRING_CARDTYPE_VISA), Localize.GetString(StringIds.STRING_CREDIT)),
-                CardNumber = $"**** 8770"
+                CardInfo = $"{Localize.GetString(StringIds.STRING_CARDTYPE_VISA)} {Localize.GetString(StringIds.STRING_CREDIT)} **** 8770"
+                //CardType = string.Format("{0} {1}", Localize.GetString(StringIds.STRING_CARDTYPE_VISA), Localize.GetString(StringIds.STRING_CREDIT)),
+                //CardNumber = $"**** 8770"
             };
-
+            
             DialogBuilder.Show(IPayDialog.PREAUTH_CANCEL_CONFIRM_DIALOG, StringIds.STRING_CANCEL_PRE_AUTH, (iResult, args) =>
             {
             }, true, false, data);
@@ -1552,7 +1568,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
-#if false
+#if true
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1570,7 +1586,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_MOTO);
+            var dialog3 = new ShellUI.DynamicOptionDialog(StringIds.STRING_MOTO_TRANSACTIONS, null, generalType, StringIds.STRING_MOTO);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1578,7 +1594,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectDate()
         {
-#if false
+#if true
             ////hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1596,7 +1612,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
+            var dialog3 = new ShellUI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1605,7 +1621,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSettlementOptions()
         {
-#if false
+#if true
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1622,7 +1638,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SETTLEMENT_OPTIONS);
+            var dialog3 = new ShellUI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SETTLEMENT_OPTIONS);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1630,7 +1646,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowReprintOptions()
         {
-#if false
+#if true
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -1647,7 +1663,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new DynamicOptionDialog(StringIds.STRING_REPRINT_TITLE, null, generalType, StringIds.STRING_CUSTOMER_REPRINT_OPTION);
+            var dialog3 = new ShellUI.DynamicOptionDialog(StringIds.STRING_REPRINT_TITLE, null, generalType, StringIds.STRING_CUSTOMER_REPRINT_OPTION);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1655,7 +1671,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowPreAuthEnterAmountDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             long amount = 10000;
 
             bool fReferenceEnable = false;
@@ -1674,12 +1690,18 @@ namespace CloudBanking.UITestApp
             {
                 plAmount = 13800,
                 fShowReference = fReferenceEnable,
-                EntryAmountTitleId = DialogBuilder.IsSmallScreen ? StringIds.STRING_PRE_AUTH : StringIds.STRING_PRE_AUTH_AMOUNT
+                //EntryAmountTitleId = DialogBuilder.IsSmallScreen ? StringIds.STRING_PRE_AUTH : StringIds.STRING_PRE_AUTH_AMOUNT
+                EntryAmountTitleId = StringIds.STRING_PRE_AUTH_AMOUNT
             };
-            
+
+            //DialogBuilder.Show(IPayDialog.PREAUTH_ENTER_AMOUNT_DIALOG, StringIds.STRING_PRE_AUTH, (result, args) =>
+            //{
+            //}, true, false, data);
+
+            //for develop/worldline/wl/1.2
             DialogBuilder.Show(IPayDialog.PREAUTH_ENTER_AMOUNT_DIALOG, StringIds.STRING_PRE_AUTH, (result, args) =>
             {
-            }, true, false, data);
+            }, true, false, amount, true);
 #endif
         }
 
@@ -1829,7 +1851,7 @@ namespace CloudBanking.UITestApp
 
         private void PreAuthItemGetNewAmount(CaseDialog caseDialog)
         {
-#if false
+#if true
             RecordViewModel selectedPayment = new RecordViewModel();
             selectedPayment.iCardType = CARDTYPE.CARD_AMEX;
             selectedPayment.iAccountTypeCode = AccountType.ACCOUNT_TYPE_SAVINGS;
@@ -1867,12 +1889,12 @@ namespace CloudBanking.UITestApp
                 LastFourDigitCardNumber = "6787",
                 Reference = selectedPayment.CustomerReferenceType,
                 ReferenceNumber = selectedPayment?.lszCustomerReference,
-                //ExpireTime = selectedPayment?.AuthorizationExpiryDate,
-                CustomerName = "David",
+                ExpireTime = selectedPayment?.AuthorizationExpiryDate,
+                CustomerName = "David Smith",
                 PaymentStatus = Localize.GetString(StringIds.STRING_APPROVED),
                 AuthCode = selectedPayment?.szApprovalCode,
                 CardBrandIconResName = CARDTYPE.CARD_AMEX.GetIconDrawable(),
-                FunctionType = functionType
+                FunctionType = functionType,
             };
 
             switch (functionType)
@@ -2294,13 +2316,14 @@ namespace CloudBanking.UITestApp
 
         void ListPaymentRecordDialog()
         {
+#if true
             //Hardcode for UI testing 
             var item1 = new TransactionInfoModel();
             item1.Amount = 10000;
             item1.AuthNumber = "87654";
             item1.CardType = "Visa Debit";
             item1.CardInfo = "****7654";
-            item1.CardNumber = "6787";
+            //item1.CardNumber = "6787";
             var date = new XDateTime();
             date.Year = 2023;
             date.Month = 6;
@@ -2322,6 +2345,7 @@ namespace CloudBanking.UITestApp
             data.Items.Add(item2);
             data.Items.Add(item3);
             DialogBuilder.Show(IPayDialog.LIST_ITEM_RECORDS_DIALOG, StringIds.STRING_REFUND_PURCHASE, null, true, false, data);
+#endif
         }
 
         void ShowSelectTipDialog()
@@ -2350,6 +2374,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSurchargeConfirmDialog()
         {
+#if true
             var data = new SurchargeConfirmationDlgData();
             StringBuilder cardNumber = new StringBuilder("6789876534567654");
 
@@ -2363,7 +2388,8 @@ namespace CloudBanking.UITestApp
                 }
             }
 
-            data.szCardNumber = cardNumber.ToString().FormatCardNumber(true);
+            //data.szCardNumber = cardNumber.ToString().FormatCardNumber(true);
+            data.szCardNumber = cardNumber.ToString().FormatCardNumber();
             data.szCardHolderName = "PAX MASTERCARD TEST CARD";
             data.fRemoveSurchargeFee = false;
             data.wszCurrencyCode = "NZD Currency";
@@ -2397,30 +2423,33 @@ namespace CloudBanking.UITestApp
             DialogBuilder.Show(IPayDialog.CUS_DISPLAY_AUTHENTICATING_DIALOG, StringIds.STRING_AUTHENTICATING_CUSTOMER, (iResult, args) =>
             {
             }, true, false, authType, false);
+#endif
         }
 
         void ShowGetAmountDialog(CaseDialog caseDialog)
         {
+#if true
             var data = new GetAmountDlgData();
 
-            data.SubHeaderTitleId = StringIds.STRING_TENDER;
-            data.lszPayButtonText = StringIds.STRING_NEXT;
-            data.fShowAmountRightButton = false;
-            data.EntryAmountTitleId = StringIds.STRING_CREDIT_REFUND;
-            data.plTotalAmount = 13800;
+            //data.SubHeaderTitleId = StringIds.STRING_TENDER;
+            //data.lszPayButtonText = StringIds.STRING_NEXT;
+            data.lszPayButtonText = StringIds.STRING_OK;
+            //data.fShowAmountRightButton = false;
+            data.EntryAmountTitleId = StringIds.STRING_PURCHASE;
+            //data.plTotalAmount = 13800;
             string title = string.Empty;
 
             switch (caseDialog)
             {
                 case CaseDialog.CASE1:
-                    data.fShowSubHeader = true;
+                    //data.fShowSubHeader = true;
                     data.fShowReference = false;
                     data.fInstoreCashoutFeeEnable = true;
                     title = $"{StringIds.STRING_TENDER.GetString()} 5 - {StringIds.STRING_AMOUNT.GetString()}";
                     break;
 
                 case CaseDialog.CASE2:
-                    data.fShowSubHeader = false;
+                    //data.fShowSubHeader = false;
                     data.fShowReference = true;
                     data.fInstoreCashoutFeeEnable = false;
                     data.plszReference = "BA17865";
@@ -2429,7 +2458,7 @@ namespace CloudBanking.UITestApp
                     break;
 
                 case CaseDialog.CASE3:
-                    data.fShowSubHeader = true;
+                    //data.fShowSubHeader = true;
                     data.fShowReference = true;
                     data.plszReference = "BA17865";
                     //data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
@@ -2448,6 +2477,7 @@ namespace CloudBanking.UITestApp
             DialogBuilder.Show(IPayDialog.GET_AMOUNT_DIALOG, title, (iResult, args) =>
             {
             }, true, false, data);
+#endif
         }
 
         void ShowCustomerDisplayGetCashOutDialog()
@@ -2480,11 +2510,11 @@ namespace CloudBanking.UITestApp
             selectedPayment.lAmount = 10000;
             selectedPayment.DateTime = DateTime.Now.ToXDateTime();
             selectedPayment.lszEndCardNumber = "7654";
-            //selectedPayment.CustomerReferenceType = ReferenceType.Room;
+            selectedPayment.CustomerReferenceType = ReferenceType.Room;
             selectedPayment.lszCustomerReference = "123";
             selectedPayment.szSTAN = "2345";
             selectedPayment.szReferenceNumber = "1234";
-            //selectedPayment.AuthorizationExpiryDate = DateTime.Now;
+            selectedPayment.AuthorizationExpiryDate = DateTime.Now;
 
             var data = new PreAuthCompletePreAuthDetailsDlgData()
             {
@@ -2500,7 +2530,7 @@ namespace CloudBanking.UITestApp
                 STAN = selectedPayment.szSTAN,
                 RRNNumber = selectedPayment.szReferenceNumber,
                 TransactionId = selectedPayment.Id.ToString(),
-                //ExpireTime = selectedPayment.AuthorizationExpiryDate,
+                ExpireTime = selectedPayment.AuthorizationExpiryDate,
                 CustomerName = "TRUONG VINH LOI",  //GetCustomerName.OriginalPayment,TODO disabled on certification
             };
 
@@ -2770,19 +2800,19 @@ namespace CloudBanking.UITestApp
 
         void ShowAdvertisingDialog()
         {
-#if false
+#if true
             IList<string> imagePaths = new List<string>();
 
             //portrait
-            for (int index = 1; index <= GlobalConstants.INIT_POS_ADVERTISING_ADS_COUNT; index++)
-            {
-                imagePaths.Add(Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_POS_ADVERTISING), $"ads_{index}.jpg"));
-            }
+            //for (int index = 1; index <= GlobalConstants.INIT_POS_ADVERTISING_ADS_COUNT; index++)
+            //{
+            //    imagePaths.Add(Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_POS_ADVERTISING), $"ads_{index}.jpg"));
+            //}
 
             //landspace
-            //imagePaths.Add("land_avertising_1.png");
-            //imagePaths.Add("ads_1_land.png");
-            //imagePaths.Add("ads_3_land.png");
+            imagePaths.Add("land_avertising_1.png");
+            imagePaths.Add("ads_1_land.png");
+            imagePaths.Add("ads_3_land.png");
 
             int ellapseSeconds = 2;
 
@@ -2794,7 +2824,7 @@ namespace CloudBanking.UITestApp
 
         void ShowReceiptOptionDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             var data = new ReceiptOptionsDlgData();
 
             data.QRReceiptResult = "ReceiptOptionsDialog";
@@ -2806,7 +2836,7 @@ namespace CloudBanking.UITestApp
 
                 case CaseDialog.CASE2:
                     data.fShowQrCode = false;
-                    data.fShowNewSaleButton = true;
+                    //data.fShowNewSaleButton = true;
                     break;
 
                 default:
@@ -3745,6 +3775,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectTenderExtraAmountDialog(CaseDialog caseDialog)
         {
+#if false
             var dlgData = new SelectTenderExtraAmountDlgData();
 
             dlgData.TenderNumber = 5;
@@ -3777,13 +3808,14 @@ namespace CloudBanking.UITestApp
                     break;
             }
 
-            string headerTitle = string.Format( $"{StringIds.STRING_TENDER.GetString()} {dlgData.TenderNumber}");
+            string headerTitle = string.Format($"{StringIds.STRING_TENDER.GetString()} {dlgData.TenderNumber}");
 
 
             DialogBuilder.Show(IPayDialog.SELECT_TENDER_EXTRA_AMOUNT_DIALOG, headerTitle, (int iResult, object[] args) =>
             {
                 //SelectTenderExtraAmountDialog
             }, true, false, dlgData);
+#endif
         }
 
         void ShowGetAmountRefundAlipayWeChatDialog_01()
@@ -3955,14 +3987,14 @@ namespace CloudBanking.UITestApp
             });
 
             // NOTE: Not supported
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    iCommandLang = StringIds.STRING_VOUCHER,
-            //    Title = StringIds.STRING_VOUCHER,
-            //    idImage = IconIds.VECTOR_VOUCHER,
-            //    IdProcessor = 0,
-            //    iCommand = GlobalResource.REFUND_VOUCHER_BUTTON
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_VOUCHER,
+                Title = StringIds.STRING_VOUCHER,
+                idImage = IconIds.VECTOR_VOUCHER,
+                IdProcessor = 0,
+                iCommand = GlobalResource.REFUND_VOUCHER_BUTTON
+            });
 
             var fAliPay = true;
 
@@ -3993,23 +4025,23 @@ namespace CloudBanking.UITestApp
                 });
 
             // NOTE: Not supported
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    iCommandLang = StringIds.STRING_REWARDS,
-            //    Title = StringIds.STRING_REWARDS,
-            //    idImage = IconIds.VECTOR_REWARDS,
-            //    IdProcessor = 0,
-            //    iCommand = GlobalResource.FNC_REWARD_BUTTON
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_REWARDS,
+                Title = StringIds.STRING_REWARDS,
+                idImage = IconIds.VECTOR_REWARDS,
+                IdProcessor = 0,
+                iCommand = GlobalResource.FNC_REWARD_BUTTON
+            });
 
-            //data.FunctionButtons.Add(new SelectButton()
-            //{
-            //    iCommandLang = StringIds.STRING_TOP_UP,
-            //    Title = StringIds.STRING_TOP_UP,
-            //    idImage = IconIds.VECTOR_TOP_UP,
-            //    IdProcessor = 0,
-            //    iCommand = GlobalResource.REFUND_TOP_UP_BUTTON
-            //});
+            data.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_TOP_UP,
+                Title = StringIds.STRING_TOP_UP,
+                idImage = IconIds.VECTOR_TOP_UP,
+                IdProcessor = 0,
+                iCommand = GlobalResource.REFUND_TOP_UP_BUTTON
+            });
 
             DialogBuilder.Show(IPayDialog.REFUND_OPTION_DIALOG, StringIds.STRING_REFUND_OPTIONS, (iResult, args) =>
             {
@@ -4118,7 +4150,7 @@ namespace CloudBanking.UITestApp
                 OriginalRRNNumber = "1234",
                 OriginalSTAN = "1234",
                 OriginalTransactionId = "4200000027201709294868542706",
-               // Reference = ReferenceType.Invoice,
+                // Reference = ReferenceType.Invoice,
                 ReferenceNumber = "1234",
                 RefundedAmount = 2000,
                 RefundedAuthCode = "3344",
@@ -4363,7 +4395,7 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundTypes()
         {
-#if false
+#if true
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -4397,10 +4429,10 @@ namespace CloudBanking.UITestApp
                 GuideTitleId = StringIds.STRING_PLACE_SCAN_CODE_INSIDE_THE_SCAN_AREA,
                 ScanTitleId = StringIds.STRING_SCAN_QR_CODE,
                 AboveScanViewTitleId = StringIds.STRING_FIND_PURCHASE,
-                ManualTitleId = StringIds.STRING_MANUAL_ENTER,
-                ManualCommand = GlobalResource.MANUAL_BUTTON,
-                ManualIconId = IconIds.VECTOR_MANUAL_CARD,
-                //fScanAlipayWechat = true
+                //ManualTitleId = StringIds.STRING_MANUAL_ENTER,
+                ManualCommand = 0,
+                ManualIconId = string.Empty,
+                fScanAlipayWechat = true
             };
 
             IdDlgTitle = StringIds.STRING_REFUND_PURCHASE;
@@ -4415,7 +4447,7 @@ namespace CloudBanking.UITestApp
 
         void ShowFindPurchaseOptionDialog(CaseDialog caseDialog)
         {
-#if false
+#if true
             string IdDlgTitle = string.Empty;
 
             FindPurchaseOptionDlgData dlgData = new FindPurchaseOptionDlgData();
@@ -5064,16 +5096,24 @@ namespace CloudBanking.UITestApp
         void ShowShiftEnterDateRangeDialog()
         {
             DateTime startDate = DateTime.Now, endDate = DateTime.Now;
+            ReportCategory reportCategory = ReportCategory.Sales;
+
+            ShiftEnterDateRangeDlgData dlgData = new ShiftEnterDateRangeDlgData()
+            {
+                StartDate = startDate != DateTime.MinValue ? startDate : DateTime.Today,
+                EndDate = endDate != DateTime.MaxValue ? endDate.AddDays(-1) : DateTime.Today,
+                ReportCategory = reportCategory
+            };
 
             DialogBuilder.Show(IPayDialog.SHIFT_ENTER_DATE_RANGE_DIALOG, StringIds.STRING_HISTORY_SALES, (iResult, args) =>
             {
                 //ShiftEnterDateRangeDialog
-            }, true, false, startDate, endDate);
+            }, true, false, dlgData);
         }
 
         void ShowSelectPaymentMethod()
         {
-#if false
+#if true
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 0,
@@ -5246,10 +5286,12 @@ namespace CloudBanking.UITestApp
         {
 #if true
             var currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
-            DCCConfirmationData data = new DCCConfirmationData();
+            DCCConfimationData data = new DCCConfimationData();
 
-            data.szConversionRate = "1.08234";
-            data.szMarginPercentage = "3.3162";
+            //data.szConversionRate = "1.08234";
+            //data.szMarginPercentage = "3.3162";
+            data.FlagImage = currency.iCurrencyCodeFlag;
+            data.iCurrencyCode = 840;
             data.Currency = currency.wszCurrencyCode;
             data.lAmount = 6420;
             data.Content = "I declare i have been given a choice in payment currency and i agree to pay the above amount. ";
@@ -5967,10 +6009,12 @@ namespace CloudBanking.UITestApp
 
         void ShowQrCodeReceiptClaimDialog()
         {
-#if false
-            QrCodeReceiptClaimDlgData data = new QrCodeReceiptClaimDlgData();
-            data.ReceiptQrCode = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
-            data.Amount = 10500;
+#if true
+            //QrCodeReceiptClaimDlgData data = new QrCodeReceiptClaimDlgData();
+            //data.ReceiptQrCode = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
+            //data.Amount = 10500;
+
+            string data = "wrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioowrtyuioo";
 
             DialogBuilder.Show(IPayDialog.RECEIPT_QR_CODE_DIALOG, StringIds.STRING_RECEIPT_CLAIM, (iResult, args) =>
             {
@@ -6013,7 +6057,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectFunctionDialog()
         {
-#if false
+#if true
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 1,
@@ -6170,12 +6214,12 @@ namespace CloudBanking.UITestApp
                 iCommand = GlobalResource.FNC_SALE_BUTTON,
             });
 
-            selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
-            {
-                iCommandLang = StringIds.STRING_VOID_TRANSACTION,
-                idImage = IconIds.ICON_VOID_TRANSACTION,
-                iCommand = GlobalResource.SELECT_BUTTON,
-            });
+            //selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
+            //{
+            //    iCommandLang = StringIds.STRING_VOID_TRANSACTION,
+            //    idImage = IconIds.ICON_VOID_TRANSACTION,
+            //    iCommand = GlobalResource.SELECT_BUTTON,
+            //});
 
             selectFuncDialogDta.FunctionButtons.Add(new SelectButton()
             {
@@ -6971,40 +7015,40 @@ namespace CloudBanking.UITestApp
 
         void ShowSalesShiftDialog()
         {
-            //SaleShiftDlgData data = new SaleShiftDlgData();
-            //data.ReportCategory = ReportCategory.Sales;
+            SaleShiftDlgData data = new SaleShiftDlgData();
+            data.ReportCategory = ReportCategory.Sales;
             //data.IsShowBottomButton = true;
-            //data.RightButtonTitleId = StringIds.STRING_DELETE_ALL;
+            data.RightButtonTitleId = StringIds.STRING_DELETE_ALL;
 
-            //data.Items.Add(new SaleShiftTitleModel()
-            //{
-            //    Date = DateTime.Now,
-            //    IdList = new List<uint> { 1, 2, 3, 4, 5, 6 },
-            //    IsShowLine = false
-            //});
+            data.Items.Add(new SaleShiftTitleModel()
+            {
+                Date = DateTime.Now,
+                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 },
+                IsShowLine = true
+            });
 
-            //data.Items.Add(new SaleShiftTitleModel()
-            //{
-            //    Date = DateTime.Now,
-            //    IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
-            //});
+            data.Items.Add(new SaleShiftTitleModel()
+            {
+                Date = DateTime.Now,
+                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            });
 
-            //data.Items.Add(new SaleShiftTitleModel()
-            //{
-            //    Date = DateTime.Now,
-            //    IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
-            //});
+            data.Items.Add(new SaleShiftTitleModel()
+            {
+                Date = DateTime.Now,
+                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            });
 
-            //data.Items.Add(new SaleShiftTitleModel()
-            //{
-            //    Date = DateTime.Now,
-            //    IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
-            //});
+            data.Items.Add(new SaleShiftTitleModel()
+            {
+                Date = DateTime.Now,
+                IdList = new List<uint> { 1, 2, 3, 4, 5, 6 }
+            });
 
-            //DialogBuilder.Show(IPayDialog.SELECT_SALE_SHIFT_DIALOG, StringIds.STRING_SHIFT_LIST, (result, args) =>
-            //{
-            //    //SalesShiftDialog
-            //}, true, false, data);
+            DialogBuilder.Show(IPayDialog.SELECT_SALE_SHIFT_DIALOG, StringIds.STRING_SHIFT_LIST, (result, args) =>
+            {
+                //SalesShiftDialog
+            }, true, false, data);
         }
 
         void ShowShellStandardSetupDialog()
@@ -7980,7 +8024,7 @@ namespace CloudBanking.UITestApp
 #if true
             var printPreviewDlgData = new PrintPreviewDlgData();
 
-            //printPreviewDlgData.Content = "GetHtmlReviewReceipt(pPrintJobRec, fCustomer)";
+            printPreviewDlgData.Content = "GetHtmlReviewReceipt(pPrintJobRec, fCustomer)";
             printPreviewDlgData.fAutoRun = false;
             printPreviewDlgData.fRunPrintingAnimation = false;
             printPreviewDlgData.fWaitFinishAnimation = true;
@@ -8220,11 +8264,11 @@ namespace CloudBanking.UITestApp
 #if true
             ApprovalDlgData hwndApprovalDlg = new ApprovalDlgData();
             hwndApprovalDlg.PrintStage = PrintStage.Printing;
-            hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY);
-            hwndApprovalDlg.lszMainString = Localize.GetString(StringIds.STRING_SIGNATURE_REQUIRED);
+            hwndApprovalDlg.lpszThirdResult = Localize.GetString(true ? StringIds.STRING_PRINTING_CUSTOMER_COPY : StringIds.STRING_PRINTING_MERCHANT_COPY).ToUpperInvariant();
+            hwndApprovalDlg.lszMainString = Localize.GetString(StringIds.STRING_SIGNATURE_REQUIRED).ToUpperInvariant();
             hwndApprovalDlg.IdBitmap = GlobalResource.MB_ICON_SIGNATURE_RESULT;
 
-            var approvalDialog = new ApprovalDialog(StringIds.STRING_CONFIRM_SIGNATURE, null, hwndApprovalDlg);
+            var approvalDialog = new ShellUI.ApprovalDialog(StringIds.STRING_CONFIRM_SIGNATURE, null, hwndApprovalDlg);
             //approvalDialog.OnResult += (iResult, args) =>
             //{
             //    approvalDialog.Dismiss();
@@ -8292,7 +8336,7 @@ namespace CloudBanking.UITestApp
 
         void ShowIShellDialog_ReviewTransDialog()
         {
-#if false
+#if true
             ReviewDlgData dlgDataReview = new ReviewDlgData()
             {
                 lTotal = 13800,
@@ -8310,14 +8354,14 @@ namespace CloudBanking.UITestApp
             };
 
             //ReviewTransDialog
-            DialogBuilder.Show(IShellDialog.TRANS_REVIEW_DIALOG, StringIds.STRING_TENDER_REVIEW, null, true, false, dlgDataReview);
+            DialogBuilder.Show(IShellDialog.TRANS_REVIEW_DIALOG, StringIds.STRING_PURCHASE, null, true, false, dlgDataReview);
 #endif
 
         }
 
         void ShowPaymentEntryListDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             PaymentEntryListDlgData data = new PaymentEntryListDlgData();
             data.SubHeaderTitleId = StringIds.STRING_BALANCE;
             data.BalanceAmount = 5300;
@@ -8326,6 +8370,7 @@ namespace CloudBanking.UITestApp
             data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_visa_bg,
+                //ImageResId = IconIds.VECTOR_VISA_BG,
                 CustomerName = "",
                 Amount = 500,
                 IsPaid = true,
@@ -8335,6 +8380,7 @@ namespace CloudBanking.UITestApp
             data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_eft_pos_bg,
+                //ImageResId = IconIds.VECTOR_EFT_POS_BG,
                 CustomerName = "",
                 Amount = 1000,
                 IsPaid = true,
@@ -8344,6 +8390,7 @@ namespace CloudBanking.UITestApp
             data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_cash_only,
+                //ImageResId = IconIds.VECTOR_CASH_ONLY,
                 CustomerName = "",
                 Amount = 1500,
                 IsPaid = true,
@@ -8353,6 +8400,7 @@ namespace CloudBanking.UITestApp
             data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_american_express_bg,
+                //ImageResId = IconIds.VECTOR_AMERICAN_EXPRESS_BG,
                 CustomerName = "",
                 Amount = 2000,
                 IsPaid = true,
@@ -8362,6 +8410,7 @@ namespace CloudBanking.UITestApp
             data.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
                 ImageResId = Resource.Drawable.vector_no_payment_type_bg,
+                //ImageResId = IconIds.VECTOR_NO_PAYMENT_TYPE_BG,
                 CustomerName = "",
                 Amount = 2500,
                 IsPaid = false,
@@ -8391,7 +8440,7 @@ namespace CloudBanking.UITestApp
 
         void ShowCommonReviewDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
 
             CommonReviewDlgData dlgData = new CommonReviewDlgData();
             dlgData.TotalAmount = 10000;
@@ -8404,18 +8453,50 @@ namespace CloudBanking.UITestApp
                     headerTitleId = StringIds.STRING_SPLIT_REVIEW;
                     dlgData.BalanceAmount = 5300;
                     dlgData.ReviewType = ReviewType.SPLIT_PAY;
+                    dlgData.IsShowButtonAmount = false;
+                    dlgData.RightButtonTextId = StringIds.STRING_DONE;
+                    dlgData.IsShowLeftButton = false;
                     break;
+
                 case CaseDialog.CASE2:
                     dlgData.SubHeaderTitleId = StringIds.STRING_PURCHASE_FEES;
                     headerTitleId = StringIds.STRING_TENDER_REVIEW;
                     dlgData.TotalAmount = 5200;
                     dlgData.ReviewType = ReviewType.TENDER;
+
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T1", TenderName = Localize.GetString(StringIds.STRING_VISA_CREDIT), Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T2", TenderName = Localize.GetString(StringIds.STRING_EFT_POS), Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T3", TenderName = Localize.GetString(StringIds.STRING_CASH), Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T4", TenderName = Localize.GetString(StringIds.STRING_AMEX), Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T5", TenderName = Localize.GetString(StringIds.STRING_VOUCHER), Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "", TenderName = Localize.GetString(StringIds.STRING_BALANCE), Amount = 500, IsValuePrimaryColor = true });
+                    dlgData.IsShowButtonAmount = false;
+                    dlgData.RightButtonTextId = StringIds.STRING_DONE;
+                    dlgData.IsShowLeftButton = false;
+
+                    break;
+
+                case CaseDialog.CASE3:
+                    dlgData.SubHeaderTitleId = string.Format("{0} {1}", StringIds.STRING_TENDER.GetString(), 5);
+                    headerTitleId = StringIds.STRING_CONFIRMATION;
+                    dlgData.TotalAmount = 2250;
+                    dlgData.ReviewType = ReviewType.TENDER;
+
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "", TenderName = Localize.GetString(StringIds.STRING_PURCHASE), Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "", TenderName = $"{Localize.GetString(StringIds.STRING_DONATION)} ({Localize.GetString(StringIds.STRING_CHARITY)} 1)", Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "", TenderName = $"{Localize.GetString(StringIds.STRING_DONATION)} ({Localize.GetString(StringIds.STRING_CHARITY)} 2)", Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.TenderItems.Add(new TenderModel() { NumOrder = "", TenderName = Localize.GetString(StringIds.STRING_TIP), Amount = 1500, IsValuePrimaryColor = false });
+                    dlgData.IsShowButtonAmount = true;
+                    dlgData.RightButtonTextId = StringIds.STRING_OK;
+                    dlgData.IsShowLeftButton = true;
+
                     break;
             }
 
             dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
-                ImageResId = Resource.Drawable.vector_visa_bg,
+                //ImageResId = Resource.Drawable.vector_visa_bg,
+                ImageResId = IconIds.VECTOR_VISA_BG,
                 CustomerName = "David Smith",
                 Amount = 500,
                 IsPaid = true,
@@ -8425,7 +8506,8 @@ namespace CloudBanking.UITestApp
 
             dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
-                ImageResId = Resource.Drawable.vector_eft_pos_bg,
+                //ImageResId = Resource.Drawable.vector_eft_pos_bg,
+                ImageResId = IconIds.VECTOR_EFT_POS_BG,
                 CustomerName = "",
                 Amount = 1000,
                 IsPaid = true,
@@ -8436,7 +8518,8 @@ namespace CloudBanking.UITestApp
 
             dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
-                ImageResId = Resource.Drawable.vector_cash_only,
+                //ImageResId = Resource.Drawable.vector_cash_only,
+                ImageResId = IconIds.VECTOR_CASH_ONLY,
                 CustomerName = "Sandra Davis",
                 Amount = 1500,
                 IsPaid = true,
@@ -8447,7 +8530,8 @@ namespace CloudBanking.UITestApp
 
             dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
-                ImageResId = Resource.Drawable.vector_american_express_bg,
+                //ImageResId = Resource.Drawable.vector_american_express_bg,
+                ImageResId = IconIds.VECTOR_AMERICAN_EXPRESS_BG,
                 CustomerName = "",
                 Amount = 2000,
                 IsPaid = true,
@@ -8458,7 +8542,8 @@ namespace CloudBanking.UITestApp
 
             dlgData.PaymentEntryItems.Add(new PaymentEntryItemViewModel()
             {
-                ImageResId = Resource.Drawable.vector_no_payment_type_bg,
+                //ImageResId = Resource.Drawable.vector_no_payment_type_bg,
+                ImageResId = IconIds.VECTOR_NO_PAYMENT_TYPE_BG,
                 CustomerName = "",
                 Amount = 2500,
                 IsPaid = true,
@@ -8468,12 +8553,7 @@ namespace CloudBanking.UITestApp
             });
 
             //
-            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T1", TenderName = Localize.GetString(StringIds.STRING_VISA_CREDIT), Amount = 1500, IsValuePrimaryColor = false });
-            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T2", TenderName = Localize.GetString(StringIds.STRING_EFT_POS), Amount = 1500, IsValuePrimaryColor = false });
-            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T3", TenderName = Localize.GetString(StringIds.STRING_CASH), Amount = 1500, IsValuePrimaryColor = false });
-            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T4", TenderName = Localize.GetString(StringIds.STRING_AMEX), Amount = 1500, IsValuePrimaryColor = false });
-            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "T5", TenderName = Localize.GetString(StringIds.STRING_VOUCHER), Amount = 1500, IsValuePrimaryColor = false });
-            dlgData.TenderItems.Add(new TenderModel() { NumOrder = "", TenderName = Localize.GetString(StringIds.STRING_BALANCE), Amount = 500, IsValuePrimaryColor = true });
+            
 
             DialogBuilder.Show(IPayDialog.COMMON_REVIEW_DIALOG, headerTitleId, (iResult, args) =>
             {
@@ -8485,12 +8565,13 @@ namespace CloudBanking.UITestApp
 
         void ShowIPayDialog_ReviewTransDialog()
         {
+#if true
             string dlgTitleId = StringIds.STRING_CONFIRMATION;
             InitProcessData pInitProcessData = new InitProcessData();
 
             ReviewTransDlgData dlgData = new ReviewTransDlgData();
             dlgData.TotalAmount = 13800;
-            dlgData.IsShowEditButton = true;
+            dlgData.IsShowEditButton = false;
             dlgData.IsShowCurrencyBottomButton = true;
             dlgData.LeftButtonTitleId = StringIds.STRING_USERS_CANCELTRANS;
 
@@ -8655,12 +8736,13 @@ namespace CloudBanking.UITestApp
                 DataValueString = "$",
                 IsSpecial = true,
                 IsRightTextBold = true,
-                IsTitlePrimaryColor = true
+                //IsTitlePrimaryColor = true
             });
 
             DialogBuilder.Show(IPayDialog.REVIEW_TRANS_DIALOG, dlgTitleId, (iResult, args) =>
             {
             }, true, false, dlgData, GlobalResource.CANCEL_TRANS);
+#endif
         }
 
         void ShowCustomerDetailsDialog()
@@ -8778,7 +8860,7 @@ namespace CloudBanking.UITestApp
             context.Amount = 2000;
             context.AmountTitleId = string.Format(Localize.GetString(StringIds.STRING_SPLIT_PAYMENT), "1");
             context.TransactionTypeTitleId = StringIds.STRING_PURCHASE;
-            context.ReferenceType = ReferenceType.Invoice;
+            context.ReferenceType = 1;
             context.FunctionType = FunctionType.Refund;
 
             var dlgData = new CustomerDetailsMenuDlgData()
@@ -8834,7 +8916,7 @@ namespace CloudBanking.UITestApp
 
         void ShowTenderOptionsDialog()
         {
-#if true
+#if false
             TenderOptionsDlgData dlgData = new TenderOptionsDlgData();
             dlgData.TopTitleId = StringIds.STRING_TENDER_OPTIONS;
             //row1
@@ -8866,7 +8948,7 @@ namespace CloudBanking.UITestApp
                 CommandId = GlobalResource.AMERICAN_BUTTON
             });
 
-            
+
             dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
             {
                 TypeImageResId = IconIds.VECTOR_JBC_SQUARE_BACKGROUND,
@@ -8886,7 +8968,7 @@ namespace CloudBanking.UITestApp
                 CommandId = GlobalResource.DINERS_BUTTON
             });
 
-            
+
             dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
             {
                 TypeImageResId = IconIds.VECTOR_EFT_POS_BG,
@@ -8905,7 +8987,7 @@ namespace CloudBanking.UITestApp
                 IsShowEyeBtn = true,
                 CommandId = GlobalResource.WECHAT_BUTTON
             });
-            
+
             dlgData.TenderOptionsItems.Add(new TenderOptionsViewModel()
             {
                 TypeImageResId = IconIds.VECTOR_ALIPAY_ICON_TEXT_BG,
@@ -8964,6 +9046,7 @@ namespace CloudBanking.UITestApp
 
         void ShowEnterUserPasscodeDialog()
         {
+#if false
             DialogBuilder.Show(IPayDialog.ENTER_ACCESS_CODE_TO_PROCESS_DIALOG, StringIds.STRING_ACCESSCODE, (iResult, args) =>
             {
                 //if (iResult == GlobalResource.DONE_BUTTON)
@@ -8976,10 +9059,12 @@ namespace CloudBanking.UITestApp
                 //GuestIcon = GlobalUserRec.lszPicture,
                 //GuestName = GlobalUserRec.lszUserName
             });
+#endif
         }
 
         void ShowLogonDialog()
         {
+#if false
             var pLogonData = new LogonDlgData()
             {
                 InitData = new InitLogonModel()
@@ -8996,10 +9081,13 @@ namespace CloudBanking.UITestApp
             };
 
             DialogBuilder.Show(IPayDialog.LOGON_DIALOG, StringIds.STRING_ACCESSCODE, null, true, false, pLogonData, false);
+#endif
         }
 
         private SelFncDlgData CreatePaymentMethodOptions()
         {
+            return null;
+#if false
             return new SelFncDlgData()
             {
                 iPage = 0,
@@ -9062,6 +9150,7 @@ namespace CloudBanking.UITestApp
                     }
                 }
             };
+#endif
         }
 
         void ShowPaymentOptions()

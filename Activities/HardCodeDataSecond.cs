@@ -3,10 +3,13 @@ using CloudBanking.Common;
 using CloudBanking.Entities;
 using CloudBanking.Flow.Base;
 using CloudBanking.Language;
+using CloudBanking.ShellContainers;
 using CloudBanking.Utilities;
+using Java.Util;
 using System;
 using System.Collections.Generic;
 using static CloudBanking.Utilities.UtilEnum;
+using Command = CloudBanking.Flow.Base.Command;
 
 namespace CloudBanking.UITestApp
 {
@@ -320,7 +323,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectProcessorDialog()
         {
-#if false
+#if true
             List<GenericType> _processorIdList = new List<GenericType>();
 
             _processorIdList.Add(new GenericType
@@ -355,7 +358,7 @@ namespace CloudBanking.UITestApp
                 Icon = IconIds.VECTOR_PROCESSOR
             });
 
-            var result = DialogBuilder.Show(IShellDialog.SELECT_PROCESSOR_DIALOG, StringIds.STRING_PROCESSOR_OPTIONS, (iResult, args) =>
+            var result = DialogBuilder.Show(IShellDialog.SELECT_PROCESSOR_DIALOG, StringIds.STRING_SELECTPROCESSOR, (iResult, args) =>
             {
 
                 //SelectProcessorDialog
@@ -568,5 +571,166 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
+        void ShowSelectPaymentModeDialog()
+        {
+            string paymentModeName = "";
+            uint paymentModeId = 0;
+            uint merchantId = 1;
+
+            List<PaymentMode> paymentModes = new List<PaymentMode>();
+
+            PaymentMode standalone = new PaymentMode();
+            standalone.IdParent = 0;
+            standalone.Id = paymentModeId++;
+            standalone.fPreCashOutFee = true;
+            standalone.lszIcon = IconIds.VECTOR_STANDALONE_PAY;
+            standalone.Title = "Standalone Payments";
+            standalone.Sort = 0;
+            standalone.Level = 0;
+            standalone.MerchantId = merchantId;
+            standalone.Enable = true;
+            standalone.SubLevel = true;
+            standalone.Security = false;
+            standalone.Default = true;
+            standalone.ModeOptions = new PaymentModeOption();
+            standalone.FNCFlows = FNCFlows.StandalonePay;
+            paymentModes.Add(standalone);
+
+            PaymentMode posintegration = new PaymentMode();
+            posintegration.IdParent = 0;
+            posintegration.Id = paymentModeId++;
+            posintegration.fPreCashOutFee = true;
+            posintegration.lszIcon = IconIds.VECTOR_INTERGRATED_PAYMENTS;
+            posintegration.Title = "Integrated Payments";
+            posintegration.Sort = 0;
+            posintegration.Level = 0;
+            posintegration.MerchantId = merchantId;
+            posintegration.Enable = true;
+            posintegration.SubLevel = true;
+            posintegration.Security = false;
+            posintegration.Default = false;
+            posintegration.ModeOptions = new PaymentModeOption();
+            posintegration.FNCFlows = FNCFlows.ECRPay;
+            paymentModes.Add(posintegration);
+
+            PaymentMode ticketPay = new PaymentMode();
+            ticketPay.IdParent = 0;
+            ticketPay.Id = paymentModeId++;
+            ticketPay.lszIcon = IconIds.VECTOR_TICKET_PAY;
+            ticketPay.Title = "Ticket Pay";
+            ticketPay.Sort = 0;
+            ticketPay.Level = 0;
+            ticketPay.MerchantId = merchantId;
+            ticketPay.Enable = true;
+            ticketPay.SubLevel = true;
+            ticketPay.Security = false;
+            ticketPay.Default = false;
+            paymentModes.Add(ticketPay);
+
+            PaymentMode tablePay = new PaymentMode();
+            tablePay.IdParent = ticketPay.Id;
+            tablePay.Id = paymentModeId++;
+            tablePay.fPreCashOutFee = true;
+            tablePay.lszIcon = IconIds.VECTOR_TABLE_PAY;
+            tablePay.Title = "Table Pay";
+            tablePay.Sort = 0;
+            tablePay.Level = 0;
+            tablePay.MerchantId = merchantId;
+            tablePay.Enable = true;
+            tablePay.SubLevel = true;
+            tablePay.Security = false;
+            tablePay.Default = false;
+            tablePay.ModeOptions = new PaymentModeOption();
+            tablePay.FNCFlows = FNCFlows.PayAtTable;
+            paymentModes.Add(tablePay);
+
+            PaymentMode openTab = new PaymentMode();
+            openTab.IdParent = ticketPay.Id;
+            openTab.Id = paymentModeId++;
+            openTab.fPreCashOutFee = true;
+            openTab.lszIcon = IconIds.VECTOR_OPEN_TAB;
+            openTab.Title = "Open Tab";
+            openTab.Sort = 0;
+            openTab.Level = 0;
+            openTab.MerchantId = merchantId;
+            openTab.Enable = true;
+            openTab.SubLevel = true;
+            openTab.Security = false;
+            openTab.Default = false;
+            openTab.ModeOptions = new PaymentModeOption();
+            paymentModes.Add(openTab);
+
+            PaymentMode roomAccounts = new PaymentMode();
+            roomAccounts.IdParent = ticketPay.Id;
+            roomAccounts.Id = paymentModeId++;
+            roomAccounts.fPreCashOutFee = true;
+            roomAccounts.lszIcon = IconIds.VECTOR_ROOM_ACCOUNT;
+            roomAccounts.Title = "Room Account";
+            roomAccounts.Sort = 0;
+            roomAccounts.Level = 0;
+            roomAccounts.MerchantId = merchantId;
+            roomAccounts.Enable = true;
+            roomAccounts.SubLevel = true;
+            roomAccounts.Security = false;
+            roomAccounts.Default = false;
+            roomAccounts.ModeOptions = new PaymentModeOption();
+            paymentModes.Add(roomAccounts);
+
+
+            DialogBuilder.Show(IPayDialog.SELECT_PAYMENT_MODE_DIALOG, StringIds.STRING_PAYMENT_MODES, (result, args) =>
+            {
+
+            }, true, false, paymentModes, paymentModeName);
+        }
+
+        private void AddGiftCardAction(SelFncDlgData dialogData, int flowCommand, string title)
+        {
+            dialogData.FunctionButtons.Add(new SelectButton
+            {
+                iCommand = flowCommand,
+                iCommandLang = title,
+                Title = title,
+                idImage = IconIds.VECTOR_GIFT_CARD,
+                IdProcessor = 0
+            });
+        }
+
+        void ShowGiftCardActionOptions()
+        {
+            var dialogData = new SelFncDlgData
+            {
+                iPage = 1,
+                iMinPage = 1,
+                iMaxPage = 1,
+                pIdProcessor = 0,
+                pIdSecurityUser = 0,
+                fShowLogout = false,
+                fGrid = false,
+                strListTitle = string.Empty,
+                fShowBackBtn = true,
+                fShowLeftMenuBtn = false,
+                fShowTopListHeader = false
+            };
+
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_RECHARGE, StringIds.STRING_GIFT_CARD_RECHARGE);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_ACTIVATE_RECHARGE, StringIds.STRING_GIFT_CARD_ACTIVATE_RECHARGE);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_TRANSFER, StringIds.STRING_GIFT_CARD_TRANSFER);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_ACTIVATE, StringIds.STRING_GIFT_CARD_ACTIVATE);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_VOID_ACTIVATION, StringIds.STRING_GIFT_CARD_VOID_ACTIVATION);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_DEACTIVATE, StringIds.STRING_GIFT_CARD_DEACTIVATE);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_CANCEL, StringIds.STRING_GIFT_CARD_CANCEL);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_SUSPEND, StringIds.STRING_GIFT_CARD_SUSPEND);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_RESUME, StringIds.STRING_GIFT_CARD_RESUME);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_REDEEM, StringIds.STRING_GIFT_CARD_REDEEM);
+            AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_BALANCE, StringIds.STRING_GIFT_CARD_BALANCE);
+
+            int localSelectedFlowCommand = 0;
+            DialogBuilder.Show(IPayDialog.SELECT_FUNCTION_DIALOG, StringIds.STRING_ACTION_OPTIONS, (result, args) =>
+            {
+                if (result == GlobalResource.OK_BUTTON)
+                    localSelectedFlowCommand = args.GetDataOfIndex<int>(0);
+            }, true, false, dialogData);
+
+        }
     }
 }

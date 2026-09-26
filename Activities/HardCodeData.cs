@@ -21,6 +21,7 @@ using static CloudBanking.Entities.Database;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
+using DynamicOptionDialog = CloudBanking.BaseControl.DynamicOptionDialog;
 
 namespace CloudBanking.UITestApp
 {
@@ -218,6 +219,18 @@ namespace CloudBanking.UITestApp
                     DlgData.fCustomerDisplay = false;
 
                     break;
+
+                case CaseDialog.CASE9:
+                    DlgData.PrintStage = PrintStage.Printing;
+                    DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpper();
+                    lpszTitleString = StringIds.STRING_TRANSACTION;
+                    DlgData.lszMainString = Localize.GetString(StringIds.STRING_SIGNATURE_REQUIRED).ToUpperInvariant();//ok
+                    DlgData.lpszThirdResult = Localize.GetString(StringIds.STRING_PRINTING_SIGNATURE_COPY).ToUpperInvariant();//ok
+                    DlgData.IdBitmap = GlobalResource.MB_ICON_SIGNATURE_RESULT;//ok
+                    DlgData.lPurchaseApproval = 13800;
+                    DlgData.Amount = 8000;
+
+                    break;
             }
 
             DlgData.TransactionTypeStringId = GetStringId(DlgData.FunctionType);
@@ -367,7 +380,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowRequestCardDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             bool fMultitender = true;
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
@@ -1020,7 +1033,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowDynamicOptionDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             var generalType = new List<GenericType>();
 
             var item1 = new GenericType();
@@ -1543,7 +1556,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowCancelPreAuthConfirmDialog()
         {
-#if true
+#if false
             var data = new CancelPreAuthComfirmDlgData()
             {
                 lAmount = 488,
@@ -1568,7 +1581,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowSelectMoto()
         {
-#if true
+#if false
             //hardcode dialog here
             var generalType = new List<GenericType>()
             {
@@ -1612,7 +1625,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new ShellUI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
+            var dialog3 = new DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SELECT_DATE, GlobalResource.CANCEL_SUB_FLOW, StringIds.STRING_CANCEL);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1638,7 +1651,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new ShellUI.DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SETTLEMENT_OPTIONS);
+            var dialog3 = new DynamicOptionDialog(StringIds.STRING_SETTLEMENT_INQUIRY, null, generalType, StringIds.STRING_SETTLEMENT_OPTIONS);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1663,7 +1676,7 @@ namespace CloudBanking.UITestApp
                 },
             };
 
-            var dialog3 = new ShellUI.DynamicOptionDialog(StringIds.STRING_REPRINT_TITLE, null, generalType, StringIds.STRING_CUSTOMER_REPRINT_OPTION);
+            var dialog3 = new DynamicOptionDialog(StringIds.STRING_REPRINT_TITLE, null, generalType, StringIds.STRING_CUSTOMER_REPRINT_OPTION);
             dialog3.DialogStyle = DialogStyle.FULLSCREEN;
             dialog3.Show(this);
 #endif
@@ -1851,7 +1864,7 @@ namespace CloudBanking.UITestApp
 
         private void PreAuthItemGetNewAmount(CaseDialog caseDialog)
         {
-#if true
+#if false
             RecordViewModel selectedPayment = new RecordViewModel();
             selectedPayment.iCardType = CARDTYPE.CARD_AMEX;
             selectedPayment.iAccountTypeCode = AccountType.ACCOUNT_TYPE_SAVINGS;
@@ -2503,6 +2516,7 @@ namespace CloudBanking.UITestApp
 
         void ShowPreAuthCompletePreAuthInfoDialog()
         {
+#if false
             RecordViewModel selectedPayment = new RecordViewModel();
             selectedPayment.iCardType = CARDTYPE.CARD_AMEX;
             selectedPayment.iAccountTypeCode = AccountType.ACCOUNT_TYPE_SAVINGS;
@@ -2598,6 +2612,7 @@ namespace CloudBanking.UITestApp
             {
                 //PreAuthCompletePreAuthInfoDialog
             }, true, false, data);
+#endif
         }
 
         void ShowLogonDialogCase01()
@@ -4395,7 +4410,7 @@ namespace CloudBanking.UITestApp
 
         void ShowRefundTypes()
         {
-#if true
+#if false
             var generalType = new List<GenericType>()
             {
                 new GenericType()
@@ -4447,7 +4462,7 @@ namespace CloudBanking.UITestApp
 
         void ShowFindPurchaseOptionDialog(CaseDialog caseDialog)
         {
-#if true
+#if false
             string IdDlgTitle = string.Empty;
 
             FindPurchaseOptionDlgData dlgData = new FindPurchaseOptionDlgData();
@@ -5113,7 +5128,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectPaymentMethod()
         {
-#if true
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 0,
@@ -5284,7 +5299,7 @@ namespace CloudBanking.UITestApp
 
         void DCCConfirmation()
         {
-#if true
+#if false
             var currency = CurrencyRepository.Instance.GetByCurrencyCode(840);
             DCCConfimationData data = new DCCConfimationData();
 
@@ -5387,7 +5402,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectCharityDialog()
         {
-#if false
+#if true
             uint startId = 0;
             var charityItem1 = new CharityItem();
             charityItem1.PortraitPoster = "don_1_port_poster.png";
@@ -5511,16 +5526,16 @@ namespace CloudBanking.UITestApp
             charityItem4.DonationAmount.SelectAmountStringIcon = IconIds.IMG_DON_2_SELECT;
 
             ////
-            StandaloneCharity standaloneCharity01 = new StandaloneCharity();
-            standaloneCharity01.Id = startId++;
-            standaloneCharity01.Name = "Qatar Charity";
-            standaloneCharity01.Banner = "don_1_land_poster.png";
-            standaloneCharity01.AdvertisingImage = "don_1_port_poster.png";
+            //StandaloneCharity standaloneCharity01 = new StandaloneCharity();
+            //standaloneCharity01.Id = startId++;
+            //standaloneCharity01.Name = "Qatar Charity";
+            //standaloneCharity01.Banner = "don_1_land_poster.png";
+            //standaloneCharity01.AdvertisingImage = "don_1_port_poster.png";
 
 
             var dlgData = new SelectCharityDlgData()
             {
-                //Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
+                Items = new List<CharityItem>() { charityItem1, charityItem2, charityItem3, charityItem4 },
                 fHideCancelButton = true,
                 //Items = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 }
             };
@@ -6057,7 +6072,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectFunctionDialog()
         {
-#if true
+#if false
             var selectFuncDialogDta = new SelFncDlgData()
             {
                 iPage = 1,
@@ -6979,17 +6994,17 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectApplicationTypeDialog()
         {
-#if false
+#if true
             List<CandidateAid> adis = new List<CandidateAid>();
 
-            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
-            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
-            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
-            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
-            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
-            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "LAS", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "Visa Credit", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "Visa Debit", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "Master Card Credit", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "Master Card Debit", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "Amex Credit", szAppPreName = "BCONS" });
+            adis.Add(new CandidateAid() { szAid = "123GJJK", szAppLabel = "Amex Debit", szAppPreName = "BCONS" });
 
-            DialogBuilder.IsShowHeader = false;
+            //DialogBuilder.IsShowHeader = false;
 
             DialogBuilder.Show(IShellDialog.SELECT_APPLICATIONTYPE_DIALOG, StringIds.STRING_EMV_SELECTAPPLICATION, (iResult, args) =>
             {
@@ -7094,7 +7109,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectOtherCharityDialog()
         {
-#if false
+#if true
             List<CharityItem> MultipleItemsList = new List<CharityItem>();
             long lTotalDonations = 13800;
             uint startId = 1;
@@ -7224,14 +7239,14 @@ namespace CloudBanking.UITestApp
             MultipleItemsList.Add(charityItem3);
             MultipleItemsList.Add(charityItem4);
 
-            StandaloneCharity standaloneCharity01 = new StandaloneCharity();
-            standaloneCharity01.Id = startId++;
-            standaloneCharity01.Name = "Qatar Charity";
-            standaloneCharity01.Banner = "don_1_land_poster.png";
-            standaloneCharity01.AdvertisingImage = "don_1_port_poster.png";
+            //StandaloneCharity standaloneCharity01 = new StandaloneCharity();
+            //standaloneCharity01.Id = startId++;
+            //standaloneCharity01.Name = "Qatar Charity";
+            //standaloneCharity01.Banner = "don_1_land_poster.png";
+            //standaloneCharity01.AdvertisingImage = "don_1_port_poster.png";
 
 
-            var listStandaloneCharity = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 };
+            //var listStandaloneCharity = new List<StandaloneCharity>() { standaloneCharity01, standaloneCharity01, standaloneCharity01, standaloneCharity01 };
 
             DialogBuilder.Show(IPayDialog.DONATION_SELECT_ANOTHER_CHARITY_DIALOG, StringIds.STRING_DONATION, (iResult, args) =>
             {
@@ -8021,7 +8036,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowPrintPreviewDialog()
         {
-#if true
+#if false
             var printPreviewDlgData = new PrintPreviewDlgData();
 
             printPreviewDlgData.Content = "GetHtmlReviewReceipt(pPrintJobRec, fCustomer)";
@@ -8320,7 +8335,7 @@ namespace CloudBanking.UITestApp
             {
                 MenuItems = items,
                 IsShowChangeMerchant = true,
-                //MerchantIcon = "madison_picture",
+                MerchantIcon = "dr_michael_patterson",
                 MerchantName = "Madison",
                 TitleId = StringIds.CHANGE_MERCHANT,
                 UserPasscode = "123"
@@ -8755,7 +8770,8 @@ namespace CloudBanking.UITestApp
                 Email = "davidsmith@gmail.com",
                 LeftBtnStringId = StringIds.STRING_PRINT_UPCASE,
                 LeftBtnCommand = GlobalResource.CANCEL_BUTTON,
-                IsReadOnly = true
+                IsReadOnly = true,
+                IsShowCustomerIdButton = true,
             };
 
             DialogBuilder.Show(IPayDialog.VIEW_CUSTOMER_DETAILS_DIALOG, StringIds.STRING_CUSTOMER_DETAILS, (iResult, args) =>

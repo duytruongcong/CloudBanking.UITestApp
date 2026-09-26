@@ -5,7 +5,6 @@ using CloudBanking.BaseControl;
 using CloudBanking.BaseHardware;
 using CloudBanking.Common;
 using CloudBanking.DroidCommon;
-using CloudBanking.Flow.Base;
 using CloudBanking.Logger;
 using CloudBanking.PaxSdk;
 using CloudBanking.PaymentLoyalty;
@@ -16,8 +15,6 @@ using CloudBanking.Repositories;
 using CloudBanking.ServiceLocators;
 using CloudBanking.ShellContainers;
 using CloudBanking.Utilities;
-using CloudBanking.WebSocket;
-using Plugin.CurrentActivity;
 using Plugin.DeviceInfo;
 using System;
 
@@ -48,28 +45,48 @@ namespace CloudBanking.UITestApp
             ServiceLocator.Instance.Register<IProfileService, DroidProfilesService>(ServiceLocator.Instance.Get<ILoggerService>());
             ServiceLocator.Instance.Register<IDiagnosticService, DiagnosticService>(ServiceLocator.Instance.Get<IUtilityService>());
             ServiceLocator.Instance.Register<ISecureStorageService, DroidSharePreferenceSecureStorageService>(this);
+            //ServiceLocator.Instance.Register<IReportService, ReportService>();
 
-            if (CrossDeviceInfo.Current.IsPaxTerminal())
-                ServiceLocator.Instance.Register<ITMSService, CloudBanking.PaxSdk.TMSService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISecureStorageService>(), PaxConstants.PAX_SINGLE_APP_KEY, PaxConstants.PAX_SINGLE_APP_SECRET);
-            else
-                ServiceLocator.Instance.Register<ITMSService, CloudBanking.PhoneSdk.TMSService>();
+            //if (CrossDeviceInfo.Current.IsPaxTerminal())
+            //{
+            //    ServiceLocator.Instance.Register<ITMSService, PaxSdk.TMSService>(this, ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IUtilityService>(), ServiceLocator.Instance.Get<ILoggerService>(), PaxConstants.PAX_SINGLE_APP_KEY, PaxConstants.PAX_SINGLE_APP_SECRET);
 
-            //create smart card
-            if (CrossDeviceInfo.Current.IsPaxTerminal())
-            {
-                ServiceLocator.Instance.Register<ISmartDevice, PaxSmartDevice>(this,
-                    ServiceLocator.Instance.Get<ILoggerService>(),
-                    ServiceLocator.Instance.Get<IFileService>(),
-                    ServiceLocator.Instance.Get<IProfileService>(),
-                    CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),
-                    ServiceLocator.Instance.Get<IUtilityService>());
-                ServiceLocator.Instance.Register<IBarcodeService, PaxBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
-            }
-            else
-            {
-                ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>());
-                ServiceLocator.Instance.Register<IBarcodeService, ZXingBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
-            }
+            //    ServiceLocator.Instance.Register<ISmartDevice, PaxSmartDevice>(this,
+            //     ServiceLocator.Instance.Get<ILoggerService>(),
+            //     ServiceLocator.Instance.Get<IFileService>(),
+            //     ServiceLocator.Instance.Get<IProfileService>(),
+            //     CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),
+            //     ServiceLocator.Instance.Get<IUtilityService>());
+            //}
+            //else
+            //{
+            //    ServiceLocator.Instance.Register<ITMSService, PhoneSdk.TMSService>();
+
+            //    ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>(), ServiceLocator.Instance.Get<IUtilityService>());
+            //}
+            ServiceLocator.Instance.Register<ITMSService, PhoneSdk.TMSService>();
+
+            //ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>(), ServiceLocator.Instance.Get<IUtilityService>());
+
+            ServiceLocator.Instance.Register<IPaymentLoyaltyService, PaymentLoyaltyService>(this, ServiceLocator.Instance.Get<ILoggerService>());
+
+
+            ////create smart card
+            //if (CrossDeviceInfo.Current.IsPaxTerminal())
+            //{
+            //    ServiceLocator.Instance.Register<IBarcodeService, PaxBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
+            //}
+            //else
+            //{
+            //    //ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>());
+            //    ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>(), ServiceLocator.Instance.Get<IUtilityService>());
+            //    ServiceLocator.Instance.Register<IBarcodeService, ZXingBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
+            //    ServiceLocator.Instance.Register<IBarcodeService, ZXingBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
+            //}
+            ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>());
+            //ServiceLocator.Instance.Register<ISmartDevice, PhoneSmartDevice>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<IFileService>(), ServiceLocator.Instance.Get<IProfileService>(), ServiceLocator.Instance.Get<IUtilityService>());
+            ServiceLocator.Instance.Register<IBarcodeService, ZXingBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
+            ServiceLocator.Instance.Register<IBarcodeService, ZXingBarcodeService>(this, ServiceLocator.Instance.Get<ISmartDevice>());
 
             //create UI of shell
             ServiceLocator.Instance.Register<IDialogBuilder, DialogBuilder>(this, ServiceLocator.Instance.Get<ILoggerService>(), ServiceLocator.Instance.Get<ISmartDevice>(), ServiceLocator.Instance.Get<IUtilityService>(), CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(), ServiceLocator.Instance.Get<IDiagnosticService>());
@@ -106,6 +123,17 @@ namespace CloudBanking.UITestApp
                   CrossDeviceInfo.Current.IsBuzzerSupport(),
                   CrossDeviceInfo.Current.IsMagInsertDelay(),
                   CrossDeviceInfo.Current.IsCTLSMagCloser());
+
+            //ServiceLocator.Instance.Get<ISmartDevice>().SetHardwareModule(
+            //  CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),
+            //  CrossDeviceInfo.Current.IsTerminalHasBattery(),
+            //  CrossDeviceInfo.Current.IsSwipeSupported(),
+            //  CrossDeviceInfo.Current.IsInsertSupported(),
+            //  CrossDeviceInfo.Current.IsTapSupported(),
+            //  CrossDeviceInfo.Current.IsBuzzerSupport(),
+            //  CrossDeviceInfo.Current.IsMagInsertDelay(),
+            //  CrossDeviceInfo.Current.IsCTLSMagCloser(),
+            //  CrossDeviceInfo.Current.IsICCLightSupported());
 
             ServiceLocator.Instance.Register<ILedService, DroidLedService>();
         }

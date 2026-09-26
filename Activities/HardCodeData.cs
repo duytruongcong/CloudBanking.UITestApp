@@ -27,7 +27,7 @@ namespace CloudBanking.UITestApp
 {
     public partial class TestActivity : BaseActivity
     {
-        private void ShowApprovalDialog(CaseDialog caseDialog)
+        private void ShowApprovalDialog(DialogCase caseDialog)
         {
 #if true
             string lpszEntryModeString = "";
@@ -45,7 +45,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
                     lpszTitleString = StringIds.STRING_PURCHASE;
@@ -67,7 +67,7 @@ namespace CloudBanking.UITestApp
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_APPROVED).ToUpperInvariant();
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     DlgData.PrintStage = PrintStage.Printing;
                     DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
@@ -90,7 +90,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     DlgData.PrintStage = PrintStage.PrintPrompt;
                     DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
@@ -112,7 +112,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     DlgData.PrintStage = PrintStage.PrintPrompt;
                     DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
@@ -134,7 +134,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
                     DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpperInvariant();
@@ -156,7 +156,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
 
                     DlgData.PrintStage = PrintStage.Printing;
                     DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpper();
@@ -177,7 +177,7 @@ namespace CloudBanking.UITestApp
                     DlgData.fCustomerDisplay = false;
                     break;
 
-                case CaseDialog.CASE7:
+                case DialogCase.CASE7:
 
                     DlgData.PrintStage = PrintStage.PrintComplete;
                     DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpper();
@@ -199,7 +199,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE8:
+                case DialogCase.CASE8:
                     DlgData.PrintStage = PrintStage.PrintPrompt;
                     DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpper();
                     lpszTitleString = StringIds.STRING_PURCHASE;
@@ -220,7 +220,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE9:
+                case DialogCase.CASE9:
                     DlgData.PrintStage = PrintStage.Printing;
                     DlgData.lpszAboveMainString = StringIds.STRING_PURCHASE.GetString().ToUpper();
                     lpszTitleString = StringIds.STRING_TRANSACTION;
@@ -251,19 +251,19 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowSettlementApprovalDialog(CaseDialog caseDialog)
+        private void ShowSettlementApprovalDialog(DialogCase caseDialog)
         {
             SettlementApprovalDlgData DlgData = new SettlementApprovalDlgData();
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_DECLINED);
                     DlgData.fApproved = false;
                     DlgData.lpszResult = "CANNOT COMPLETE";
                     DlgData.lpszSecondaryResult = "SIGNATURE DIDN'T MATCH";
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     DlgData.lszMainString = Localize.GetString(StringIds.STRING_EMVSTD_APPROVED);
                     DlgData.fApproved = true;
                     DlgData.lpszResult = "CONNECTION SUCCESSFUL";
@@ -303,7 +303,7 @@ namespace CloudBanking.UITestApp
             return lszTitle;
         }
 
-        void ShowSwipeMerchantCardDialog(CaseDialog caseDialog)
+        void ShowSwipeMerchantCardDialog(DialogCase caseDialog)
         {
 #if false
             string titleId = StringIds.STRING_SWIPE_GIFT_CARD;
@@ -378,7 +378,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowRequestCardDialog(CaseDialog caseDialog)
+        private void ShowRequestCardDialog(DialogCase caseDialog)
         {
 #if false
             bool fMultitender = true;
@@ -820,7 +820,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowCusDisplayRequestCardDialog(CaseDialog caseDialog)
+        private void ShowCusDisplayRequestCardDialog(DialogCase caseDialog)
         {
 #if false
             var RequestDlgData = new RequestCardDlgData();
@@ -1031,7 +1031,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowDynamicOptionDialog(CaseDialog caseDialog)
+        private void ShowDynamicOptionDialog(DialogCase caseDialog)
         {
 #if false
             var generalType = new List<GenericType>();
@@ -1140,55 +1140,55 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowMessageDialogShell(CaseDialog caseDialog)
+        private void ShowMessageDialogShell(DialogCase caseDialog)
         {
             MessageType messageData = new MessageType();
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
                     ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_PRINT_PENDING_HOSPITALITY, StringIds.STRING_REPORT_PRINTED_FAILED, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
                     ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_PRINT_PENDING_HOSPITALITY, StringIds.STRING_REPORT_PRINTED_SUCCESSFULLY, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
                     ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_WARNING_TITLE, StringIds.STRING_PROCESSORNOTFOUND, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
                     messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
                     ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_PRINTPENDING, StringIds.STRING_REPORT_PRINTED_SUCCESSFULLY, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
                     messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
                     ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_ERROR_TITLE, StringIds.STRING_CARDREADERROR, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
                     messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
                     messageData.SubMessage = StringIds.STRING_PLEASE_TRY_AGAIN;
                     messageData.IsSubActualText = false;
                     ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_RKI, StringIds.STRING_RKI_INITIALISATION_FAILED, false, GlobalResource.MB_RETRYCANCEL, ref messageData);
                     break;
 
-                case CaseDialog.CASE7:
+                case DialogCase.CASE7:
                     messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
                     ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_LOGON, StringIds.STRING_LOGON_SUCCESSFUL_UPCASE, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE8:
+                case DialogCase.CASE8:
                     ApplicationFlow.CustomStringMessageBox(true, StringIds.STRING_WARNING_TITLE, StringIds.STRING_PROCESSORNOTFOUND, false, GlobalResource.MB_OK, ref messageData);
                     break;
             }
         }
 
-        private void ShowMessageDialogDroid(CaseDialog caseDialog)
+        private void ShowMessageDialogDroid(DialogCase caseDialog)
         {
 #if true
             MessageType messageData = new MessageType();
@@ -1197,7 +1197,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     mainTitle = StringIds.STRING_BALANCE_ENQUIRY;
                     mainResult = string.Empty;
 
@@ -1218,7 +1218,7 @@ namespace CloudBanking.UITestApp
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_ERROR, StringIds.STRING_ERRORDATA, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     mainTitle = StringIds.STRING_BALANCE_ENQUIRY;
                     mainResult = StringIds.STRING_DECLINED;
@@ -1231,12 +1231,12 @@ namespace CloudBanking.UITestApp
                     //ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_MESSAGE, StringIds.STRING_SIGNATUREACCEPTED, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
                     messageData.idImg = GlobalResource.ICON_SHIFT_STARTED;
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_SHIFT, StringIds.STRING_SHIFTHASALREADYSTARTED, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
                     messageData = new MessageType();
                     messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
                     messageData.IsShowBackBtn = true;
@@ -1246,7 +1246,7 @@ namespace CloudBanking.UITestApp
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_LINK_OPEN_TAB, StringIds.STRING_NO_OPEN_TAB_FOUND_UPCASE, false, GlobalResource.MB_RETRYCANCEL, ref messageData);
                     break;
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
                     messageData = new MessageType();
                     messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
                     messageData.SubMessage = StringIds.STRING_ACCESS_CODE_HAS_BEEN_VALIDATED;
@@ -1254,12 +1254,12 @@ namespace CloudBanking.UITestApp
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_ACCESSCODE, StringIds.STRING_CONNECTION_SUCCESSFULL, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
                     messageData.idImg = GlobalResource.MB_ICONAPPROVAL_BMP;
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_PRINT_PENDING_HOSPITALITY, StringIds.STRING_REPORT_PRINTED_SUCCESSFULLY, false, GlobalResource.MB_OK, ref messageData);
                     break;
 
-                case CaseDialog.CASE7:
+                case DialogCase.CASE7:
                     messageData = new MessageType();
                     messageData.idImg = GlobalResource.MB_ICONDECLINED_BMP;
                     messageData.IsShowBackBtn = true;
@@ -1269,7 +1269,7 @@ namespace CloudBanking.UITestApp
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_LINK_OPEN_TAB, StringIds.STRING_NO_OPEN_TAB_FOUND_UPCASE, false, GlobalResource.MB_RETRYCANCEL, ref messageData);
                     break;
 
-                case CaseDialog.CASE8:
+                case DialogCase.CASE8:
                     messageData = new MessageType();
                     messageData.idImg = GlobalResource.ICON_SHIFT_STARTED;
                     ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_SHIFT, StringIds.STRING_SHIFTHASALREADYSTARTED, false, GlobalResource.MB_OK, ref messageData);
@@ -1291,7 +1291,7 @@ namespace CloudBanking.UITestApp
             enterPinDialog.Show(this);
         }
 
-        private void ShowPresentCardErrorDlg(CaseDialog caseDialog)
+        private void ShowPresentCardErrorDlg(DialogCase caseDialog)
         {
             PresentCardErrorDlgData DlgData = new PresentCardErrorDlgData();
 
@@ -1309,13 +1309,13 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     DlgData.szMessageId = StringIds.STRING_CANNOTREADCARD;
                     fShowRetry = true;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     DlgData.szMessageId = StringIds.STRING_CANNOTREADCARD;
                     IdSecondText = StringIds.STRING_PLEASEREMOVECARD;
@@ -1341,7 +1341,7 @@ namespace CloudBanking.UITestApp
             messageDialog.Show(this);
         }
 
-        private void ShowEnterPinDialog(CaseDialog caseDialog)
+        private void ShowEnterPinDialog(DialogCase caseDialog)
         {
             GetPinNumberDlgData data = new GetPinNumberDlgData();
 
@@ -1353,28 +1353,28 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     data.AccountType = AccountType.ACCOUNT_TYPE_CREDIT;
                     data.IsEmulator = false;
                     data.fPinByPass = false;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     data.AccountType = AccountType.ACCOUNT_TYPE_SAVINGS;
                     data.IsEmulator = false;
                     data.fPinByPass = true;
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     data.AccountType = AccountType.ACCOUNT_TYPE_UNKNOWN;
                     data.IsEmulator = true;
                     data.fPinByPass = false;
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     data.AccountType = AccountType.ACCOUNT_TYPE_CHEQUE;
                     data.IsEmulator = true;
@@ -1392,7 +1392,7 @@ namespace CloudBanking.UITestApp
             }, true, false, data);
         }
 
-        private void ShowProcessMessageDialog(CaseDialog caseDialog)
+        private void ShowProcessMessageDialog(DialogCase caseDialog)
         {
 #if true
             var pProcessingData = new ProcessingData();
@@ -1413,7 +1413,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     pProcessingData.hTextTitle = "";
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -1422,7 +1422,7 @@ namespace CloudBanking.UITestApp
                     //pProcessingData.cancelText = StringIds.STRING_CANCEL;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -1431,7 +1431,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.cancelText = StringIds.STRING_CANCEL;
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -1440,7 +1440,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.cancelText = StringIds.STRING_CANCEL;
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -1682,7 +1682,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowPreAuthEnterAmountDialog(CaseDialog caseDialog)
+        private void ShowPreAuthEnterAmountDialog(DialogCase caseDialog)
         {
 #if true
             long amount = 10000;
@@ -1691,10 +1691,10 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     fReferenceEnable = true;
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     fReferenceEnable = false;
                     break;
             }
@@ -1862,7 +1862,7 @@ namespace CloudBanking.UITestApp
             dialog.Show(this);
         }
 
-        private void PreAuthItemGetNewAmount(CaseDialog caseDialog)
+        private void PreAuthItemGetNewAmount(DialogCase caseDialog)
         {
 #if false
             RecordViewModel selectedPayment = new RecordViewModel();
@@ -2288,14 +2288,14 @@ namespace CloudBanking.UITestApp
 
         }
 
-        void ShowEmailReceiptSendResultDialog(CaseDialog caseDialog)
+        void ShowEmailReceiptSendResultDialog(DialogCase caseDialog)
         {
             var selectedEmail = "d.timms@yahoo.com";
             var selectedCellNumber = "+61 404 033 099";
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_EMAIL_RECEIPT_LOWCASE, (iResult, args) =>
                     {
@@ -2303,7 +2303,7 @@ namespace CloudBanking.UITestApp
                     }, true, false, new ReceiptResultDlgData(selectedEmail, UtilEnum.ReceiptType.Email, true));
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_EMAIL_RECEIPT_LOWCASE, (iResult, args) =>
                     {
@@ -2311,14 +2311,14 @@ namespace CloudBanking.UITestApp
                     }, true, false, new ReceiptResultDlgData(selectedEmail, UtilEnum.ReceiptType.Email, false));
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
                     DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_TEXT_RECEIPT, (iResult, args) =>
                     {
                         //EmailReceiptSendResultDialog
                     }, true, false, new ReceiptResultDlgData(selectedCellNumber, UtilEnum.ReceiptType.Text, true));
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
                     DialogBuilder.Show(IPayDialog.RECEIPT_RESULT_DIALOG, StringIds.STRING_TEXT_RECEIPT, (iResult, args) =>
                     {
                         //EmailReceiptSendResultDialog
@@ -2439,7 +2439,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        void ShowGetAmountDialog(CaseDialog caseDialog)
+        void ShowGetAmountDialog(DialogCase caseDialog)
         {
 #if true
             var data = new GetAmountDlgData();
@@ -2452,16 +2452,18 @@ namespace CloudBanking.UITestApp
             //data.plTotalAmount = 13800;
             string title = string.Empty;
 
+            TransactionType 
+
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     //data.fShowSubHeader = true;
                     data.fShowReference = false;
                     data.fInstoreCashoutFeeEnable = true;
                     title = $"{StringIds.STRING_TENDER.GetString()} 5 - {StringIds.STRING_AMOUNT.GetString()}";
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     //data.fShowSubHeader = false;
                     data.fShowReference = true;
                     data.fInstoreCashoutFeeEnable = false;
@@ -2470,7 +2472,7 @@ namespace CloudBanking.UITestApp
                     title = StringIds.STRING_TENDER;
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
                     //data.fShowSubHeader = true;
                     data.fShowReference = true;
                     data.plszReference = "BA17865";
@@ -2482,6 +2484,7 @@ namespace CloudBanking.UITestApp
                     data.fInstoreCashoutFeeEnable = false;
                     break;
             }
+
 
             //var dialog = new GetAmountDialog(StringIds.STRING_PURCHASE_UPCASE, 13800, amount => { });
             //dialog.DialogStyle = DialogStyle.FULLSCREEN;
@@ -2659,7 +2662,7 @@ namespace CloudBanking.UITestApp
             }, true, false, pLogonData, false);
         }
 
-        void ShowGetAmountCashOutDialog(CaseDialog caseDialog)
+        void ShowGetAmountCashOutDialog(DialogCase caseDialog)
         {
             var data = new GetAmountDlgData();
             data.lszPayButtonText = StringIds.STRING_OK_UPCASE;
@@ -2668,12 +2671,12 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     data.fInstoreCashoutFeeEnable = true;
                     data.fInstoreCashoutFeePercent = true;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     data.fInstoreCashoutFeeEnable = false;
                     data.fInstoreCashoutFeePercent = false;
                     break;
@@ -2837,7 +2840,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        void ShowReceiptOptionDialog(CaseDialog caseDialog)
+        void ShowReceiptOptionDialog(DialogCase caseDialog)
         {
 #if true
             var data = new ReceiptOptionsDlgData();
@@ -2845,11 +2848,11 @@ namespace CloudBanking.UITestApp
             data.QRReceiptResult = "ReceiptOptionsDialog";
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     data.fShowQrCode = true;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     data.fShowQrCode = false;
                     //data.fShowNewSaleButton = true;
                     break;
@@ -3788,7 +3791,7 @@ namespace CloudBanking.UITestApp
             }, true, false, data);
         }
 
-        void ShowSelectTenderExtraAmountDialog(CaseDialog caseDialog)
+        void ShowSelectTenderExtraAmountDialog(DialogCase caseDialog)
         {
 #if false
             var dlgData = new SelectTenderExtraAmountDlgData();
@@ -4460,7 +4463,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        void ShowFindPurchaseOptionDialog(CaseDialog caseDialog)
+        void ShowFindPurchaseOptionDialog(DialogCase caseDialog)
         {
 #if false
             string IdDlgTitle = string.Empty;
@@ -5225,7 +5228,7 @@ namespace CloudBanking.UITestApp
 
         }
 
-        void SelectDCCCurrency(CaseDialog caseDialog)
+        void SelectDCCCurrency(DialogCase caseDialog)
         {
             Currency currency;
 
@@ -5265,11 +5268,11 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     //DialogBuilder.IsShowHeader = true;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     //DialogBuilder.IsShowHeader = false;
                     break;
             }
@@ -5340,17 +5343,17 @@ namespace CloudBanking.UITestApp
             }, true, false, data);
         }
 
-        void ConfirmTopUpMessageBox(CaseDialog caseDialog)
+        void ConfirmTopUpMessageBox(DialogCase caseDialog)
         {
             long lTotalAmount = 40000;
             FunctionType function = FunctionType.Purchase;
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     function = FunctionType.PreAuthPartial;
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     function = FunctionType.Purchase;
                     break;
             }
@@ -5672,7 +5675,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowDonationRequestCardDialog(CaseDialog caseDialog)
+        private void ShowDonationRequestCardDialog(DialogCase caseDialog)
         {
 #if false
             var RequestDlgData = new RequestCardDlgData();
@@ -6375,7 +6378,7 @@ namespace CloudBanking.UITestApp
             //}, true, false, generalType, string.Empty, GlobalResource.CANCEL_BUTTON, StringIds.STRING_CANCEL);
         }
 
-        void ShowUnattendedGetAmountDialog(CaseDialog caseDialog)
+        void ShowUnattendedGetAmountDialog(DialogCase caseDialog)
         {
 #if false
             var data = new GetAmountDlgData();
@@ -6410,7 +6413,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowUnattendedRequestCardDialog(CaseDialog caseDialog)
+        private void ShowUnattendedRequestCardDialog(DialogCase caseDialog)
         {
 #if false
             var RequestDlgData = new RequestCardDlgData();
@@ -6669,7 +6672,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowUnattendedProcessMessageDialog(CaseDialog caseDialog)
+        private void ShowUnattendedProcessMessageDialog(DialogCase caseDialog)
         {
             var pProcessingData = new ProcessingData();
 
@@ -6678,7 +6681,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     pProcessingData.hTextTitle = "";
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -6686,7 +6689,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextThree = "";
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -6694,7 +6697,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -6702,7 +6705,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -6838,7 +6841,7 @@ namespace CloudBanking.UITestApp
             //DialogBuilder.Show(IPayDialog.UNATTENDED_RECEIPT_OPTIONS_DIALOG, StringIds.STRING_REVIEW, null, true, false, data);
         }
 
-        void ShowUnattendedReviewTransDialog(CaseDialog caseDialog)
+        void ShowUnattendedReviewTransDialog(DialogCase caseDialog)
         {
 #if false
             string chargeTime = "02:00:00 HR";
@@ -7469,7 +7472,7 @@ namespace CloudBanking.UITestApp
             //}, true, false, data);
         }
 
-        void ShowCheckIdResultDialog(CaseDialog caseDialog)
+        void ShowCheckIdResultDialog(DialogCase caseDialog)
         {
             //CheckIdResultDlgData data = new CheckIdResultDlgData();
 
@@ -7535,7 +7538,7 @@ namespace CloudBanking.UITestApp
             //}, true, false, data);
         }
 
-        void ShowCheckIdNotificationDialog(CaseDialog caseDialog)
+        void ShowCheckIdNotificationDialog(DialogCase caseDialog)
         {
             //var data = new CheckIdNotificationDlgData();
 
@@ -7637,7 +7640,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowMiniRequestCardDialog(CaseDialog caseDialog)
+        private void ShowMiniRequestCardDialog(DialogCase caseDialog)
         {
 #if false
 
@@ -7727,7 +7730,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowMiniDynamicOptionDialog(CaseDialog caseDialog)
+        private void ShowMiniDynamicOptionDialog(DialogCase caseDialog)
         {
 #if false
 
@@ -7791,7 +7794,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowMiniEnterPinDialog(CaseDialog caseDialog)
+        private void ShowMiniEnterPinDialog(DialogCase caseDialog)
         {
 #if true
             GetPinNumberDlgData data = new GetPinNumberDlgData();
@@ -7804,28 +7807,28 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     data.AccountType = AccountType.ACCOUNT_TYPE_CREDIT;
                     data.IsEmulator = false;
                     data.fPinByPass = false;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     data.AccountType = AccountType.ACCOUNT_TYPE_SAVINGS;
                     data.IsEmulator = false;
                     data.fPinByPass = true;
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     data.AccountType = 0;
                     data.IsEmulator = true;
                     data.fPinByPass = false;
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     data.AccountType = 0;
                     data.IsEmulator = true;
@@ -7839,7 +7842,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowMiniProcessMessageDialog(CaseDialog caseDialog)
+        private void ShowMiniProcessMessageDialog(DialogCase caseDialog)
         {
 #if true
             var pProcessingData = new ProcessingData();
@@ -7851,7 +7854,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     pProcessingData.hTextTitle = $"{Localize.GetString(StringIds.STRING_DONATION).ToUpperInvariant()} {amount.ToFormatLocalCurrencyAmount()}";
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -7859,7 +7862,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextThree = "";
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -7867,7 +7870,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -7875,7 +7878,7 @@ namespace CloudBanking.UITestApp
                     pProcessingData.hTextThree = Localize.GetString(StringIds.STRING_EMV_LEAVECARDINSERTED);
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     pProcessingData.hTextTitle = Localize.GetString(StringIds.STRING_EMAIL_RECEIPT);
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
@@ -8374,7 +8377,7 @@ namespace CloudBanking.UITestApp
 
         }
 
-        void ShowPaymentEntryListDialog(CaseDialog caseDialog)
+        void ShowPaymentEntryListDialog(DialogCase caseDialog)
         {
 #if false
             PaymentEntryListDlgData data = new PaymentEntryListDlgData();
@@ -8453,7 +8456,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        void ShowCommonReviewDialog(CaseDialog caseDialog)
+        void ShowCommonReviewDialog(DialogCase caseDialog)
         {
 #if false
 
@@ -8780,7 +8783,7 @@ namespace CloudBanking.UITestApp
             }, true, false, dlgData);
         }
 
-        void ShowCustomerDetailsMenuDialog(CaseDialog caseDialog)
+        void ShowCustomerDetailsMenuDialog(DialogCase caseDialog)
         {
 #if false
             var dlgData = new CustomerDetailsMenuDlgData()

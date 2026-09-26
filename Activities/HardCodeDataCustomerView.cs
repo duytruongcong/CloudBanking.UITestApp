@@ -18,7 +18,7 @@ namespace CloudBanking.UITestApp
 {
     public partial class TestActivity : BaseActivity
     {
-        private void ShowCusViewRequestCardDialog(CaseDialog caseDialog)
+        private void ShowCusViewRequestCardDialog(DialogCase caseDialog)
         {
 #if false
             var RequestDlgData = new RequestCardDlgData();
@@ -230,7 +230,7 @@ namespace CloudBanking.UITestApp
 #endif
         }
 
-        private void ShowCusViewEnterPinDialog(CaseDialog caseDialog)
+        private void ShowCusViewEnterPinDialog(DialogCase caseDialog)
         {
             GetPinNumberDlgData data = new GetPinNumberDlgData();
 
@@ -242,28 +242,28 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     data.AccountType = AccountType.ACCOUNT_TYPE_CREDIT;
                     data.IsEmulator = false;
                     data.fPinByPass = false;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     data.AccountType = AccountType.ACCOUNT_TYPE_SAVINGS;
                     data.IsEmulator = false;
                     data.fPinByPass = true;
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     data.AccountType = 0;
                     data.IsEmulator = true;
                     data.fPinByPass = false;
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     data.AccountType = 0;
                     data.IsEmulator = true;
@@ -285,7 +285,7 @@ namespace CloudBanking.UITestApp
             //entryCVVDialog.Show(this);
         }
 
-        private void ShowCusViewApprovalDialog(CaseDialog caseDialog)
+        private void ShowCusViewApprovalDialog(DialogCase caseDialog)
         {
 #if false
             string lpszEntryModeString = "";
@@ -472,28 +472,28 @@ namespace CloudBanking.UITestApp
             //dialog.Show(this);
         }
 
-        private void ShowCusViewMessageDialog(CaseDialog caseDialog)
+        private void ShowCusViewMessageDialog(DialogCase caseDialog)
         {
             IBaseDialog dialog = null;
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     CusViewCustomStringMessageBox(false, StringIds.STRING_EMV_REMOVECARD, StringIds.STRING_EMV_REMOVECARD, false, GlobalResource.MB_NONE, GlobalResource.ICON_ICC_CARD_REMOVED, fAutoDismiss: true);
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     CusViewCustomStringMessageBox(true, StringIds.STRING_EMV_REMOVECARD, StringIds.STRING_CARD_REMOVE_TOO_SOON, false, GlobalResource.MB_RETRYCANCEL, GlobalResource.ICON_ICC_CARD_REMOVED);
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     CusViewErrorMessage(string.Empty, Localize.GetString(StringIds.STRING_TRANSACTIONCANCELLED), false, string.Empty, false, Localize.GetString(StringIds.STRING_PLEASEREMOVECARD), GlobalResource.MB_NONE);
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     CusViewCustomStringMessageBox(true, StringIds.STRING_CONFIRM_SIGNATURE, StringIds.STRING_CONFIRM_SIGNATURE_IS_CORRECT_UPCASE, false, GlobalResource.MB_YESNO, ref dialog, GlobalResource.MB_ICON_SIGNATURE_RESULT, aboveMsg: StringIds.STRING_SIGNATURE_REQUIRED, fAboveMsgActualText: false);
                     break;

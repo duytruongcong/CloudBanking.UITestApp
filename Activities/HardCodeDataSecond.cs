@@ -15,7 +15,7 @@ namespace CloudBanking.UITestApp
 {
     public partial class TestActivity : BaseActivity
     {
-        void ShowMessageDialogInvalidAmount(CaseDialog caseDialog)
+        void ShowMessageDialogInvalidAmount(DialogCase caseDialog)
         {
             //MessageDialog
 #if false
@@ -709,7 +709,8 @@ namespace CloudBanking.UITestApp
                 strListTitle = string.Empty,
                 fShowBackBtn = true,
                 fShowLeftMenuBtn = false,
-                fShowTopListHeader = false
+                fShowTopListArea = false,
+                fShowTopHeaderTitle = false
             };
 
             AddGiftCardAction(dialogData, Command.FLOWCOMMAND_GIFT_RECHARGE, StringIds.STRING_GIFT_CARD_RECHARGE);

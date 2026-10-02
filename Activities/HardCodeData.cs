@@ -305,73 +305,121 @@ namespace CloudBanking.UITestApp
 
         void ShowSwipeMerchantCardDialog(DialogCase caseDialog)
         {
-#if false
-            string titleId = StringIds.STRING_SWIPE_GIFT_CARD;
+#if true
+            string headerTitleId = string.Empty;
+
+            TrasactionCase trasactionCase = TrasactionCase.GiftRechargeOne;
 
             SwipeMerchantCardDlgData initDlgData = new SwipeMerchantCardDlgData();
-
-            initDlgData.szTotalTitle = StringIds.STRING_GIFT_CARD_SALE;
-
-            initDlgData.fManualEntry = true;
-
+            initDlgData.TotalAmount = 13800;
             initDlgData.IsEmulator = false;
-
-            initDlgData.szMainCardTitle = titleId;
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
-                    initDlgData.OtherCommand = GlobalResource.VOUCHER_REDEEM;
-                    initDlgData.OtherIconId = IconIds.VECTOR_VOUCHER;
-                    initDlgData.OtherTitleID = StringIds.STRING_VOUCHERS;
-                    initDlgData.lTotal = 13800;
-                    initDlgData.fShowAmount = true;
+                case DialogCase.CASE1:
+                    trasactionCase = TrasactionCase.GiftRechargeOne;
+                    initDlgData.MainCardTitleId = StringIds.STRING_TAP_INSERT_SWIPE;
+                    //initDlgData.OtherButtonIconId = IconIds.VECTOR_VOUCHER;
+                    //initDlgData.OtherButtonTitleID = StringIds.STRING_VOUCHERS;
 
                     break;
 
-                case CaseDialog.CASE2:
-                    initDlgData.OtherCommand = GlobalResource.SCAN_BUTTON;
-                    initDlgData.OtherIconId = IconIds.VECTOR_QR_PAYMENTS;
-                    initDlgData.OtherTitleID = StringIds.STRING_SCAN_CARD;
-                    initDlgData.lTotal = 13800;
-                    initDlgData.fShowAmount = true;
-
+                case DialogCase.CASE2:
+                    trasactionCase = TrasactionCase.GiftRechargeTwo;
+                    initDlgData.MainCardTitleId = StringIds.STRING_TAP_INSERT_SWIPE;
+                    initDlgData.IsShowCardIconList = true;
+                    initDlgData.OtherButtonIconId = IconIds.VECTOR_QR_PAYMENTS;
+                    initDlgData.OtherButtonTitleID = StringIds.STRING_SCAN_CARD;
+                    initDlgData.IsShowCardIconList = false;
                     break;
 
-                case CaseDialog.CASE3:
-                    initDlgData.lTotal = 0;
-                    initDlgData.fShowAmount = false;
-                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
-                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
-                    initDlgData.LeftButtonTextId = StringIds.STRING_CANCEL;
-                    initDlgData.LeftButtonCommandId = GlobalResource.CANCEL_BUTTON;
-                    initDlgData.RightButtonTextId = StringIds.STRING_ENTER;
-                    initDlgData.RightButtonCommandId = GlobalResource.ENTER_BUTTON;
-                    titleId = StringIds.STRING_QUICK_ACCESS;
+                case DialogCase.CASE3:
+                    trasactionCase = TrasactionCase.GiftActive;
+                    initDlgData.MainCardTitleId = StringIds.STRING_TAP_INSERT_SWIPE;
                     break;
 
-                case CaseDialog.CASE4:
-                    initDlgData.lTotal = 0;
-                    initDlgData.fShowAmount = false;
-                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
-                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
-                    initDlgData.LeftButtonTextId = StringIds.STRING_CANCEL;
-                    initDlgData.LeftButtonCommandId = GlobalResource.CANCEL_BUTTON;
-                    titleId = StringIds.STRING_QUICK_ACCESS;
+                case DialogCase.CASE4:
+                    trasactionCase = TrasactionCase.GiftActiveRecharge;
+                    initDlgData.MainCardTitleId = StringIds.STRING_TAP_INSERT_SWIPE;
                     break;
 
-                case CaseDialog.CASE5:
-                    initDlgData.lTotal = 0;
-                    initDlgData.fShowAmount = false;
-                    initDlgData.szMainCardTitle = StringIds.STRING_SWIPECARD;
-                    initDlgData.TopTitle = StringIds.STRING_QUICK_ACCESS;
-                    initDlgData.RightButtonTextId = StringIds.STRING_ENTER;
-                    initDlgData.RightButtonCommandId = GlobalResource.ENTER_BUTTON;
-                    titleId = StringIds.STRING_QUICK_ACCESS;
+                case DialogCase.CASE5:
+                    initDlgData.MainCardTitleId = StringIds.STRING_TAP_INSERT_SWIPE;
                     break;
             }
 
-            DialogBuilder.Show(IShellDialog.SWIPE_MERCHANT_CARD_DIALOG, true, titleId, (iResult, args) =>
+            switch (trasactionCase)
+            {
+                case TrasactionCase.GiftRechargeOne:
+                    headerTitleId = StringIds.STRING_GIFT_RECHARGE;
+                    initDlgData.PamentTitleId = StringIds.STRING_GIFT_CARD_RECHARGE;
+                    initDlgData.IsShowCardIconList = false;
+                    break;
+
+                case TrasactionCase.GiftRechargeTwo:
+                    headerTitleId = StringIds.STRING_GIFT_RECHARGE;
+                    initDlgData.PamentTitleId = StringIds.STRING_RECHARGE_PAYMENT;
+                    initDlgData.IsShowCardIconList = true;
+                    break;
+
+                case TrasactionCase.GiftActive:
+                    headerTitleId = StringIds.STRING_GIFTACTIVATE_TITLE;
+                    initDlgData.PamentTitleId = StringIds.STRING_GIFT_CARD_ACTIVATE;
+                    initDlgData.IsShowCardIconList = false;
+                    break;
+
+                case TrasactionCase.GiftActiveRecharge:
+                    headerTitleId = StringIds.STRING_GIFT_CARD_ACTIVATE_RECHARGE;
+                    initDlgData.PamentTitleId = StringIds.STRING_GIFT_CARD_ACTIVATE;
+                    initDlgData.IsShowCardIconList = false;
+                    break;
+            }
+
+            var brandsToCheck = new List<(CARDTYPE Type, MerchantCreditCardType CreditType, MerchantDebitCardType DebitType, string IconName, bool IsVector)>
+                {
+                    (CARDTYPE.CARD_VISA, MerchantCreditCardType.Visa, MerchantDebitCardType.Visa, IconIds.VECTOR_VISA, true),
+                    (CARDTYPE.CARD_MASTER, MerchantCreditCardType.MasterCard, MerchantDebitCardType.MasterCard, IconIds.VECTOR_MASTER_CARD, true),
+                    (CARDTYPE.CARD_JCB, MerchantCreditCardType.JCB, MerchantDebitCardType.JCB, IconIds.VECTOR_JBC, true),
+                    (CARDTYPE.CARD_UNIONPAY, MerchantCreditCardType.UnionPay, MerchantDebitCardType.UnionPay, IconIds.VECTOR_UNION_PAY, true),
+                    (CARDTYPE.CARD_DISCOVER, MerchantCreditCardType.Discover, MerchantDebitCardType.Discover, IconIds.VECTOR_DISCOVER_NETWORK, true),
+                    (CARDTYPE.CARD_AMEX, MerchantCreditCardType.Amex, MerchantDebitCardType.Amex, IconIds.VECTOR_AMERICAN_EXPRESS, false),
+                    (CARDTYPE.CARD_DINERS, MerchantCreditCardType.Diners, MerchantDebitCardType.Diners, IconIds.VECTOR_DINNERS, true),
+                    (CARDTYPE.CARD_TROY, MerchantCreditCardType.Troy, MerchantDebitCardType.Troy, IconIds.VECTOR_CARD_TROY, true),
+                    (CARDTYPE.CARD_EFTPOS, MerchantCreditCardType.EFTPOS, MerchantDebitCardType.EFTPOS, IconIds.VECTOR_CARD_EFTPOS, true)
+                };
+
+            initDlgData.CardBrandLogoList = new List<CardBrandLogoDisplayData>();
+
+            foreach (var brand in brandsToCheck)
+            {
+                if (true)
+                {
+                    if (brand.Type == CARDTYPE.CARD_UNIONPAY)
+                    {
+                        initDlgData.CardBrandLogoList.Add(new CardBrandLogoDisplayData
+                        {
+                            CardType = brand.Type,
+                            IsSupported = true,
+                            RateDisplay = "***",
+                            IconName = brand.IconName,
+                            IsVector = brand.IsVector
+                        });
+                    }
+                    else
+                    {
+                        initDlgData.CardBrandLogoList.Add(new CardBrandLogoDisplayData
+                        {
+                            CardType = brand.Type,
+                            IsSupported = true,
+                            RateDisplay = "0.05%",
+                            IconName = brand.IconName,
+                            IsVector = brand.IsVector
+                        });
+                    }
+                }
+            }
+
+            DialogBuilder.Show(IShellDialog.SWIPE_MERCHANT_CARD_DIALOG, true, headerTitleId, (iResult, args) =>
             {
 
             }, false, false, initDlgData);
@@ -380,7 +428,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowRequestCardDialog(DialogCase caseDialog)
         {
-#if false
+#if true
             bool fMultitender = true;
             var RequestDlgData = new RequestCardDlgData();
             var pInitProcessData = new ShellInitProcessData()
@@ -405,6 +453,7 @@ namespace CloudBanking.UITestApp
             };
 
             RequestDlgData.fNoPresentCard = true;// change to show difference case
+            RequestDlgData.RequestCardScreenType = RequestCardScreenType.Mixture;
             RequestDlgData.pInitProcessData = pInitProcessData;
             //RequestDlgData.fMultiplePayments = false;
             RequestDlgData.fCanCancel = true;
@@ -441,43 +490,43 @@ namespace CloudBanking.UITestApp
                     (CARDTYPE.CARD_MASTER, MerchantCreditCardType.MasterCard, MerchantDebitCardType.MasterCard, IconIds.VECTOR_MASTER_CARD, true),
                     (CARDTYPE.CARD_UNIONPAY, MerchantCreditCardType.UnionPay, MerchantDebitCardType.UnionPay, IconIds.VECTOR_UNION_PAY, true),
                     (CARDTYPE.CARD_AMEX, MerchantCreditCardType.Amex, MerchantDebitCardType.Amex, IconIds.VECTOR_AMERICAN_EXPRESS, false),
-                    //(CARDTYPE.CARD_JCB, MerchantCreditCardType.JCB, MerchantDebitCardType.JCB, IconIds.VECTOR_JBC, true),
+                    (CARDTYPE.CARD_JCB, MerchantCreditCardType.JCB, MerchantDebitCardType.JCB, IconIds.VECTOR_JBC, true),
                     (CARDTYPE.CARD_DISCOVER, MerchantCreditCardType.Discover, MerchantDebitCardType.Discover, IconIds.VECTOR_DISCOVER_NETWORK, true),
-                    //(CARDTYPE.CARD_DINERS, MerchantCreditCardType.Diners, MerchantDebitCardType.Diners, IconIds.VECTOR_DINNERS, true),
-                    //(CARDTYPE.CARD_TROY, MerchantCreditCardType.Troy, MerchantDebitCardType.Troy, IconIds.VECTOR_CARD_TROY, true),
-                    //(CARDTYPE.CARD_EFTPOS, MerchantCreditCardType.EFTPOS, MerchantDebitCardType.EFTPOS, IconIds.VECTOR_CARD_EFTPOS, true)
+                    (CARDTYPE.CARD_DINERS, MerchantCreditCardType.Diners, MerchantDebitCardType.Diners, IconIds.VECTOR_DINNERS, true),
+                    (CARDTYPE.CARD_TROY, MerchantCreditCardType.Troy, MerchantDebitCardType.Troy, IconIds.VECTOR_CARD_TROY, true),
+                    (CARDTYPE.CARD_EFTPOS, MerchantCreditCardType.EFTPOS, MerchantDebitCardType.EFTPOS, IconIds.VECTOR_CARD_EFTPOS, true)
                 };
 
-            //RequestDlgData.CardBrandLogoList = new List<CardBrandLogoDisplayData>();
+            RequestDlgData.CardBrandLogoList = new List<CardBrandLogoDisplayData>();
 
-            //foreach (var brand in brandsToCheck)
-            //{
-            //    if (true)
-            //    {
-            //        RequestDlgData.CardBrandLogoList.Add(new CardBrandLogoDisplayData
-            //        {
-            //            CardType = brand.Type,
-            //            IsSupported = true,
-            //            RateDisplay = "0.5%",
-            //            IconName = brand.IconName,
-            //            IsVector = brand.IsVector
-            //        });
-            //    }
-            //}
+            foreach (var brand in brandsToCheck)
+            {
+                if (true)
+                {
+                    RequestDlgData.CardBrandLogoList.Add(new CardBrandLogoDisplayData
+                    {
+                        CardType = brand.Type,
+                        IsSupported = true,
+                        RateDisplay = "0.5%",
+                        IconName = brand.IconName,
+                        IsVector = brand.IsVector
+                    });
+                }
+            }
 
-            RequestDlgData.CardLogo = new CardLogo();
-            RequestDlgData.CardLogo.fVisa = true;
-            RequestDlgData.CardLogo.fMasterCard = true;
-            RequestDlgData.CardLogo.fUnionPay = true;
-            RequestDlgData.CardLogo.fAmex = true;
-            RequestDlgData.CardLogo.fJCB = true;
-            RequestDlgData.CardLogo.fDiscover = true;
-            RequestDlgData.CardLogo.fDiners = true;
-            RequestDlgData.CardLogo.fTroy = true;
+            //RequestDlgData.CardLogo = new CardLogo();
+            //RequestDlgData.CardLogo.fVisa = true;
+            //RequestDlgData.CardLogo.fMasterCard = true;
+            //RequestDlgData.CardLogo.fUnionPay = true;
+            //RequestDlgData.CardLogo.fAmex = true;
+            //RequestDlgData.CardLogo.fJCB = true;
+            //RequestDlgData.CardLogo.fDiscover = true;
+            //RequestDlgData.CardLogo.fDiners = true;
+            //RequestDlgData.CardLogo.fTroy = true;
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     RequestDlgData.iFunctionButton = FunctionType.Purchase;
                     RequestDlgData.fMSR = true;
@@ -515,7 +564,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = true;
@@ -559,7 +608,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     RequestDlgData.iFunctionButton = FunctionType.Cash;
                     RequestDlgData.fMSR = true;
@@ -582,7 +631,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     RequestDlgData.iFunctionButton = FunctionType.Refund;
                     RequestDlgData.fMSR = false;
@@ -627,7 +676,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
 
                     RequestDlgData.iFunctionButton = FunctionType.PreAuth;
                     RequestDlgData.fMSR = true;
@@ -672,7 +721,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = false;
@@ -707,7 +756,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE7:
+                case DialogCase.CASE7:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = false;
@@ -728,7 +777,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE8:
+                case DialogCase.CASE8:
 
                     RequestDlgData.iFunctionButton = FunctionType.CardStatusCheck;
                     RequestDlgData.fMSR = true;
@@ -874,7 +923,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     RequestDlgData.iFunctionButton = FunctionType.Purchase;
                     RequestDlgData.fMSR = true;
@@ -885,7 +934,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = true;
@@ -895,7 +944,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     RequestDlgData.iFunctionButton = FunctionType.Cash;
                     RequestDlgData.fMSR = true;
@@ -906,7 +955,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     RequestDlgData.iFunctionButton = FunctionType.Refund;
                     RequestDlgData.fMSR = false;
@@ -916,7 +965,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
 
                     RequestDlgData.iFunctionButton = FunctionType.PreAuth;
                     RequestDlgData.fMSR = true;
@@ -927,7 +976,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = false;
@@ -937,7 +986,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE7:
+                case DialogCase.CASE7:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = false;
@@ -947,7 +996,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE8:
+                case DialogCase.CASE8:
 
                     RequestDlgData.iFunctionButton = FunctionType.CardStatusCheck;
                     RequestDlgData.fMSR = true;
@@ -1045,7 +1094,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
                     item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
@@ -1064,7 +1113,7 @@ namespace CloudBanking.UITestApp
                     bottomButtonId = GlobalResource.CANCEL_BUTTON;
                     bottomButtonStringId = StringIds.STRING_CANCEL;
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
@@ -1079,7 +1128,7 @@ namespace CloudBanking.UITestApp
                     bottomButtonStringId = StringIds.STRING_CANCEL;
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
@@ -1089,7 +1138,7 @@ namespace CloudBanking.UITestApp
                     bottomButtonStringId = StringIds.STRING_CANCEL;
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
                     item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
@@ -1106,7 +1155,7 @@ namespace CloudBanking.UITestApp
                     generalType.Add(item3);
                     break;
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
 
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
@@ -1119,7 +1168,7 @@ namespace CloudBanking.UITestApp
                     generalType.Add(item2);
                     break;
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
 
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
@@ -1879,13 +1928,13 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     functionType = FunctionType.PreAuthPartial;
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     functionType = FunctionType.PreAuthComplete;
                     break;
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
                     functionType = FunctionType.PreAuthIncrement;
                     break;
                 default:
@@ -2441,42 +2490,69 @@ namespace CloudBanking.UITestApp
 
         void ShowGetAmountDialog(DialogCase caseDialog)
         {
-#if true
+#if false
             var data = new GetAmountDlgData();
 
-            //data.SubHeaderTitleId = StringIds.STRING_TENDER;
-            //data.lszPayButtonText = StringIds.STRING_NEXT;
-            data.lszPayButtonText = StringIds.STRING_OK;
             //data.fShowAmountRightButton = false;
-            data.EntryAmountTitleId = StringIds.STRING_PURCHASE;
             //data.plTotalAmount = 13800;
             string title = string.Empty;
 
-            TransactionType 
+            TrasactionCase trasactionCase = TrasactionCase.GiftCard;
+
+            switch (trasactionCase)
+            {
+                case TrasactionCase.Purchase:
+                    title = StringIds.STRING_PURCHASE;
+                    data.EntryAmountTitleId = StringIds.STRING_PURCHASE;
+                    data.lszPayButtonText = StringIds.STRING_OK;
+                    break;
+
+                case TrasactionCase.MultiTender:
+                    title = $"{StringIds.STRING_TENDER.GetString()} 5 - {StringIds.STRING_AMOUNT.GetString()}";
+                    data.lszPayButtonText = StringIds.STRING_OK;
+                    //data.SubHeaderTitleId = StringIds.STRING_TENDER;
+                    break;
+
+                case TrasactionCase.GiftCard:
+                    data.EntryAmountTitleId = StringIds.STRING_RECHARGE_AMOUNT;
+                    title = StringIds.STRING_GIFT_RECHARGE;
+                    data.lszPayButtonText = StringIds.STRING_NEXT;
+
+                    break;
+
+                default:
+                    title = StringIds.STRING_PURCHASE;
+                    data.EntryAmountTitleId = StringIds.STRING_PURCHASE;
+                    data.lszPayButtonText = StringIds.STRING_OK;
+
+                    break;
+            }
 
             switch (caseDialog)
             {
                 case DialogCase.CASE1:
-                    //data.fShowSubHeader = true;
+                    data.fShowSubHeader = true;
                     data.fShowReference = false;
                     data.fInstoreCashoutFeeEnable = true;
-                    title = $"{StringIds.STRING_TENDER.GetString()} 5 - {StringIds.STRING_AMOUNT.GetString()}";
+                    data.fShowReferenceNoteButton = true;
                     break;
 
                 case DialogCase.CASE2:
-                    //data.fShowSubHeader = false;
+                    data.fShowSubHeader = false;
                     data.fShowReference = true;
                     data.fInstoreCashoutFeeEnable = false;
                     data.plszReference = "BA17865";
-                    //data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+                    data.fShowReferenceNoteButton = false;
+
+                    data.ReferenceTypeTitleId = DataHelper.GetRefName(1);
                     title = StringIds.STRING_TENDER;
                     break;
 
                 case DialogCase.CASE3:
-                    //data.fShowSubHeader = true;
+                    data.fShowSubHeader = true;
                     data.fShowReference = true;
                     data.plszReference = "BA17865";
-                    //data.ReferenceTypeTitleId = DataHelper.GetRefName(ReferenceType.Invoice);
+                    data.ReferenceTypeTitleId = DataHelper.GetRefName(1);
                     break;
 
                 default:
@@ -2616,31 +2692,6 @@ namespace CloudBanking.UITestApp
                 //PreAuthCompletePreAuthInfoDialog
             }, true, false, data);
 #endif
-        }
-
-        void ShowLogonDialogCase01()
-        {
-            object[] param = new object[3];
-            var data = new LogonDlgData();
-            data.InitData = new InitLogonModel();
-            data.InitData.IdUserMustMatch = 1;
-            param[0] = data;
-            param[1] = true;
-            var dialog = new LogonDialog(StringIds.STRING_LOGON, null, data, true);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
-        }
-
-        void ShowLogonDialogCase02()
-        {
-            object[] param = new object[3];
-            var data = new LogonDlgData();
-            data.InitData = new InitLogonModel();
-            param[0] = data;
-            param[1] = true;
-            var dialog = new LogonDialog(StringIds.STRING_LOGON, null, data, true);
-            dialog.DialogStyle = DialogStyle.FULLSCREEN;
-            dialog.Show(this);
         }
 
         void ShowSingleUserLoginDialog()
@@ -3814,12 +3865,12 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     dlgData.fApply = true;
                     dlgData.TenderImgResId = IconIds.VECTOR_MASTER_CARD_BG_WITH_TEXT;
 
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     dlgData.fApply = false;
                     dlgData.TenderImgResId = IconIds.VECTOR_CENTRA_PAY_ICON_TEXT_BG;
 
@@ -4474,11 +4525,11 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     functionType = FunctionType.Refund;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     functionType = FunctionType.WechatRefund;
                     break;
 
@@ -5729,7 +5780,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     RequestDlgData.iFunctionButton = FunctionType.Purchase;
                     RequestDlgData.fMSR = true;
@@ -5761,7 +5812,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = true;
@@ -5792,7 +5843,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     RequestDlgData.iFunctionButton = FunctionType.Cash;
                     RequestDlgData.fMSR = true;
@@ -5809,7 +5860,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     RequestDlgData.iFunctionButton = FunctionType.Refund;
                     RequestDlgData.fMSR = false;
@@ -5842,7 +5893,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
 
                     RequestDlgData.iFunctionButton = FunctionType.PreAuth;
                     RequestDlgData.fMSR = true;
@@ -5881,7 +5932,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = false;
@@ -5896,7 +5947,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE7:
+                case DialogCase.CASE7:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = false;
@@ -5911,7 +5962,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE8:
+                case DialogCase.CASE8:
 
                     RequestDlgData.iFunctionButton = FunctionType.CardStatusCheck;
                     RequestDlgData.fMSR = true;
@@ -6391,12 +6442,12 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     data.fShowReference = false;
                     //data.isEnabledEntryAmount = true;
 
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     data.fShowReference = true;
                     //data.isEnabledEntryAmount = false;
                     break;
@@ -6467,7 +6518,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
 
                     RequestDlgData.iFunctionButton = FunctionType.Purchase;
                     RequestDlgData.fMSR = true;
@@ -6483,7 +6534,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = true;
@@ -6498,7 +6549,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     RequestDlgData.iFunctionButton = FunctionType.Cash;
                     RequestDlgData.fMSR = true;
@@ -6515,7 +6566,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
 
                     RequestDlgData.iFunctionButton = FunctionType.Refund;
                     RequestDlgData.fMSR = false;
@@ -6530,7 +6581,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
 
                     RequestDlgData.iFunctionButton = FunctionType.PreAuth;
                     RequestDlgData.fMSR = true;
@@ -6547,7 +6598,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = false;
@@ -6562,7 +6613,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE7:
+                case DialogCase.CASE7:
 
                     RequestDlgData.iFunctionButton = FunctionType.PurchaseCash;
                     RequestDlgData.fMSR = false;
@@ -6577,7 +6628,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE8:
+                case DialogCase.CASE8:
 
                     RequestDlgData.iFunctionButton = FunctionType.CardStatusCheck;
                     RequestDlgData.fMSR = true;
@@ -6856,7 +6907,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1://fuel
+                case DialogCase.CASE1://fuel
 
                     dlgDataReview = new UnattendedReviewDlgData()
                     {
@@ -6903,7 +6954,7 @@ namespace CloudBanking.UITestApp
                     });
                     break;
 
-                case CaseDialog.CASE2://hardcode vending electric
+                case DialogCase.CASE2://hardcode vending electric
 
                     dlgDataReview = new UnattendedReviewDlgData()
                     {
@@ -7478,52 +7529,52 @@ namespace CloudBanking.UITestApp
 
             //switch (caseDialog)
             //{
-            //    case CaseDialog.CASE1://Acolhol_18
+            //    case DialogCase.CASE1://Acolhol_18
             //        data.CheckIdAge = CheckIdAge.Eighteen;
             //        data.MainTitleId = StringIds.STRING_ALCOHOL;
             //        data.IsSuccess = true;
             //        break;
-            //    case CaseDialog.CASE2://Acolhol_18
+            //    case DialogCase.CASE2://Acolhol_18
             //        data.CheckIdAge = CheckIdAge.Eighteen;
             //        data.MainTitleId = StringIds.STRING_ALCOHOL;
             //        data.IsSuccess = false;
             //        break;
-            //    case CaseDialog.CASE3://EnergyDrinks_16
+            //    case DialogCase.CASE3://EnergyDrinks_16
             //        data.CheckIdAge = CheckIdAge.Sixteen;
             //        data.MainTitleId = StringIds.STRING_ENERGY_DRINKS;
             //        data.IsSuccess = true;
             //        break;
-            //    case CaseDialog.CASE4://EnergyDrinks_16
+            //    case DialogCase.CASE4://EnergyDrinks_16
             //        data.MainTitleId = StringIds.STRING_ENERGY_DRINKS;
             //        data.CheckIdAge = CheckIdAge.Sixteen;
             //        data.IsSuccess = false;
             //        break;
-            //    case CaseDialog.CASE5://EntryRestriction_25
+            //    case DialogCase.CASE5://EntryRestriction_25
             //        data.CheckIdAge = CheckIdAge.TwentyFive;
             //        data.MainTitleId = StringIds.STRING_ENTRY_RESTRICTION;
             //        data.IsSuccess = true;
             //        break;
-            //    case CaseDialog.CASE6://EntryRestriction_25
+            //    case DialogCase.CASE6://EntryRestriction_25
             //        data.CheckIdAge = CheckIdAge.TwentyFive;
             //        data.MainTitleId = StringIds.STRING_ENTRY_RESTRICTION;
             //        data.IsSuccess = false;
             //        break;
-            //    case CaseDialog.CASE7://SmokingBan_2008
+            //    case DialogCase.CASE7://SmokingBan_2008
             //        data.CheckIdAge = CheckIdAge.TwoThousandAndEight;
             //        data.MainTitleId = StringIds.STRING_SMOKING_BAN;
             //        data.IsSuccess = true;
             //        break;
-            //    case CaseDialog.CASE8://SmokingBan_2008
+            //    case DialogCase.CASE8://SmokingBan_2008
             //        data.CheckIdAge = CheckIdAge.TwoThousandAndEight;
             //        data.MainTitleId = StringIds.STRING_SMOKING_BAN;
             //        data.IsSuccess = false;
             //        break;
-            //    case CaseDialog.CASE9://Cigarettes_18
+            //    case DialogCase.CASE9://Cigarettes_18
             //        data.CheckIdAge = CheckIdAge.Eighteen;
             //        data.MainTitleId = StringIds.STRING_CIGARETTES;
             //        data.IsSuccess = true;
             //        break;
-            //    case CaseDialog.CASE10://Cigarettes_18
+            //    case DialogCase.CASE10://Cigarettes_18
             //        data.CheckIdAge = CheckIdAge.Eighteen;
             //        data.MainTitleId = StringIds.STRING_CIGARETTES;
             //        data.IsSuccess = false;
@@ -7544,12 +7595,12 @@ namespace CloudBanking.UITestApp
 
             //switch(caseDialog)
             //{
-            //    case CaseDialog.CASE1:
+            //    case DialogCase.CASE1:
             //        data.TopTitleId = StringIds.STRING_DECLINED_BEEFEATERS_GIN;
             //        data.BottomTitleId = StringIds.STRING_AGE_18_RESTRICTIONS;
             //        data.MainIconResId = Resource.Drawable.vector_eighteen_plus_red_no_bg;
             //        break;
-            //    case CaseDialog.CASE2:
+            //    case DialogCase.CASE2:
             //        data.TopTitleId = StringIds.STRING_DECLINED_BORN_AFTER_2008;
             //        data.BottomTitleId = StringIds.STRING_MARLBORO_CIGARETTES;
             //        data.MainIconResId = Resource.Drawable.vector_2008_red_no_bg;
@@ -7691,31 +7742,31 @@ namespace CloudBanking.UITestApp
 
             switch(caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORTAPCARD;
                     break; 
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_PRESENT_INSERT_OR_SWIPE_CARD_UPCASE;
 
                     break;   
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTORSWIPECARD;
                     break;   
 
-                case CaseDialog.CASE4:
+                case DialogCase.CASE4:
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_INSERTCARD;
                     break;   
 
-                case CaseDialog.CASE5:
+                case DialogCase.CASE5:
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_TAPORSWIPECARD;
                     break;   
 
-                case CaseDialog.CASE6:
+                case DialogCase.CASE6:
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_PLEASE_PRESENT_CARD_UPCASE;
                     break; 
 
-                case CaseDialog.CASE7:
+                case DialogCase.CASE7:
                     RequestDlgData.PresentCardTitleId = StringIds.STRING_SWIPECARD;
                     break;   
             }
@@ -7742,7 +7793,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
                     item1.lszText = StringIds.STRING_ACCOUNTTYPECHEQUE;
@@ -7758,7 +7809,7 @@ namespace CloudBanking.UITestApp
                     item3.lszText = StringIds.STRING_ACCOUNTTYPECREDITCARD;
                     generalType.Add(item3);
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
 
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
@@ -7771,7 +7822,7 @@ namespace CloudBanking.UITestApp
                     generalType.Add(item2);
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
 
                     item1.Id = AccountType.ACCOUNT_TYPE_CHEQUE;
                     item1.Icon = IconIds.VECTOR_CHEQUE;
@@ -8437,12 +8488,12 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     data.IsShowReducePurchaseAmountButton = false;
                     headerTitleId = StringIds.STRING_SPLIT_PAY;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     data.IsShowReducePurchaseAmountButton = true;
                     headerTitleId = StringIds.STRING_MULTI_TENDER;
                     break;
@@ -8466,7 +8517,7 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     dlgData.SubHeaderTitleId = StringIds.STRING_PURCHASE_FEES;
                     headerTitleId = StringIds.STRING_SPLIT_REVIEW;
                     dlgData.BalanceAmount = 5300;
@@ -8476,7 +8527,7 @@ namespace CloudBanking.UITestApp
                     dlgData.IsShowLeftButton = false;
                     break;
 
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     dlgData.SubHeaderTitleId = StringIds.STRING_PURCHASE_FEES;
                     headerTitleId = StringIds.STRING_TENDER_REVIEW;
                     dlgData.TotalAmount = 5200;
@@ -8494,7 +8545,7 @@ namespace CloudBanking.UITestApp
 
                     break;
 
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
                     dlgData.SubHeaderTitleId = string.Format("{0} {1}", StringIds.STRING_TENDER.GetString(), 5);
                     headerTitleId = StringIds.STRING_CONFIRMATION;
                     dlgData.TotalAmount = 2250;
@@ -8797,23 +8848,23 @@ namespace CloudBanking.UITestApp
 
             switch (caseDialog)
             {
-                case CaseDialog.CASE1:
+                case DialogCase.CASE1:
                     dlgData.AmountTitleId = string.Format(Localize.GetString(StringIds.STRING_SPLIT_PAYMENT), "1");
                     dlgData.IsShowCustomerName = true;
                     dlgData.IsShowAdjustAmount = true;
                     break;
-                case CaseDialog.CASE2:
+                case DialogCase.CASE2:
                     dlgData.AmountTitleId = Localize.GetString(StringIds.STRING_PRE_AUTH_AMOUNT);
                     dlgData.IsShowCustomerName = false;
                     dlgData.IsShowAdjustAmount = false;
                     break;
-                case CaseDialog.CASE3:
+                case DialogCase.CASE3:
                     dlgData.AmountTitleId = Localize.GetString(StringIds.STRING_VISA_DEBIT);
                     dlgData.IsShowCustomerName = false;
                     dlgData.IsShowAdjustAmount = false;
                     isShowRefundReasonButton = true;
                     break;
-                case CaseDialog.CASE4: break;
+                case DialogCase.CASE4: break;
             }
 
             dlgData.FunctionButtons = new List<SelectButton>();
@@ -9083,7 +9134,7 @@ namespace CloudBanking.UITestApp
 
         void ShowLogonDialog()
         {
-#if false
+#if true
             var pLogonData = new LogonDlgData()
             {
                 InitData = new InitLogonModel()
@@ -9094,7 +9145,7 @@ namespace CloudBanking.UITestApp
                 },
                 IsShowIDField = false,
                 IsShowLoginModeButtons = false,
-                //UserNameLabel = StringIds.STRING_ADMINISTRATOR,
+                UserNameLabel = StringIds.STRING_ADMINISTRATOR,
                 PasswordLabel = StringIds.STRING_ADMINISTRATOR_CODE,
                 CorrectPasscode = "1234"
             };

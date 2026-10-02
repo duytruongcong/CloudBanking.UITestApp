@@ -140,13 +140,26 @@ namespace CloudBanking.UITestApp
 
         void ShowEnterPlanTextPinDialog()
         {
-#if false
-            long lamount = 13800;
+#if true
+            EnterPlanTextPinDlgData dlgData = new EnterPlanTextPinDlgData();
+            TrasactionCase trasactionCase = TrasactionCase.GiftCard;
 
-            DialogBuilder.Show(IPayDialog.PLAIN_TEXT_ENTER_PIN_DIALOG, StringIds.STRING_GIFT_CARD_PIN, (result, args) =>
+            dlgData.Amount = 13800;
+
+            switch (trasactionCase)
+            {
+                case TrasactionCase.GiftCard:
+                    dlgData.SubHeaderTitleId = StringIds.STRING_AMOUNT;
+                    dlgData.EntryPinTitleId = StringIds.STRING_ENTER_PIN;
+                    dlgData.RightButtonTextId = StringIds.STRING_ENTER;
+                    break;
+            }
+
+
+            DialogBuilder.Show(IPayDialog.PLAIN_TEXT_ENTER_PIN_DIALOG, StringIds.STRING_ENTER_PIN, (result, args) =>
             {
                 //EnterPlanTextPinDialog
-            }, true, false, lamount);
+            }, true, false, dlgData);
 #endif
         }
 
@@ -697,6 +710,7 @@ namespace CloudBanking.UITestApp
 
         void ShowGiftCardActionOptions()
         {
+#if false
             var dialogData = new SelFncDlgData
             {
                 iPage = 1,
@@ -731,6 +745,7 @@ namespace CloudBanking.UITestApp
                 if (result == GlobalResource.OK_BUTTON)
                     localSelectedFlowCommand = args.GetDataOfIndex<int>(0);
             }, true, false, dialogData);
+#endif
 
         }
     }

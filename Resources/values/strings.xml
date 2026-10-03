@@ -1,3 +1,4 @@
-﻿<resources>
-    <string name="app_name">UI TEST</string>
+<resources>
+    <string name="app_name">UITestApp</string>
+    <string name="app_text">Hello, Android!</string>
 </resources>

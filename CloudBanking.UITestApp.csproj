@@ -1,238 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AA922A4C-551B-43D6-BD7C-5841FFA79E46}</ProjectGuid>
-    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TemplateGuid>{84dd83c5-0fe3-4294-9419-09e7c8ba324f}</TemplateGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CloudBanking.UITestApp</RootNamespace>
-    <AssemblyName>CloudBanking.UITestApp</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>True</Deterministic>
-    <AndroidApplication>True</AndroidApplication>
-    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
-    <AndroidResgenClass>Resource</AndroidResgenClass>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v13.0</TargetFrameworkVersion>
-    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
-    <AndroidUseAapt2>true</AndroidUseAapt2>
-    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
-    <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
-    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationId>CloudBanking.UITestApp</ApplicationId>
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <!--
+      Enables trim analyzers and full trimming during Release mode.
+      To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity
+    -->
+    <TrimMode>full</TrimMode>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CERTIFICATION</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <AndroidLinkMode>None</AndroidLinkMode>
-    <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
-    <BundleAssemblies>false</BundleAssemblies>
-    <Debugger>Xamarin</Debugger>
-    <MandroidI18n />
-    <AndroidSupportedAbis>
-    </AndroidSupportedAbis>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <AndroidUseAapt2>true</AndroidUseAapt2>
-    <AndroidEnableSGenConcurrent>false</AndroidEnableSGenConcurrent>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <RuntimeIdentifier>android-x86</RuntimeIdentifier>
+    <DebugSymbols>true</DebugSymbols>
+    <AndroidIncludeDebugSymbols>true</AndroidIncludeDebugSymbols>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>True</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;CERTIFICATION</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AndroidManagedSymbols>true</AndroidManagedSymbols>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AndroidKeyStore>True</AndroidKeyStore>
-    <AndroidSigningKeyStore>..\..\..\Document\cct_shel.keystore</AndroidSigningKeyStore>
-    <AndroidSigningStorePass>shell_2022CCT</AndroidSigningStorePass>
-    <AndroidSigningKeyAlias>cct_shel</AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>shell_2022CCT</AndroidSigningKeyPass>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>True</Optimize>
-    <OutputPath>bin\CERTIFICATION</OutputPath>
-    <DefineConstants>TRACE;CERTIFICATION</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AndroidManagedSymbols>true</AndroidManagedSymbols>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AndroidKeyStore>True</AndroidKeyStore>
-    <AndroidSigningKeyStore>..\..\..\Document\cct_apppay.keystore</AndroidSigningKeyStore>
-    <AndroidSigningStorePass>CCT_2022</AndroidSigningStorePass>
-    <AndroidSigningKeyAlias>cct_apppay</AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>CCT_2022</AndroidSigningKeyPass>
-    <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
-    <AndroidUseDefaultAotProfile>false</AndroidUseDefaultAotProfile>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
-    <BundleAssemblies>false</BundleAssemblies>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="CloudBanking.Logger">
-      <HintPath>..\payment_app\CloudBanking\CloudBanking.Logger\bin\Debug\CloudBanking.Logger.dll</HintPath>
-    </Reference>
-    <Reference Include="Dp.Lib">
-      <HintPath>..\payment_app\BaseDLL\General\Dp.Lib.dll</HintPath>
-    </Reference>
-    <Reference Include="Lottie.Android">
-      <HintPath>..\payment_app\BaseDLL\General\Lottie.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Mono.Android" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Activities\HardCodeDataCustomerView.cs" />
-    <Compile Include="Activities\HardCodeData.cs" />
-    <Compile Include="Activities\HardCodeDataSecond.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Activities\TestActivity.cs" />
-    <Compile Include="Adapters\TestItemAdapter.cs" />
-    <Compile Include="Activities\MainApplication.cs" />
-    <Compile Include="Services\PaymentAppUtilityService.cs" />
-    <Compile Include="Services\ShellClient.cs" />
-    <Compile Include="Services\ShellServer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\lottieanimations\loading.json" />
-    <None Include="Resources\AboutResources.txt" />
-    <None Include="Properties\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\values\dimens.xml" />
-    <AndroidResource Include="Resources\values\strings.xml" />
-    <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\xml\file_paths.xml">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\TestItemLayout.xml" />
-    <AndroidResource Include="Resources\layout\TestLayout.xml">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AppCenter">
-      <Version>5.0.7</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>5.0.7</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>5.0.7</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.ApplicationInsights">
-      <Version>3.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
-      <Version>10.0.12</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core">
-      <Version>10.0.12</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Android.Glide">
-      <Version>4.11.0</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.3.1.3" />
-    <PackageReference Include="Xamarin.AndroidX.AppCompat.Resources">
-      <Version>1.1.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.RecyclerView">
-      <Version>1.2.1.3</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
-    <PackageReference Include="Plugin.CurrentActivity">
-      <Version>2.1.0.4</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData">
-      <Version>2.2.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.AppCompat.AppCompatResources">
-      <Version>1.3.1.3</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Browser">
-      <Version>1.6.0</Version>
-    </PackageReference>
-    <PackageReference Include="NineOldAndroids">
-      <Version>2.4.0</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Google.Android.Material">
-      <Version>1.4.0.4</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.ExifInterface">
-      <Version>1.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xam.Plugin.DeviceInfo">
-      <Version>4.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4">
-      <Version>1.0.0.23</Version>
-    </PackageReference>
-    <PackageReference Include="ZXing.Net.Mobile">
-      <Version>3.1.0-beta2</Version>
-    </PackageReference>
-    <PackageReference Include="Plugin.Permissions">
-      <Version>6.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="NLog">
-      <Version>6.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="Naxam.SquareUp.OkHttp3.LoggingInterceptor">
-      <Version>3.11.0</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Controls.SignaturePad">
-      <Version>3.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt">
-      <Version>8.23.0</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Activity">
-      <Version>1.8.2.1</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Core\CloudBanking.ApiLocators\CloudBanking.ApiLocators.csproj">
-      <Project>{EA931DB5-1AFE-4664-B3E7-6DAD303A60B8}</Project>
-      <Name>CloudBanking.ApiLocators</Name>
-    </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Languages\CloudBanking.Language\CloudBanking.Language.csproj">
       <Project>{18960CD8-1D90-45A4-83A6-37ABB03484AF}</Project>
       <Name>CloudBanking.Language</Name>
@@ -241,45 +31,38 @@
       <Project>{FF83F117-98F1-4965-9037-88AF7C55AF4F}</Project>
       <Name>CloudBanking.Utilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Logger\CloudBanking.Logger.csproj">
+      <Project>{85EAD271-4FFB-4711-AF0F-1674CD834D27}</Project>
+      <Name>CloudBanking.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Module\CloudBanking.PaymentLoyalty\CloudBanking.PaymentLoyalty.csproj">
-      <Project>{426901F1-19C0-4370-A1ED-E03B3B09949A}</Project>
+      <Project>{426901f1-19c0-4370-a1ed-e03b3b09949a}</Project>
       <Name>CloudBanking.PaymentLoyalty</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Module\CloudBanking.WebSocket\CloudBanking.WebSocket.csproj">
-      <Project>{73ECD58E-07B1-4B7D-9BE7-6BFD123CC146}</Project>
-      <Name>CloudBanking.WebSocket</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.POS\CloudBanking.POSContainer\CloudBanking.POSContainer.csproj">
-      <Project>{1815ECF2-DFB0-429B-9E28-0D66972C473F}</Project>
-      <Name>CloudBanking.POSContainer</Name>
     </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Shell\CloudBanking.BaseHardware\CloudBanking.BaseHardware.csproj">
       <Project>{11E62D69-78C8-45D6-B00C-02E6E8D24152}</Project>
       <Name>CloudBanking.BaseHardware</Name>
     </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PaxSdk\CloudBanking.PaxSdk.csproj">
-      <Project>{6C42557C-BA63-473A-9247-61E2E6CF6CD4}</Project>
-      <Name>CloudBanking.PaxSdk</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Standard\CloudBanking.Entities\CloudBanking.Entities.csproj">
-      <Project>{2e30abf3-2123-43eb-bb4b-20beb18801e3}</Project>
-      <Name>CloudBanking.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Standard\CloudBanking.Printing\CloudBanking.Printing.csproj">
-      <Project>{65c8d4e9-b743-412b-90d3-d38a2142780d}</Project>
-      <Name>CloudBanking.Printing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Standard\CloudBanking.Repositories\CloudBanking.Repositories.csproj">
-      <Project>{cc6abd0f-0b4b-42aa-8e2e-904bba9fa1fb}</Project>
-      <Name>CloudBanking.Repositories</Name>
-    </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.UI\CloudBanking.BaseControl\CloudBanking.BaseControl.csproj">
       <Name>CloudBanking.BaseControl</Name>
       <Project>{9C3B940E-7247-496A-906B-AB1DA56FB7E5}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Standard\CloudBanking.Repositories\CloudBanking.Repositories.csproj">
+      <Name>CloudBanking.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Standard\CloudBanking.FallbackRouting\CloudBanking.FallbackRouting.csproj">
+      <Project>{54A66ADF-5BD4-4F58-B3BA-5EE036D64E2E}</Project>
+      <Name>CloudBanking.FallbackRouting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.UI\CloudBanking.ShellUI\CloudBanking.ShellUI.csproj">
       <Name>CloudBanking.ShellUI</Name>
       <Project>{F9B77DF4-AE4F-4079-BCB9-5022F143554F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Standard\CloudBanking.Entities\CloudBanking.Entities.csproj">
+      <Name>CloudBanking.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Standard\CloudBanking.Printing\CloudBanking.Printing.csproj">
+      <Name>CloudBanking.Printing</Name>
     </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Core\CloudBanking.ServiceLocators\CloudBanking.ServiceLocators.csproj">
       <Project>{E3C9000F-C3FE-4E01-B547-FAF2BA0BEE78}</Project>
@@ -288,6 +71,10 @@
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PhoneSdk\CloudBanking.PhoneSdk.csproj">
       <Project>{F7207D33-A71B-42C5-866A-E2EFE81A5854}</Project>
       <Name>CloudBanking.PhoneSdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Shell\CloudBanking.Hardware\CloudBanking.PaxSdk\CloudBanking.PaxSdk.csproj">
+      <Project>{6C42557C-BA63-473A-9247-61E2E6CF6CD4}</Project>
+      <Name>CloudBanking.PaxSdk</Name>
     </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Core\CloudBanking.Common\CloudBanking.Common.csproj">
       <Project>{74736BB9-E38B-4967-92F2-0146B991AC30}</Project>
@@ -309,6 +96,10 @@
       <Project>{5D692013-C029-4CDE-BC0D-4F3724346CC2}</Project>
       <Name>CloudBanking.Flow.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Setup\CloudBanking.Flow.Setup.csproj">
+      <Project>{FBEAF5F1-DB60-4A31-A95A-736B823752D0}</Project>
+      <Name>CloudBanking.Flow.Setup</Name>
+    </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Flow\CloudBanking.Flow.Standalone\CloudBanking.Flow.Standalone.csproj">
       <Project>{5CCF45A4-0C36-43B9-A11C-2589BB54B5C6}</Project>
       <Name>CloudBanking.Flow.Standalone</Name>
@@ -317,233 +108,250 @@
       <Project>{867BCF9F-506C-4194-8B9A-08572EB955DC}</Project>
       <Name>CloudBanking.Flow.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.UI\CloudBanking.DroidUI\CloudBanking.DroidUI.csproj">
-      <Project>{F7C68F3B-50A7-49A7-B8ED-30F320D01AF4}</Project>
-      <Name>CloudBanking.DroidUI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.ShellContainerClient\CloudBanking.ShellContainerClient.csproj">
-      <Project>{E346E3A8-4FE5-4D9B-9CD8-B181D499735C}</Project>
-      <Name>CloudBanking.ShellContainerClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.BaseShellClient\CloudBanking.BaseShellClient.csproj">
       <Project>{B5A8F226-DA1C-4529-ABAE-B9C9E5F9C470}</Project>
       <Name>CloudBanking.BaseShellClient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.UI\CloudBanking.DroidUI\CloudBanking.DroidUI.csproj">
+      <Project>{F7C68F3B-50A7-49A7-B8ED-30F320D01AF4}</Project>
+      <Name>CloudBanking.DroidUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.POS\CloudBanking.POSContainer\CloudBanking.POSContainer.csproj">
+      <Project>{1815ECF2-DFB0-429B-9E28-0D66972C473F}</Project>
+      <Name>CloudBanking.POSContainer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Host\CloudBanking.GatewayCustom\CloudBanking.GatewayCustom.csproj">
+      <Project>{6ED99F73-269E-4CB0-8D51-AAE3F2D8DC72}</Project>
+      <Name>CloudBanking.GatewayCustom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Module\CloudBanking.WebSocket\CloudBanking.WebSocket.csproj">
+      <Project>{73ECD58E-07B1-4B7D-9BE7-6BFD123CC146}</Project>
+      <Name>CloudBanking.WebSocket</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Logger\CloudBanking.Logger.csproj">
+      <Project>{85EAD271-4FFB-4711-AF0F-1674CD834D27}</Project>
+      <Name>CloudBanking.Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAotProfile Include="$(MSBuildThisFileDirectory)custom.aprof" />
+    <Reference Include="Dp.Lib">
+      <HintPath>..\payment_app\BaseDLL\General\Dp.Lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPayplus.so" Condition="'$(IsWpayBuild)' == 'False'">
+      <Link>..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\Processors\arm\libPayplus.so</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libCentrapay.so" Condition="'$(IsWpayBuild)' == 'False'">
+      <Link>..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\Processors\arm\libCentrapay.so</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libDirectPay.so" Condition="'$(IsWpayBuild)' == 'False'">
+      <Link>..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\Processors\arm\libDirectPay.so</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libBNZDCC.so" Condition="'$(IsWpayBuild)' == 'False'">
+      <Link>..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\Processors\arm\libBNZDCC.so</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\CertKey\khatestxcr.key" Condition="'$(HardcodeConfigFile)' == 'True'" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values-sw360dp-w640dp-land\dimens.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
+    <AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\lottieanimations\loading.json" />
+    <AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\CertKey\CertKey\vu_test.key" Condition="'$(HardcodeConfigFile)' == 'True'" />
+    <None Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Resources\AboutResources.txt" />
+    <None Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Properties\AndroidManifest.xml" />
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libCustom.so" Link="Libs\armeabi-v7a\libCustom.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libDatabaseInterface.so" Link="Libs\armeabi-v7a\libDatabaseInterface.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libFlowCommands.so" Link="Libs\armeabi-v7a\libFlowCommands.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libMemory.so" Link="Libs\armeabi-v7a\libMemory.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPOSComInterface.so" Link="Libs\armeabi-v7a\libPOSComInterface.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPOSInterface.so" Link="Libs\armeabi-v7a\libPOSInterface.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libStandard.so" Link="Libs\armeabi-v7a\libStandard.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libWindows.so" Link="Libs\armeabi-v7a\libWindows.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libWinSettings.so" Link="Libs\armeabi-v7a\libWinSettings.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libLog.so" Link="Libs\armeabi-v7a\libLog.so">
+    </AndroidNativeLibrary>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libTerminalFunctions.so" Link="Libs\armeabi-v7a\libTerminalFunctions.so" />
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libGenericPOS.so" Link="Assets\POSInterface\arm\libGenericPOS.so" />
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPOSComGeneric.so" Link="Assets\POSInterface\arm\libPOSComGeneric.so" />
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPOSTCP.so" Link="Assets\POSInterface\arm\libPOSTCP.so" />
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPOSPCEFTPOS.so" Link="Assets\POSInterface\arm\libPOSPCEFTPOS.so" />
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libTerminalFunctions.so" Link="Libs\armeabi-v7a\libTerminalFunctions.so" />
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPOS.so" Link="Libs\armeabi-v7a\libPOS.so" />
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPOSSerial.so">
+      <Link>Assets\POSInterface\arm\libPOSSerial.so</Link>
+    </AndroidAsset>
+  <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libWPAY.so">
+      <Link>Assets\Processors\arm\libWPAY.so</Link>
+    </AndroidAsset>
+  <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libWPAYGift.so">
+      <Link>Assets\Processors\arm\libWPAYGift.so</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libCyberSource.so">
+      <Link>Assets\Processors\arm\libCyberSource.so</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\payment_app\Document\Pax_TMS_Template\dev\SingleApp\VariableTemplate\SingleApp_system\cardproduct.json" Condition="'$(HardcodeConfigFile)' == 'True'">
+      <Link>Assets\CardProducts\cardproduct_testing.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\payment_app\Document\Pax_TMS_Template\dev\SingleApp\VariableTemplate\SingleApp_system\cfg_ctls_emv.json" Condition="'$(HardcodeConfigFile)' == 'True'">
+      <Link>Assets\CfgCtls\cfg_ctls_emv_testing.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\payment_app\Document\Pax_TMS_Template\dev\SingleApp\VariableTemplate\SingleApp_system\cfg_emv.json" Condition="'$(HardcodeConfigFile)' == 'True'">
+      <Link>Assets\CfgEmv\cfg_emv_testing.json</Link>
+    </AndroidAsset>
+<AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\setupimages\ads_1.jpg" />
+<AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\setupimages\ads_2.jpg" />
+<AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\setupimages\ads_3.jpg" />
+<AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\setupimages\ads_4.jpg" />
+<AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\setupimages\ads_5.jpg" />
+<AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\setupimages\land_avertising_1.jpg" />
+<AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\CertKey\cert_def.pem" />
+<AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\CertKey\cert_def.key" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.DroidApp\Resources\drawable\window_background.xml">
+      <Link>Resources\drawable\window_background.xml</Link>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.DroidApp\Resources\drawable-v23\window_background.xml">
+      <Link>Resources\drawable-v23\window_background.xml</Link>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.DroidApp\Resources\mipmap\logo.png">
+      <Link>Resources\mipmap\logo.png</Link>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.DroidApp\Resources\mipmap-hdpi\logo.png">
+      <Link>Resources\mipmap-hdpi\logo.png</Link>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.DroidApp\Resources\mipmap-mdpi\logo.png">
+      <Link>Resources\mipmap-mdpi\logo.png</Link>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.DroidApp\Resources\mipmap-xhdpi\logo.png">
+      <Link>Resources\mipmap-xhdpi\logo.png</Link>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.DroidApp\Resources\mipmap-xxhdpi\logo.png">
+      <Link>Resources\mipmap-xxhdpi\logo.png</Link>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.DroidApp\Resources\mipmap-xxxhdpi\logo.png">
+      <Link>Resources\mipmap-xxxhdpi\logo.png</Link>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\taco_mondays.png" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.11" />
+    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.7.1.1" />
+    <PackageReference Include="Xamarin.AndroidX.RecyclerView">
+      <Version>1.4.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
+    <PackageReference Include="Plugin.CurrentActivity">
+      <Version>2.1.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData">
+      <Version>2.9.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.AppCompat.AppCompatResources">
+      <Version>1.7.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Browser">
+      <Version>1.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Google.Android.Material">
+      <Version>1.12.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.ExifInterface">
+      <Version>1.4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.DeviceInfo">
+      <Version>4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Naxam.SquareUp.OkHttp3.LoggingInterceptor">
+      <Version>3.11.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Controls.SignaturePad">
+      <Version>3.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Activity">
+      <Version>1.10.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt">
+      <Version>8.22.0</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.Mobile">
+      <Version>3.1.0-beta2</Version>
+    </PackageReference>
+    <!-- Override the old transitive ZXing.Net 0.16.6 asset selected by ZXing.Net.Mobile.
+         The newer package provides modern .NET assets without System.Drawing.Common. -->
+    <PackageReference Include="ZXing.Net" Version="0.16.11" />
+    <PackageReference Include="Square.OkIO">
+      <Version>1.17.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Glide">
+      <Version>4.11.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.ViewPager">
+      <Version>1.1.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Core" Version="1.16.0.3" />
+    <PackageReference Include="Xamarin.AndroidX.ViewPager2" Version="1.1.0.8" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\Bins\CardType.csv" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values-sw360dp-w592dp-land\dimens_sw360dp_592dp_land.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libc++_shared.so" Link="Libs\armeabi-v7a\libc++_shared.so" />
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libCurrencies.so" Link="Libs\armeabi-v7a\libCurrencies.so" />
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libGateway.so" Link="Libs\armeabi-v7a\libGateway.so" />
+    <AndroidNativeLibrary Include="..\payment_app\BaseDLL\Native\armeabi-v7a\libPrint.so" Link="Libs\armeabi-v7a\libPrint.so" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\donation_small.png" />
+    <Folder Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\CertKey\" />
+    <Folder Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\Processors\arm\" />
+    <Folder Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\Sounds\" />
+    <Folder Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\MerchantLogo\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\donation_port_demo.png" />
+    <AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\PrintLogo\CentrapayReceiptLogo.png" Condition="'$(IsWpayBuild)' == 'False'" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\icon_default_merchant.png" />
+    <AndroidAsset Include="..\payment_app\CloudBanking\CloudBanking.Application\CloudBanking.SinglePaymentApp\Assets\PrintLogo\wpaylogo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-v23\window_background.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\mipmap-hdpi\" />
-    <Folder Include="Resources\mipmap-mdpi\" />
-    <Folder Include="Resources\mipmap-xhdpi\" />
-    <Folder Include="Resources\mipmap-xxhdpi\" />
-    <Folder Include="Resources\mipmap-xxxhdpi\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\window_background.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\donation_port_demo_02.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\ads_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\ads_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\ads_1_land_cus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\ads_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\ads_1_land.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\ads_3_land.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\ads_4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\ads_5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_1_fixed_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_1_land_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_1_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_1_port_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_2_fixed_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_2_land_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_2_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_2_port_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_3_fixed_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_3_land_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_3_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_3_port_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_4_fixed_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_4_land_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_4_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\don_4_port_poster.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\land_avertising_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values-sw480dp-w480dp-land-mdpi\dimens.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\dr_madison.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\donation_salvation_ads.png" />
-    <AndroidAsset Include="Assets\setupimages\donation_salvation_banner.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\unattended_americano.png" />
-    <AndroidAsset Include="Assets\setupimages\unattended_brewed_coffee.png" />
-    <AndroidAsset Include="Assets\setupimages\unattended_caffe_latte.png" />
-    <AndroidAsset Include="Assets\setupimages\unattended_caffe_mocha.png" />
-    <AndroidAsset Include="Assets\setupimages\unattended_cappuccino.png" />
-    <AndroidAsset Include="Assets\setupimages\unattended_espresso.png" />
-    <AndroidAsset Include="Assets\setupimages\unattended_flat_white.png" />
-    <AndroidAsset Include="Assets\setupimages\unattended_oleato_latte.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\unattended_ev.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\unattended_fuel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\unattended_vending.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\dr_michael_patterson.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1280\ads_1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1280\ads_2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1280\ads_3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1280\ads_4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1280\ads_5.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1440\ads_1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1440\ads_2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1440\ads_3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1440\ads_4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1440\ads_5.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1600\ads_1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1600\ads_2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1600\ads_3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1600\ads_4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\POSAdvertising\H1600\ads_5.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\setupimages\trisha_barnett.png" />
-  </ItemGroup>
-  <!--  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CERTIFICATION|AnyCPU' ">
-    <PreBuildEvent>"..\..\Program.exe"</PreBuildEvent>
-    <AndroidSupportedAbis>x86</AndroidSupportedAbis>
-  </PropertyGroup>-->
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-    Other similar extension points exist, see Microsoft.Common.targets.
-    <Target Name="BeforeBuild">
-    </Target>
-    <Target Name="AfterBuild">
-    </Target>
-  -->
 </Project>

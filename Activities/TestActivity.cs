@@ -1,10 +1,8 @@
-﻿using Android.App;
-using Android.Content.PM;
+﻿using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
-using Android.Widget;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
 using CloudBanking.BaseControl;
@@ -16,9 +14,6 @@ using CloudBanking.ServiceLocators;
 using CloudBanking.ShellContainers;
 using CloudBanking.Utilities;
 using Plugin.CurrentActivity;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CloudBanking.UITestApp
 {
@@ -295,9 +290,13 @@ namespace CloudBanking.UITestApp
             GiftCard,
             GiftRechargeOne,
             GiftRechargeTwo,
-            GiftActive,
-            GiftActiveRecharge,
-            MultiTender
+            GiftActiveRecharge_accepted,
+            GiftActiveRecharge_declined,
+            GiftActive_accepted,
+            MultiTender,
+            BalanceInquire,
+            PreAuthCancel,
+            PreAuth,
         }
 
         private void InitializeCusViewData()
@@ -1498,19 +1497,19 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false
+#if true
 
             #region ApprovalDialog
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ConfirmSingnature",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowConfirmSignature();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ConfirmSingnature",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowConfirmSignature();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -1524,93 +1523,84 @@ namespace CloudBanking.UITestApp
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ApprovalDialog CASE1",
-                RightIconResName = "ApprovalDialog_CASE1",
+                Title = $"ApprovalDialog GiftRechargeOne",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowApprovalDialog(DialogCase.CASE1);
+                    ShowApprovalDialog(TrasactionCase.GiftRechargeOne);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ApprovalDialog CASE2",
-                RightIconResName = "ApprovalDialog_CASE2",
+                Title = $"ApprovalDialog GiftRechargeTwo",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowApprovalDialog(DialogCase.CASE2);
+                    ShowApprovalDialog(TrasactionCase.GiftRechargeTwo);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ApprovalDialog CASE3",
-                RightIconResName = "ApprovalDialog_CASE3",
+                Title = $"ApprovalDialog GiftActiveRecharge_accepted",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowApprovalDialog(DialogCase.CASE3);
+                    ShowApprovalDialog(TrasactionCase.GiftActiveRecharge_accepted);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ApprovalDialog CASE4",
-                RightIconResName = "ApprovalDialog_CASE4",
+                Title = $"ApprovalDialog GiftActiveRecharge_declined",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowApprovalDialog(DialogCase.CASE4);
+                    ShowApprovalDialog(TrasactionCase.GiftActiveRecharge_declined);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ApprovalDialog CASE5",
-                RightIconResName = "ApprovalDialog_CASE5",
+                Title = $"ApprovalDialog BalanceInquire",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowApprovalDialog(DialogCase.CASE5);
+                    ShowApprovalDialog(TrasactionCase.BalanceInquire);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ApprovalDialog CASE6",
-                RightIconResName = "ApprovalDialog_CASE6",
+                Title = $"ApprovalDialog Purchase",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowApprovalDialog(DialogCase.CASE6);
+                    ShowApprovalDialog(TrasactionCase.Purchase);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ApprovalDialog CASE7",
-                RightIconResName = "ApprovalDialog_CASE7",
+                Title = $"ApprovalDialog PreAuth",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowApprovalDialog(DialogCase.CASE7);
+                    ShowApprovalDialog(TrasactionCase.PreAuth);
                 })
             });
 
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"ApprovalDialog CASE8",
-                RightIconResName = "ApprovalDialog_CASE8",
+                Title = $"ApprovalDialog PreAuthCancel",
+                RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowApprovalDialog(DialogCase.CASE8);
+                    ShowApprovalDialog(TrasactionCase.PreAuthCancel);
                 })
             });
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ApprovalDialog CASE9",
-                RightIconResName = "ApprovalDialog_CASE9",
-                ItemAction = new Action(() =>
-                {
-                    ShowApprovalDialog(DialogCase.CASE9);
-                })
-            });
             #endregion
 
 #endif
@@ -4090,11 +4080,11 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-            //InitCommonDialogsData();
+            InitCommonDialogsData();
 
             //InitPurchaseMainFlowData(); // Purchase Main Flow 
 
-            InitRequestCardData(); // Request Card 
+            //InitRequestCardData(); // Request Card 
 
             //InitSetupDataFlow();
 

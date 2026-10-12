@@ -11,6 +11,7 @@ using CloudBanking.UI;
 using CloudBanking.Utilities;
 using Plugin.CurrentActivity;
 using System.Text;
+using static Android.Icu.Text.CaseMap;
 using static CloudBanking.Entities.RefundReasonDlgData;
 using static CloudBanking.Utilities.UtilEnum;
 using AccountType = CloudBanking.Entities.AccountType;
@@ -1387,21 +1388,22 @@ namespace CloudBanking.UITestApp
             pProcessingData.fAutoClose = true;
             string cancelBtnTitleId = "";
 
-            //pProcessingData.AnimationFilePath = Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_LOTTIE_ANIMATIONS), Path.GetFileName(GlobalConstants.LOADING_LOTTIE_ANIMATION));
+            pProcessingData.AnimationFilePath = Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_LOTTIE_ANIMATIONS), Path.GetFileName(GlobalConstants.LOADING_LOTTIE_ANIMATION));
 
-            //if (File.Exists(pProcessingData.AnimationFilePath))
-            //{
-            //    Console.WriteLine("Da thay file!!");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Khong thay file!!");
-            //}
+            if (File.Exists(pProcessingData.AnimationFilePath))
+            {
+                Console.WriteLine("Da thay file!!");
+            }
+            else
+            {
+                Console.WriteLine("Khong thay file!!");
+            }
+
+            pProcessingData.HeaderTitleId = StringIds.STRING_GIFT_CARD;
 
             switch (caseDialog)
             {
                 case DialogCase.CASE1:
-
                     pProcessingData.hTextTitle = "";
                     pProcessingData.hTextOne = Localize.GetString(StringIds.STRING_EMV_PROCESSINGNOW);
                     pProcessingData.hTextTwo = "";
@@ -9170,6 +9172,34 @@ namespace CloudBanking.UITestApp
             {
 
             }, true, false, paymentMethodOptions);
+        }
+
+        void ShowGiftMessage(DialogCase dialogCase)
+        {
+            var titleId = StringIds.STRING_GIFT_CARD;
+            long lBalance = 13800;
+
+            switch (dialogCase)
+            {
+                case DialogCase.CASE1:
+                    bool hasGatewayMessage = true;
+                    string unknownMessage = Localize.GetString(StringIds.STRING_GATEWAY_ERR_GETTINGRESPONSE);
+                    ApplicationBaseFlow.CustomStringMessageBox(true, titleId, unknownMessage, hasGatewayMessage, GlobalResource.MB_OK, GlobalResource.MB_ICONWARNING, isShowBackBtn: false);
+                    break;
+                case DialogCase.CASE2:
+                    string declinedMessage = Localize.GetString(StringIds.STRING_DECLINED);
+                    ApplicationBaseFlow.CustomStringMessageBox(true, titleId, declinedMessage, true, GlobalResource.MB_OK, GlobalResource.MB_ICONDECLINED_BMP, isShowBackBtn: false);
+                    break;
+
+                case DialogCase.CASE3:
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_TRANSACTION, StringIds.STRING_PROCESSORNOTFOUND, false, GlobalResource.MB_OK, GlobalResource.MB_ICONDECLINED_BMP);
+                    break;
+                case DialogCase.CASE4:
+                    ApplicationBaseFlow.CustomStringMessageBox(true, StringIds.STRING_GIFT_CARD_BALANCE, StringIds.STRING_APPROVED, false,
+                     GlobalResource.MB_OK, GlobalResource.MB_ICONAPPROVAL_BMP, subMsg: lBalance.ToFormatLocalCurrencyAmount(),
+                     fSubActualText: true, aboveMsg: StringIds.STRING_GIFT_CARD_BALANCE);
+                    break;
+            }
         }
 
         //end function

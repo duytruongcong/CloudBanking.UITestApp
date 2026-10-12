@@ -36,7 +36,7 @@ namespace CloudBanking.UITestApp
 
         void ShowMessageDialogVoidTransaction()
         {
-#if false
+#if true
             var mainResult = StringIds.STRING_APPROVED.GetString();
             var fCustomerPrint = true;
 
@@ -746,7 +746,94 @@ namespace CloudBanking.UITestApp
                     localSelectedFlowCommand = args.GetDataOfIndex<int>(0);
             }, true, false, dialogData);
 #endif
+        }
 
+        void ShowGiftRechargeReferenceDialog()
+        {
+#if true
+            var dialogData = new GiftRechargeReferenceDlgData
+            {
+                ReferenceVMs = new List<ReferenceTypeViewModel>()
+                {
+                    new ReferenceTypeViewModel()
+                    {
+                        fNotShownWhenSelected = false,
+                        TitleId = StringIds.STRING_NONE,
+                        Value = 0,
+                    },
+                    new ReferenceTypeViewModel()
+                    {
+                        fNotShownWhenSelected = false,
+                        TitleId = StringIds.STRING_REFERENCE,
+                        Value = 1,
+                    },
+                    new ReferenceTypeViewModel()
+                    {
+                        fNotShownWhenSelected = false,
+                        TitleId = StringIds.STRING_RECHARGE,
+                        Value = 2,
+                    },
+                    new ReferenceTypeViewModel()
+                    {
+                        fNotShownWhenSelected = false,
+                        TitleId = StringIds.STRING_GIFT_CARD_REDEEM,
+                        Value = 3,
+                    },
+                },
+                ReferenceType = 2,
+                IsReferenceEnabled = false,
+                CurrentNote = "Was a refund instore credit   \t\t\r\nauth 7612345 for shoes returned",
+                ReferenceNumber = "654321",
+            };
+            
+            DialogBuilder.Show(IPayDialog.GIFT_RECHARGE_REFERENCE_DIALOG, StringIds.STRING_REFERENCES_AND_NOTES, (result, args) =>
+            {
+
+            }, true, false, dialogData);
+#endif
+        }
+
+        void ShowGiftRechargePaymentDialog()
+        {
+#if true
+            var dialogData = new GiftRechargePaymentDlgData();
+
+            dialogData.NoteTitleId = StringIds.STRING_IMPORTANT_NOTE;
+            dialogData.NoteContent = StringIds.STRING_GIFT_IMPORTANT_NOTE_CONTENT;
+            dialogData.FunctionButtons = new List<SelectButton>();
+
+            dialogData.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_CARD_PAYMENT,
+                Title = StringIds.STRING_CARD_PAYMENT,
+                idImage = IconIds.VECTOR_BG_PURCHASE,
+                IdProcessor = 0,
+                iCommand = GlobalResource.CARD_PAYMENT_BUTTON
+            });
+
+            dialogData.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_CASH_PAYMENT,
+                Title = StringIds.STRING_CASH_PAYMENT,
+                idImage = IconIds.VECTOR_BG_CASH_ONLY,
+                IdProcessor = 0,
+                iCommand = GlobalResource.CASH_PAYMENT_BUTTON
+            });
+
+            dialogData.FunctionButtons.Add(new SelectButton()
+            {
+                iCommandLang = StringIds.STRING_OTHER_PAYMENT,
+                Title = StringIds.STRING_OTHER_PAYMENT,
+                idImage = IconIds.VECTOR_BG_OTHER_PAY,
+                IdProcessor = 0,
+                iCommand = GlobalResource.OTHER_PAY_BUTTON
+            });
+
+            DialogBuilder.Show(IPayDialog.GIFT_RECHARGE_PAYMENT_DIALOG, StringIds.STRING_REFERENCES_AND_NOTES, (result, args) =>
+            {
+
+            }, true, false, dialogData);
+#endif
         }
     }
 }

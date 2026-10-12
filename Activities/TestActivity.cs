@@ -1497,7 +1497,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if true
+#if false //done for gift card
 
             #region ApprovalDialog
 
@@ -1605,10 +1605,53 @@ namespace CloudBanking.UITestApp
 
 #endif
 
-#if false    //  
+#if true    //  
 
             #region MessageDialog
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Gift CASE1",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowGiftMessage(DialogCase.CASE1);
+                })
+            });
 
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Gift CASE2",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowGiftMessage(DialogCase.CASE2);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Gift CASE3",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowGiftMessage(DialogCase.CASE3);
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog Gift CASE4",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowGiftMessage(DialogCase.CASE4);
+                })
+            });
+
+            //gift
+
+
+            //
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"MessageDialog Reprint false",
@@ -1629,26 +1672,27 @@ namespace CloudBanking.UITestApp
                 })
             });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MessageDialog VoidTransaction",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMessageDialogVoidTransaction();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog VoidTransaction",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogVoidTransaction();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"MessageDialog VoidTransaction",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowMessageDialogVoidTransaction();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"MessageDialog VoidTransaction",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMessageDialogVoidTransaction();
+                })
+            });
 
+            //khong co trong wpay
             //_lData.Add(new ScreenViewModel()
             //{
             //    Title = $"MessageDialog InvalidAmount",
@@ -1869,6 +1913,8 @@ namespace CloudBanking.UITestApp
                 })
             });
 
+
+
             #endregion
 
 #endif
@@ -2000,59 +2046,59 @@ namespace CloudBanking.UITestApp
 #endif
 
 
-#if true    //
+#if false    //
 
             #region EnterPin
 
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"EnterPlanTextPinDialog",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowEnterPlanTextPinDialog();
+            //    })
+            //});
+
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"EnterPlanTextPinDialog",
-                RightIconResName = "",
+                Title = $"EnterPinDialog CASE1",
+                RightIconResName = "EnterPinDialog_CASE1",
                 ItemAction = new Action(() =>
                 {
-                    ShowEnterPlanTextPinDialog();
+                    ShowEnterPinDialog(DialogCase.CASE1);
                 })
             });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"EnterPinDialog CASE1",
-            //    RightIconResName = "EnterPinDialog_CASE1",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowEnterPinDialog(DialogCase.CASE1);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterPinDialog CASE2",
+                RightIconResName = "EnterPinDialog_CASE2",
+                ItemAction = new Action(() =>
+                {
+                    ShowEnterPinDialog(DialogCase.CASE2);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"EnterPinDialog CASE2",
-            //    RightIconResName = "EnterPinDialog_CASE2",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowEnterPinDialog(DialogCase.CASE2);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterPinDialog CASE3",
+                RightIconResName = "EnterPinDialog_CASE3",
+                ItemAction = new Action(() =>
+                {
+                    ShowEnterPinDialog(DialogCase.CASE3);
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"EnterPinDialog CASE3",
-            //    RightIconResName = "EnterPinDialog_CASE3",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowEnterPinDialog(DialogCase.CASE3);
-            //    })
-            //});
-
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"EnterPinDialog CASE4",
-            //    RightIconResName = "EnterPinDialog_CASE4",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowEnterPinDialog(DialogCase.CASE4);
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"EnterPinDialog CASE4",
+                RightIconResName = "EnterPinDialog_CASE4",
+                ItemAction = new Action(() =>
+                {
+                    ShowEnterPinDialog(DialogCase.CASE4);
+                })
+            });
             #endregion
 #endif
 
@@ -2949,13 +2995,33 @@ namespace CloudBanking.UITestApp
 
         void InitGiftCardFlowData()
         {
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"GiftCardActionOptions",
+            //    RightIconResName = "",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowGiftCardActionOptions();
+            //    })
+            //});
+
             _lData.Add(new ScreenViewModel()
             {
-                Title = $"GiftCardActionOptions",
+                Title = $"GiftRechargeReferenceDialog",
                 RightIconResName = "",
                 ItemAction = new Action(() =>
                 {
-                    ShowGiftCardActionOptions();
+                    ShowGiftRechargeReferenceDialog();
+                })
+            });
+
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GiftRechargePaymentDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowGiftRechargePaymentDialog();
                 })
             });
         }
@@ -4080,7 +4146,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-            InitCommonDialogsData();
+            //InitCommonDialogsData();
 
             //InitPurchaseMainFlowData(); // Purchase Main Flow 
 
@@ -4106,7 +4172,7 @@ namespace CloudBanking.UITestApp
 
             //InitMutiTenderFlowData(); //MutiTender
 
-            //InitGiftCardFlowData();
+            InitGiftCardFlowData();
 
         }
         #endregion

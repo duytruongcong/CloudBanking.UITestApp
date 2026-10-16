@@ -97,7 +97,7 @@ namespace CloudBanking.UITestApp
 
         void InitializationDatabase()
         {
-            CheckCurrencyDatabase();
+            //CheckCurrencyDatabase();
         }
 
         void CheckCurrencyDatabase()
@@ -1078,7 +1078,7 @@ namespace CloudBanking.UITestApp
 
         void InitSplitPayData()
         {
-#if false
+#if true
             _lData.Add(new ScreenViewModel()
             {
                 Title = $"CommonSplitPayDialog",
@@ -4170,9 +4170,9 @@ namespace CloudBanking.UITestApp
 
             //InitCustomerDetailFlowData(); //CustomerDetail// 
 
-            //InitMutiTenderFlowData(); //MutiTender
+            InitMutiTenderFlowData(); //MutiTender
 
-            InitGiftCardFlowData();
+            //InitGiftCardFlowData();
 
         }
         #endregion

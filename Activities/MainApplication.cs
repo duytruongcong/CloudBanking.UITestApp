@@ -112,7 +112,7 @@ namespace CloudBanking.UITestApp
 
             ServiceLocator.Instance.Get<IUtilityService>().Init();
 
-            ServiceLocator.Instance.Get<IDiagnosticService>()?.UpdateDiagnosticReboots();
+            //ServiceLocator.Instance.Get<IDiagnosticService>()?.UpdateDiagnosticReboots();
 
             ServiceLocator.Instance.Get<ISmartDevice>().SetHardwareModule(
                   CrossDeviceInfo.Current.IsTerminalHasPhysicalNumKeyboard(),

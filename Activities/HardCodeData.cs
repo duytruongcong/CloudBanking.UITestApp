@@ -23,7 +23,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(TrasactionCase transactionCase)
         {
-#if true
+#if false
             string lpszTitleString = StringIds.STRING_TRANSACTION;
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
@@ -244,7 +244,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSwipeMerchantCardDialog(DialogCase caseDialog)
         {
-#if true
+#if false
             string headerTitleId = string.Empty;
 
             TrasactionCase trasactionCase = TrasactionCase.GiftRechargeOne;
@@ -1382,7 +1382,7 @@ namespace CloudBanking.UITestApp
 
         private void ShowProcessMessageDialog(DialogCase caseDialog)
         {
-#if true
+#if false
             var pProcessingData = new ProcessingData();
 
             pProcessingData.fAutoClose = true;
@@ -3784,7 +3784,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectTenderExtraAmountDialog(DialogCase caseDialog)
         {
-#if false
+#if true
             var dlgData = new SelectTenderExtraAmountDlgData();
 
             dlgData.TenderNumber = 5;
@@ -9176,6 +9176,7 @@ namespace CloudBanking.UITestApp
 
         void ShowGiftMessage(DialogCase dialogCase)
         {
+#if false
             var titleId = StringIds.STRING_GIFT_CARD;
             long lBalance = 13800;
 
@@ -9200,6 +9201,7 @@ namespace CloudBanking.UITestApp
                      fSubActualText: true, aboveMsg: StringIds.STRING_GIFT_CARD_BALANCE);
                     break;
             }
+#endif
         }
 
         //end function

@@ -140,7 +140,7 @@ namespace CloudBanking.UITestApp
 
         void ShowEnterPlanTextPinDialog()
         {
-#if true
+#if false
             EnterPlanTextPinDlgData dlgData = new EnterPlanTextPinDlgData();
             TrasactionCase trasactionCase = TrasactionCase.GiftCard;
 
@@ -750,7 +750,7 @@ namespace CloudBanking.UITestApp
 
         void ShowGiftRechargeReferenceDialog()
         {
-#if true
+#if false
             var dialogData = new GiftRechargeReferenceDlgData
             {
                 ReferenceVMs = new List<ReferenceTypeViewModel>()
@@ -795,7 +795,7 @@ namespace CloudBanking.UITestApp
 
         void ShowGiftRechargePaymentDialog()
         {
-#if true
+#if false
             var dialogData = new GiftRechargePaymentDlgData();
 
             dialogData.NoteTitleId = StringIds.STRING_IMPORTANT_NOTE;

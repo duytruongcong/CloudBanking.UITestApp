@@ -140,7 +140,7 @@ namespace CloudBanking.UITestApp
 
         void ShowEnterPlanTextPinDialog()
         {
-#if true
+#if false
             EnterPlanTextPinDlgData dlgData = new EnterPlanTextPinDlgData();
             TrasactionCase trasactionCase = TrasactionCase.GiftCard;
 

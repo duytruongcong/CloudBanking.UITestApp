@@ -1409,7 +1409,7 @@ namespace CloudBanking.UITestApp
 
         void InitCommonDialogsData()
         {
-#if false
+#if true
             #region LogonDialog
             _lData.Add(new ScreenViewModel()
             {
@@ -2010,7 +2010,7 @@ namespace CloudBanking.UITestApp
 #endif
 
 
-#if true    //
+#if false    //
 
             #region EnterPin
 
@@ -4094,7 +4094,7 @@ namespace CloudBanking.UITestApp
 
             //InitPurchaseMainFlowData(); // Purchase Main Flow 
 
-            InitRequestCardData(); // Request Card 
+            //InitRequestCardData(); // Request Card 
 
             //InitSetupDataFlow();
 
@@ -4114,7 +4114,7 @@ namespace CloudBanking.UITestApp
 
             //InitCustomerDetailFlowData(); //CustomerDetail// 
 
-            //InitMutiTenderFlowData(); //MutiTender
+            InitMutiTenderFlowData(); //MutiTender
 
             //InitGiftCardFlowData();
 

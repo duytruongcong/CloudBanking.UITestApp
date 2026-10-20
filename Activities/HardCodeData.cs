@@ -282,6 +282,7 @@ namespace CloudBanking.UITestApp
 
         public static string GetStringId(FunctionType functionType)
         {
+#if false
             var lszTitle = "";
 
             switch (functionType)
@@ -301,11 +302,13 @@ namespace CloudBanking.UITestApp
             }
 
             return lszTitle;
+#endif
+            return string.Empty;
         }
 
         void ShowSwipeMerchantCardDialog(DialogCase caseDialog)
         {
-#if true
+#if false
             string headerTitleId = string.Empty;
 
             TrasactionCase trasactionCase = TrasactionCase.GiftRechargeOne;
@@ -1449,16 +1452,16 @@ namespace CloudBanking.UITestApp
             pProcessingData.fAutoClose = true;
             string cancelBtnTitleId = "";
 
-            //pProcessingData.AnimationFilePath = Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_LOTTIE_ANIMATIONS), Path.GetFileName(GlobalConstants.LOADING_LOTTIE_ANIMATION));
+            pProcessingData.AnimationFilePath = Path.Combine(FileService.GetPersonFolder(GlobalConstants.FOLDER_LOTTIE_ANIMATIONS), Path.GetFileName(GlobalConstants.LOADING_LOTTIE_ANIMATION));
 
-            //if (File.Exists(pProcessingData.AnimationFilePath))
-            //{
-            //    Console.WriteLine("Da thay file!!");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Khong thay file!!");
-            //}
+            if (File.Exists(pProcessingData.AnimationFilePath))
+            {
+                Console.WriteLine("Da thay file!!");
+            }
+            else
+            {
+                Console.WriteLine("Khong thay file!!");
+            }
 
             switch (caseDialog)
             {
@@ -3844,7 +3847,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectTenderExtraAmountDialog(DialogCase caseDialog)
         {
-#if false
+#if true
             var dlgData = new SelectTenderExtraAmountDlgData();
 
             dlgData.TenderNumber = 5;
@@ -3859,7 +3862,12 @@ namespace CloudBanking.UITestApp
 
             dlgData.Donations = new PaymentDonations();
             dlgData.Donations.AddCharityItem("Charity 1", null, 100, 1);
-            dlgData.Donations.AddCharityItem("Charity 2", null, 150, 1);
+            dlgData.Donations.AddCharityItem("Charity 2", null, 150, 2);
+            dlgData.Donations.AddCharityItem("Charity 3", null, 150, 3);
+            dlgData.Donations.AddCharityItem("Charity 4", null, 150, 4);
+            dlgData.Donations.AddCharityItem("Charity 5", null, 150, 5);
+            dlgData.Donations.AddCharityItem("Charity 6", null, 150, 6);
+            dlgData.Donations.AddCharityItem("Charity 7", null, 150, 7);
 
             //dlgData.PaymentVouchers = new PaymentVouchers() { lTotalVouchers = 1000 };
 

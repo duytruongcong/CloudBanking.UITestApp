@@ -1408,6 +1408,16 @@ namespace CloudBanking.UITestApp
 
         void InitCommonDialogsData()
         {
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"FixedKeyboardInputDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowMiniFixedKeyboardInputDialog();
+                })
+            });
+
 #if false
             #region LogonDialog
             _lData.Add(new ScreenViewModel()
@@ -1497,7 +1507,7 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-#if false //done for gift card
+#if true //done for gift card
 
             #region ApprovalDialog
 
@@ -2995,15 +3005,15 @@ namespace CloudBanking.UITestApp
 
         void InitGiftCardFlowData()
         {
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"GiftCardActionOptions",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowGiftCardActionOptions();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"GiftCardActionOptions",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowGiftCardActionOptions();
+                })
+            });
 
             _lData.Add(new ScreenViewModel()
             {
@@ -3183,16 +3193,6 @@ namespace CloudBanking.UITestApp
                 ItemAction = new Action(() =>
                 {
                     ShowMiniDonationEditAmountMenuDialog();
-                })
-            });
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"FixedKeyboardInputDialog",
-                RightIconResName = "",
-                ItemAction = new Action(() =>
-                {
-                    ShowMiniFixedKeyboardInputDialog();
                 })
             });
 
@@ -4146,11 +4146,11 @@ namespace CloudBanking.UITestApp
             #endregion
 #endif
 
-            //InitCommonDialogsData();
+            InitCommonDialogsData();
 
             //InitPurchaseMainFlowData(); // Purchase Main Flow 
 
-            //InitRequestCardData(); // Request Card 
+            InitRequestCardData(); // Request Card 
 
             //InitSetupDataFlow();
 
@@ -4170,9 +4170,9 @@ namespace CloudBanking.UITestApp
 
             //InitCustomerDetailFlowData(); //CustomerDetail// 
 
-            InitMutiTenderFlowData(); //MutiTender
+            //InitMutiTenderFlowData(); //MutiTender
 
-            //InitGiftCardFlowData();
+            InitGiftCardFlowData();
 
         }
         #endregion

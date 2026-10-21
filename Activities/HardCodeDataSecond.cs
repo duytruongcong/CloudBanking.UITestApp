@@ -710,7 +710,7 @@ namespace CloudBanking.UITestApp
 
         void ShowGiftCardActionOptions()
         {
-#if false
+#if true
             var dialogData = new SelFncDlgData
             {
                 iPage = 1,

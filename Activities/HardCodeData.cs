@@ -23,7 +23,7 @@ namespace CloudBanking.UITestApp
     {
         private void ShowApprovalDialog(TrasactionCase transactionCase)
         {
-#if false
+#if true
             string lpszTitleString = StringIds.STRING_TRANSACTION;
 
             ApprovalDlgData DlgData = new ApprovalDlgData();
@@ -31,7 +31,7 @@ namespace CloudBanking.UITestApp
             //03 cases for print stage
             //PrintStage printStage = PrintStage.PrintPrompt;
             //PrintStage printStage = PrintStage.PrintComplete;
-            PrintStage printStage = PrintStage.Printing;
+            PrintStage printStage = PrintStage.PrintComplete;
 
             switch (transactionCase)
             {
@@ -2430,11 +2430,11 @@ namespace CloudBanking.UITestApp
 
         void ShowGetAmountDialog(DialogCase caseDialog)
         {
-#if false
+#if true
             var data = new GetAmountDlgData();
 
             //data.fShowAmountRightButton = false;
-            //data.plTotalAmount = 13800;
+            data.plTotalAmount = 13800;
             string title = string.Empty;
 
             TrasactionCase trasactionCase = TrasactionCase.GiftCard;
@@ -3784,7 +3784,7 @@ namespace CloudBanking.UITestApp
 
         void ShowSelectTenderExtraAmountDialog(DialogCase caseDialog)
         {
-#if true
+#if false
             var dlgData = new SelectTenderExtraAmountDlgData();
 
             dlgData.TenderNumber = 5;
@@ -7974,9 +7974,9 @@ namespace CloudBanking.UITestApp
                 Value = "876543",
                 MaxLength = 8,
                 MinLength = 1,
-                LeftTitleId = StringIds.STRING_ACCESSCODE,
-                AboveHeaderAmount = 6000,
-                AboveHeaderTitleId = StringIds.STRING_ACCESSCODE,
+                LeftTitleId = StringIds.STRING_CANCEL,
+                //AboveHeaderAmount = 6000,
+                //AboveHeaderTitleId = StringIds.STRING_ACCESSCODE,
             };
 
             var dialogNumber = new FixedKeyboardInputDialog(inputNumber, (obj) =>

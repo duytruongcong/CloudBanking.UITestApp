@@ -8648,7 +8648,7 @@ namespace CloudBanking.UITestApp
 
             ReviewTransDlgData dlgData = new ReviewTransDlgData();
             dlgData.TotalAmount = 13800;
-            dlgData.IsShowEditButton = false;
+            dlgData.IsShowEditButton = true;
             dlgData.IsShowCurrencyBottomButton = true;
             dlgData.LeftButtonTitleId = StringIds.STRING_USERS_CANCELTRANS;
 
@@ -8682,7 +8682,9 @@ namespace CloudBanking.UITestApp
                 {
                     Title = StringIds.STRING_PURCHASE,
                     Value = pInitProcessData.lAmount.ToFormatLocalCurrencyAmount(),
-                    IsRightTextBold = true
+                    IsRightTextBold = true,
+                    RightIconId = Resource.Drawable.vector_info_gray,
+                    RightIconResName = IconIds.VECTOR_INFO_GRAY
                 });
             }
 
@@ -8696,7 +8698,9 @@ namespace CloudBanking.UITestApp
                     {
                         Title = $"{StringIds.STRING_VOUCHER.GetString()} {item.Name}",
                         Value = item.lVoucher.ToFormatLocalCurrencyAmount(),
-                        IsRightTextBold = true
+                        IsRightTextBold = true,
+                        RightIconId = Resource.Drawable.vector_info_gray,
+                        RightIconResName = IconIds.VECTOR_INFO_GRAY
                     });
                 }
             }
@@ -8708,7 +8712,9 @@ namespace CloudBanking.UITestApp
                 {
                     Title = StringIds.STRING_CASH_OUT,
                     Value = pInitProcessData.lCashOut.ToFormatLocalCurrencyAmount(),
-                    IsRightTextBold = true
+                    IsRightTextBold = true,
+                    RightIconId = Resource.Drawable.vector_info_gray,
+                    RightIconResName = IconIds.VECTOR_INFO_GRAY
                 });
             }
 
@@ -8719,7 +8725,9 @@ namespace CloudBanking.UITestApp
                 {
                     Title = StringIds.STRING_CASHOUTFEE,
                     Value = pInitProcessData.lCashOutFee.ToFormatLocalCurrencyAmount(),
-                    IsRightTextBold = true
+                    IsRightTextBold = true,
+                    RightIconId = Resource.Drawable.vector_info_gray,
+                    RightIconResName = IconIds.VECTOR_INFO_GRAY
                 });
             }
 
@@ -8742,7 +8750,9 @@ namespace CloudBanking.UITestApp
                         DataValueString = item.Name,
                         Value = item.lDonation.ToFormatLocalCurrencyAmount(),
                         IsActualTitle = true,
-                        IsRightTextBold = true
+                        IsRightTextBold = true,
+                        RightIconId = Resource.Drawable.vector_info_gray,
+                        RightIconResName = IconIds.VECTOR_INFO_GRAY
                     });
                 }
             }

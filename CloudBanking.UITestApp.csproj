@@ -321,10 +321,6 @@
       <Project>{F7C68F3B-50A7-49A7-B8ED-30F320D01AF4}</Project>
       <Name>CloudBanking.DroidUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.ShellContainerClient\CloudBanking.ShellContainerClient.csproj">
-      <Project>{E346E3A8-4FE5-4D9B-9CD8-B181D499735C}</Project>
-      <Name>CloudBanking.ShellContainerClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\payment_app\CloudBanking\CloudBanking.Module\CloudBanking.ShellClient\CloudBanking.BaseShellClient\CloudBanking.BaseShellClient.csproj">
       <Project>{B5A8F226-DA1C-4529-ABAE-B9C9E5F9C470}</Project>
       <Name>CloudBanking.BaseShellClient</Name>

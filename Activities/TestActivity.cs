@@ -737,25 +737,25 @@ namespace CloudBanking.UITestApp
             //    })
             //});
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"IShellDialog_ReviewTransDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowIShellDialog_ReviewTransDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"IShellDialog_ReviewTransDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowIShellDialog_ReviewTransDialog();
+                })
+            });
 
-            //_lData.Add(new ScreenViewModel()
-            //{
-            //    Title = $"IPayDialog_ReviewTransDialog",
-            //    RightIconResName = "",
-            //    ItemAction = new Action(() =>
-            //    {
-            //        ShowIPayDialog_ReviewTransDialog();
-            //    })
-            //});
+            _lData.Add(new ScreenViewModel()
+            {
+                Title = $"IPayDialog_ReviewTransDialog",
+                RightIconResName = "",
+                ItemAction = new Action(() =>
+                {
+                    ShowIPayDialog_ReviewTransDialog();
+                })
+            });
 
             //_lData.Add(new ScreenViewModel()
             //{
@@ -2434,157 +2434,157 @@ namespace CloudBanking.UITestApp
 
             #region Refund flow
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"SearchFilterOptionsDialog",
-                RightIconResName = "SearchFilterOptionsDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowSearchFilterOptionsDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"SearchFilterOptionsDialog",
+            //    RightIconResName = "SearchFilterOptionsDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowSearchFilterOptionsDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RefundOptionsDialog",
-                RightIconResName = "RefundOptionsDialog",
-                ItemAction = new Action(() =>
-                {
-                    RefundOptions();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RefundOptionsDialog",
+            //    RightIconResName = "RefundOptionsDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        RefundOptions();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"REFUND_SELECT_TYPE_DIALOG",
-                RightIconResName = "REFUND_SELECT_TYPE_DIALOG",
-                ItemAction = new Action(() =>
-                {
-                    ShowRefundTypes();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"REFUND_SELECT_TYPE_DIALOG",
+            //    RightIconResName = "REFUND_SELECT_TYPE_DIALOG",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRefundTypes();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"FindPurchaseOptionDialog_CASE01",
-                RightIconResName = "FindPurchaseOptionDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowFindPurchaseOptionDialog(DialogCase.CASE1);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"FindPurchaseOptionDialog_CASE01",
+            //    RightIconResName = "FindPurchaseOptionDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowFindPurchaseOptionDialog(DialogCase.CASE1);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"FindPurchaseOptionDialog_CASE02",
-                RightIconResName = "FindPurchaseOptionDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowFindPurchaseOptionDialog(DialogCase.CASE2);
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"FindPurchaseOptionDialog_CASE02",
+            //    RightIconResName = "FindPurchaseOptionDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowFindPurchaseOptionDialog(DialogCase.CASE2);
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ManualScanQRCodeDialog",
-                RightIconResName = "ManualScanQRCodeDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowManualScanQRCodeDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ManualScanQRCodeDialog",
+            //    RightIconResName = "ManualScanQRCodeDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowManualScanQRCodeDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"ListPaymentDialog",
-                RightIconResName = "ListPaymentDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowListPaymentDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"ListPaymentDialog",
+            //    RightIconResName = "ListPaymentDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowListPaymentDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RefundPurchaseListItemsDialog",
-                RightIconResName = "RefundPurchaseListItemsDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowRefundPurchaseListItemsDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RefundPurchaseListItemsDialog",
+            //    RightIconResName = "RefundPurchaseListItemsDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRefundPurchaseListItemsDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RefundReasonDialog",
-                RightIconResName = "RefundReasonDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowRefundReasonDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RefundReasonDialog",
+            //    RightIconResName = "RefundReasonDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRefundReasonDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"AdvancedSearchDialog",
-                RightIconResName = "AdvancedSearchDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowAdvancedSearchDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"AdvancedSearchDialog",
+            //    RightIconResName = "AdvancedSearchDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowAdvancedSearchDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountRefundAlipayWeChatDialog 01",
-                RightIconResName = "GetAmountRefundAlipayWeChatDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountRefundAlipayWeChatDialog_01();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"GetAmountRefundAlipayWeChatDialog 01",
+            //    RightIconResName = "GetAmountRefundAlipayWeChatDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowGetAmountRefundAlipayWeChatDialog_01();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"GetAmountRefundAlipayWeChatDialog 02",
-                RightIconResName = "GetAmountRefundAlipayWeChatDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowGetAmountRefundAlipayWeChatDialog_02();
-                })
-            });
-
-
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RefundSearchDetailDialog",
-                RightIconResName = "RefundSearchDetailDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowRefundSearchDetailDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"GetAmountRefundAlipayWeChatDialog 02",
+            //    RightIconResName = "GetAmountRefundAlipayWeChatDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowGetAmountRefundAlipayWeChatDialog_02();
+            //    })
+            //});
 
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RefundListCardDialog",
-                RightIconResName = "RefundListCardDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowRefundListCardDialog();
-                })
-            });
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RefundSearchDetailDialog",
+            //    RightIconResName = "RefundSearchDetailDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRefundSearchDetailDialog();
+            //    })
+            //});
 
-            _lData.Add(new ScreenViewModel()
-            {
-                Title = $"RefundNFCDialog",
-                RightIconResName = "RefundNFCDialog",
-                ItemAction = new Action(() =>
-                {
-                    ShowRefundNFCDialog();
-                })
-            });
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RefundListCardDialog",
+            //    RightIconResName = "RefundListCardDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRefundListCardDialog();
+            //    })
+            //});
+
+            //_lData.Add(new ScreenViewModel()
+            //{
+            //    Title = $"RefundNFCDialog",
+            //    RightIconResName = "RefundNFCDialog",
+            //    ItemAction = new Action(() =>
+            //    {
+            //        ShowRefundNFCDialog();
+            //    })
+            //});
 
             _lData.Add(new ScreenViewModel()
             {
@@ -4092,7 +4092,7 @@ namespace CloudBanking.UITestApp
 
             //InitCommonDialogsData();
 
-            //InitPurchaseMainFlowData(); // Purchase Main Flow 
+            InitPurchaseMainFlowData(); // Purchase Main Flow 
 
             //InitRequestCardData(); // Request Card 
 
@@ -4114,7 +4114,7 @@ namespace CloudBanking.UITestApp
 
             //InitCustomerDetailFlowData(); //CustomerDetail// 
 
-            InitMutiTenderFlowData(); //MutiTender
+            //InitMutiTenderFlowData(); //MutiTender
 
             //InitGiftCardFlowData();
 
